@@ -1,0 +1,7 @@
+namespace BeautySalon.DAL.StoredProcedures;
+
+public class Procedures
+{
+    public const string GetAllOrdersForClientProcedure = "GetAllOrdersForClient";
+    public const string GetAllEmployeesProcedure = "GetAllEmployees";
+}
