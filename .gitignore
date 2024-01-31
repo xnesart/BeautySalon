@@ -1,6 +1,7 @@
 BeautySalon.DAL/Options.cs
+BeautySalon.DAL/Option.cs
 # Common IntelliJ Platform excludes
-
+.idea/
 # User specific
 **/.idea/**/workspace.xml
 **/.idea/**/tasks.xml
