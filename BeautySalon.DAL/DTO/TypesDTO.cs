@@ -8,8 +8,6 @@ namespace BeautySalon.DAL.DTO
 
         public string Title { get; set; }
 
-         public bool? IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
     }
 }
-
-

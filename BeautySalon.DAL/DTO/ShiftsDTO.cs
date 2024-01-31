@@ -17,4 +17,3 @@ namespace BeautySalon.DAL.DTO
         public bool? IsDeleted { get; set; }
     }
 }
-
