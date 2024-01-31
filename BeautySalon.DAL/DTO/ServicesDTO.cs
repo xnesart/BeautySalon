@@ -13,5 +13,7 @@ namespace BeautySalon.DAL.DTO
         public decimal Price { get; set; }
 
         public string Duratoin { get; set; }
+
+        public bool? IsDeleted { get; set; }
     }
 }
