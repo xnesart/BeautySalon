@@ -1,5 +1,6 @@
 BeautySalon.DAL/Options.cs
 BeautySalon.DAL/Option.cs
+Option.cs
 # Common IntelliJ Platform excludes
 .idea/
 # User specific
@@ -434,3 +435,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
