@@ -7,7 +7,7 @@ using Microsoft.Data.SqlClient;
 
 namespace BeautySalon.DAL.Repositories;
 
-public class UserRepository:IUserRepository
+public class UserRepository : IUserRepository
 {
     public List<UsersDTO> GetAllEmployees()
     {
@@ -16,6 +16,7 @@ public class UserRepository:IUserRepository
             return connection.Query<UsersDTO>(Procedures.GetAllEmployeesProcedure).ToList();
         }
     }
+
     public List<UsersDTO> GetClientByNameAndId(string name, int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -39,6 +40,27 @@ public class UserRepository:IUserRepository
                 Phone = phone
             };
             return connection.Query<UsersDTO>(Procedures.GetClientByNameAndPhone, parameters).ToList();
+        }
+    }
+
+    public List<UsersDTO> AddUserByChatId(int chatId, string userName, string name, string phone, string mail,
+        int roleId, decimal salary, int isBlocked, int isDeleted)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                ChatId = chatId,
+                UserName = userName,
+                Name = name,
+                Phone = phone,
+                Mail = mail,
+                RoleID = roleId,
+                Salary = salary,
+                IsBlocked = isBlocked,
+                IsDeleted = isDeleted
+            };
+            return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
 }
