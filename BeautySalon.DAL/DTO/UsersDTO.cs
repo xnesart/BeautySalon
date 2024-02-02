@@ -4,6 +4,8 @@ public class UsersDTO
 {
     public int? Id { get; set; }
 
+    public int? ClientsId { get; set; }
+    public string? Client { get; set; }
     public string Name { get; set; }
 
     public string UserName { get; set; }
