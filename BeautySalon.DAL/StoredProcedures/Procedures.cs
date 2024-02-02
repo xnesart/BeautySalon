@@ -11,4 +11,5 @@ public class Procedures
     public const string GetClientByNameAndId = "GetClientByNameAndId";
     public const string GetClientByNameAndPhone = "GetClientByNameAndPhone";
     public const string AddUserByChatId = "AddUserByChatId";
+    public const string GetMasterByNameAndId = "GetMasterByNameAndId";
 }
