@@ -14,19 +14,27 @@ class Program
     static void Main(string[] args)
     {
 
-        IOrderRepository orderRepository = new OrderRepository();
-        var repositories = orderRepository.GetAllOrdersForClient();
-        foreach (var repository in repositories)
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var repositories = orderRepository.GetAllOrdersForClient();
+        // foreach (var repository in repositories)
+        // {
+        //     Console.WriteLine($"{repository.Id} {repository.Date} {repository.ClientId} {repository.MasterId}");
+        // }
+        //
+        // IUserRepository userRepository = new UserRepository();
+        // var userRepositories = userRepository.GetAllEmployees();
+        // foreach (var user in userRepositories)
+        // {
+        //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
+        // }
+        IUserRepository userRepository2 = new UserRepository();
+        var userRepositories2 = userRepository2.GetClientByNameAndId("Оксана Дмитриевна Кек", 4);
+        foreach (var user in userRepositories2)
         {
-            Console.WriteLine($"{repository.Id} {repository.Date} {repository.ClientId} {repository.MasterId}");
+            Console.WriteLine($"{user.ClientsId} {user.Client}");
         }
-
-        IUserRepository userRepository = new UserRepository();
-        var userRepositories = userRepository.GetAllEmployees();
-        foreach (var user in userRepositories)
-        {
-            Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
-        }
+        
+        
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService();
         // foreach (var user in userRepositories)

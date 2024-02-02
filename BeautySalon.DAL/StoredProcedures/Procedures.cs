@@ -8,4 +8,5 @@ public class Procedures
     public const string GetServicesWithPriceAndDuratonByTypeId = "GetServicesWithPriceAndDuratonByTypeId";
     public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
     public const string GetAllRolesProcedure = "GetAllRolesProcedure";
+    public const string GetClientByNameAndId = "GetClientByNameAndId";
 }
