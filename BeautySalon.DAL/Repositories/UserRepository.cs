@@ -76,4 +76,17 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.GetMasterByNameAndId, parameters).ToList();
         }
     }
+
+    public List<UsersDTO> GetMasterByNameAndPhone(string name, string phone)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                Name = name,
+                Phone = phone
+            };
+            return connection.Query<UsersDTO>(Procedures.GetMasterByNameAndPhone, parameters).ToList();
+        }
+    }
 }
