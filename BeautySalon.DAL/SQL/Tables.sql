@@ -19,7 +19,7 @@ create table Users
     UserName nvarchar(50),
     Name nvarchar(50) not null,
     Phone nvarchar(30) not null unique,
-    Mail nvarchar(30) unique,
+    Mail nvarchar(30),
     RoleId int not null,
     Salary decimal,
     IsBlocked bit default 0,
