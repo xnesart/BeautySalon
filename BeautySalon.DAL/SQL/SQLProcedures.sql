@@ -38,6 +38,16 @@ begin
     where Users.Name = @Name and Users.Phone = @Phone
 end
 go
+-- ✓ Вывести всех сотрудников по RoleId
+create proc GetAllWorkersByRoleId
+as
+begin
+select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker, 
+Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
+join Roles on Users.RoleId = Roles.Id
+where RoleId = 1 or RoleId = 2
+end
+go
 -- ✓ Вывести всех сотрудников по Id и их контакты
 create proc GetAllWorkersWithContactsByUserId
 as
