@@ -17,6 +17,5 @@ public class UsersDTO
     public decimal? Salary { get; set; }
     public int ChatId { get; set; }
     public bool? IsBlocked { get; set; }
-
     public bool? IsDeleted { get; set; }
 }

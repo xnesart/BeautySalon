@@ -57,12 +57,12 @@ class Program
         // userRepository4.AddUserByChatId(32423, "Janet342","Жанна Дарк", "8999324556", "jannet@mail.ru",3, 0,0,0);
         //
         
-        IUserRepository userRepository5 = new UserRepository();
-        var userRepositories5 = userRepository5.GetMasterByNameAndId("Анна Петровна Брек", 2);
-        foreach (var user in userRepositories5)
-        {
-            Console.WriteLine($"{user.Master} {user.MasterId}");
-        }
+        // IUserRepository userRepository5 = new UserRepository();
+        // var userRepositories5 = userRepository5.GetMasterByNameAndId("Анна Петровна Брек", 2);
+        // foreach (var user in userRepositories5)
+        // {
+        //     Console.WriteLine($"{user.Master} {user.MasterId}");
+        // }
         
         //Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
@@ -73,6 +73,15 @@ class Program
         // }
         // Console.WriteLine();
         // Console.ReadLine();
+        
+        IShiftsRepository shiftRepository = new ShiftsRepository();
+        var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployees();
+        foreach (var shift in shiftsRepositories)
+        {
+             Console.WriteLine($"");
+        }
+        Console.WriteLine();
+        Console.ReadLine();
 
         #endregion
         
