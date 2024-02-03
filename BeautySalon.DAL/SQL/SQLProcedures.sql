@@ -65,7 +65,17 @@ begin
     where Id = @Id
 end
 go
+
 -- ✓ Вывести все смены на сегодня
+create proc GetAllShiftsOnToday as
+begin
+declare @Today datetime
+set @Today = GETDATE()
+
+select Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime from Shifts
+where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
+end
+go
 
 -- ✓ Вывести все смены и работающих в них сотрудников
 create proc GetAllShiftsAndEmployeesOnToday as
@@ -259,7 +269,6 @@ begin
     where convert(date, Orders.Date) = convert(date, @Today)
 end
 go
--- ✓ Вывести все записи на сегодня для всех клиентов?? Повтор?
 
 
 ----процедуры для мастера
