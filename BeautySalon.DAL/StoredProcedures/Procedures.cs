@@ -10,19 +10,21 @@ public class Procedures
     public const string GetClientByNameAndId = "GetClientByNameAndId";
     public const string GetClientByNameAndPhone = "GetClientByNameAndPhone";
     public const string GetMasterByNameAndId = "GetMasterByNameAndId";
-<<<<<<< HEAD
     public const string GetMasterByNameAndPhone = "GetMasterByNameAndPhone";
+
     public const string GetAllWorkersByRoleId = "GetAllWorkersByRoleId";
+
     public const string GetAllWorkersWithContactsByUserId = "GetAllWorkersWithContactsByUserId";
+
     public const string AddWorkerByRoleId = "AddWorkerByRoleId";
     public const string RemoveUserById = "RemoveUserById";
+
     public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
-    public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
+
+    public const string GetAllShiftsAndEmployees = "GetAllShiftsAndEmployeesOnToday";
+
     public const string AddMasterToShift = "AddMasterToShift";
 
+    public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
 
-=======
-    public const string GetAllShiftsAndEmployees = "GetAllShiftsAndEmployeesOnToday";
-    public const string GetAllWorkersWithContactsByUserId = "GetAllWorkersWithContactsByUserId";
->>>>>>> TatianaYstinova/Task_GetAllWorkersWithContactsByUserId
 }

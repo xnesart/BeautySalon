@@ -90,7 +90,7 @@ class Program
         //      Console.WriteLine($"{user.Name}");
         // }
         // Console.WriteLine();
-        Console.ReadLine();
+        //Console.ReadLine();
 
         ////Работает
         //IUserRepository userRepository = new UserRepository();

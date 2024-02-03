@@ -69,7 +69,6 @@ public class UserRepository : IUserRepository
         }
     }
 
-<<<<<<< HEAD
     public List<UsersDTO> GetMasterByNameAndPhone(string name, string phone)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -91,7 +90,22 @@ public class UserRepository : IUserRepository
         }
     }
 
-
+    public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetAllWorkersWithContactsByUserIdDTO, RolesDTO, GetAllWorkersWithContactsByUserIdDTO>(Procedures.GetAllWorkersWithContactsByUserId,
+                (users, roles) =>
+                {
+                    if (users.Roles == null)
+                    {
+                        users.Roles = new List<RolesDTO>();
+                    }
+                    users.Roles.Add(roles);
+                    return users;
+                }, splitOn: "Id,Worker").ToList();
+        }
+    }
 
     public void AddWorkerByRoleId(int role, string name, string phone, string mail)
     {
@@ -130,22 +144,8 @@ public class UserRepository : IUserRepository
                 ShiftId = shiftId
             };
             connection.Query<UsersDTO>(Procedures.AddMasterToShift, parameters);
-=======
-    public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId()
-    {
-        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-        {
-            return connection.Query<GetAllWorkersWithContactsByUserIdDTO,RolesDTO,GetAllWorkersWithContactsByUserIdDTO>(Procedures.GetAllWorkersWithContactsByUserId,
-                (users, roles) =>
-                {
-                    if (users.Roles == null)
-                    {
-                        users.Roles = new List<RolesDTO>();
-                    }
-                    users.Roles.Add(roles);
-                    return users;
-                },splitOn: "Id,Worker").ToList();
->>>>>>> TatianaYstinova/Task_GetAllWorkersWithContactsByUserId
         }
     }
+
+
 }
