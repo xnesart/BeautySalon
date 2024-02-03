@@ -9,9 +9,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        #region NotDone
+        #region Unfounded
 
-        //Не написано
+        //Отсутствует процедура
         // IUserRepository userRepository = new UserRepository();
         // var userRepositories = userRepository.GetAllWorkersByRoleId();
         // foreach (var user in userRepositories)
@@ -72,21 +72,16 @@ class Program
         //Console.WriteLine();
         //Console.ReadLine();
 
-<<<<<<< HEAD
         ////Работает
         //IUserRepository userRepository = new UserRepository();
         //userRepository.AddWorkerByRoleId(2, "Кирилл Модестович Мусоргский", "834734269540", "kbslrbkl@sdfsdf");
         //Console.ReadLine();
 
-        IUserRepository userRepository = new UserRepository();
-        userRepository.AddWorkerByRoleId(2, "Александр Максимович Климов", "85459004345", "xghj@hzf");
-        Console.ReadLine();
-=======
-        //Работает
         //IUserRepository userRepository = new UserRepository();
-        //userRepository.AddWorkerByRoleId(2, "Кирилл Петрович Мусоргский", "834734269540", "214ваы@sdfsdf");        
+        //userRepository.AddWorkerByRoleId(2, "Александр Максимович Климов", "85459004345", "xghj@hzf");
         //Console.ReadLine();
->>>>>>> 653532834b5bdb0e476c91cb29c31c15d86b3613
+
+
 
         #endregion
     }
