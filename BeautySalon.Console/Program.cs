@@ -74,7 +74,7 @@ class Program
 
         //Работает
         IUserRepository userRepository = new UserRepository();
-        userRepository.AddWorkerByRoleId(2, "Кирилл Петрович Мусоргский", "834765690", "jhbklh@kjnkl");
+        userRepository.AddWorkerByRoleId(2, "Кирилл Петрович Мусоргский", "834734269540", "214ваы@sdfsdf");
         
         Console.ReadLine();
 

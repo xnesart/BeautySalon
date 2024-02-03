@@ -16,7 +16,7 @@ create table Users
 (
     Id int primary key not null identity(1,1),
     ChatId int,
-    UserName nvarchar(50) unique,
+    UserName nvarchar(50),
     Name nvarchar(50) not null,
     Phone nvarchar(30) not null unique,
     Mail nvarchar(30) unique,
