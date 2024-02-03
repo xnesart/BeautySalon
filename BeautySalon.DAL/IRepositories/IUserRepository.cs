@@ -17,11 +17,11 @@ public interface IUserRepository
     public void AddWorkerByRoleId(int role, string name, string phone, string mail);
     public void RemoveUserById(int id);
 
-    public void GetAllShiftsOnToday();
+    //public void GetAllShiftsOnToday();
 
-    public void GetAllShiftsAndEmployees();
+    //public void GetAllShiftsAndEmployees();
 
     public void AddMasterToShift(int masterId, int shiftId);
 
-    public void GetAllShiftsWithFreeIntervalsOnCurrentService();
+    //public void GetAllShiftsWithFreeIntervalsOnCurrentService();
 }

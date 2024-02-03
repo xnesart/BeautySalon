@@ -14,7 +14,7 @@ public class OrderRepository: IOrderRepository
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new {Id = 4};
-            return connection.Query<OrdersDTO>(Procedures.GetAllOrdersForClientProcedure,parameters).ToList();
+            return connection.Query<OrdersDTO>(Procedures.GetAllWorkersByRoleId, parameters).ToList();
         }
     }
 }

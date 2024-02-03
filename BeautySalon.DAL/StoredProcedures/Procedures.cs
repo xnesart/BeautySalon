@@ -19,12 +19,12 @@ public class Procedures
     public const string AddWorkerByRoleId = "AddWorkerByRoleId";
     public const string RemoveUserById = "RemoveUserById";
 
-    public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
+    //public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
 
-    public const string GetAllShiftsAndEmployees = "GetAllShiftsAndEmployeesOnToday";
+    //public const string GetAllShiftsAndEmployees = "GetAllShiftsAndEmployeesOnToday";
 
     public const string AddMasterToShift = "AddMasterToShift";
 
-    public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
+    //public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
 
 }
