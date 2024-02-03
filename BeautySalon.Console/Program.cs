@@ -9,17 +9,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        #region NotWorks
+        #region Unfounded
 
-        //Не работает
-        // IOrderRepository orderRepository = new OrderRepository();
-        // var repositories = orderRepository.GetAllOrdersForClient();
-        // foreach (var repository in repositories)
-        // {
-        //     Console.WriteLine($"{repository.Id} {repository.Date} {repository.ClientId} {repository.MasterId}");
-        // }
-
-        //Не работает
+        //Отсутствует процедура
         // IUserRepository userRepository = new UserRepository();
         // var userRepositories = userRepository.GetAllEmployees();
         // foreach (var user in userRepositories)
@@ -29,7 +21,7 @@ class Program
 
         #endregion
 
-        #region MyRegion
+        #region Works
 
         //Работает
         // IUserRepository userRepository2 = new UserRepository();
@@ -52,12 +44,13 @@ class Program
         // userRepository4.AddUserByChatId(32423, "Janet342","Жанна Дарк", "8999324556", "jannet@mail.ru",3, 0,0,0);
         //
 
-        IUserRepository userRepository5 = new UserRepository();
-        var userRepositories5 = userRepository5.GetMasterByNameAndId("Анна Петровна Брек", 2);
-        foreach (var user in userRepositories5)
-        {
-            Console.WriteLine($"{user.Master} {user.MasterId}");
-        }
+        //Работает
+        //IUserRepository userRepository5 = new UserRepository();
+        //var userRepositories5 = userRepository5.GetMasterByNameAndId("Анна Петровна Брек", 2);
+        //foreach (var user in userRepositories5)
+        //{
+        //    Console.WriteLine($"{user.Master} {user.MasterId}");
+        //}
 
         //Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
@@ -68,17 +61,24 @@ class Program
         // }
         // Console.WriteLine();
         // Console.ReadLine();
+
+        //Работает
+        //IUserRepository userRepository = new UserRepository();
+        //var usersRepositories = userRepository.GetMasterByNameAndPhone("Анна Петровна Брек", "8923467127");
+        //foreach (var user in usersRepositories)
+        //{
+        //    Console.WriteLine($"{user.Master}, {user.MasterPhone}");
+        //}
+        //Console.WriteLine();
+        //Console.ReadLine();
+
         //Работает
         IUserRepository userRepository = new UserRepository();
-        var usersRepositories = userRepository.GetMasterByNameAndPhone("Анна Петровна Брек", "8923467127");
-        foreach (var user in usersRepositories)
-        {
-            Console.WriteLine($"{user.Master}, {user.MasterPhone}");
-        }
-        Console.WriteLine();
+        userRepository.AddWorkerByRoleId(2, "Кирилл Петрович Мусоргский", "834765690", "jhbklh@kjnkl");
+        
         Console.ReadLine();
-        #endregion
 
+        #endregion
     }
 
     class Users

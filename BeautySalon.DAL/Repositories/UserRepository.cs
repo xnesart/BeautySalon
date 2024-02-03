@@ -89,4 +89,19 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.GetMasterByNameAndPhone, parameters).ToList();
         }
     }
+
+    public void AddWorkerByRoleId(int role, string name, string phone, string mail)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                WorkerRole = role,
+                WorkerName = name,
+                WorkerPhone = phone,
+                WorkerMail = mail
+            };
+            connection.Query<UsersDTO>(Procedures.AddWorkerByRoleId, parameters);
+        }
+    }
 }
