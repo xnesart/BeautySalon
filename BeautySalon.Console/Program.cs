@@ -13,7 +13,7 @@ class Program
 
         //Отсутствует процедура
         // IUserRepository userRepository = new UserRepository();
-        // var userRepositories = userRepository.GetAllEmployees();
+        // var userRepositories = userRepository.GetAllWorkersByRoleId();
         // foreach (var user in userRepositories)
         // {
         //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
@@ -23,28 +23,28 @@ class Program
 
         #region Works
 
-        //Работает
+        ////Работает
         // IUserRepository userRepository2 = new UserRepository();
-        // var userRepositories2 = userRepository2.GetClientByNameAndId("Оксана Дмитриевна Кек", 4);
-        // foreach (var user in userRepositories2)
-        // {
-        //     Console.WriteLine($"{user.ClientsId} {user.Client}");
-        // }
+        //var userRepositories2 = userRepository2.GetClientByNameAndId("Оксана Дмитриевна Кек", 4);
+        //foreach (var user in userRepositories2)
+        //{
+        //    Console.WriteLine($"{user.ClientsId} {user.Client}");
+        //}
 
-        // //Работает
-        // IUserRepository userRepository3 = new UserRepository();
-        // var userRepositories3 = userRepository3.GetClientByNameAndPhone("Оксана Дмитриевна Кек", "877566588690");
-        // foreach (var user in userRepositories3)
-        // {
-        //     Console.WriteLine($"{user.Name} {user.Phone}");
-        // }
+        ////Работает
+        //IUserRepository userRepository3 = new UserRepository();
+        //var userRepositories3 = userRepository3.GetClientByNameAndPhone("Оксана Дмитриевна Кек", "877566588690");
+        //foreach (var user in userRepositories3)
+        //{
+        //    Console.WriteLine($"{user.Name} {user.Phone}");
+        //}
 
-        //Работает
+        ////Работает
         // IUserRepository userRepository4 = new UserRepository();
-        // userRepository4.AddUserByChatId(32423, "Janet342","Жанна Дарк", "8999324556", "jannet@mail.ru",3, 0,0,0);
-        //
+        //userRepository4.AddUserByChatId(32423, "Janet342", "Жанна Дарк", "8999324556", "jannet@mail.ru", 3, 0, 0, 0);
 
-        //Работает
+
+        ////Работает
         //IUserRepository userRepository5 = new UserRepository();
         //var userRepositories5 = userRepository5.GetMasterByNameAndId("Анна Петровна Брек", 2);
         //foreach (var user in userRepositories5)
@@ -52,17 +52,17 @@ class Program
         //    Console.WriteLine($"{user.Master} {user.MasterId}");
         //}
 
-        //Работает
+        ////Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
-        // var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(4);
-        // foreach (var interval in intervalsRepositories)
-        // {
-        //      Console.WriteLine($"");
-        // }
-        // Console.WriteLine();
-        // Console.ReadLine();
+        //var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(4);
+        //foreach (var interval in intervalsRepositories)
+        //{
+        //    Console.WriteLine($"");
+        //}
+        //Console.WriteLine();
+        //Console.ReadLine();
 
-        //Работает
+        ////Работает
         //IUserRepository userRepository = new UserRepository();
         //var usersRepositories = userRepository.GetMasterByNameAndPhone("Анна Петровна Брек", "8923467127");
         //foreach (var user in usersRepositories)
@@ -72,10 +72,13 @@ class Program
         //Console.WriteLine();
         //Console.ReadLine();
 
-        //Работает
+        ////Работает
+        //IUserRepository userRepository = new UserRepository();
+        //userRepository.AddWorkerByRoleId(2, "Кирилл Модестович Мусоргский", "834734269540", "kbslrbkl@sdfsdf");
+        //Console.ReadLine();
+
         IUserRepository userRepository = new UserRepository();
-        userRepository.AddWorkerByRoleId(2, "Кирилл Модестович Мусоргский", "834734269540", "kbslrbkl@sdfsdf");
-        
+        userRepository.AddWorkerByRoleId(2, "Александр Максимович Климов", "85459004345", "xghj@hzf");
         Console.ReadLine();
 
         #endregion
