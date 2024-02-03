@@ -11,7 +11,7 @@ class Program
     {
         #region Unfounded
 
-        //Отсутствует процедура
+        //Недописана процедура
         // IUserRepository userRepository = new UserRepository();
         // var userRepositories = userRepository.GetAllWorkersByRoleId();
         // foreach (var user in userRepositories)
