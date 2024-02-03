@@ -1,10 +1,5 @@
-﻿using System.Data;
-using BeautySalon.DAL;
-using BeautySalon.DAL.DTO;
-using BeautySalon.DAL.IRepositories;
+﻿using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
-using Dapper;
-using Microsoft.Data.SqlClient;
 
 namespace BeautySalon.Console;
 
@@ -51,19 +46,19 @@ class Program
         // {
         //     Console.WriteLine($"{user.Name} {user.Phone}");
         // }
-        
+
         //Работает
         // IUserRepository userRepository4 = new UserRepository();
         // userRepository4.AddUserByChatId(32423, "Janet342","Жанна Дарк", "8999324556", "jannet@mail.ru",3, 0,0,0);
         //
-        
+
         IUserRepository userRepository5 = new UserRepository();
         var userRepositories5 = userRepository5.GetMasterByNameAndId("Анна Петровна Брек", 2);
         foreach (var user in userRepositories5)
         {
             Console.WriteLine($"{user.Master} {user.MasterId}");
         }
-        
+
         //Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(4);
@@ -73,9 +68,17 @@ class Program
         // }
         // Console.WriteLine();
         // Console.ReadLine();
-
+        //Работает
+        IUserRepository userRepository = new UserRepository();
+        var usersRepositories = userRepository.GetMasterByNameAndPhone("Анна Петровна Брек", "8923467127");
+        foreach (var user in usersRepositories)
+        {
+            Console.WriteLine($"{user.Master}, {user.MasterPhone}");
+        }
+        Console.WriteLine();
+        Console.ReadLine();
         #endregion
-        
+
     }
 
     class Users
