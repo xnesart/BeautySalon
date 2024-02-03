@@ -13,5 +13,5 @@ public class Procedures
     public const string AddUserByChatId = "AddUserByChatId";
     public const string GetMasterByNameAndId = "GetMasterByNameAndId";
     public const string GetAllShiftsAndEmployees = "GetAllShiftsAndEmployeesOnToday";
-
+    public const string GetAllWorkersWithContactsByUserId = "GetAllWorkersWithContactsByUserId";
 }

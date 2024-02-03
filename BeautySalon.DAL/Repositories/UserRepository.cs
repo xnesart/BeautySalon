@@ -76,4 +76,21 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.GetMasterByNameAndId, parameters).ToList();
         }
     }
+
+    public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetAllWorkersWithContactsByUserIdDTO,RolesDTO,GetAllWorkersWithContactsByUserIdDTO>(Procedures.GetAllWorkersWithContactsByUserId,
+                (users, roles) =>
+                {
+                    if (users.Roles == null)
+                    {
+                        users.Roles = new List<RolesDTO>();
+                    }
+                    users.Roles.Add(roles);
+                    return users;
+                },splitOn: "Id,Worker").ToList();
+        }
+    }
 }
