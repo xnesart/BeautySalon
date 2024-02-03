@@ -1,4 +1,4 @@
-﻿using BeautySalon.DAL.IRepositories;
+using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.Console;
@@ -61,6 +61,36 @@ class Program
         //}
         //Console.WriteLine();
         //Console.ReadLine();
+        // var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(4);
+        // foreach (var interval in intervalsRepositories)
+        // {
+        //      Console.WriteLine($"");
+        // }
+        // Console.WriteLine();
+        // Console.ReadLine();
+        
+        //Работает
+        // IShiftsRepository shiftRepository = new ShiftsRepository();
+        // var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployees();
+        // foreach (var shift in shiftsRepositories)
+        // {
+        //      Console.WriteLine($"{shift.Name}");
+        //      foreach (var value in shift.Shifts)
+        //      {
+        //          Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
+        //      }
+        // }
+        // Console.WriteLine();
+        
+        //Работает
+        // IUserRepository userRepository = new UserRepository();
+        // var userRepositories = userRepository.GetAllWorkersWithContactsByUserId();
+        // foreach (var user in userRepositories)
+        // {
+        //      Console.WriteLine($"{user.Name}");
+        // }
+        // Console.WriteLine();
+        Console.ReadLine();
 
         ////Работает
         //IUserRepository userRepository = new UserRepository();

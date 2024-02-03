@@ -8,6 +8,7 @@ public interface IUserRepository
     public List<UsersDTO> GetClientByNameAndId(string name, int id);
     public List<UsersDTO> GetClientByNameAndPhone(string name, string phone);
     public List<UsersDTO> GetMasterByNameAndId(string name, int id);
+<<<<<<< HEAD
     public List<UsersDTO> GetMasterByNameAndPhone(string name, string phone);
     public List<UsersDTO> GetAllWorkersByRoleId();
     public List<UsersDTO> GetAllWorkersWithContactsByUserId();
@@ -16,4 +17,7 @@ public interface IUserRepository
     public void GetAllShiftsOnToday();
     public void GetAllShiftsWithFreeIntervalsOnCurrentService();
     public void AddMasterToShift(int masterId, int shiftId);
+=======
+    public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId();
+>>>>>>> TatianaYstinova/Task_GetAllWorkersWithContactsByUserId
 }
