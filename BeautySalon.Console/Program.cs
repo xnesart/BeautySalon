@@ -13,7 +13,7 @@ class Program
 
         //Отсутствует процедура
         // IUserRepository userRepository = new UserRepository();
-        // var userRepositories = userRepository.GetAllEmployees();
+        // var userRepositories = userRepository.GetAllWorkersByRoleId();
         // foreach (var user in userRepositories)
         // {
         //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
@@ -73,10 +73,9 @@ class Program
         //Console.ReadLine();
 
         //Работает
-        IUserRepository userRepository = new UserRepository();
-        userRepository.AddWorkerByRoleId(2, "Кирилл Модестович Мусоргский", "834734269540", "kbslrbkl@sdfsdf");
-        
-        Console.ReadLine();
+        //IUserRepository userRepository = new UserRepository();
+        //userRepository.AddWorkerByRoleId(2, "Кирилл Модестович Мусоргский", "834734269540", "kbslrbkl@sdfsdf");        
+        //Console.ReadLine();
 
         #endregion
     }
