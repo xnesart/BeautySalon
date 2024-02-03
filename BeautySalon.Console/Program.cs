@@ -78,7 +78,11 @@ class Program
         var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployees();
         foreach (var shift in shiftsRepositories)
         {
-             Console.WriteLine($"");
+             Console.WriteLine($"{shift.Name}");
+             foreach (var value in shift.Shifts)
+             {
+                 Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
+             }
         }
         Console.WriteLine();
         Console.ReadLine();

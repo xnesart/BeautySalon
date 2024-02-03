@@ -73,7 +73,7 @@ begin
     declare @Today datetime
     set @Today = GETDATE()
 
-    select Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime, Shifts.MasterId, Users.Name from Shifts
+    select Users.Name, Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime, Shifts.MasterId from Shifts
                                                                                                            join Users on Shifts.MasterId = Users.id
     where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
 end
