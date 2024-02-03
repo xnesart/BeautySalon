@@ -104,4 +104,16 @@ public class UserRepository : IUserRepository
             connection.Query<UsersDTO>(Procedures.AddWorkerByRoleId, parameters);
         }
     }
+
+    public void RemoveUserById(int id)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                Id = id
+            };
+            connection.Query<UsersDTO>(Procedures.RemoveUserById, parameters);
+        }
+    }
 }

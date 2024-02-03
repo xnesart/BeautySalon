@@ -11,4 +11,5 @@ public interface IUserRepository
     public List<UsersDTO> GetMasterByNameAndId(string name, int id);
     public List<UsersDTO> GetMasterByNameAndPhone(string name, string phone);
     public void AddWorkerByRoleId(int role, string name, string phone, string mail);
+    public void RemoveUserById(int id);
 }

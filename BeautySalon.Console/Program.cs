@@ -81,7 +81,10 @@ class Program
         //userRepository.AddWorkerByRoleId(2, "Александр Максимович Климов", "85459004345", "xghj@hzf");
         //Console.ReadLine();
 
-
+        ////Работает
+        IUserRepository userRepository = new UserRepository();
+        userRepository.RemoveUserById(5);
+        Console.ReadLine();
 
         #endregion
     }
