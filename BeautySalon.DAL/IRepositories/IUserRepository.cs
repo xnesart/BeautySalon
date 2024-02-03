@@ -9,8 +9,11 @@ public interface IUserRepository
     public List<UsersDTO> GetClientByNameAndPhone(string name, string phone);
     public List<UsersDTO> GetMasterByNameAndId(string name, int id);
     public List<UsersDTO> GetMasterByNameAndPhone(string name, string phone);
-    //public List<UsersDTO> GetAllWorkersByRoleId();
-
+    public List<UsersDTO> GetAllWorkersByRoleId();
+    public List<UsersDTO> GetAllWorkersWithContactsByUserId();
     public void AddWorkerByRoleId(int role, string name, string phone, string mail);
     public void RemoveUserById(int id);
+    public void GetAllShiftsOnToday();
+    public void GetAllShiftsWithFreeIntervalsOnCurrentService();
+    public void AddMasterToShift(int masterId, int shiftId);
 }

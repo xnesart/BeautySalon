@@ -82,8 +82,13 @@ class Program
         //Console.ReadLine();
 
         ////Работает
+        //IUserRepository userRepository = new UserRepository();
+        //userRepository.RemoveUserById(5);
+        //Console.ReadLine();
+
+        ////Работает
         IUserRepository userRepository = new UserRepository();
-        userRepository.RemoveUserById(5);
+        userRepository.AddMasterToShift(9, 2);
         Console.ReadLine();
 
         #endregion

@@ -82,13 +82,13 @@ public class UserRepository : IUserRepository
         }
     }
 
-    //public List<UsersDTO> GetAllWorkersByRoleId()
-    //{
-    //    using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-    //    {
-    //        return connection.Query<UsersDTO>(Procedures.GetAllWorkersByRoleId).ToList();
-    //    }
-    //}
+    public List<UsersDTO> GetAllWorkersByRoleId()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<UsersDTO>(Procedures.GetAllWorkersByRoleId).ToList();
+        }
+    }
 
 
 
@@ -116,6 +116,19 @@ public class UserRepository : IUserRepository
                 Id = id
             };
             connection.Query<UsersDTO>(Procedures.RemoveUserById, parameters);
+        }
+    }
+
+    public void AddMasterToShift(int masterId, int shiftId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                MasterId = masterId,
+                ShiftId = shiftId
+            };
+            connection.Query<UsersDTO>(Procedures.AddMasterToShift, parameters);
         }
     }
 }
