@@ -51,11 +51,20 @@ class Program
         // {
         //     Console.WriteLine($"{user.Name} {user.Phone}");
         // }
-
-        IUserRepository userRepository4 = new UserRepository();
-        userRepository4.AddUserByChatId(32423, "Janet342","Жанна Дарк", "8999324556", "jannet@mail.ru",3, 0,0,0);
-      
         
+        //Работает
+        // IUserRepository userRepository4 = new UserRepository();
+        // userRepository4.AddUserByChatId(32423, "Janet342","Жанна Дарк", "8999324556", "jannet@mail.ru",3, 0,0,0);
+        //
+        
+        IUserRepository userRepository5 = new UserRepository();
+        var userRepositories5 = userRepository5.GetMasterByNameAndId("Анна Петровна Брек", 2);
+        foreach (var user in userRepositories5)
+        {
+            Console.WriteLine($"{user.Master} {user.MasterId}");
+        }
+        
+        //Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(4);
         // foreach (var interval in intervalsRepositories)

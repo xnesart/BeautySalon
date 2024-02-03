@@ -63,4 +63,17 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
+
+    public List<UsersDTO> GetMasterByNameAndId(string name, int id)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                Name = name,
+                Id = id
+            };
+            return connection.Query<UsersDTO>(Procedures.GetMasterByNameAndId, parameters).ToList();
+        }
+    }
 }
