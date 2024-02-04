@@ -14,7 +14,7 @@ drop proc RemoveUserById
 
 drop proc GetAllShiftsOnToday
 
-drop proc GetAllShiftsAndEmployeesOnToday
+drop proc GetAllShiftsAndEmployees
 
 drop proc AddMasterToShift
 drop proc RemoveMasterFromShift
