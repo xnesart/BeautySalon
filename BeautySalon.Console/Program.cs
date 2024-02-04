@@ -98,10 +98,10 @@ class Program
         //}
         //Console.WriteLine();
 
-        //////Работает, но не добавляет, а перезаписывает
-        //IUserRepository userRepository = new UserRepository();
-        //userRepository.AddMasterToShift(9, 2);
-        //Console.ReadLine();
+        //Работает, но не добавляет, а перезаписывает
+        IUserRepository userRepository = new UserRepository();
+        userRepository.AddMasterToShift(2, 2);
+        Console.ReadLine();
 
         ////Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();

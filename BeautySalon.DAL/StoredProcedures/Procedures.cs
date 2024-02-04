@@ -5,7 +5,7 @@ public class Procedures
     //public const string GetAllOrdersForClientProcedure = "GetAllOrdersForClientProcedure";
 
     public const string GetServiceType = "GetServiceType";
-    public const string GetServicesWithPriceAndDuratonByTypeId = "GetServicesWithPriceAndDuratonByTypeId";
+    public const string GetServicesWithPriceAndDurationByTypeId = "GetServicesWithPriceAndDurationByTypeId";
     public const string GetAllRolesProcedure = "GetAllRolesProcedure";
 
     public const string AddUserByChatId = "AddUserByChatId";
