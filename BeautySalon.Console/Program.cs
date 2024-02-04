@@ -9,17 +9,17 @@ class Program
 {
     static void Main(string[] args)
     {
-        IOrderRepository orderRepository = new OrderRepository();
-        orderRepository.RemoveOrderForClientByOrderId(1);
+        // IOrderRepository orderRepository = new OrderRepository();
+        // orderRepository.RemoveOrderForClientByOrderId(1);
         
         #region NotWorks
-        //  Не пашет
-        // IOrderRepository orderRepository = new OrderRepository();
-        // var orders = orderRepository.GetMastersOrdersById(1);
-        // foreach (var order in orders)
-        // {
-        //     Console.WriteLine();
-        // }
+         // Не пашет
+        IOrderRepository orderRepository = new OrderRepository();
+        var orders = orderRepository.GetMastersOrdersById(1);
+        foreach (var order in orders)
+        {
+            Console.WriteLine();
+        }
 
         #endregion
 
