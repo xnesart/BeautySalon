@@ -59,7 +59,6 @@ class Program
         //    Console.WriteLine($"{user.Master}, {user.MasterPhone}");
         //}
 
-<<<<<<< HEAD
         ////Работает
         //IUserRepository userRepository = new UserRepository();
         //var userRepositories = userRepository.GetAllWorkersWithContactsByUserId();
@@ -99,7 +98,6 @@ class Program
         //Работает, но не добавляет, а перезаписывает
         IUserRepository userRepository = new UserRepository();
         userRepository.AddMasterToShift(7, 3);
-=======
         // IOrderRepository orderRepository = new OrderRepository();
         // var repositories = orderRepository.GetAllOrdersForClient();
         // foreach (var repository in repositories)
@@ -128,7 +126,7 @@ class Program
         //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
         // }
         // Console.WriteLine();
->>>>>>> Task_GetClientByNameAndId
+
         Console.ReadLine();
 
         ////Работает
