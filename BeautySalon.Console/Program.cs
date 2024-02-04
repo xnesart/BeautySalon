@@ -95,15 +95,15 @@ class Program
         //    }
         //}
 
-        ////Работает, но не добавляет, а перезаписывает
-        //IUserRepository userRepository = new UserRepository();
-        //userRepository.AddMasterToShift(7, 3);
-        //Console.ReadLine();
-
-        //Работает
+        //Работает, но не добавляет, а перезаписывает
         IUserRepository userRepository = new UserRepository();
-        userRepository.RemoveMasterFromShift(2, 1);
+        userRepository.AddMasterToShift(7, 3);
         Console.ReadLine();
+
+        ////Работает
+        //IUserRepository userRepository = new UserRepository();
+        //userRepository.RemoveMasterFromShift(2, 1);
+        //Console.ReadLine();
 
         ////Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
