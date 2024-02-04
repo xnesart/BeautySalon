@@ -9,8 +9,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        #region NotDone
+        IOrderRepository orderRepository = new OrderRepository();
+        orderRepository.RemoveOrderForClientByOrderId(1);
 
+<<<<<<< HEAD
         
         //  Не пашет
         // IOrderRepository orderRepository = new OrderRepository();
@@ -181,4 +183,7 @@ class Program
 
         #endregion
     }
+=======
+        Concole.WriteLine(); }
+>>>>>>> f3482d634fcb4061a292b6d34c9fc9176a0a3fca
 }

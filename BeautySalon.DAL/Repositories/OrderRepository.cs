@@ -9,6 +9,7 @@ namespace BeautySalon.DAL.Repositories;
 
 public class OrderRepository: IOrderRepository
 {
+<<<<<<< HEAD
     //не пашет
     public List<GetMastersOrdersByIdDTO> GetMastersOrdersById(int id)
     {
@@ -49,4 +50,14 @@ public class OrderRepository: IOrderRepository
     }
 
 
+=======
+    public List<OrdersDTO> RemoveOrderForClientByOrderId(int orderId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new { OrderId = orderId };
+            return connection.Query<OrdersDTO>(Procedures.RemoveOrderForClientByOrderId, parameters).ToList();
+        }
+    }
+>>>>>>> f3482d634fcb4061a292b6d34c9fc9176a0a3fca
 }
