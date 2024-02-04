@@ -7,14 +7,14 @@ using Microsoft.Data.SqlClient;
 
 namespace BeautySalon.DAL.Repositories;
 
-public class IntervalsRepository:IIntervalsRepository
-{
-    public List<IntеrvalsDTO> GetAllShiftsWithFreeIntervalsOnCurrentService()
-    {
-        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-        {
-            var parameters = new {Id = 4};
-            return connection.Query<IntеrvalsDTO>(Procedures.GetAllShiftsWithFreeIntervalsOnCurrentService,parameters).ToList();
-        }
-    }
-}
+//public class IntervalsRepository:IIntervalsRepository
+//{
+//    //public List<IntеrvalsDTO> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId)
+//    //{
+//    //    using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+//    //    {
+//    //        var parameters = new {ServiceId = serviceId};
+//    //        return connection.Query<IntеrvalsDTO>(Procedures.GetAllShiftsWithFreeIntervalsOnCurrentService,parameters).ToList();
+//    //    }
+//    //}
+//}

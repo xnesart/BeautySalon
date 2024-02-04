@@ -13,11 +13,11 @@ namespace BeautySalon.DAL.Repositories
 {
     public class ServicesRepository
     {
-        public List<ServicesDTO> GetServicesWithPriceAndDuratonByTypeId(int typeId)
+        public List<ServicesDTO> GetServicesWithPriceAndDurationByTypeId(int typeId)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
-                return connection.Query<ServicesDTO>(Procedures.GetServicesWithPriceAndDuratonByTypeId).ToList();
+                return connection.Query<ServicesDTO>(Procedures.GetServicesWithPriceAndDurationByTypeId).ToList();
             }
         }
 

@@ -18,7 +18,7 @@ go
 create proc GetClientByNameAndPhone
     @Name nvarchar(50), @Phone nvarchar(30) as
 begin
-    select Users.Name as Client, Users.Phone as ClientsPhone from Users
+    select Users.Name as Name, Users.Phone as Phone from Users
     where Users.Name = @Name and Users.Phone = @Phone
 end
 go
@@ -38,11 +38,21 @@ begin
     where Users.Name = @Name and Users.Phone = @Phone
 end
 go
+-- ✓ Вывести всех сотрудников по RoleId
+create proc GetAllWorkersByRoleId
+as
+begin
+select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker, 
+Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
+join Roles on Users.RoleId = Roles.Id
+where RoleId = 1 or RoleId = 2
+end
+go
 -- ✓ Вывести всех сотрудников по Id и их контакты
 create proc GetAllWorkersWithContactsByUserId
 as
 begin
-    select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker,  Users.Name, Users.Phone, Users.Mail from Users
+    select Users.Id as WorkerId, Users.RoleId as WorkerRoleId,  Users.Name, Users.Phone, Users.Mail ,Roles.Title as Worker from Users
                                                                                                                                     join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
 end
@@ -65,7 +75,17 @@ begin
     where Id = @Id
 end
 go
+
 -- ✓ Вывести все смены на сегодня
+create proc GetAllShiftsOnToday as
+begin
+declare @Today datetime
+set @Today = GETDATE()
+
+select Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime from Shifts
+where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
+end
+go
 
 -- ✓ Вывести все смены и работающих в них сотрудников
 create proc GetAllShiftsAndEmployeesOnToday as
@@ -73,7 +93,7 @@ begin
     declare @Today datetime
     set @Today = GETDATE()
 
-    select Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime, Shifts.MasterId, Users.Name from Shifts
+    select Users.Name, Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime, Shifts.MasterId from Shifts
                                                                                                            join Users on Shifts.MasterId = Users.id
     where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
 end
@@ -259,7 +279,6 @@ begin
     where convert(date, Orders.Date) = convert(date, @Today)
 end
 go
--- ✓ Вывести все записи на сегодня для всех клиентов?? Повтор?
 
 
 ----процедуры для мастера
