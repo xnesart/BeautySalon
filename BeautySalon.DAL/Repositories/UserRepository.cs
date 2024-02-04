@@ -82,15 +82,30 @@ public class UserRepository : IUserRepository
         }
     }
 
-    //public List<UsersDTO> GetAllWorkersByRoleId()
-    //{
-    //    using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-    //    {
-    //        return connection.Query<UsersDTO>(Procedures.GetAllWorkersByRoleId).ToList();
-    //    }
-    //}
+    public List<UsersDTO> GetAllWorkersByRoleId()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<UsersDTO>(Procedures.GetAllWorkersByRoleId).ToList();
+        }
+    }
 
-
+    public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetAllWorkersWithContactsByUserIdDTO, RolesDTO, GetAllWorkersWithContactsByUserIdDTO>(Procedures.GetAllWorkersWithContactsByUserId,
+                (users, roles) =>
+                {
+                    if (users.Roles == null)
+                    {
+                        users.Roles = new List<RolesDTO>();
+                    }
+                    users.Roles.Add(roles);
+                    return users;
+                }, splitOn: "Id,Worker").ToList();
+        }
+    }
 
     public void AddWorkerByRoleId(int role, string name, string phone, string mail)
     {
@@ -118,4 +133,19 @@ public class UserRepository : IUserRepository
             connection.Query<UsersDTO>(Procedures.RemoveUserById, parameters);
         }
     }
+
+    public void AddMasterToShift(int masterId, int shiftId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                MasterId = masterId,
+                ShiftId = shiftId
+            };
+            connection.Query<UsersDTO>(Procedures.AddMasterToShift, parameters);
+        }
+    }
+
+
 }

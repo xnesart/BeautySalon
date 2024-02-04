@@ -17,7 +17,7 @@ namespace BeautySalon.DAL.Repositories
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
-                return connection.Query<TypesDTO>(Procedures.GetAllEmployeesProcedure).ToList();
+                return connection.Query<TypesDTO>(Procedures.GetAllWorkersByRoleId).ToList();
             }
         }
     }

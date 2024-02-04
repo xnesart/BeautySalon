@@ -52,7 +52,7 @@ go
 create proc GetAllWorkersWithContactsByUserId
 as
 begin
-    select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker,  Users.Name, Users.Phone, Users.Mail from Users
+    select Users.Id as WorkerId, Users.RoleId as WorkerRoleId,  Users.Name, Users.Phone, Users.Mail ,Roles.Title as Worker from Users
                                                                                                                                     join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
 end
@@ -93,7 +93,7 @@ begin
     declare @Today datetime
     set @Today = GETDATE()
 
-    select Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime, Shifts.MasterId, Users.Name from Shifts
+    select Users.Name, Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime, Shifts.MasterId from Shifts
                                                                                                            join Users on Shifts.MasterId = Users.id
     where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
 end

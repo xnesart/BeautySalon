@@ -4,6 +4,7 @@ drop proc GetClientByNameAndId
 drop proc GetClientByNameAndPhone
 drop proc GetMasterByNameAndId
 drop proc GetMasterByNameAndPhone
+
 drop proc GetAllWorkersByRoleId
 
 drop proc GetAllWorkersWithContactsByUserId
@@ -11,7 +12,9 @@ drop proc GetAllWorkersWithContactsByUserId
 drop proc AddWorkerByRoleId
 drop proc RemoveUserById
 
-drop proc GetAllShiftsAndEmployeesOnToday
+drop proc GetAllShiftsOnToday
+
+drop proc GetAllShiftsAndEmployees
 
 drop proc AddMasterToShift
 drop proc RemoveMasterFromShift
