@@ -102,7 +102,7 @@ class Program
 
         //Работает, но не добавляет, а перезаписывает
         IUserRepository userRepository = new UserRepository();
-        userRepository.RemoveMasterFromShift(7, 3);
+        userRepository.RemoveMasterFromShift(2, 2);
         Console.ReadLine();
 
         ////Работает
