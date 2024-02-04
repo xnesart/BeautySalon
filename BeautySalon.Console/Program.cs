@@ -101,9 +101,9 @@ class Program
         //Console.ReadLine();
 
         //Работает, но не добавляет, а перезаписывает
-        IUserRepository userRepository = new UserRepository();
-        userRepository.RemoveMasterFromShift(2, 2);
-        Console.ReadLine();
+        //IUserRepository userRepository = new UserRepository();
+        //userRepository.RemoveMasterFromShift(2, 2);
+        //Console.ReadLine();
 
         ////Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
