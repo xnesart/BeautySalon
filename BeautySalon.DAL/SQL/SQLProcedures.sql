@@ -10,7 +10,7 @@ go
 create proc GetClientByNameAndId
     @Name nvarchar(50), @Id int as
 begin
-    select Users.Name as Client, Users.Id as ClientsId from Users
+    select Users.Name as Client, Users.Id as ClientId from Users
     where Users.Name = @Name and Users.Id = @Id
 end
 go
@@ -141,7 +141,7 @@ create proc GetAllShiftsWithFreeIntervals as
 begin
     declare @Today datetime
     set @Today = GETDATE()
-    select Shifts.Id, Shifts.Title, Shifts.StartTime, Intervals.IsBusy as Busy from Shifts
+    select Shifts.Id, Shifts.Title, Shifts.StartTime, Intervals.IsBusy from Shifts
                                                                                         join Intervals on Intervals.ShiftId = Shifts.Id
     where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
 end
@@ -153,7 +153,7 @@ begin
     select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime,
            Intervals.IsBusy, Intervals.IsDeleted from Intervals
                                                           join Shifts on Shifts.Id = Intervals.ShiftId
-    where @ShiftId = Shifts.Id
+    where @ShiftId = Shifts.Id and Intervals.IsBusy = 0
 end
 go
 -- ✓ Вывести все типы услуг
@@ -166,11 +166,10 @@ go
 create proc GetAllServicesByIdFromCurrentType
 @Id int as
 begin
-    select Types.Id, Types.Title, Services.Id, Services.Title, Services.Duration, Services.Price from Types
-                                                                                                          join Services on Services.TypeId = Types.Id
+    select Services.Id, Services.Title,Services.Price, Services.Duration, Types.Id, Types.Title from Types
+                                                                                                         join Services on Services.TypeId = Types.Id
     where Types.Id = @Id
 end
-
 go
 -- ✓ Вывести все услуги
 create proc GetAllServices as

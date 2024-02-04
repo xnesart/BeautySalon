@@ -4,5 +4,7 @@ namespace BeautySalon.DAL.IRepositories;
 
 public interface IOrderRepository
 {
-    public List<OrdersDTO> GetAllOrdersForClient();
+    public List<GetMastersOrdersByIdDTO> GetMastersOrdersById(int id);
+    
+    public List<OrdersDTO> RemoveOrderForClientByOrderId(int orderId);
 }

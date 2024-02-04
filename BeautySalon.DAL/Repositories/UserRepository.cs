@@ -29,7 +29,6 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
-    
     public List<UsersDTO> GetClientByNameAndId(string name, int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -42,6 +41,7 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.GetClientByNameAndId, parameters).ToList();
         }
     }
+
 
     public List<UsersDTO> GetClientByNameAndPhone(string name, string phone)
     {
@@ -159,6 +159,4 @@ public class UserRepository : IUserRepository
             connection.Query<UsersDTO>(Procedures.RemoveMasterFromShift, parameters);
         }
     }
-
-
 }
