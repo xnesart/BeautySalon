@@ -166,11 +166,10 @@ go
 create proc GetAllServicesByIdFromCurrentType
 @Id int as
 begin
-    select Types.Id, Types.Title, Services.Id, Services.Title, Services.Duration, Services.Price from Types
-                                                                                                          join Services on Services.TypeId = Types.Id
+    select Services.Id, Services.Title,Services.Price, Services.Duration, Types.Id, Types.Title from Types
+                                                                                                         join Services on Services.TypeId = Types.Id
     where Types.Id = @Id
 end
-
 go
 -- ✓ Вывести все услуги
 create proc GetAllServices as
