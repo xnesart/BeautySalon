@@ -146,6 +146,14 @@ class Program
         //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
         // }
         
+        
+        ////Работает
+        // IIntervalsRepository intervalsRepository = new IntervalsRepository();
+        // var  intervals = intervalsRepository.GetAllIntervalsByShiftId(1);
+        // foreach (var interval in intervals)
+        // {
+        //     Console.WriteLine();
+        // }
         #endregion
     }
 }

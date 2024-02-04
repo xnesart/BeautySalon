@@ -8,7 +8,7 @@ namespace BeautySalon.DAL.DTO
 
         public string Title { get; set; }
 
-        public List<ShiftsDTO> shifts { get; set; }
+        public List<ShiftsDTO> Shifts { get; set; }
 
         public DateTime StartTime { get; set; }
 
