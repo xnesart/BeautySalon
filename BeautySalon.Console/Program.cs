@@ -11,9 +11,8 @@ class Program
     {
         IOrderRepository orderRepository = new OrderRepository();
         orderRepository.RemoveOrderForClientByOrderId(1);
-
-<<<<<<< HEAD
         
+        #region NotWorks
         //  Не пашет
         // IOrderRepository orderRepository = new OrderRepository();
         // var orders = orderRepository.GetMastersOrdersById(1);
@@ -183,7 +182,4 @@ class Program
 
         #endregion
     }
-=======
-        Concole.WriteLine(); }
->>>>>>> f3482d634fcb4061a292b6d34c9fc9176a0a3fca
 }
