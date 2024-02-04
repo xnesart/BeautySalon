@@ -100,7 +100,7 @@ class Program
         //userRepository.AddMasterToShift(7, 3);
         //Console.ReadLine();
 
-        //Работает, но не добавляет, а перезаписывает
+        //Работает
         IUserRepository userRepository = new UserRepository();
         userRepository.RemoveMasterFromShift(2, 1);
         Console.ReadLine();
