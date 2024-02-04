@@ -153,7 +153,7 @@ begin
     select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime,
            Intervals.IsBusy, Intervals.IsDeleted from Intervals
                                                           join Shifts on Shifts.Id = Intervals.ShiftId
-    where @ShiftId = Shifts.Id
+    where @ShiftId = Shifts.Id and Intervals.IsBusy = 0
 end
 go
 -- ✓ Вывести все типы услуг

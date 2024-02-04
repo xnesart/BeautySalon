@@ -154,6 +154,14 @@ class Program
         // {
         //     Console.WriteLine();
         // }
+        
+        ////Работает
+        // IIntervalsRepository intervalsRepository = new IntervalsRepository();
+        // var  intervals = intervalsRepository.GetAllFreeIntervalsByShiftId(1);
+        // foreach (var interval in intervals)
+        // {
+        //     Console.WriteLine();
+        // }
         #endregion
     }
 }
