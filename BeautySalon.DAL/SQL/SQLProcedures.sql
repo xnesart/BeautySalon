@@ -10,7 +10,7 @@ go
 create proc GetClientByNameAndId
     @Name nvarchar(50), @Id int as
 begin
-    select Users.Name as Client, Users.Id as ClientsId from Users
+    select Users.Name as Client, Users.Id as ClientId from Users
     where Users.Name = @Name and Users.Id = @Id
 end
 go
@@ -141,7 +141,7 @@ create proc GetAllShiftsWithFreeIntervals as
 begin
     declare @Today datetime
     set @Today = GETDATE()
-    select Shifts.Id, Shifts.Title, Shifts.StartTime, Intervals.IsBusy as Busy from Shifts
+    select Shifts.Id, Shifts.Title, Shifts.StartTime, Intervals.IsBusy from Shifts
                                                                                         join Intervals on Intervals.ShiftId = Shifts.Id
     where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
 end

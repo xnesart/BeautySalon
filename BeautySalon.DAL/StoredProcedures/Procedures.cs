@@ -2,8 +2,6 @@ namespace BeautySalon.DAL.StoredProcedures;
 
 public class Procedures
 {
-    //public const string GetAllOrdersForClientProcedure = "GetAllOrdersForClientProcedure";
-
     public const string GetServiceType = "GetServiceType";
     public const string GetServicesWithPriceAndDurationByTypeId = "GetServicesWithPriceAndDurationByTypeId";
     public const string GetAllRolesProcedure = "GetAllRolesProcedure";
@@ -27,7 +25,9 @@ public class Procedures
 
     public const string AddMasterToShift = "AddMasterToShift";
     public const string RemoveMasterFromShift = "RemoveMasterFromShift";
-
-    //public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
+    public const string GetAllShiftsWithFreeIntervals = "GetAllShiftsWithFreeIntervals";
+    
+    
+    public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
     
 }

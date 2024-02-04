@@ -11,13 +11,7 @@ class Program
     {
         #region NotDone
 
-        ////Недописана
-        //IUserRepository userRepository = new UserRepository();
-        //var userRepositories = userRepository.GetAllWorkersByRoleId();
-        //foreach (var user in userRepositories)
-        //{
-        //    Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
-        //}
+
 
         #endregion
 
@@ -32,7 +26,7 @@ class Program
         //var userRepositories2 = userRepository2.GetClientByNameAndId("Оксана Дмитриевна Кек", 4);
         //foreach (var user in userRepositories2)
         //{
-        //    Console.WriteLine($"{user.ClientsId} {user.Client}");
+        //    Console.WriteLine($"{user.ClientId} {user.Client}");
         //}
 
         ////Работает
@@ -84,17 +78,30 @@ class Program
         ////public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
 
         ////Работает
-        IShiftsRepository shiftRepository = new ShiftsRepository();
-        var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployees();
-        foreach (var shift in shiftsRepositories)
-        {
-            Console.WriteLine($"{shift.Name}");
-            foreach (var value in shift.Shifts)
-            {
-                Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
-            }
-        }
-
+        // IShiftsRepository shiftRepository = new ShiftsRepository();
+        // var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployees();
+        // foreach (var shift in shiftsRepositories)
+        // {
+        //     Console.WriteLine($"{shift.Name}");
+        //     foreach (var value in shift.Shifts)
+        //     {
+        //         Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
+        //     }
+        // }
+        
+        
+        //Работает
+        // IShiftsRepository shiftRepository = new ShiftsRepository();
+        // var shiftsRepositories = shiftRepository.GetAllShiftsWithFreeIntervals();
+        // foreach (var shift in shiftsRepositories)
+        // {
+        //     Console.WriteLine($"{shift.Id}, {shift.Title}, {shift.StartTime}");
+        //     foreach (var value in shift.Intervals)
+        //     {
+        //         Console.WriteLine($"{value.IsBusy}");
+        //     }
+        // }
+        
         //Работает, но не добавляет, а перезаписывает
         // IUserRepository userRepository = new UserRepository();
         // userRepository.AddMasterToShift(7, 3);
@@ -130,15 +137,15 @@ class Program
         //{
         //    Console.WriteLine($"");
         //}
-
         
-        //Работает
-        // IUserRepository userRepository2 = new UserRepository();
-        // var userRepositories2 = userRepository2.GetClientByNameAndId("Оксана Дмитриевна Кек", 4);
-        // foreach (var user in userRepositories2)
+        ////Работает
+        // IUserRepository userRepository = new UserRepository();
+        // var userRepositories = userRepository.GetAllWorkersByRoleId();
+        // foreach (var user in userRepositories)
         // {
-        //     Console.WriteLine($"{user.ClientsId} {user.Client}");
+        //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
         // }
+        
         #endregion
     }
 }

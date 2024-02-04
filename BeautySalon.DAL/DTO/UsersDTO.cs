@@ -12,7 +12,6 @@ public class UsersDTO
     public decimal? Salary { get; set; }
     public bool? IsBlocked { get; set; }
     public bool? IsDeleted { get; set; }
-    public int? ClientsId { get; set; }
     public string? Master { get; set; }
     public string? MasterPhone { get; set; }
     public List<RolesDTO> Roles { get; set; }
