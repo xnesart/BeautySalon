@@ -66,8 +66,6 @@ class Program
         //{
         //    Console.WriteLine($"{user.Name}");
         //}
-        //Console.WriteLine();
-        //Console.ReadLine();
 
         ////Работает
         //IUserRepository userRepository = new UserRepository();
@@ -96,12 +94,11 @@ class Program
         //        Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
         //    }
         //}
-        //Console.WriteLine();
 
-        //Работает, но не добавляет, а перезаписывает
-        IUserRepository userRepository = new UserRepository();
-        userRepository.AddMasterToShift(2, 2);
-        Console.ReadLine();
+        ////Работает, но не добавляет, а перезаписывает
+        //IUserRepository userRepository = new UserRepository();
+        //userRepository.AddMasterToShift(7, 3);
+        //Console.ReadLine();
 
         ////Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
