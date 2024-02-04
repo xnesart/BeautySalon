@@ -29,7 +29,10 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> Task_GetClientByNameAndId
     public List<UsersDTO> GetClientByNameAndId(string name, int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -42,6 +45,7 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.GetClientByNameAndId, parameters).ToList();
         }
     }
+<<<<<<< HEAD
 
     public List<UsersDTO> GetClientByNameAndPhone(string name, string phone)
     {
@@ -161,4 +165,6 @@ public class UserRepository : IUserRepository
     }
 
 
+=======
+>>>>>>> Task_GetClientByNameAndId
 }

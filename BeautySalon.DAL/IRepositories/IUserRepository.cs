@@ -4,6 +4,7 @@ namespace BeautySalon.DAL.IRepositories;
 
 public interface IUserRepository
 {
+<<<<<<< HEAD
     public List<UsersDTO> AddUserByChatId(int chatId,string userName ,string name, string phone, string mail, int roleId, decimal salary,int isBlocked, int isDeleted);
     public List<UsersDTO> GetClientByNameAndId(string name, int id);
     public List<UsersDTO> GetClientByNameAndPhone(string name, string phone);
@@ -25,4 +26,8 @@ public interface IUserRepository
     public void RemoveMasterFromShift(int masterId, int shiftId);
 
     //public List<ShiftsDTO> GetAllShiftsWithFreeIntervalsOnCurrentService();
+=======
+    public List<UsersDTO> GetAllEmployees();
+    public List<UsersDTO> GetClientByNameAndId(string name, int id);
+>>>>>>> Task_GetClientByNameAndId
 }

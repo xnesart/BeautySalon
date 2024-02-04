@@ -7,6 +7,7 @@ public class Procedures
     public const string GetServiceType = "GetServiceType";
     public const string GetServicesWithPriceAndDurationByTypeId = "GetServicesWithPriceAndDurationByTypeId";
     public const string GetAllRolesProcedure = "GetAllRolesProcedure";
+<<<<<<< HEAD
 
     public const string AddUserByChatId = "AddUserByChatId";
     public const string GetClientByNameAndId = "GetClientByNameAndId";
@@ -30,4 +31,7 @@ public class Procedures
 
     //public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
 
+=======
+    public const string GetClientByNameAndId = "GetClientByNameAndId";
+>>>>>>> Task_GetClientByNameAndId
 }
