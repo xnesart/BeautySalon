@@ -26,7 +26,7 @@ public interface IUserRepository
 
     //public List<ShiftsDTO> GetAllShiftsWithFreeIntervalsOnCurrentService();
 
-    public List<UsersDTO> GetAllEmployees();
+
     public List<UsersDTO> GetClientByNameAndId(string name, int id);
 
 }

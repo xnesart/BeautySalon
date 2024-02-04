@@ -29,12 +29,6 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
-
-    public List<UsersDTO> GetAllEmployees()
-    {
-        throw new NotImplementedException();
-    }
-
     public List<UsersDTO> GetClientByNameAndId(string name, int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))

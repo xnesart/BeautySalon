@@ -84,20 +84,20 @@ class Program
         ////public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
 
         ////Работает
-        //IShiftsRepository shiftRepository = new ShiftsRepository();
-        //var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployees();
-        //foreach (var shift in shiftsRepositories)
-        //{
-        //    Console.WriteLine($"{shift.Name}");
-        //    foreach (var value in shift.Shifts)
-        //    {
-        //        Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
-        //    }
-        //}
+        IShiftsRepository shiftRepository = new ShiftsRepository();
+        var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployees();
+        foreach (var shift in shiftsRepositories)
+        {
+            Console.WriteLine($"{shift.Name}");
+            foreach (var value in shift.Shifts)
+            {
+                Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
+            }
+        }
 
         //Работает, но не добавляет, а перезаписывает
-        IUserRepository userRepository = new UserRepository();
-        userRepository.AddMasterToShift(7, 3);
+        // IUserRepository userRepository = new UserRepository();
+        // userRepository.AddMasterToShift(7, 3);
         // IOrderRepository orderRepository = new OrderRepository();
         // var repositories = orderRepository.GetAllOrdersForClient();
         // foreach (var repository in repositories)
@@ -105,18 +105,8 @@ class Program
         //     Console.WriteLine($"{repository.Id} {repository.Date} {repository.ClientId} {repository.MasterId}");
         // }
         //
-        // IUserRepository userRepository = new UserRepository();
-        // var userRepositories = userRepository.GetAllEmployees();
-        // foreach (var user in userRepositories)
-        // {
-        //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
-        // }
-        IUserRepository userRepository2 = new UserRepository();
-        var userRepositories2 = userRepository2.GetClientByNameAndId("Оксана Дмитриевна Кек", 4);
-        foreach (var user in userRepositories2)
-        {
-            Console.WriteLine($"{user.ClientsId} {user.Client}");
-        }
+        
+
         
         
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
@@ -127,7 +117,6 @@ class Program
         // }
         // Console.WriteLine();
 
-        Console.ReadLine();
 
         ////Работает
         //IUserRepository userRepository = new UserRepository();
@@ -142,15 +131,14 @@ class Program
         //    Console.WriteLine($"");
         //}
 
+        
+        //Работает
+        // IUserRepository userRepository2 = new UserRepository();
+        // var userRepositories2 = userRepository2.GetClientByNameAndId("Оксана Дмитриевна Кек", 4);
+        // foreach (var user in userRepositories2)
+        // {
+        //     Console.WriteLine($"{user.ClientsId} {user.Client}");
+        // }
         #endregion
-    }
-
-    class Users
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Phone { get; set; }
-        public string Mail { get; set; }
-        public int RoleId { get; set; }
     }
 }
