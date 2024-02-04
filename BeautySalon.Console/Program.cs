@@ -11,7 +11,14 @@ class Program
     {
         #region NotDone
 
-
+        
+        //  Не пашет
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var orders = orderRepository.GetMastersOrdersById(1);
+        // foreach (var order in orders)
+        // {
+        //     Console.WriteLine();
+        // }
 
         #endregion
 
@@ -171,6 +178,7 @@ class Program
         // {
         //     Console.WriteLine();
         // }
+
         #endregion
     }
 }

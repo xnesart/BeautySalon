@@ -29,7 +29,9 @@ public class Procedures
     public const string GetAllIntervalsByShiftId = "GetAllIntervalsByShiftId";
     public const string GetAllFreeIntervalsByShiftId = "GetAllFreeIntervalsByShiftId";
     public const string GetAllServicesByIdFromCurrentType = "GetAllServicesByIdFromCurrentType";
+    public const string GetMastersOrdersById = "GetMastersOrdersById";
 
+    
     public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
     
 }
