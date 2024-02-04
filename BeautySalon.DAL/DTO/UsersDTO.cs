@@ -19,4 +19,5 @@ public class UsersDTO
     public string? MasterId { get; set; }
     public string? ShiftId { get; set; }
     public string? Client { get; set; }
+    public string? ClientId { get; set; }
 }
