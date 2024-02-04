@@ -26,6 +26,9 @@ public class Procedures
     public const string AddMasterToShift = "AddMasterToShift";
     public const string RemoveMasterFromShift = "RemoveMasterFromShift";
     public const string GetAllShiftsWithFreeIntervals = "GetAllShiftsWithFreeIntervals";
+    public const string GetAllIntervalsByShiftId = "GetAllIntervalsByShiftId";
+
+    
     
     
     public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
