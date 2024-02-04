@@ -145,6 +145,19 @@ public class UserRepository : IUserRepository
             };
             connection.Query<UsersDTO>(Procedures.AddMasterToShift, parameters);
         }
+    }    
+    
+    public void RemoveMasterFromShift(int masterId, int shiftId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                MasterId = masterId,
+                ShiftId = shiftId
+            };
+            connection.Query<UsersDTO>(Procedures.RemoveMasterFromShift, parameters);
+        }
     }
 
 

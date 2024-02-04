@@ -100,6 +100,11 @@ class Program
         //userRepository.AddMasterToShift(7, 3);
         //Console.ReadLine();
 
+        //Работает, но не добавляет, а перезаписывает
+        IUserRepository userRepository = new UserRepository();
+        userRepository.RemoveMasterFromShift(7, 3);
+        Console.ReadLine();
+
         ////Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
         //var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(4);

@@ -22,6 +22,7 @@ public interface IUserRepository
     //public List<ShiftsDTO> GetAllShiftsAndEmployees();
 
     public void AddMasterToShift(int masterId, int shiftId);
+    public void RemoveMasterFromShift(int masterId, int shiftId);
 
     //public List<ShiftsDTO> GetAllShiftsWithFreeIntervalsOnCurrentService();
 }
