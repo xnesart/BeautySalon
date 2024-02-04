@@ -162,6 +162,15 @@ class Program
         // {
         //     Console.WriteLine();
         // }
+
+        
+        //работает
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // var services = servicesRepository.GetAllServicesByIdFromCurrentType(1);
+        // foreach (var service in services)
+        // {
+        //     Console.WriteLine();
+        // }
         #endregion
     }
 }
