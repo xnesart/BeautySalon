@@ -292,21 +292,21 @@ end
 
 go
 -- ✓ Вывести заказы выбранного мастера на сегодня
-create proc GetMastersOrdersById
+create proc GetOrdersByMasterId
 @Id int as
 begin
-    select Master.Id as MasterId, Master.Name as Master,
-           Orders.Id,  Orders.Date, Orders.StartIntervalId, Intervals.Id, Intervals.Title,
+    select Master.Id, Master.Name,
+           Orders.Id,  Orders.Date, Orders.StartIntervalId, Intervals.Id as IntervalId, Intervals.Title as IntervalTitle,
            Services.Id, Services.Title, Services.Duration, Services.Price,
-           Client.Id as ClientId, Client.Name as Client from Orders
-                                                                 join Users as Client on Orders.ClientId = Client.Id
-                                                                 join Users as Master on Orders.MasterId = Master.Id
-                                                                 join Intervals on Orders.StartIntervalId = Intervals.Id
-                                                                 join Services on Orders.ServiceId = Services.Id
+           Client.Id, Client.Name from Orders
+                                           join Users as Client on Orders.ClientId = Client.Id
+                                           join Users as Master on Orders.MasterId = Master.Id
+                                           join Intervals on Orders.StartIntervalId = Intervals.Id
+                                           join Services on Orders.ServiceId = Services.Id
     where Master.Id = @Id and Orders.IsDeleted = 0
 end
-
 go
+
 ----процедуры для клиента
 -- ✓ Для ВЫБРАННОЙ услуги вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи
 create proc GetAllShiftsWithFreeIntervalsOnCurrentService

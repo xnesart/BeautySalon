@@ -15,7 +15,7 @@ class Program
         #region NotWorks
          // Не пашет
         IOrderRepository orderRepository = new OrderRepository();
-        var orders = orderRepository.GetMastersOrdersById(1);
+        var orders = orderRepository.GetOrdersByMasterId(2);
         foreach (var order in orders)
         {
             Console.WriteLine();
