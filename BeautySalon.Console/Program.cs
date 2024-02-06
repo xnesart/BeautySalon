@@ -202,6 +202,14 @@ class Program
         {
             Console.WriteLine();
         }
+        
+        //Работает
+        IOrderRepository orderRepository = new OrderRepository();
+        var orders = orderRepository.GetAllOrdersOnTodayForMasters();
+        foreach (var user in orders)
+        {
+            Console.WriteLine();
+        }
 
         #endregion
     }

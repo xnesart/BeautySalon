@@ -269,12 +269,13 @@ begin
     declare @Today datetime
     set @Today = getdate()
 
-    select Orders.Date, Orders.ServiceId, Services.Title, Orders.StartIntervalId, Intervals.Title,
-           Orders.IsCompleted, Orders.IsDeleted, Orders.MasterId, Master.Name, Orders.ClientId, Client.Name from Orders
-                                                                                                                     join Users as Master on Orders.MasterId = Master.Id
-                                                                                                                     join Users as Client on Orders.ClientId = Client.Id
-                                                                                                                     join Services on Services.Id = Orders.ServiceId
-                                                                                                                     join Intervals on Orders.StartIntervalId = Intervals.Id
+    select Orders.Id, Orders.Date, Orders.ServiceId, Orders.StartIntervalId,Orders.IsCompleted, Orders.IsDeleted,
+           Orders.MasterId, Orders.ClientId, Master.Id ,Master.Name, Services.Title, Services.Price, Intervals.Title,
+           Client.Name from Orders
+join Users as Master on Orders.MasterId = Master.Id
+join Users as Client on Orders.ClientId = Client.Id
+join Services on Services.Id = Orders.ServiceId
+join Intervals on Orders.StartIntervalId = Intervals.Id
     where convert(date, Orders.Date) = convert(date, @Today)
 end
 go

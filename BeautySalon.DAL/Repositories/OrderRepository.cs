@@ -73,4 +73,37 @@ public class OrderRepository : IOrderRepository
             return connection.Query<OrdersDTO>(Procedures.RemoveOrderForClientByOrderId, parameters).ToList();
         }
     }
+
+    public List<GetAllOrdersOnTodayForMastersDTO> GetAllOrdersOnTodayForMasters()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetAllOrdersOnTodayForMastersDTO,UsersDTO,ServicesDTO,IntеrvalsDTO,UsersDTO, GetAllOrdersOnTodayForMastersDTO>(Procedures.GetAllOrdersOnTodayForMasters,
+                    (order,master,service, intervals,client)=>
+                    {
+                        if (order.Master == null)
+                        {
+                            order.Master = new List<UsersDTO>();
+                        }
+                        order.Master.Add(master);
+                        if (order.Services == null)
+                        {
+                            order.Services = new List<ServicesDTO>();
+                        }
+                        order.Services.Add(service); 
+                        if (order.Intervals == null)
+                        {
+                            order.Intervals = new List<IntеrvalsDTO>();
+                        }
+                        order.Intervals.Add(intervals);
+                        if (order.Client == null)
+                        {
+                            order.Client = new List<UsersDTO>();
+                        }
+                        order.Client.Add(client);
+                        return order;
+                    },splitOn:"Id,Title,Title,Name")
+                .ToList();
+        } 
+    }
 }
