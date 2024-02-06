@@ -32,7 +32,7 @@ public class Procedures
     public const string GetOrdersByMasterId = "GetOrdersByMasterId";
     public const string GetAllServiceTypes = "GetAllServiceTypes";
     public const string UpdateServiceTitle = "UpdateServiceTitle";
-    
+    public const string GetMastersShiftsById = "GetMastersShiftsById";
     
     public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
     public const string RemoveOrderForClientByOrderId = "RemoveOrderForClientByOrderId";
