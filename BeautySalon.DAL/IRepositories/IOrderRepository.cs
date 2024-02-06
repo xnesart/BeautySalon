@@ -7,4 +7,8 @@ public interface IOrderRepository
     public List<GetOrdersByMasterId> GetOrdersByMasterId(int id);
     
     public List<OrdersDTO> RemoveOrderForClientByOrderId(int orderId);
+    
+    public List<GetAllOrdersOnTodayForMastersDTO> GetAllOrdersOnTodayForMasters();
+
+    
 }

@@ -33,6 +33,8 @@ public class Procedures
     public const string GetAllServiceTypes = "GetAllServiceTypes";
     public const string UpdateServiceTitle = "UpdateServiceTitle";
     public const string GetMastersShiftsById = "GetMastersShiftsById";
+    public const string GetAllOrdersOnTodayForMasters = "GetAllOrdersOnTodayForMasters";
+
     
     public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
     public const string RemoveOrderForClientByOrderId = "RemoveOrderForClientByOrderId";
