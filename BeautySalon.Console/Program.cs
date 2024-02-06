@@ -11,10 +11,10 @@ class Program
     {
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.RemoveOrderForClientByOrderId(1);
-        
-        #region NotWorks
-         // Не пашет
 
+        #region NotWorks
+
+        // Не пашет
 
         #endregion
 
@@ -91,8 +91,8 @@ class Program
         //         Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
         //     }
         // }
-        
-        
+
+
         //Работает
         // IShiftsRepository shiftRepository = new ShiftsRepository();
         // var shiftsRepositories = shiftRepository.GetAllShiftsWithFreeIntervals();
@@ -104,7 +104,7 @@ class Program
         //         Console.WriteLine($"{value.IsBusy}");
         //     }
         // }
-        
+
         //Работает, но не добавляет, а перезаписывает
         // IUserRepository userRepository = new UserRepository();
         // userRepository.AddMasterToShift(7, 3);
@@ -115,10 +115,8 @@ class Program
         //     Console.WriteLine($"{repository.Id} {repository.Date} {repository.ClientId} {repository.MasterId}");
         // }
         //
-        
 
-        
-        
+
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService();
         // foreach (var user in userRepositories)
@@ -140,7 +138,7 @@ class Program
         //{
         //    Console.WriteLine($"");
         //}
-        
+
         ////Работает
         // IUserRepository userRepository = new UserRepository();
         // var userRepositories = userRepository.GetAllWorkersByRoleId();
@@ -148,8 +146,8 @@ class Program
         // {
         //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
         // }
-        
-        
+
+
         ////Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var  intervals = intervalsRepository.GetAllIntervalsByShiftId(1);
@@ -157,7 +155,7 @@ class Program
         // {
         //     Console.WriteLine();
         // }
-        
+
         ////Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var  intervals = intervalsRepository.GetAllFreeIntervalsByShiftId(1);
@@ -166,7 +164,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        
+
         //работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // var services = servicesRepository.GetAllServicesByIdFromCurrentType(1);
@@ -182,7 +180,7 @@ class Program
         // {
         //     Console.WriteLine();
         // }
-        
+
         //Работает
         // ITypesRepository typesRepository = new TypesRepository();
         // var types = typesRepository.GetAllServiceTypes();
@@ -190,6 +188,12 @@ class Program
         // {
         //     Console.WriteLine();
         // }
+
+
+        //Работает
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // servicesRepository.UpdateServiceTitle(1, "Стрижка бензопилой");
+
         #endregion
     }
 }
