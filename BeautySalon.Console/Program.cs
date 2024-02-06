@@ -194,6 +194,15 @@ class Program
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.UpdateServiceTitle(1, "Стрижка бензопилой");
 
+        
+        //Работает
+        IUserRepository userRepository = new UserRepository();
+        var users = userRepository.GetMastersShiftsById(2);
+        foreach (var user in users)
+        {
+            Console.WriteLine();
+        }
+
         #endregion
     }
 }

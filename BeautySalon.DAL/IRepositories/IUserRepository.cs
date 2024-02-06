@@ -25,8 +25,8 @@ public interface IUserRepository
     public void RemoveMasterFromShift(int masterId, int shiftId);
 
     //public List<ShiftsDTO> GetAllShiftsWithFreeIntervalsOnCurrentService();
-
+    public List<GetMastersShiftsById> GetMastersShiftsById(int id);
 
     public List<UsersDTO> GetClientByNameAndId(string name, int id);
-
+    
 }
