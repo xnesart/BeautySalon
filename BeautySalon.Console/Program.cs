@@ -14,12 +14,7 @@ class Program
         
         #region NotWorks
          // Не пашет
-        IOrderRepository orderRepository = new OrderRepository();
-        var orders = orderRepository.GetOrdersByMasterId(2);
-        foreach (var order in orders)
-        {
-            Console.WriteLine();
-        }
+
 
         #endregion
 
@@ -180,6 +175,21 @@ class Program
         //     Console.WriteLine();
         // }
 
+        //Работает. Разбирали на занятии с Максом.
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var orders = orderRepository.GetOrdersByMasterId(2);
+        // foreach (var order in orders)
+        // {
+        //     Console.WriteLine();
+        // }
+        
+        //Работает
+        // ITypesRepository typesRepository = new TypesRepository();
+        // var types = typesRepository.GetAllServiceTypes();
+        // foreach (var type in types)
+        // {
+        //     Console.WriteLine();
+        // }
         #endregion
     }
 }
