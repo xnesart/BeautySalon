@@ -58,4 +58,23 @@ public class IntervalsRepository : IIntervalsRepository
                 }, parameters, splitOn: "Id,Id").ToList();
         }
     }
+
+    public List<IntеrvalsDTO> GetAllIntervals(string day)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new { Day = day };
+            return connection.Query<ShiftsDTO, IntеrvalsDTO, IntеrvalsDTO>(
+                Procedures.GetAllIntervals,
+                (shifts, intervals) =>
+                {
+                    if (intervals.Shifts == null)
+                    {
+                        intervals.Shifts = new List<ShiftsDTO>();
+                    }
+                    intervals.Shifts.Add(shifts);
+                    return intervals;
+                }, parameters, splitOn: "Id").ToList();
+        }
+    }
 }
