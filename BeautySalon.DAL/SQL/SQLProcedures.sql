@@ -121,8 +121,9 @@ go
 create proc GetAllIntervals
 @Day datetime  as
 begin
-    select Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime, Intervals.IsBusy, Intervals.IsDeleted, Shifts.Id, Shifts.Title from Intervals
-                                                                                                                                                          join Shifts on Intervals.ShiftId = Shifts.Id
+select Shifts.Id, Shifts.Title,
+    Intervals.Id, Intervals.Title, Intervals.StartTime, Intervals.IsBusy, Intervals.IsDeleted from Intervals
+    join Shifts on Intervals.ShiftId = Shifts.Id
     where convert(DATE, Intervals.StartTime) = convert(DATE, @Day)
 end
 go

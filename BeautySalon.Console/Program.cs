@@ -93,7 +93,7 @@ class Program
         // }
 
 
-        //Работает
+        ////Работает
         // IShiftsRepository shiftRepository = new ShiftsRepository();
         // var shiftsRepositories = shiftRepository.GetAllShiftsWithFreeIntervals();
         // foreach (var shift in shiftsRepositories)
@@ -105,7 +105,7 @@ class Program
         //     }
         // }
 
-        //Работает, но не добавляет, а перезаписывает
+        ////Работает, но не добавляет, а перезаписывает
         // IUserRepository userRepository = new UserRepository();
         // userRepository.AddMasterToShift(7, 3);
         // IOrderRepository orderRepository = new OrderRepository();
@@ -116,7 +116,7 @@ class Program
         // }
         //
 
-
+        ////Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService();
         // foreach (var user in userRepositories)
@@ -124,7 +124,6 @@ class Program
         //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
         // }
         // Console.WriteLine();
-
 
         ////Работает
         //IUserRepository userRepository = new UserRepository();
@@ -147,7 +146,6 @@ class Program
         //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
         // }
 
-
         ////Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var  intervals = intervalsRepository.GetAllIntervalsByShiftId(1);
@@ -164,8 +162,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-
-        //работает
+        ////Hаботает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // var services = servicesRepository.GetAllServicesByIdFromCurrentType(1);
         // foreach (var service in services)
@@ -173,7 +170,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        //Работает. Разбирали на занятии с Максом.
+        ////Работает. Разбирали на занятии с Максом.
         // IOrderRepository orderRepository = new OrderRepository();
         // var orders = orderRepository.GetOrdersByMasterId(2);
         // foreach (var order in orders)
@@ -181,7 +178,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        //Работает
+        ////Работает
         // ITypesRepository typesRepository = new TypesRepository();
         // var types = typesRepository.GetAllServiceTypes();
         // foreach (var type in types)
@@ -189,27 +186,33 @@ class Program
         //     Console.WriteLine();
         // }
 
-
-        //Работает
+        ////Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.UpdateServiceTitle(1, "Стрижка бензопилой");
 
-        
-        //Работает
-        IUserRepository userRepository = new UserRepository();
-        var users = userRepository.GetMastersShiftsById(2);
-        foreach (var user in users)
-        {
-            Console.WriteLine();
-        }
-        
-        //Работает
-        IOrderRepository orderRepository = new OrderRepository();
-        var orders = orderRepository.GetAllOrdersOnTodayForMasters();
-        foreach (var user in orders)
-        {
-            Console.WriteLine();
-        }
+        ////Работает
+        //IUserRepository userRepository = new UserRepository();
+        //var users = userRepository.GetMastersShiftsById(2);
+        //foreach (var user in users)
+        //{
+        //    Console.WriteLine();
+        //}
+
+        ////Работает
+        //IOrderRepository orderRepository = new OrderRepository();
+        //var orders = orderRepository.GetAllOrdersOnTodayForMasters();
+        //foreach (var user in orders)
+        //{
+        //    Console.WriteLine();
+        //}
+
+        ////Работает
+        //IIntervalsRepository intervalsRepository = new IntervalsRepository();
+        //var intervals = intervalsRepository.GetAllIntervals("2024 - 02 - 02");
+        //foreach (var interval in intervals)
+        //{
+        //    Console.WriteLine();
+        //}
 
         #endregion
     }
