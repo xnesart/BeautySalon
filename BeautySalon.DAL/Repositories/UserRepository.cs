@@ -29,6 +29,31 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
+
+    public List<GetMastersShiftsById> GetMastersShiftsById(int id)
+    {
+        using (IDbConnection connection =new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                Id = id
+            };
+            return connection
+                .Query<GetMastersShiftsById, ShiftsDTO,GetMastersShiftsById>(
+                    Procedures.GetMastersShiftsById,
+                    (master,shifts) =>
+                    {
+                        if (master.Shifts == null)
+                        {
+                            master.Shifts = new List<ShiftsDTO>();
+                        }
+
+                        master.Shifts.Add(shifts);
+                        return master;
+                    }, parameters, splitOn: "Id").ToList();
+        }
+    }
+
     public List<UsersDTO> GetClientByNameAndId(string name, int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))

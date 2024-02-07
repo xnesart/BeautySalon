@@ -9,17 +9,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        IOrderRepository orderRepository = new OrderRepository();
-        orderRepository.RemoveOrderForClientByOrderId(1);
-        
-        #region NotWorks
-        //  Не пашет
         // IOrderRepository orderRepository = new OrderRepository();
-        // var orders = orderRepository.GetMastersOrdersById(1);
-        // foreach (var order in orders)
-        // {
-        //     Console.WriteLine();
-        // }
+        // orderRepository.RemoveOrderForClientByOrderId(1);
+
+        #region NotWorks
+
+        // Не пашет
 
         #endregion
 
@@ -96,8 +91,8 @@ class Program
         //         Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
         //     }
         // }
-        
-        
+
+
         //Работает
         // IShiftsRepository shiftRepository = new ShiftsRepository();
         // var shiftsRepositories = shiftRepository.GetAllShiftsWithFreeIntervals();
@@ -109,7 +104,7 @@ class Program
         //         Console.WriteLine($"{value.IsBusy}");
         //     }
         // }
-        
+
         //Работает, но не добавляет, а перезаписывает
         // IUserRepository userRepository = new UserRepository();
         // userRepository.AddMasterToShift(7, 3);
@@ -120,10 +115,8 @@ class Program
         //     Console.WriteLine($"{repository.Id} {repository.Date} {repository.ClientId} {repository.MasterId}");
         // }
         //
-        
 
-        
-        
+
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService();
         // foreach (var user in userRepositories)
@@ -145,7 +138,7 @@ class Program
         //{
         //    Console.WriteLine($"");
         //}
-        
+
         ////Работает
         // IUserRepository userRepository = new UserRepository();
         // var userRepositories = userRepository.GetAllWorkersByRoleId();
@@ -153,8 +146,8 @@ class Program
         // {
         //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
         // }
-        
-        
+
+
         ////Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var  intervals = intervalsRepository.GetAllIntervalsByShiftId(1);
@@ -162,7 +155,7 @@ class Program
         // {
         //     Console.WriteLine();
         // }
-        
+
         ////Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var  intervals = intervalsRepository.GetAllFreeIntervalsByShiftId(1);
@@ -171,7 +164,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        
+
         //работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // var services = servicesRepository.GetAllServicesByIdFromCurrentType(1);
@@ -179,6 +172,44 @@ class Program
         // {
         //     Console.WriteLine();
         // }
+
+        //Работает. Разбирали на занятии с Максом.
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var orders = orderRepository.GetOrdersByMasterId(2);
+        // foreach (var order in orders)
+        // {
+        //     Console.WriteLine();
+        // }
+
+        //Работает
+        // ITypesRepository typesRepository = new TypesRepository();
+        // var types = typesRepository.GetAllServiceTypes();
+        // foreach (var type in types)
+        // {
+        //     Console.WriteLine();
+        // }
+
+
+        //Работает
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // servicesRepository.UpdateServiceTitle(1, "Стрижка бензопилой");
+
+        
+        //Работает
+        IUserRepository userRepository = new UserRepository();
+        var users = userRepository.GetMastersShiftsById(2);
+        foreach (var user in users)
+        {
+            Console.WriteLine();
+        }
+        
+        //Работает
+        IOrderRepository orderRepository = new OrderRepository();
+        var orders = orderRepository.GetAllOrdersOnTodayForMasters();
+        foreach (var user in orders)
+        {
+            Console.WriteLine();
+        }
 
         #endregion
     }

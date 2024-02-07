@@ -269,12 +269,13 @@ begin
     declare @Today datetime
     set @Today = getdate()
 
-    select Orders.Date, Orders.ServiceId, Services.Title, Orders.StartIntervalId, Intervals.Title,
-           Orders.IsCompleted, Orders.IsDeleted, Orders.MasterId, Master.Name, Orders.ClientId, Client.Name from Orders
-                                                                                                                     join Users as Master on Orders.MasterId = Master.Id
-                                                                                                                     join Users as Client on Orders.ClientId = Client.Id
-                                                                                                                     join Services on Services.Id = Orders.ServiceId
-                                                                                                                     join Intervals on Orders.StartIntervalId = Intervals.Id
+    select Orders.Id, Orders.Date, Orders.ServiceId, Orders.StartIntervalId,Orders.IsCompleted, Orders.IsDeleted,
+           Orders.MasterId, Orders.ClientId, Master.Id ,Master.Name, Services.Title, Services.Price, Intervals.Title,
+           Client.Name from Orders
+join Users as Master on Orders.MasterId = Master.Id
+join Users as Client on Orders.ClientId = Client.Id
+join Services on Services.Id = Orders.ServiceId
+join Intervals on Orders.StartIntervalId = Intervals.Id
     where convert(date, Orders.Date) = convert(date, @Today)
 end
 go
@@ -292,21 +293,21 @@ end
 
 go
 -- ✓ Вывести заказы выбранного мастера на сегодня
-create proc GetMastersOrdersById
+create proc GetOrdersByMasterId
 @Id int as
 begin
-    select Master.Id as MasterId, Master.Name as Master,
-           Orders.Id,  Orders.Date, Orders.StartIntervalId, Intervals.Id, Intervals.Title,
+    select Master.Id, Master.Name,
+           Orders.Id,  Orders.Date, Orders.StartIntervalId, Intervals.Id as IntervalId, Intervals.Title as IntervalTitle,
            Services.Id, Services.Title, Services.Duration, Services.Price,
-           Client.Id as ClientId, Client.Name as Client from Orders
-                                                                 join Users as Client on Orders.ClientId = Client.Id
-                                                                 join Users as Master on Orders.MasterId = Master.Id
-                                                                 join Intervals on Orders.StartIntervalId = Intervals.Id
-                                                                 join Services on Orders.ServiceId = Services.Id
+           Client.Id, Client.Name from Orders
+                                           join Users as Client on Orders.ClientId = Client.Id
+                                           join Users as Master on Orders.MasterId = Master.Id
+                                           join Intervals on Orders.StartIntervalId = Intervals.Id
+                                           join Services on Orders.ServiceId = Services.Id
     where Master.Id = @Id and Orders.IsDeleted = 0
 end
-
 go
+
 ----процедуры для клиента
 -- ✓ Для ВЫБРАННОЙ услуги вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи
 create proc GetAllShiftsWithFreeIntervalsOnCurrentService
