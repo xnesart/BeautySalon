@@ -1,6 +1,6 @@
 namespace BeautySalon.DAL.DTO;
 
-public class GetAllShiftsOnToday
+public class GetAllShiftsOnTodayDTO
 {    
     public List<ShiftsDTO> Shifts { get; set; }
 }

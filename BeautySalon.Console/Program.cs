@@ -78,13 +78,13 @@ class Program
         //userRepository.RemoveUserById(5);
         //Console.ReadLine();
 
-        ////public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
-        //IShiftsRepository shiftRepository = new ShiftsRepository();
-        //var shiftsRepositories = shiftRepository.GetAllShiftsOnToday();
-        //foreach (var shift in shiftsRepositories)
-        //{
-        //    Console.WriteLine();
-        //}
+        ////Работает
+        IShiftsRepository shiftRepository = new ShiftsRepository();
+        var shiftsRepositories = shiftRepository.GetAllShiftsOnToday();
+        foreach (var shift in shiftsRepositories)
+        {
+            Console.WriteLine();
+        }
 
         ////Работает
         //IShiftsRepository shiftRepository = new ShiftsRepository();
