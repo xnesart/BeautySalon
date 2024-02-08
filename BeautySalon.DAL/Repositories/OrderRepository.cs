@@ -9,60 +9,21 @@ namespace BeautySalon.DAL.Repositories;
 
 public class OrderRepository : IOrderRepository
 {
-    //не пашет
-    // public List<GetMastersOrdersByIdDTO> GetMastersOrdersById(int id)
-    // {
-    //     using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-    //     {
-    //         var parameters = new { Id = id };
-    //         return connection.Query<GetMastersOrdersByIdDTO,UsersDTO,IntеrvalsDTO,ServicesDTO,UsersDTO,GetMastersOrdersByIdDTO>(Procedures.GetMastersOrdersById,
-    //                 (orders,master,intervals,services,clients)=>
-    //                 {
-    //                     if (orders.Services == null)
-    //                     {
-    //                         orders.Services = new List<ServicesDTO>();
-    //                     }
-    //
-    //                     if (orders.Master == null)
-    //                     {
-    //                         orders.Master = new List<UsersDTO>();
-    //                     }
-    //
-    //                     if (orders.Client == null)
-    //                     {
-    //                         orders.Client = new List<UsersDTO>();
-    //                     }
-    //
-    //                     if (orders.Intervals == null)
-    //                     {
-    //                         orders.Intervals = new List<IntеrvalsDTO>();
-    //                     }
-    //                 
-    //                     orders.Master.Add(master);
-    //                     orders.Intervals.Add(intervals);
-    //                     orders.Services.Add(services);
-    //                     orders.Client.Add(clients);
-    //                     return orders;
-    //                 },parameters,splitOn:"Id,MasterId,StartIntervalId,ServiceId,ClientId")
-    //             .ToList();
-    //     }
-    // }
-
     public List<GetOrdersByMasterId> GetOrdersByMasterId(int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new { Id = id };
-            return connection.Query<UsersDTO,GetOrdersByMasterId,ServicesDTO,UsersDTO,GetOrdersByMasterId>(Procedures.GetOrdersByMasterId,
-                    (master,order,service,client)=>
+            return connection.Query<UsersDTO, GetOrdersByMasterId, ServicesDTO, UsersDTO, GetOrdersByMasterId>(Procedures.GetOrdersByMasterId,
+                    (master, order, service, client) =>
                     {
                         order.Master = master;
                         order.Services = service;
                         order.Client = client;
                         return order;
-                    },parameters,splitOn:"Id")
+                    }, parameters, splitOn: "Id")
                 .ToList();
-        } 
+        }
     }
 
     public List<OrdersDTO> RemoveOrderForClientByOrderId(int orderId)
@@ -78,8 +39,8 @@ public class OrderRepository : IOrderRepository
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllOrdersOnTodayForMastersDTO,UsersDTO,ServicesDTO,IntеrvalsDTO,UsersDTO, GetAllOrdersOnTodayForMastersDTO>(Procedures.GetAllOrdersOnTodayForMasters,
-                    (order,master,service, intervals,client)=>
+            return connection.Query<GetAllOrdersOnTodayForMastersDTO, UsersDTO, ServicesDTO, IntеrvalsDTO, UsersDTO, GetAllOrdersOnTodayForMastersDTO>(Procedures.GetAllOrdersOnTodayForMasters,
+                    (order, master, service, intervals, client) =>
                     {
                         if (order.Master == null)
                         {
@@ -90,7 +51,7 @@ public class OrderRepository : IOrderRepository
                         {
                             order.Services = new List<ServicesDTO>();
                         }
-                        order.Services.Add(service); 
+                        order.Services.Add(service);
                         if (order.Intervals == null)
                         {
                             order.Intervals = new List<IntеrvalsDTO>();
@@ -102,8 +63,55 @@ public class OrderRepository : IOrderRepository
                         }
                         order.Client.Add(client);
                         return order;
-                    },splitOn:"Id,Title,Title,Name")
+                    }, splitOn: "Id,Title,Title,Name")
                 .ToList();
-        } 
+        }
+    }
+    public List<OrdersByClientIdDTO> GetOrderByClientId(int clientid)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameter = new
+            {
+                Id = clientid,
+            };
+
+            return connection.Query<OrdersDTO,UsersDTO, UsersDTO,IntеrvalsDTO,ServicesDTO, OrdersByClientIdDTO>
+                 (
+                     Procedures.GetOrdersByClientId2,
+                     (order,client, master,interval,service) =>
+                     {
+                         OrdersByClientIdDTO orderByClient = new OrdersByClientIdDTO();
+
+                         orderByClient.Order = new OrdersDTO();
+                         orderByClient.Order.Id = order.Id;
+                         orderByClient.Order.Date = order.Date;
+                         orderByClient.Order.StartIntervalId = order.StartIntervalId;
+
+                         orderByClient.Client = new UsersDTO();
+                         orderByClient.Client.Id = client.Id;
+                         orderByClient.Client.Name = client.Name;
+
+                         orderByClient.Master = new UsersDTO();
+                         orderByClient.Master.Id = master.Id;
+                         orderByClient.Master.Name = master.Name;
+
+                         orderByClient.Interval = new IntеrvalsDTO();
+                         orderByClient.Interval.Id = interval.Id;
+                         orderByClient.Interval.Title = interval.Title;
+
+                         orderByClient.Service = new ServicesDTO();
+                         orderByClient.Service.Id = service.Id;
+                         orderByClient.Service.Title = service.Title;
+                         orderByClient.Service.Duration = service.Duration;
+                         orderByClient.Service.Price = service.Price;
+
+                         return orderByClient;
+                     },
+                     parameter,
+                     splitOn: "Id,Id,Id,Id,Id"
+                 ).ToList();
+        }
     }
 }
+   
