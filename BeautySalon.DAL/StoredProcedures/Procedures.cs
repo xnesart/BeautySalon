@@ -41,5 +41,7 @@ public class Procedures
 
     public const string GetAllIntervals = "GetAllIntervals";
 
+    public const string GetAllServices = "GetAllServices";
+
 
 }
