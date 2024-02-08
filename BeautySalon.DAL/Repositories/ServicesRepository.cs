@@ -58,5 +58,19 @@ namespace BeautySalon.DAL.Repositories
                 connection.Query(Procedures.UpdateServiceTitle, parameters).ToList();
             }
         }
+
+        public List<GetAllServicesDTO> GetAllServices()
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                return connection.Query<GetAllServicesDTO, TypesDTO, GetAllServicesDTO>(
+                    Procedures.GetAllServices,
+                    (services, types) =>
+                    {
+                        services.Types = types;
+                        return services;
+                    }, splitOn: "Title").ToList();
+            }
+        }
     }
 }

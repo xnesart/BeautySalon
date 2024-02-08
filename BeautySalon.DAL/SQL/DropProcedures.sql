@@ -18,9 +18,7 @@ drop proc GetAllShiftsAndEmployees
 
 drop proc AddMasterToShift
 drop proc RemoveMasterFromShift
-
 drop proc GetAllIntervals
-
 drop proc GetAllIntervalsByShiftId
 drop proc GetAllShiftsWithFreeIntervals
 drop proc GetAllFreeIntervalsByShiftId

@@ -214,6 +214,14 @@ class Program
         //    Console.WriteLine();
         //}
 
+        //Работает
+        IServicesRepository servicesRepository = new ServicesRepository();
+        var services = servicesRepository.GetAllServices();
+        foreach (var service in services)
+        {
+            Console.WriteLine();
+        }
+
         #endregion
     }
 }
