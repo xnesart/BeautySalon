@@ -21,7 +21,6 @@ public class ShiftsRepository : IShiftsRepository
                     {
                         allShifts.Shifts = new List<ShiftsDTO>();
                     }
-
                     allShifts.Shifts.Add(shifts);
                     return allShifts;
                 }).ToList();

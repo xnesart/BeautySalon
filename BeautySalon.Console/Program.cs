@@ -79,12 +79,12 @@ class Program
         //Console.ReadLine();
 
         ////Работает
-        IShiftsRepository shiftRepository = new ShiftsRepository();
-        var shiftsRepositories = shiftRepository.GetAllShiftsOnToday();
-        foreach (var shift in shiftsRepositories)
-        {
-            Console.WriteLine();
-        }
+        //IShiftsRepository shiftRepository = new ShiftsRepository();
+        //var shiftsRepositories = shiftRepository.GetAllShiftsOnToday();
+        //foreach (var shift in shiftsRepositories)
+        //{
+        //    Console.WriteLine();
+        //}
 
         ////Работает
         //IShiftsRepository shiftRepository = new ShiftsRepository();
