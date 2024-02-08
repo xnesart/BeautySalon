@@ -9,6 +9,25 @@ namespace BeautySalon.DAL.Repositories;
 
 public class ShiftsRepository : IShiftsRepository
 {
+    public List<GetAllShiftsOnToday> GetAllShiftsOnToday()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetAllShiftsOnToday, ShiftsDTO, GetAllShiftsOnToday>(
+                Procedures.GetAllShiftsAndEmployeesOnToday,
+                (allShifts, shifts) =>
+                {
+                    if (allShifts.Shifts == null)
+                    {
+                        allShifts.Shifts = new List<ShiftsDTO>();
+                    }
+
+                    allShifts.Shifts.Add(shifts);
+                    return allShifts;
+                }).ToList();
+        }
+    }    
+    
     public List<GetAllShiftsAndEmployeesDTO> GetAllShiftsAndEmployeesOnToday()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))

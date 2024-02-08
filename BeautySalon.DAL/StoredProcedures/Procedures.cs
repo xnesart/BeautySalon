@@ -19,7 +19,7 @@ public class Procedures
     public const string AddWorkerByRoleId = "AddWorkerByRoleId";
     public const string RemoveUserById = "RemoveUserById";
 
-    //public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
+    public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
 
     public const string GetAllShiftsAndEmployeesOnToday = "GetAllShiftsAndEmployeesOnToday";
 

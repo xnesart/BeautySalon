@@ -79,19 +79,24 @@ class Program
         //Console.ReadLine();
 
         ////public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
+        //IShiftsRepository shiftRepository = new ShiftsRepository();
+        //var shiftsRepositories = shiftRepository.GetAllShiftsOnToday();
+        //foreach (var shift in shiftsRepositories)
+        //{
+        //    Console.WriteLine();
+        //}
 
         ////Работает
-        IShiftsRepository shiftRepository = new ShiftsRepository();
-        var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployeesOnToday();
-        foreach (var shift in shiftsRepositories)
-        {
-            Console.WriteLine($"{shift.Name}");
-            foreach (var value in shift.Shifts)
-            {
-                Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
-            }
-        }
-
+        //IShiftsRepository shiftRepository = new ShiftsRepository();
+        //var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployeesOnToday();
+        //foreach (var shift in shiftsRepositories)
+        //{
+        //    Console.WriteLine($"{shift.Name}");
+        //    foreach (var value in shift.Shifts)
+        //    {
+        //        Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
+        //    }
+        //}
 
         ////Работает
         // IShiftsRepository shiftRepository = new ShiftsRepository();
