@@ -309,6 +309,23 @@ end
 go
 
 ----процедуры для клиента
+CREATE proc [dbo].[GetOrdersByClientId2]
+@Id int as
+begin
+select Orders.Id,  Orders.Date, Orders.StartIntervalId,
+	Client.Id, Client.Name,
+	Master.Id, Master.Name,
+	Intervals.Id, Intervals.Title,
+	Services.Id, Services.Title, Services.Duration, Services.Price
+from
+	Orders
+	join Users as Client on Orders.ClientId = Client.Id
+	join Users as Master on Orders.MasterId = Master.Id
+	join Intervals on Orders.StartIntervalId = Intervals.Id
+	join Services on Orders.ServiceId = Services.Id
+where Client.Id = @Id and Orders.IsDeleted = 0
+end
+
 -- ✓ Для ВЫБРАННОЙ услуги вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи
 create proc GetAllShiftsWithFreeIntervalsOnCurrentService
 @ServiceId int as
