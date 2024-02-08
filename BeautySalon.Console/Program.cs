@@ -81,16 +81,16 @@ class Program
         ////public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
 
         ////Работает
-        // IShiftsRepository shiftRepository = new ShiftsRepository();
-        // var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployees();
-        // foreach (var shift in shiftsRepositories)
-        // {
-        //     Console.WriteLine($"{shift.Name}");
-        //     foreach (var value in shift.Shifts)
-        //     {
-        //         Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
-        //     }
-        // }
+        IShiftsRepository shiftRepository = new ShiftsRepository();
+        var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployeesOnToday();
+        foreach (var shift in shiftsRepositories)
+        {
+            Console.WriteLine($"{shift.Name}");
+            foreach (var value in shift.Shifts)
+            {
+                Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
+            }
+        }
 
 
         ////Работает
@@ -225,6 +225,10 @@ class Program
         ////Работает
         //IServicesRepository servicesRepository = new ServicesRepository();
         //servicesRepository.AddServiceById("Бритьё налысо", 1, "00:45", 500);
+
+        ////Работает
+        IServicesRepository servicesRepository = new ServicesRepository();
+        servicesRepository.UpdateServiceTitle(1, "Стрижка бензопилой");
 
 
         #endregion

@@ -21,7 +21,7 @@ public class Procedures
 
     //public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
 
-    public const string GetAllShiftsAndEmployees = "GetAllShiftsAndEmployeesOnToday";
+    public const string GetAllShiftsAndEmployeesOnToday = "GetAllShiftsAndEmployeesOnToday";
 
     public const string AddMasterToShift = "AddMasterToShift";
     public const string RemoveMasterFromShift = "RemoveMasterFromShift";
@@ -42,6 +42,8 @@ public class Procedures
     public const string GetAllIntervals = "GetAllIntervals";
     public const string GetAllServices = "GetAllServices";
     public const string AddServiceById = "AddServiceById";
+    public const string UpdateServicePrice = "UpdateServicePrice";
+
 
 
 }
