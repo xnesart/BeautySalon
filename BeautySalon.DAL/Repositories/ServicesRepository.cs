@@ -72,5 +72,19 @@ namespace BeautySalon.DAL.Repositories
                     }, splitOn: "Title").ToList();
             }
         }
+
+        public void AddServiceById(string title, int type, string duration, decimal price)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                var parameters = new
+                {
+                    ServiceTitle = title,
+                    ServiceType = type,
+                    ServiceDuration = duration,
+                    ServicePrice = price
+                }; connection.Query<ServicesDTO>(Procedures.AddServiceById, parameters).ToList();
+            }
+        }
     }
 }

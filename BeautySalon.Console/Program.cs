@@ -214,13 +214,18 @@ class Program
         //    Console.WriteLine();
         //}
 
-        //Работает
-        IServicesRepository servicesRepository = new ServicesRepository();
-        var services = servicesRepository.GetAllServices();
-        foreach (var service in services)
-        {
-            Console.WriteLine();
-        }
+        ////Работает
+        //IServicesRepository servicesRepository = new ServicesRepository();
+        //var services = servicesRepository.GetAllServices();
+        //foreach (var service in services)
+        //{
+        //    Console.WriteLine();
+        //}
+
+        ////Работает
+        //IServicesRepository servicesRepository = new ServicesRepository();
+        //servicesRepository.AddServiceById("Бритьё налысо", 1, "00:45", 500);
+
 
         #endregion
     }

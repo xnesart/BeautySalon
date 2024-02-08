@@ -40,8 +40,8 @@ public class Procedures
     public const string RemoveOrderForClientByOrderId = "RemoveOrderForClientByOrderId";
 
     public const string GetAllIntervals = "GetAllIntervals";
-
     public const string GetAllServices = "GetAllServices";
+    public const string AddServiceById = "AddServiceById";
 
 
 }
