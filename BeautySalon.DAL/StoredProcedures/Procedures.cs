@@ -39,7 +39,11 @@ public class Procedures
     public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
     public const string RemoveOrderForClientByOrderId = "RemoveOrderForClientByOrderId";
 
+<<<<<<< HEAD
     public const string GetAllIntervals = "GetAllIntervals";
 
+=======
+    public const string GetOrdersByClientId2 = "GetOrdersByClientId2";
+>>>>>>> main
 
 }

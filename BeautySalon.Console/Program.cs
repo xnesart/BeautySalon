@@ -3,12 +3,14 @@ using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.Console;
 
+using BeautySalon.DAL.DTO;
 using System;
 
 class Program
 {
     static void Main(string[] args)
     {
+<<<<<<< HEAD
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.RemoveOrderForClientByOrderId(1);
 
@@ -215,5 +217,7 @@ class Program
         //}
 
         #endregion
+=======
+>>>>>>> main
     }
 }
