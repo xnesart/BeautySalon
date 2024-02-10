@@ -11,7 +11,8 @@ class Program
 {
     static void Main(string[] args)
     {
-<<<<<<< HEAD
+
+
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.RemoveOrderForClientByOrderId(1);
 
@@ -222,7 +223,9 @@ class Program
         Console.ReadLine();
 
         #endregion
-=======
->>>>>>> main
+
+
+
+
     }
 }

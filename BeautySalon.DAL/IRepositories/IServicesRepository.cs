@@ -9,8 +9,9 @@ namespace BeautySalon.DAL.IRepositories
 {
     public interface IServicesRepository
     {
-        //public List<ServicesDTO> GetServicesWithPriceAndDuratonByTypeId(int typeId);
+        public List<ServicesDTO> GetServicesWithPriceAndDurationByTypeId(int typeId);
         public List<GetAllServicesByIdFromCurrentTypeDTO> GetAllServicesByIdFromCurrentType(int id);
         public void UpdateServiceTitle(int serviceId, string serviceTitle);
+        public List<AllFreeIntervalsOnCurrentServiceDTO> GetAllFreeIntervalsOnCurrentService(int serviceId);
     }
 }

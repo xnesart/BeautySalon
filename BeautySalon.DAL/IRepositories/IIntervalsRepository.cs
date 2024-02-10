@@ -9,5 +9,6 @@ public interface IIntervalsRepository
     public List<GetAllFreeIntervalsByShiftIdDTO> GetAllFreeIntervalsByShiftId(int shiftId);
 
     public List<IntеrvalsDTO> GetAllIntervals(string day);
+
     
 }

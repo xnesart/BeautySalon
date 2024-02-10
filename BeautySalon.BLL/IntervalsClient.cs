@@ -24,4 +24,7 @@ public class IntervalsClient
         return _mapper.Map<List<IntеrvalsDTO>>(intervals);
         return intervals;
     }
+
+    
+    
 }
