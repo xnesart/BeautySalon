@@ -237,8 +237,13 @@ class Program
         // servicesRepository.UpdateServicePrice(1, 500);
         
         ////Работает
-        IServicesRepository servicesRepository = new ServicesRepository();
-        servicesRepository.UpdateServiceDuration(6, "00:30");
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // servicesRepository.UpdateServiceDuration(6, "00:30");
+        
+        ////Работает
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // servicesRepository.RemoveServiceById(6);
+        // Console.ReadLine();
         
         //IntervalsClient intervalsClient = new IntervalsClient();
         //var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);

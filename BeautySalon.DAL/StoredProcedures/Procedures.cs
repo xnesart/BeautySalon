@@ -44,6 +44,7 @@ public class Procedures
     public const string AddServiceById = "AddServiceById";
     public const string UpdateServicePrice = "UpdateServicePrice";
     public const string UpdateServiceDuration = "UpdateServiceDuration";
+    public const string RemoveServiceById = "RemoveServiceById";
 
 
 

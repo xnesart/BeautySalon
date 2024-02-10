@@ -112,5 +112,17 @@ namespace BeautySalon.DAL.Repositories
                 connection.Query(Procedures.UpdateServiceDuration, parameters).ToList();
             }
         }
+        
+        public void RemoveServiceById(int id)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                var parameters = new
+                {
+                    Id = id
+                };
+                connection.Query<ServicesDTO>(Procedures.RemoveServiceById, parameters);
+            }
+        }
     }
 }
