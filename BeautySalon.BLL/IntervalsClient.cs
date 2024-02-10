@@ -24,4 +24,11 @@ public class IntervalsClient
         return _mapper.Map<List<IntеrvalsDTO>>(intervals);
         return intervals;
     }
+
+    public List<IntеrvalsDTO> GetAllIntervals(string day)
+    {
+        List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllIntervals(day);
+        return _mapper.Map<List<IntеrvalsDTO>>(intervals);
+
+    }
 }
