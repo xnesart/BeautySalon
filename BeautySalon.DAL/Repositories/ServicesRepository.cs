@@ -99,5 +99,18 @@ namespace BeautySalon.DAL.Repositories
                 connection.Query(Procedures.UpdateServicePrice, parameters).ToList();
             }
         }
+        
+        public void UpdateServiceDuration(int serviceId, string serviceDuration)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                var parameters = new
+                {
+                    ServiceId = serviceId,
+                    ServiceDuration = serviceDuration
+                };
+                connection.Query(Procedures.UpdateServiceDuration, parameters).ToList();
+            }
+        }
     }
 }
