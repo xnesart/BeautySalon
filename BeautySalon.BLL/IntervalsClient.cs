@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BeautySalon.BLL.Mapping;
+using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
@@ -25,10 +26,10 @@ public class IntervalsClient
         return intervals;
     }
 
-    public List<IntеrvalsDTO> GetAllIntervals(string day)
+    public List<IntervalsInputModel> GetAllIntervals(string day)
     {
         List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllIntervals(day);
-        return _mapper.Map<List<IntеrvalsDTO>>(intervals);
+        return _mapper.Map<List<IntervalsInputModel>>(intervals);
 
     }
 }

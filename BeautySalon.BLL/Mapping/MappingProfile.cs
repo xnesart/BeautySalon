@@ -1,4 +1,5 @@
 using AutoMapper;
+using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
 
 namespace BeautySalon.BLL.Mapping;
@@ -8,7 +9,7 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<IntеrvalsDTO, IntervalsClient>();
-        CreateMap<IntеrvalsDTO, IntervalsClient>();
+        CreateMap<ShiftsDTO,ShiftsInputModel>();
     }
 
     // CreateMap<ProductInputModel, ProductDto>();
