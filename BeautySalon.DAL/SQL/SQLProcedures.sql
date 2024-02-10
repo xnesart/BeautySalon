@@ -186,10 +186,10 @@ end
 go
 -- ✓ Изменить название услуги
 create proc UpdateServiceTitle
-    @ServiceId int, @ServiceName nvarchar(50) as
+    @ServiceId int, @ServiceTitle nvarchar(50) as
 begin
     update Services
-    set Services.Title = @ServiceName
+    set Services.Title = @ServiceTitle
     where @ServiceId = Services.Id
 end
 go

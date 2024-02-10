@@ -53,7 +53,7 @@ namespace BeautySalon.DAL.Repositories
                 var parameters = new
                 {
                     ServiceId = serviceId,
-                    ServiceName = serviceTitle
+                    ServiceTitle = serviceTitle
                 };
                 connection.Query(Procedures.UpdateServiceTitle, parameters).ToList();
             }

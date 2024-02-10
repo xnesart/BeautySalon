@@ -193,8 +193,8 @@ class Program
         // }
 
         ////Работает
-        // IServicesRepository servicesRepository = new ServicesRepository();
-        // servicesRepository.UpdateServiceTitle(1, "Стрижка бензопилой");
+        IServicesRepository servicesRepository = new ServicesRepository();
+        servicesRepository.UpdateServiceTitle(1, "Подравнять кончики");
 
         ////Работает
         //IUserRepository userRepository = new UserRepository();
@@ -220,7 +220,6 @@ class Program
         //    Console.WriteLine();
         //}
 
-<<<<<<< HEAD
         ////Работает
         //IServicesRepository servicesRepository = new ServicesRepository();
         //var services = servicesRepository.GetAllServices();
@@ -234,14 +233,12 @@ class Program
         //servicesRepository.AddServiceById("Бритьё налысо", 1, "00:45", 500);
 
         ////Работает
-        IServicesRepository servicesRepository = new ServicesRepository();
-        servicesRepository.UpdateServiceTitle(1, "Стрижка бензопилой");
+        //IServicesRepository servicesRepository = new ServicesRepository();
+        //servicesRepository.UpdateServicePrice(1, "Стрижка бензопилой");
 
-=======
-        IntervalsClient intervalsClient = new IntervalsClient();
-        var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
-        Console.ReadLine();
->>>>>>> TatianaYstinova/Task_AddBLL
+        //IntervalsClient intervalsClient = new IntervalsClient();
+        //var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
+        //Console.ReadLine();
 
         #endregion
     }
