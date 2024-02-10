@@ -1,6 +1,6 @@
 namespace BeautySalon.DAL.DTO;
 
-public class GetAllIntervalsByShiftIdDTO
+public class AddClientToFreeMasterDTO
 {
     public int Id { get; set; }
 
@@ -11,7 +11,6 @@ public class GetAllIntervalsByShiftIdDTO
     public DateTime StartTime { get; set; }
 
     public bool? IsBusy { get; set; }
-    
     public bool? Busy { get; set; }
          
     public bool? IsDeleted { get; set; }

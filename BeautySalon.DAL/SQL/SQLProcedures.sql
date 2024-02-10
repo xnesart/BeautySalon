@@ -238,7 +238,7 @@ begin
                     -- Вставка заказа
                     INSERT INTO Orders (Date, MasterId, ClientId, ServiceId, StartIntervalId, IsDeleted)
                     VALUES (@Date, (SELECT MasterId FROM Shifts WHERE Id = @ShiftId), @ClientId, @ServiceId, @IntervalId, 0)
--- Пометить интервал как занятый
+            -- Пометить интервал как занятый
                     UPDATE Intervals SET IsBusy = 1 WHERE Id = @IntervalId
                 end
         end

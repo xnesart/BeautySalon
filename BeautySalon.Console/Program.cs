@@ -206,12 +206,12 @@ class Program
         //}
 
         ////Работает
-        //IOrderRepository orderRepository = new OrderRepository();
-        //var orders = orderRepository.GetAllOrdersOnTodayForMasters();
-        //foreach (var user in orders)
-        //{
-        //    Console.WriteLine();
-        //}
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var orders = orderRepository.GetAllOrdersOnTodayForMasters();
+        // foreach (var user in orders)
+        // {
+        //     Console.WriteLine();
+        // }
 
         ////Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
