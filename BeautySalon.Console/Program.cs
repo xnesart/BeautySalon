@@ -1,3 +1,4 @@
+using BeautySalon.BLL;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
@@ -213,6 +214,10 @@ class Program
         //{
         //    Console.WriteLine();
         //}
+
+        IntervalsClient intervalsClient = new IntervalsClient();
+        var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
+        Console.ReadLine();
 
         #endregion
     }
