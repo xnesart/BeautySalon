@@ -15,6 +15,6 @@ namespace BeautySalon.DAL.IRepositories
 
         public List<GetAllServicesDTO> GetAllServices();
         public void AddServiceById(string title, int type, string duration, decimal price);
-        public void UpdateServicePrice(int serviceId, string serviceTitle);
+        public void UpdateServicePrice(int serviceId, decimal servicePrice);
     }
 }

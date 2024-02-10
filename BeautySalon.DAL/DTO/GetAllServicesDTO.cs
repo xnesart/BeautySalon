@@ -13,6 +13,5 @@ public class GetAllServicesDTO
     public decimal? Price { get; set; }
 
     public bool? IsDeleted { get; set; }
-
     public TypesDTO? Types { get; set; }
 }

@@ -193,8 +193,8 @@ class Program
         // }
 
         ////Работает
-        IServicesRepository servicesRepository = new ServicesRepository();
-        servicesRepository.UpdateServiceTitle(1, "Подравнять кончики");
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // servicesRepository.UpdateServiceTitle(1, "Подравнять кончики");
 
         ////Работает
         //IUserRepository userRepository = new UserRepository();
@@ -233,8 +233,8 @@ class Program
         //servicesRepository.AddServiceById("Бритьё налысо", 1, "00:45", 500);
 
         ////Работает
-        //IServicesRepository servicesRepository = new ServicesRepository();
-        //servicesRepository.UpdateServicePrice(1, "Стрижка бензопилой");
+        IServicesRepository servicesRepository = new ServicesRepository();
+        servicesRepository.UpdateServicePrice(1, 500);
 
         //IntervalsClient intervalsClient = new IntervalsClient();
         //var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);

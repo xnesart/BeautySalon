@@ -87,14 +87,14 @@ namespace BeautySalon.DAL.Repositories
             }
         }
 
-        public void UpdateServicePrice(int serviceId, string serviceTitle)
+        public void UpdateServicePrice(int serviceId, decimal servicePrice)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
                 var parameters = new
                 {
                     ServiceId = serviceId,
-                    ServiceName = serviceTitle
+                    ServicePrice = servicePrice
                 };
                 connection.Query(Procedures.UpdateServicePrice, parameters).ToList();
             }
