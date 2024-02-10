@@ -4,6 +4,7 @@ using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.Console;
 
+using BeautySalon.DAL.DTO;
 using System;
 
 class Program

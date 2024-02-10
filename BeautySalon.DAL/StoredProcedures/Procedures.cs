@@ -47,5 +47,6 @@ public class Procedures
     public const string RemoveServiceById = "RemoveServiceById";
 
 
+    public const string GetOrdersByClientId2 = "GetOrdersByClientId2";
 
 }
