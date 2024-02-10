@@ -9,7 +9,7 @@ namespace BeautySalon.DAL.Repositories;
 
 public class IntervalsRepository : IIntervalsRepository
 {
-    public List<IntеrvalsDTO> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId)
+    public List<IntеrvalsDTO> GetAllShiftsWithFreeIntervalsOnCurrentService(int shiftId,int serviceId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {

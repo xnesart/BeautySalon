@@ -1,3 +1,4 @@
+using BeautySalon.BLL;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
@@ -219,6 +220,7 @@ class Program
         //    Console.WriteLine();
         //}
 
+<<<<<<< HEAD
         ////Работает
         //IServicesRepository servicesRepository = new ServicesRepository();
         //var services = servicesRepository.GetAllServices();
@@ -235,6 +237,11 @@ class Program
         IServicesRepository servicesRepository = new ServicesRepository();
         servicesRepository.UpdateServiceTitle(1, "Стрижка бензопилой");
 
+=======
+        IntervalsClient intervalsClient = new IntervalsClient();
+        var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
+        Console.ReadLine();
+>>>>>>> TatianaYstinova/Task_AddBLL
 
         #endregion
     }
