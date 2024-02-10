@@ -21,7 +21,8 @@ public class IntervalsClient
 
     public List<IntеrvalsDTO> GetAllFreeIntervalsInCurrentShiftOnCurrentService(int shiftId, int serviceId)
     {
-        List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(shiftId,serviceId); 
+        List<IntеrvalsDTO> intervals =
+            _intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(shiftId, serviceId);
         return _mapper.Map<List<IntеrvalsDTO>>(intervals);
         return intervals;
     }
@@ -29,7 +30,7 @@ public class IntervalsClient
     public List<IntervalsInputModel> GetAllIntervals(string day)
     {
         List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllIntervals(day);
-        return _mapper.Map<List<IntervalsInputModel>>(intervals);
-
+        var result = _mapper.Map<List<IntervalsInputModel>>(intervals);
+        return result;
     }
 }
