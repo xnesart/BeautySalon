@@ -8,9 +8,11 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<IntеrvalsDTO, IntervalsClient>();
-        CreateMap<ShiftsDTO, AllIntervalsInputModel>();
+        CreateMap<IntеrvalsDTO, IntervalsOutputModel>();
+
+        CreateMap<ShiftsDTO, ShiftsOutputModel>();
+    }
         // CreateMap<ShiftsDTO, ShiftsInputModel>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
         //     .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title));
-    }
+    
 }

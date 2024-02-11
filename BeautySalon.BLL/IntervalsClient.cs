@@ -27,10 +27,10 @@ public class IntervalsClient
         return intervals;
     }
 
-    public List<IntervalsInputModel> GetAllIntervals(string day)
+    public List<IntervalsOutputModel> GetAllIntervals(string day)
     {
         List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllIntervals(day);
-        var result = _mapper.Map<List<IntervalsInputModel>>(intervals);
+        var result = _mapper.Map<List<IntervalsOutputModel>>(intervals);
         return result;
     }
 }
