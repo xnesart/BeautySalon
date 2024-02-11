@@ -8,7 +8,7 @@ public class IntervalsOutputModel
 
     public string Title { get; set; }
 
-    public List<ShiftsDTO> Shifts { get; set; }
+    public List<ShiftsOutputModel> Shifts { get; set; }
 
     public DateTime StartTime { get; set; }
 
