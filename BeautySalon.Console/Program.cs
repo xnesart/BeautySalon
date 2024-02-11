@@ -150,7 +150,7 @@ class Program
         // var userRepositories = userRepository.GetAllWorkersByRoleId();
         // foreach (var user in userRepositories)
         // {
-        //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
+        //     Console.WriteLine();
         // }
 
         ////Работает
@@ -220,7 +220,7 @@ class Program
         //{
         //    Console.WriteLine();
         //}
-
+        
         ////Работает
         //IServicesRepository servicesRepository = new ServicesRepository();
         //var services = servicesRepository.GetAllServices();
@@ -257,7 +257,30 @@ class Program
         ////Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.AddClientToFreeMaster(2, 1, 2, 30);
+<<<<<<< HEAD
 
+=======
+        
+        #endregion
+        
+        #region Bll
+        
+        ////Работает
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
+        // Console.ReadLine();
+        
+        ////Работает
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllIntervals("2024-02-02");
+        // Console.ReadLine();
+        
+        ////Работает
+        // UserClient userClient = new UserClient();
+        // var q = userClient.GetAllWorkersByRoleId();
+        // Console.ReadLine();
+        
+>>>>>>> TatianaYstinova/main
         #endregion
     }
 }
