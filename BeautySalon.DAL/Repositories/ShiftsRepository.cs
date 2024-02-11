@@ -64,4 +64,37 @@ public class ShiftsRepository : IShiftsRepository
                 }, splitOn: "Id,IsBusy").ToList();
         }
     }
+    public List<GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService (int serviceId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+
+            var parameter = new
+            {
+                ServiceId = serviceId,
+            };
+
+            return connection.Query<ServicesDTO, ShiftsDTO, GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO>
+                (
+                Procedures.GetAllShiftsWithFreeIntervalsOnCurrentService,
+                (service, shift) =>
+                {
+                    GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO getAllShifts = new GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO();
+
+                    getAllShifts.Services = new ServicesDTO();
+                    getAllShifts.Services.Id = service.Id;
+                    getAllShifts.Services.Title = service.Title;
+
+                    getAllShifts.Shifts = new ShiftsDTO();
+                    getAllShifts.Shifts.Id = shift.Id;
+                    getAllShifts.Shifts.Title = shift.Title;
+                    getAllShifts.Shifts.StartTime = shift.StartTime;
+
+                    return getAllShifts;
+                },
+                parameter ,
+                splitOn: "Id,Id"
+                 ).ToList();
+        }
+    }
 }
