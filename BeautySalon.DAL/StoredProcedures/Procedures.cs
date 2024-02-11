@@ -48,13 +48,9 @@ public class Procedures
     public const string AddClientToFreeMaster = "AddClientToFreeMaster";
     public const string GetAllOrdersOnToday = "GetAllOrdersOnToday";
 
-=======
     public const string GetOrdersByClientId2 = "GetOrdersByClientId2";
     public const string UpdateOrderTimeForClientById = "UpdateOrderTimeForClientById";
     public const string CreateNewOrder = "CreateNewOrder";
     public const string GetOrderInfo = "GetOrderInfo";
     public const string GetAllFreeIntervalsOnCurrentService = "GetAllFreeIntervalsOnCurrentService";
-
-
-
 }
