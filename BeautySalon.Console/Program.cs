@@ -169,7 +169,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Hаботает
+        ////Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // var services = servicesRepository.GetAllServicesByIdFromCurrentType(1);
         // foreach (var service in services)
@@ -257,12 +257,6 @@ class Program
         ////Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.AddClientToFreeMaster(2, 1, 2, 30);
-   
-        
-        
-        //IntervalsClient intervalsClient = new IntervalsClient();
-        //var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
-        //Console.ReadLine();
 
         #endregion
     }
