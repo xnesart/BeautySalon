@@ -1,9 +1,8 @@
-namespace BeautySalon.BLL.Models;
+﻿namespace BeautySalon.BLL.Models;
 
-public class ShiftsInputModel
+public class AllIntervalsInputModel
 {
     public int Id { get; set; }
 
     public string Title { get; set; }
-    
 }

@@ -216,10 +216,14 @@ class Program
         //    Console.WriteLine();
         //}
 
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
+        // Console.ReadLine();
+        
+        
         IntervalsClient intervalsClient = new IntervalsClient();
-        var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
+        var q = intervalsClient.GetAllIntervals("2024-02-02");
         Console.ReadLine();
-
         #endregion
     }
 }

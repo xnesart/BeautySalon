@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BeautySalon.BLL.Mapping;
+using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
@@ -20,8 +21,16 @@ public class IntervalsClient
 
     public List<IntеrvalsDTO> GetAllFreeIntervalsInCurrentShiftOnCurrentService(int shiftId, int serviceId)
     {
-        List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(shiftId,serviceId); 
+        List<IntеrvalsDTO> intervals =
+            _intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(shiftId, serviceId);
         return _mapper.Map<List<IntеrvalsDTO>>(intervals);
         return intervals;
+    }
+
+    public List<IntervalsOutputModel> GetAllIntervals(string day)
+    {
+        List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllIntervals(day);
+        var result = _mapper.Map<List<IntervalsOutputModel>>(intervals);
+        return result;
     }
 }
