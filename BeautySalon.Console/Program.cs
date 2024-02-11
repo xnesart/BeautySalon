@@ -169,7 +169,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Hаботает
+        ////Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // var services = servicesRepository.GetAllServicesByIdFromCurrentType(1);
         // foreach (var service in services)
@@ -220,27 +220,7 @@ class Program
         //{
         //    Console.WriteLine();
         //}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-        // IntervalsClient intervalsClient = new IntervalsClient();
-        // var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
-        // Console.ReadLine();
-        #endregion
-        #region Bll
-        // BLL
-        //Работает
-        // IntervalsClient intervalsClient = new IntervalsClient();
-        // var q = intervalsClient.GetAllIntervals("2024-02-02");
-        // Console.ReadLine();
         
-        //Работает
-        // UserClient userClient = new UserClient();
-        // var q = userClient.GetAllWorkersByRoleId();
-        // Console.ReadLine();
-=======
-=======
->>>>>>> main
         ////Работает
         //IServicesRepository servicesRepository = new ServicesRepository();
         //var services = servicesRepository.GetAllServices();
@@ -277,14 +257,26 @@ class Program
         ////Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.AddClientToFreeMaster(2, 1, 2, 30);
-   
         
+        #endregion
         
-        //IntervalsClient intervalsClient = new IntervalsClient();
-        //var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
-        //Console.ReadLine();
-
->>>>>>> main
+        #region Bll
+        
+        ////Работает
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
+        // Console.ReadLine();
+        
+        ////Работает
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllIntervals("2024-02-02");
+        // Console.ReadLine();
+        
+        ////Работает
+        // UserClient userClient = new UserClient();
+        // var q = userClient.GetAllWorkersByRoleId();
+        // Console.ReadLine();
+        
         #endregion
     }
 }
