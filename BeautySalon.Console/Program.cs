@@ -206,12 +206,12 @@ class Program
         //}
 
         ////Работает
-        //IOrderRepository orderRepository = new OrderRepository();
-        //var orders = orderRepository.GetAllOrdersOnTodayForMasters();
-        //foreach (var user in orders)
-        //{
-        //    Console.WriteLine();
-        //}
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var orders = orderRepository.GetAllOrdersOnTodayForMasters();
+        // foreach (var user in orders)
+        // {
+        //     Console.WriteLine();
+        // }
 
         ////Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
@@ -245,6 +245,20 @@ class Program
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.RemoveServiceById(6);
         // Console.ReadLine();
+        
+        ////Работает
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var orders = orderRepository.GetAllOrdersOnToday();
+        // foreach (var user in orders)
+        // {
+        //     Console.WriteLine();
+        // }
+        
+        ////Работает
+        // IOrderRepository orderRepository = new OrderRepository();
+        // orderRepository.AddClientToFreeMaster(2, 1, 2, 30);
+   
+        
         
         //IntervalsClient intervalsClient = new IntervalsClient();
         //var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);

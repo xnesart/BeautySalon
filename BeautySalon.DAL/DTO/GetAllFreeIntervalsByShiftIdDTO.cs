@@ -11,6 +11,7 @@ public class GetAllFreeIntervalsByShiftIdDTO
     public DateTime StartTime { get; set; }
 
     public bool? IsBusy { get; set; }
+    
     public bool? Busy { get; set; }
          
     public bool? IsDeleted { get; set; }
