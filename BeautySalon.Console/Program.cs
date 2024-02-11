@@ -145,7 +145,7 @@ class Program
         // var userRepositories = userRepository.GetAllWorkersByRoleId();
         // foreach (var user in userRepositories)
         // {
-        //     Console.WriteLine($"{user.Id} {user.Name} {user.Phone} {user.Mail} {user.Roles}");
+        //     Console.WriteLine();
         // }
 
         ////Работает
@@ -219,11 +219,18 @@ class Program
         // IntervalsClient intervalsClient = new IntervalsClient();
         // var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
         // Console.ReadLine();
+        #endregion
+        #region Bll
+        // BLL
+        //Работает
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllIntervals("2024-02-02");
+        // Console.ReadLine();
         
-        
-        IntervalsClient intervalsClient = new IntervalsClient();
-        var q = intervalsClient.GetAllIntervals("2024-02-02");
-        Console.ReadLine();
+        //Работает
+        // UserClient userClient = new UserClient();
+        // var q = userClient.GetAllWorkersByRoleId();
+        // Console.ReadLine();
         #endregion
     }
 }
