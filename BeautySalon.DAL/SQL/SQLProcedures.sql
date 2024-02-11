@@ -220,29 +220,44 @@ begin
     where Id = @Id
 end
 go
--- ✓ Записать клиента к СВОБОДНОМУ мастеру ?? Тут надо разобраться!
-create proc AddClientToFreeMaster
-    @ClientId INT, @ServiceId INT, @ShiftId INT, @IntervalId INT, @Date DATETIME as
-begin
-    if exists (select 1 from Intervals where Id = @IntervalId AND IsBusy = 0)
-        begin
-            -- Проверка, что мастер свободен в выбранном интервале
-            if not exists (
-                select 1
-                from Orders
-                where MasterId IN (select MasterId FROM Shifts WHERE Id = @ShiftId)
-                  and StartIntervalId = @IntervalId
-                  and Date = @Date
-            )
-                begin
-                    -- Вставка заказа
-                    INSERT INTO Orders (Date, MasterId, ClientId, ServiceId, StartIntervalId, IsDeleted)
-                    VALUES (@Date, (SELECT MasterId FROM Shifts WHERE Id = @ShiftId), @ClientId, @ServiceId, @IntervalId, 0)
-            -- Пометить интервал как занятый
-                    UPDATE Intervals SET IsBusy = 1 WHERE Id = @IntervalId
-                end
-        end
-end
+-- -- ✓ Записать клиента к СВОБОДНОМУ мастеру ?? Тут надо разобраться!
+-- create proc AddClientToFreeMaster
+--     @ClientId INT, @ServiceId INT, @ShiftId INT, @IntervalId INT, @Date DATETIME as
+-- begin
+--     if exists (select 1 from Intervals where Id = @IntervalId AND IsBusy = 0)
+--         begin
+--             -- Проверка, что мастер свободен в выбранном интервале
+--             if not exists (
+--                 select 1
+--                 from Orders
+--                 where MasterId IN (select MasterId FROM Shifts WHERE Id = @ShiftId)
+--                   and StartIntervalId = @IntervalId
+--                   and Date = @Date
+--             )
+--                 begin
+--                     -- Вставка заказа
+--                     INSERT INTO Orders (Date, MasterId, ClientId, ServiceId, StartIntervalId, IsDeleted)
+--                     VALUES (@Date, (SELECT MasterId FROM Shifts WHERE Id = @ShiftId), @ClientId, @ServiceId, @IntervalId, 0)
+--             -- Пометить интервал как занятый
+--                     UPDATE Intervals SET IsBusy = 1 WHERE Id = @IntervalId
+--                 end
+--         end
+-- end
+-- go
+-- ✓ Записать клиента к СВОБОДНОМУ мастеру
+CREATE PROCEDURE AddClientToFreeMaster
+    @ClientId INT,
+    @ServiceId INT,
+    @ShiftId INT,
+    @IntervalId INT
+AS
+BEGIN
+    DECLARE @TodayDate DATETIME = GETDATE();
+    INSERT INTO Orders (Date, MasterId, ClientId, ServiceId, StartIntervalId, IsDeleted)
+    VALUES (@TodayDate, (SELECT MasterId FROM Shifts WHERE Id = @ShiftId), @ClientId, @ServiceId, @IntervalId, 0)
+    UPDATE Intervals
+    SET IsBusy=1 WHERE @IntervalId=Intervals.Id
+END
 go
 -- ✓ Вывести все заказы на сегодня
 create proc GetAllOrdersOnToday
