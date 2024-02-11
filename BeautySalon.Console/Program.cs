@@ -257,9 +257,6 @@ class Program
         ////Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.AddClientToFreeMaster(2, 1, 2, 30);
-<<<<<<< HEAD
-
-=======
         
         #endregion
         
@@ -280,7 +277,6 @@ class Program
         // var q = userClient.GetAllWorkersByRoleId();
         // Console.ReadLine();
         
->>>>>>> TatianaYstinova/main
         #endregion
     }
 }
