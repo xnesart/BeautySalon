@@ -5,24 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BeautySalon.BLL
+namespace BeautySalon.BLL.Clents
 {
     public class ServiceClient
     {
+        
         public ServiceClient()
         {
             _serviceRepository = new ServiceRepository();
             var config = new MapperConfiguration(cfg => { cfg.AddProfile(new MappingProfile()); });
             _mapper = new Mapper(config);
         }
-
-        public List<AllFreeIntervalsOnCurrentServiceOutputModel> GetAllFreeIntervalsOnCurrentService(int serviceId)
+        public  void AddService()
         {
-            List<ServicesDTO> services = _serviceRepository.GetAllFreeIntervalsOnCurrentService(serviceId);
-            var result = _mapper.Map<List<IntеrvalsDTO>>(intervals);
-            return result;
-
-
+            //ggs
         }
+        //public List<> GetAllFreeIntervalsOnCurrentService() 
+        //{
+        //}
+
     }
 }

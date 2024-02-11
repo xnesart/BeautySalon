@@ -4,7 +4,7 @@ using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
-namespace BeautySalon.BLL;
+namespace BeautySalon.BLL.Clents;
 
 public class IntervalsClient
 {
@@ -20,11 +20,11 @@ public class IntervalsClient
 
     public List<IntеrvalsDTO> GetAllFreeIntervalsInCurrentShiftOnCurrentService(int shiftId, int serviceId)
     {
-        List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(shiftId,serviceId); 
+        List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(shiftId, serviceId);
         return _mapper.Map<List<IntеrvalsDTO>>(intervals);
         return intervals;
     }
 
-    
-    
+
+
 }

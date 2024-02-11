@@ -136,11 +136,11 @@ public class OrderRepository : IOrderRepository
         {
             var parameters = new
             {
-            ClientId = clientId,
-            MasterId = masterId,
-            Date = date,
-            ServiceId = serviceId,
-            IntervalId = intervalId
+                ClientId = clientId,
+                MasterId = masterId,
+                Date = date,
+                ServiceId = serviceId,
+                IntervalId = intervalId
             };
 
             connection.Query<OrdersDTO>(Procedures.CreateNewOrder, parameters);

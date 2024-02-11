@@ -221,7 +221,7 @@ create proc RemoveServiceById
 begin
     update Services
     set IsDeleted = 1
-    where Id = @Id
+    where Id = @Id  
 end
 
 go
@@ -245,6 +245,7 @@ begin
                     VALUES (@Date, (SELECT MasterId FROM Shifts WHERE Id = @ShiftId), @ClientId, @ServiceId, @IntervalId, 0)
 
 -- Пометить интервал как занятый
+
                     UPDATE Intervals SET IsBusy = 1 WHERE Id = @IntervalId
                 end
         end

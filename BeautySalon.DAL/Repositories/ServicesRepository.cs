@@ -85,7 +85,6 @@ namespace BeautySalon.DAL.Repositories
                          allFreeIntervals.Intеrvals.StartTime = interval.StartTime;
 
                          return allFreeIntervals;
-
                      },
                      parameter,
                      splitOn: "Id,Id"
