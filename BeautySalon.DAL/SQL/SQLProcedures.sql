@@ -250,7 +250,7 @@ as
 begin
     declare @Today datetime
     set @Today = getdate()
-    select Orders.Date, Orders.MasterId, Orders.ClientId, Orders.ServiceId, Orders.StartIntervalId, Orders.IsCompleted, Orders.IsDeleted from Orders
+    select Orders.Id, Orders.Date, Orders.MasterId, Orders.ClientId, Orders.ServiceId, Orders.StartIntervalId, Orders.IsCompleted, Orders.IsDeleted from Orders
     where convert(date, Orders.Date) = convert(date, @Today)
 end
 go

@@ -246,6 +246,23 @@ class Program
         // servicesRepository.RemoveServiceById(6);
         // Console.ReadLine();
         
+        ////Работает
+        // IIntervalsRepository intervalRepository = new IntervalsRepository();
+        // var intervals = intervalRepository.AddClientToFreeMaster(1, 1, 1, 1, "11.02");
+        // // int clientId, int serviceId, int shiftId, int intervalId, string date
+        // foreach (var isBusy in intervals)
+        // {
+        //     Console.WriteLine();
+        // }
+        
+        ////Работает
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var orders = orderRepository.GetAllOrdersOnToday();
+        // foreach (var user in orders)
+        // {
+        //     Console.WriteLine();
+        // }
+        
         //IntervalsClient intervalsClient = new IntervalsClient();
         //var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
         //Console.ReadLine();

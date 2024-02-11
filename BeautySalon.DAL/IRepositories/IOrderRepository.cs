@@ -10,6 +10,8 @@ public interface IOrderRepository
     
     public List<GetAllOrdersOnTodayForMastersDTO> GetAllOrdersOnTodayForMasters();
     public List<OrdersByClientIdDTO> GetOrderByClientId(int clientid);
+    
+    public List<GetAllOrdersOnTodayDTO> GetAllOrdersOnToday();
 
 
 

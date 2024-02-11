@@ -10,4 +10,6 @@ public interface IIntervalsRepository
 
     public List<IntеrvalsDTO> GetAllIntervals(string day);
     
+    // public List<AddClientToFreeMasterDTO> AddClientToFreeMaster(int clientId, int serviceId, int shiftId, int intervalId, string date);
+    
 }

@@ -77,4 +77,12 @@ public class IntervalsRepository : IIntervalsRepository
                 }, parameters, splitOn: "Id").ToList();
         }
     }
+    
+    // public List<AddClientToFreeMasterDTO> AddClientToFreeMaster(int clientId, int serviceId, int shiftId, int intervalId, string date)
+    // {
+    //     using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+    //     {
+    //
+    //     }
+    // }
 }

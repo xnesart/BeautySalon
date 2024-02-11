@@ -113,5 +113,13 @@ public class OrderRepository : IOrderRepository
                  ).ToList();
         }
     }
+    
+    public List<GetAllOrdersOnTodayDTO> GetAllOrdersOnToday()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetAllOrdersOnTodayDTO>(Procedures.GetAllOrdersOnToday).ToList();
+        }
+    }
 }
    

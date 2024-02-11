@@ -5,7 +5,6 @@ public class GetAllOrdersOnTodayForMastersDTO
     public int Id { get; set; }
 
     public DateTime Date { get; set; }
-
     public List<ServicesDTO> Services { get; set; }
     public List<UsersDTO> Master { get; set; }
     public List<UsersDTO> Client { get; set; }
