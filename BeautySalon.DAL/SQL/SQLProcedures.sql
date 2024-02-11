@@ -151,7 +151,7 @@ as
 begin
     declare @Today datetime
     set @Today = GETDATE()
-    select Shifts.Id, Shifts.Title, Shifts.StartTime, Intervals.IsBusy from Shifts
+    select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.StartTime from Shifts
     join Intervals on Intervals.ShiftId = Shifts.Id
     where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
 end

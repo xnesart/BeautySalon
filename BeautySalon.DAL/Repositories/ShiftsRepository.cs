@@ -58,10 +58,9 @@ public class ShiftsRepository : IShiftsRepository
                     {
                         shifts.Intervals = new List<IntеrvalsDTO>();
                     }
-
                     shifts.Intervals.Add(intervals);
                     return shifts;
-                }, splitOn: "Id,IsBusy").ToList();
+                }, splitOn: "Id,StartTime").ToList();
         }
     }
 }

@@ -89,7 +89,7 @@ class Program
         //}
 
         ////Работает
-        //IShiftsRepository shiftRepository = new ShiftsRepository();
+        //IShiftsRepository shiftsRepository = new ShiftsRepository();
         //var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployeesOnToday();
         //foreach (var shift in shiftsRepositories)
         //{
@@ -101,14 +101,14 @@ class Program
         //}
 
         ////Работает
-        // IShiftsRepository shiftRepository = new ShiftsRepository();
-        // var shiftsRepositories = shiftRepository.GetAllShiftsWithFreeIntervals();
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // var shiftsRepositories = shiftsRepository.GetAllShiftsWithFreeIntervals();
         // foreach (var shift in shiftsRepositories)
         // {
-        //     Console.WriteLine($"{shift.Id}, {shift.Title}, {shift.StartTime}");
+        //     Console.WriteLine();
         //     foreach (var value in shift.Intervals)
         //     {
-        //         Console.WriteLine($"{value.IsBusy}");
+        //         Console.WriteLine();
         //     }
         // }
 
