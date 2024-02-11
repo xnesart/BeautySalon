@@ -53,9 +53,75 @@ namespace BeautySalon.DAL.Repositories
                 var parameters = new
                 {
                     ServiceId = serviceId,
-                    ServiceName = serviceTitle
+                    ServiceTitle = serviceTitle
                 };
                 connection.Query(Procedures.UpdateServiceTitle, parameters).ToList();
+            }
+        }
+
+        public List<GetAllServicesDTO> GetAllServices()
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                return connection.Query<GetAllServicesDTO, TypesDTO, GetAllServicesDTO>(
+                    Procedures.GetAllServices,
+                    (services, types) =>
+                    {
+                        services.Types = types;
+                        return services;
+                    }, splitOn: "Title").ToList();
+            }
+        }
+
+        public void AddServiceById(string title, int type, string duration, decimal price)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                var parameters = new
+                {
+                    ServiceTitle = title,
+                    ServiceType = type,
+                    ServiceDuration = duration,
+                    ServicePrice = price
+                }; connection.Query<ServicesDTO>(Procedures.AddServiceById, parameters).ToList();
+            }
+        }
+
+        public void UpdateServicePrice(int serviceId, decimal servicePrice)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                var parameters = new
+                {
+                    ServiceId = serviceId,
+                    ServicePrice = servicePrice
+                };
+                connection.Query(Procedures.UpdateServicePrice, parameters).ToList();
+            }
+        }
+        
+        public void UpdateServiceDuration(int serviceId, string serviceDuration)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                var parameters = new
+                {
+                    ServiceId = serviceId,
+                    ServiceDuration = serviceDuration
+                };
+                connection.Query(Procedures.UpdateServiceDuration, parameters).ToList();
+            }
+        }
+        
+        public void RemoveServiceById(int id)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                var parameters = new
+                {
+                    Id = id
+                };
+                connection.Query<ServicesDTO>(Procedures.RemoveServiceById, parameters);
             }
         }
     }

@@ -113,5 +113,28 @@ public class OrderRepository : IOrderRepository
                  ).ToList();
         }
     }
+    
+    public List<GetAllOrdersOnTodayDTO> GetAllOrdersOnToday()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetAllOrdersOnTodayDTO>(Procedures.GetAllOrdersOnToday).ToList();
+        }
+    }
+
+    public void AddClientToFreeMaster(int clientId, int serviceId, int shiftId, int intervalId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                ClientId = clientId,
+                ServiceId = serviceId,
+                ShiftId = shiftId,
+                IntervalId = intervalId
+            };
+            connection.Query(Procedures.AddClientToFreeMaster, parameters);
+        }
+    }
 }
    
