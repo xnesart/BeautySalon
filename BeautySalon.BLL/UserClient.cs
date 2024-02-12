@@ -63,5 +63,12 @@ public class UserClient
             _userRepository.GetMasterByNameAndPhone(name,phone);
         var result = _mapper.Map<List<GetMasterByNameAndPhoneInputModel>>(users);
         return result;
+    } 
+    public List<GetAllWorkersWithContactsByUserIdInputModel> GetAllWorkersWithContactsByUserId()
+    {
+        List<GetAllWorkersWithContactsByUserIdDTO> users =
+            _userRepository.GetAllWorkersWithContactsByUserId();
+        var result = _mapper.Map<List<GetAllWorkersWithContactsByUserIdInputModel>>(users);
+        return result;
     }
 }

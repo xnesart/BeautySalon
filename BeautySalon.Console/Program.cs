@@ -282,9 +282,9 @@ class Program
         // Console.ReadLine();
 
         ////Работает
-        IntervalsClient intervalsClient = new IntervalsClient();
-        var q = intervalsClient.GetAllIntervals("2024-02-12");
-        Console.ReadLine();
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllIntervals("2024-02-12");
+        // Console.ReadLine();
 
         ////Работает
         // UserClient userClient = new UserClient();
@@ -313,6 +313,11 @@ class Program
         // UserClient userClient = new UserClient();
         // var q = userClient.GetMasterByNameAndPhone("Анна Петровна Брек","8923467127");
         // Console.ReadLine();
+        //
+        //Работает
+        UserClient userClient = new UserClient();
+        var q = userClient.GetAllWorkersWithContactsByUserId();
+        Console.ReadLine();
         #endregion
     }
     
