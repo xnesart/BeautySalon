@@ -1,6 +1,6 @@
 namespace BeautySalon.BLL.Models;
 
-public class GetClientByNameAndPhoneInputModel
+public class GetMasterByNameAndIdInputModel
 {
     public int? Id { get; set; }
     public int? ChatId { get; set; }
@@ -9,6 +9,7 @@ public class GetClientByNameAndPhoneInputModel
     public string? Phone { get; set; }
     public string? Mail { get; set; }
     public int? RoleId { get; set; }
+    public decimal? Salary { get; set; }
     public bool? IsBlocked { get; set; }
     public bool? IsDeleted { get; set; }
 }

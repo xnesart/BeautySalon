@@ -19,15 +19,15 @@ create proc GetClientByNameAndPhone
     @Name nvarchar(50), @Phone nvarchar(30) as
 begin
     select Id,ChatId, UserName, Name, Phone,Mail,RoleId,Salary,IsBlocked, IsDeleted from Users
-    where Users.Name = @Name and Users.Phone = @Phone
+    where Users.Name = @Name and Users.Phone = @Phone and RoleId = 3
 end
 go
 -- ✓ Найти мастера по имени и id
 create proc GetMasterByNameAndId
     @Name nvarchar(50), @Id int as
 begin
-    select Users.Name as Master, Users.Id as MasterId from Users
-    where Users.Name = @Name and Users.Id = @Id
+    select Id ,ChatId, UserName, Name , Phone,Mail,RoleId,Salary,IsBlocked, IsDeleted from Users
+    where Users.Name = @Name and Users.Id = @Id and RoleId = 2
 end
 go
 -- ✓ Найти мастера по имени и телефону
