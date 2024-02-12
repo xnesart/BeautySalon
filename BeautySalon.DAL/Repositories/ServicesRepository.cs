@@ -1,4 +1,4 @@
-﻿using BeautySalon.DAL.DTO;
+using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.StoredProcedures;
 using Microsoft.Data.SqlClient;
 using System;
@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BeautySalon.DAL.IRepositories;
 using Dapper;
+using System.Reflection.Metadata;
 
 namespace BeautySalon.DAL.Repositories
 {
@@ -58,6 +59,39 @@ namespace BeautySalon.DAL.Repositories
                 connection.Query(Procedures.UpdateServiceTitle, parameters).ToList();
             }
         }
+        public List<AllFreeIntervalsOnCurrentServiceDTO> GetAllFreeIntervalsOnCurrentService(int serviceId)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            {
+                var parameter = new
+                {
+                    ServiceId = serviceId
+                };
+
+                return connection.Query<ServicesDTO, IntеrvalsDTO, AllFreeIntervalsOnCurrentServiceDTO>
+                 (
+                     Procedures.GetAllFreeIntervalsOnCurrentService,
+                     (service, interval) =>
+                     {
+                         AllFreeIntervalsOnCurrentServiceDTO allFreeIntervals = new AllFreeIntervalsOnCurrentServiceDTO();
+
+                         allFreeIntervals.Services = new ServicesDTO();
+                         allFreeIntervals.Services.Id = service.Id;
+                         allFreeIntervals.Services.Title = service.Title;
+
+                         allFreeIntervals.Intеrvals = new IntеrvalsDTO();
+                         allFreeIntervals.Intеrvals.Id = interval.Id;
+                         allFreeIntervals.Intеrvals.Title = interval.Title;
+                         allFreeIntervals.Intеrvals.StartTime = interval.StartTime;
+
+                         return allFreeIntervals;
+                     },
+                     parameter,
+                     splitOn: "Id,Id"
+                 ).ToList();
+
+            }
+        }   
 
         public List<GetAllServicesDTO> GetAllServices()
         {

@@ -4,6 +4,8 @@ using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.Console;
 
+using BeautySalon.BLL.Clents;
+using BeautySalon.BLL.OrderModels.InputModels;
 using BeautySalon.DAL.DTO;
 using System;
 
@@ -11,10 +13,57 @@ class Program
 {
     static void Main(string[] args)
     {
-        //    IShiftsRepository repository = new ShiftsRepository();
-        //    List<GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO> shifts = repository.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
-        //    shifts.ForEach(shift => { Console.WriteLine(shift.Shifts.Id); });
+        IOrderRepository repo = new OrderRepository();
+        List<OrdersByClientIdDTO> orders = repo.GetOrderByClientId(4);
 
+        // ��
+        Console.WriteLine("��");
+
+        orders.ForEach(order =>
+        {
+            Console.Write(order.Order.Id + " ");
+            Console.Write(order.Order.ServiceId + " ");
+            Console.Write(order.Service.Title + " ");
+            Console.Write(order.Master.Name + " ");
+            Console.Write(order.Client.Name + " ");
+            Console.Write(order.StartIntervalId + " ");
+            Console.Write(order.Interval + " ");
+            Console.Write(order.Date + " ");
+
+            Console.WriteLine();
+            Console.WriteLine();
+        });
+
+        OrderClient client = new OrderClient();
+        client.CreateNewOrder(new NewOrderInputModel()
+        {
+            ClientId = 4,
+            Date = DateTime.Now,
+            MasterId = 1,
+            ServiceId = 1,
+            StartIntervalId = 1
+        });
+
+        // �����
+        Console.WriteLine();
+        Console.WriteLine("�����");
+
+        orders = repo.GetOrderByClientId(4);
+
+        orders.ForEach(order =>
+        {
+            Console.Write(order.Order.Id + " ");
+            Console.Write(order.Order.ServiceId + " ");
+            Console.Write(order.Service.Title + " ");
+            Console.Write(order.Master.Name + " ");
+            Console.Write(order.Client.Name + " ");
+            Console.Write(order.StartIntervalId + " ");
+            Console.Write(order.Interval.StartTime + " ");
+            Console.Write(order.Date + " ");
+
+            Console.WriteLine();
+            Console.WriteLine();
+        });
         // IIntervalsRepository repositoryInt = new IntervalsRepository();
         // List<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO> intervals = repositoryInt.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 1);
         // intervals.ForEach(intervals => { Console.WriteLine(intervals.Interval.StartTime); });

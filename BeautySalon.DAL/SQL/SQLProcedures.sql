@@ -1,4 +1,4 @@
-﻿--процедуры для админа
+--процедуры для админа
 -- ✓ Зарегистрировать пользователя по ChatId, заполнив его имя, телефон и почту
 create proc AddUserByChatId
     @ChatId int, @UserName nvarchar(50), @Name nvarchar(50), @Phone nvarchar(30), @Mail nvarchar(30), @RoleId int, @Salary decimal, @IsBlocked bit, @IsDeleted bit as
@@ -224,7 +224,7 @@ create proc RemoveServiceById
 begin
     update Services
     set IsDeleted = 1
-    where Id = @Id
+    where Id = @Id  
 end
 go
 -- -- ✓ Записать клиента к СВОБОДНОМУ мастеру ?? Тут надо разобраться!
