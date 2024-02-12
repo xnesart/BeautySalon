@@ -237,6 +237,12 @@ class Program
         //    Console.WriteLine();
         //}
 
+        // IUserRepository userRepository = new UserRepository();
+        // var users = userRepository.GetClientByNameAndPhone("Кристина Валерьевна Заливняк","642894209");
+        // foreach (var user in users)
+        // {
+        //     Console.WriteLine();
+        // }
         ////Работает
         //IServicesRepository servicesRepository = new ServicesRepository();
         //servicesRepository.AddServiceById("Бритьё налысо", 1, "00:45", 500);
@@ -290,10 +296,13 @@ class Program
         // Console.ReadLine();
         
         //Работает
-        UserClient client = new UserClient();
-        client.AddUserByChatId(1232,"rabbit","Петя Петров Витальевич","87474344334","jerr@mail.com",3,0,0,0);
+        // UserClient client = new UserClient();
+        // client.AddUserByChatId(1232,"rabbit","Петя Петров Витальевич","87474344334","jerr@mail.com",3,0,0,0);
 
-
+        ////Работает
+        // UserClient userClient = new UserClient();
+        // var q = userClient.GetClientByNameAndPhone("Кристина Валерьевна Заливняк","642894209");
+        // Console.ReadLine();
         #endregion
     }
     

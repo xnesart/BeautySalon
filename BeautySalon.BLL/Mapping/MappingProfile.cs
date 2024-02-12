@@ -11,6 +11,7 @@ public class MappingProfile : Profile
         CreateMap<IntеrvalsDTO, IntervalsOutputModel>();
         CreateMap<UsersDTO, GetAllWorkersByRoleIdInputModel>();
         CreateMap<UsersDTO, GetClientByNameAndIdInputModel>();
+        CreateMap<UsersDTO, GetClientByNameAndPhoneInputModel>();
 
         //CreateMap<ShiftsDTO, ShiftsOutputModel>();
     }
