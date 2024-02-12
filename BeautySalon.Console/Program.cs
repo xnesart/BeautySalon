@@ -314,10 +314,16 @@ class Program
         // var q = userClient.GetMasterByNameAndPhone("Анна Петровна Брек","8923467127");
         // Console.ReadLine();
         //
-        //Работает
-        UserClient userClient = new UserClient();
-        var q = userClient.GetAllWorkersWithContactsByUserId();
-        Console.ReadLine();
+        // //Работает
+        // UserClient userClient = new UserClient();
+        // var q = userClient.GetAllWorkersWithContactsByUserId();
+        // Console.ReadLine();  
+        
+        
+        // //Работает
+        // ShiftsClient shiftsClient = new ShiftsClient();
+        // var q = shiftsClient.GetAllShiftsOnToday();
+        // Console.ReadLine();
         #endregion
     }
     

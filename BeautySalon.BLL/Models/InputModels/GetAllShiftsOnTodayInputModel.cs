@@ -1,7 +1,7 @@
-namespace BeautySalon.DAL.DTO;
+namespace BeautySalon.BLL.Models;
 
-public class GetAllShiftsOnTodayDTO
-{    
+public class GetAllShiftsOnTodayInputModel
+{
     public int? Id { get; set; }
 
     public string? Title { get; set; }
@@ -10,4 +10,5 @@ public class GetAllShiftsOnTodayDTO
 
     public DateTime? EndTime { get; set; }
 
+    public bool? IsDeleted { get; set; }
 }
