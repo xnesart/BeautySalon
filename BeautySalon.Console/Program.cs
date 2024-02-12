@@ -11,20 +11,15 @@ class Program
 {
     static void Main(string[] args)
     {
-<<<<<<< HEAD
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.RemoveOrderForClientByOrderId(1);
 
+        #region NotWorks
 
-        // Не пашет
 
-        #endregion
 
-        #region Works
 
-        ////Работает
-        //IUserRepository userRepository4 = new UserRepository();
-        //userRepository4.AddUserByChatId(32423, "Janet342", "Жанна Дарк", "8999324556", "jannet@mail.ru", 3, 0, 0, 0);
+    
 
         ////Работает
         //IUserRepository userRepository2 = new UserRepository();
