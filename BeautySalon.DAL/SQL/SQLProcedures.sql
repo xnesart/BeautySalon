@@ -273,7 +273,7 @@ begin
     declare @Today datetime
     set @Today = getdate()
     select Orders.Id, Orders.Date, Orders.MasterId, Orders.ClientId, Orders.ServiceId, Orders.StartIntervalId, Orders.IsCompleted, Orders.IsDeleted from Orders
-    where convert(date, Orders.Date) = convert(date, @Today)
+    where convert(date, Orders.Date) = convert(date, @Today) and IsDeleted = 0
 end
 go
 -- ✓ Вывести все заказы на сегодня для всех мастеров

@@ -19,8 +19,6 @@ public class IntervalsClient
         _mapper = new Mapper(config);
     }
 
-    
-
     public List<IntervalsInputModel> GetAllIntervals(string day)
     {
         List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllIntervals(day);
