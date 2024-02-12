@@ -41,4 +41,12 @@ public class UserClient
             _userRepository.AddUserByChatId(chatId, userName, name, phone, mail,
                 roleId, salary, isBlocked, isDeleted);
     }
+    
+    public List<GetClientByNameAndPhoneInputModel> GetClientByNameAndPhone(string name, string phone)
+    {
+        List<UsersDTO> users =
+            _userRepository.GetClientByNameAndPhone(name,phone);
+        var result = _mapper.Map<List<GetClientByNameAndPhoneInputModel>>(users);
+        return result;
+    }
 }
