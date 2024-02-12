@@ -69,4 +69,42 @@ public class IntervalsRepository : IIntervalsRepository
                 }, parameters, splitOn: "Id").ToList();
         }
     }
+    public List<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO> GetAllFreeIntervalsInCurrentShiftOnCurrentService(int serviceId, int shiftId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                ServiceId = serviceId,
+                ShiftId = shiftId
+            };
+
+            return connection.Query<ServicesDTO, ShiftsDTO, IntеrvalsDTO, GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO>
+                (
+                Procedures.GetAllFreeIntervalsInCurrentShiftOnCurrentService,
+                (service, shift, interval) =>
+                {
+                    GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO getAllFree = new GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO();
+
+                    getAllFree.Services = new ServicesDTO();
+                    getAllFree.Services.Id = service.Id;
+                    getAllFree.Services.Title = service.Title;
+
+                    getAllFree.Shifts = new ShiftsDTO();
+                    getAllFree.Shifts.Id = shift.Id;
+                    getAllFree.Shifts.Title = shift.Title;
+                    getAllFree.Shifts.StartTime = shift.StartTime;
+
+                    getAllFree.Interval = new IntеrvalsDTO();
+                    getAllFree.Interval.Id = interval.Id;
+                    getAllFree.Interval.Title = interval.Title;
+                    getAllFree.Interval.StartTime = interval.StartTime;
+
+                    return getAllFree;
+                },
+                parameters,
+                splitOn: "Id,Id,Id"
+                 ).ToList();
+        }
+    }
 }

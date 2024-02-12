@@ -45,5 +45,6 @@ public class Procedures
     public const string GetAllOrdersOnToday = "GetAllOrdersOnToday";
     public const string GetOrdersByClientId2 = "GetOrdersByClientId2";
     public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
+    public const string GetAllFreeIntervalsInCurrentShiftOnCurrentService = "GetAllFreeIntervalsInCurrentShiftOnCurrentService";
 
 }
