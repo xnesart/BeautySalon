@@ -310,6 +310,7 @@ class Program
         // Console.ReadLine();
         //
         
+        ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetMasterByNameAndPhone("Анна Петровна Брек","8923467127");
         // Console.ReadLine();
@@ -324,6 +325,11 @@ class Program
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var q = shiftsClient.GetAllShiftsOnToday();
         // Console.ReadLine();
+
+        // //Работает
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllFreeIntervalsOnCurrentService(1,2);
+        // Console.ReadLine();  
         #endregion
     }
     
