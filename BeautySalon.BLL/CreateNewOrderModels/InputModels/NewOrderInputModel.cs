@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeautySalon.BLL.OrderModels.InputModels
 {
-    public class OrdersInput
+    public class NewOrderInputModel
     {
         public DateTime Date { get; set; }
         public int MasterId { get; set; }

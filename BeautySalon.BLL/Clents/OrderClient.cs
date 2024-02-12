@@ -2,6 +2,7 @@
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.OrderModels.InputModels;
 using BeautySalon.DAL.DTO;
+using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,22 +14,19 @@ namespace BeautySalon.BLL.Clents
 {
     public class OrderClient
     {
-        private OrderRepository _orderRepository;
+        private IOrderRepository _orderRepository;
         private Mapper _mapper;
 
-        public OrderClient() 
+        public OrderClient()
         {
             _orderRepository = new OrderRepository();
             var config = new MapperConfiguration(cfg => { cfg.AddProfile(new MappingProfile()); });
-            _mapper = new Mapper(config);    
+            _mapper = new Mapper(config);
         }
-        public void CreateNewOrder(OrdersInput orders)
+        public void CreateNewOrder(NewOrderInputModel order)
         {
-
-        }
-        public List<OrdersByClientIdDTO> GetOrderByClientId(int clientid)
-        {
-
+            OrdersDTO newOrder = this._mapper.Map<OrdersDTO>(order);
+            this._orderRepository.CreateNewOrder(newOrder);
         }
     }
 }
