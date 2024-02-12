@@ -42,31 +42,25 @@ go
 create proc GetAllWorkersByRoleId 
 as
 begin
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 select Users.Id, Users.RoleId, Roles.Title as Worker,
 Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
 join Roles on Users.RoleId = Roles.Id
 where RoleId = 1 or RoleId = 2
-=======
-=======
->>>>>>> main
+
     select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker, 
            Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
     join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> main
+
 end
 go
 -- ✓ Вывести всех сотрудников по Id и их контакты
-create proc GetAllWorkersWithContactsByUserId 
+create proc GetAllWorkersWithContactsByUserId
 as
 begin
-    select Users.Id as WorkerId, Users.RoleId as WorkerRoleId,  Users.Name, Users.Phone, Users.Mail ,Roles.Title as Worker from Users
-    join Roles on Users.RoleId = Roles.Id
+    select Users.Id, Users.RoleId,  Users.Name, Users.Phone, Users.Mail ,Roles.Title as Worker from Users
+                                                                                                        join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
 end
 go
