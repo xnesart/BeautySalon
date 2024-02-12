@@ -303,6 +303,11 @@ class Program
         // UserClient userClient = new UserClient();
         // var q = userClient.GetClientByNameAndPhone("Кристина Валерьевна Заливняк","642894209");
         // Console.ReadLine();
+        
+        ////Работает
+        // UserClient userClient = new UserClient();
+        // var q = userClient.GetMasterByNameAndId("Анна Петровна Брек",2);
+        // Console.ReadLine();
         #endregion
     }
     
