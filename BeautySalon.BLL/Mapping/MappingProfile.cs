@@ -9,9 +9,18 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<IntеrvalsDTO, IntervalsOutputModel>();
+        CreateMap<IntеrvalsDTO, IntervalsInputModel>();
+        CreateMap<ShiftsDTO, ShiftsInputModel>();
+        CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();
+        CreateMap<GetAllShiftsOnTodayDTO, GetAllShiftsOnTodayInputModel>();
+        CreateMap<RolesDTO, RolesInputModel>(); 
         CreateMap<UsersDTO, GetAllWorkersByRoleIdInputModel>();
         CreateMap<UsersDTO, GetClientByNameAndIdInputModel>();
         CreateMap<NewOrderInputModel, OrdersDTO>();
+        CreateMap<UsersDTO, GetClientByNameAndPhoneInputModel>();
+        CreateMap<UsersDTO, GetMasterByNameAndIdInputModel>();
+        CreateMap<UsersDTO, GetMasterByNameAndPhoneInputModel>();
+
+        //CreateMap<ShiftsDTO, ShiftsOutputModel>();
     }
 }

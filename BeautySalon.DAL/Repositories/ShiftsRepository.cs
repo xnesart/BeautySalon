@@ -13,17 +13,8 @@ public class ShiftsRepository : IShiftsRepository
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllShiftsOnTodayDTO, ShiftsDTO, GetAllShiftsOnTodayDTO>(
-                Procedures.GetAllShiftsAndEmployeesOnToday,
-                (allShifts, shifts) =>
-                {
-                    if (allShifts.Shifts == null)
-                    {
-                        allShifts.Shifts = new List<ShiftsDTO>();
-                    }
-                    allShifts.Shifts.Add(shifts);
-                    return allShifts;
-                }).ToList();
+            return connection.Query<GetAllShiftsOnTodayDTO>(
+                Procedures.GetAllShiftsAndEmployeesOnToday).ToList();
         }
     }    
     

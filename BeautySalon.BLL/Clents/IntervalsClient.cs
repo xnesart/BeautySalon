@@ -19,12 +19,10 @@ public class IntervalsClient
         _mapper = new Mapper(config);
     }
 
-    
-
-    public List<IntervalsOutputModel> GetAllIntervals(string day)
+    public List<IntervalsInputModel> GetAllIntervals(string day)
     {
         List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllIntervals(day);
-        var result = _mapper.Map<List<IntervalsOutputModel>>(intervals);
+        var result = _mapper.Map<List<IntervalsInputModel>>(intervals);
         return result;
     }
 }

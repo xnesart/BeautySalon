@@ -17,19 +17,58 @@ public class UserClient
         var config = new MapperConfiguration(cfg => { cfg.AddProfile(new MappingProfile()); });
         _mapper = new Mapper(config);
     }
-    
+
     public List<GetAllWorkersByRoleIdInputModel> GetAllWorkersByRoleId()
     {
         List<UsersDTO> users =
             _userRepository.GetAllWorkersByRoleId();
         var result = _mapper.Map<List<GetAllWorkersByRoleIdInputModel>>(users);
         return result;
-    } 
+    }
+
     public List<GetClientByNameAndIdInputModel> GetClientByNameAndId(string name, int id)
     {
         List<UsersDTO> users =
-            _userRepository.GetClientByNameAndId(name,id);
+            _userRepository.GetClientByNameAndId(name, id);
         var result = _mapper.Map<List<GetClientByNameAndIdInputModel>>(users);
+        return result;
+    }
+
+    public void AddUserByChatId(int chatId, string userName, string name, string phone, string mail,
+        int roleId, decimal salary, int isBlocked, int isDeleted)
+    {
+        List<UsersDTO> users =
+            _userRepository.AddUserByChatId(chatId, userName, name, phone, mail,
+                roleId, salary, isBlocked, isDeleted);
+    }
+    
+    public List<GetClientByNameAndPhoneInputModel> GetClientByNameAndPhone(string name, string phone)
+    {
+        List<UsersDTO> users =
+            _userRepository.GetClientByNameAndPhone(name,phone);
+        var result = _mapper.Map<List<GetClientByNameAndPhoneInputModel>>(users);
+        return result;
+    }  
+    public List<GetMasterByNameAndIdInputModel> GetMasterByNameAndId(string name, int id)
+    {
+        List<UsersDTO> users =
+            _userRepository.GetMasterByNameAndId(name,id);
+        var result = _mapper.Map<List<GetMasterByNameAndIdInputModel>>(users);
+        return result;
+    }   
+    
+    public List<GetMasterByNameAndPhoneInputModel> GetMasterByNameAndPhone(string name, string phone)
+    {
+        List<UsersDTO> users =
+            _userRepository.GetMasterByNameAndPhone(name,phone);
+        var result = _mapper.Map<List<GetMasterByNameAndPhoneInputModel>>(users);
+        return result;
+    } 
+    public List<GetAllWorkersWithContactsByUserIdInputModel> GetAllWorkersWithContactsByUserId()
+    {
+        List<GetAllWorkersWithContactsByUserIdDTO> users =
+            _userRepository.GetAllWorkersWithContactsByUserId();
+        var result = _mapper.Map<List<GetAllWorkersWithContactsByUserIdInputModel>>(users);
         return result;
     }
 }

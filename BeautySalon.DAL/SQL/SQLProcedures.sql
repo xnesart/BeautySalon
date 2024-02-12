@@ -18,23 +18,23 @@ go
 create proc GetClientByNameAndPhone
     @Name nvarchar(50), @Phone nvarchar(30) as
 begin
-    select Users.Name as Name, Users.Phone as Phone from Users
-    where Users.Name = @Name and Users.Phone = @Phone
+    select Id,ChatId, UserName, Name, Phone,Mail,RoleId,Salary,IsBlocked, IsDeleted from Users
+    where Users.Name = @Name and Users.Phone = @Phone and RoleId = 3
 end
 go
 -- ✓ Найти мастера по имени и id
 create proc GetMasterByNameAndId
     @Name nvarchar(50), @Id int as
 begin
-    select Users.Name as Master, Users.Id as MasterId from Users
-    where Users.Name = @Name and Users.Id = @Id
+    select Id ,ChatId, UserName, Name , Phone,Mail,RoleId,Salary,IsBlocked, IsDeleted from Users
+    where Users.Name = @Name and Users.Id = @Id and RoleId = 2
 end
 go
 -- ✓ Найти мастера по имени и телефону
 create proc GetMasterByNameAndPhone
     @Name nvarchar(50), @Phone nvarchar(30) as
 begin
-    select Users.Name as Master, Users.Phone as MasterPhone from Users
+    select Id,ChatId, UserName, Name, Phone,Mail,RoleId,Salary,IsBlocked, IsDeleted from Users
     where Users.Name = @Name and Users.Phone = @Phone
 end
 go
@@ -42,31 +42,25 @@ go
 create proc GetAllWorkersByRoleId 
 as
 begin
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 select Users.Id, Users.RoleId, Roles.Title as Worker,
 Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
 join Roles on Users.RoleId = Roles.Id
 where RoleId = 1 or RoleId = 2
-=======
-=======
->>>>>>> main
+
     select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker, 
            Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
     join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> main
+
 end
 go
 -- ✓ Вывести всех сотрудников по Id и их контакты
-create proc GetAllWorkersWithContactsByUserId 
+create proc GetAllWorkersWithContactsByUserId
 as
 begin
-    select Users.Id as WorkerId, Users.RoleId as WorkerRoleId,  Users.Name, Users.Phone, Users.Mail ,Roles.Title as Worker from Users
-    join Roles on Users.RoleId = Roles.Id
+    select Users.Id, Users.RoleId,  Users.Name, Users.Phone, Users.Mail ,Roles.Title as Worker from Users
+                                                                                                        join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
 end
 go
@@ -279,7 +273,7 @@ begin
     declare @Today datetime
     set @Today = getdate()
     select Orders.Id, Orders.Date, Orders.MasterId, Orders.ClientId, Orders.ServiceId, Orders.StartIntervalId, Orders.IsCompleted, Orders.IsDeleted from Orders
-    where convert(date, Orders.Date) = convert(date, @Today)
+    where convert(date, Orders.Date) = convert(date, @Today) and IsDeleted = 0
 end
 go
 -- ✓ Вывести все заказы на сегодня для всех мастеров
