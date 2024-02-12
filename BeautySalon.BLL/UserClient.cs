@@ -18,11 +18,18 @@ public class UserClient
         _mapper = new Mapper(config);
     }
     
-    public List<AllWorkersByRoleIdOutputModel> GetAllWorkersByRoleId()
+    public List<GetAllWorkersByRoleIdInputModel> GetAllWorkersByRoleId()
     {
         List<UsersDTO> users =
             _userRepository.GetAllWorkersByRoleId();
-        var result = _mapper.Map<List<AllWorkersByRoleIdOutputModel>>(users);
+        var result = _mapper.Map<List<GetAllWorkersByRoleIdInputModel>>(users);
+        return result;
+    } 
+    public List<GetClientByNameAndIdInputModel> GetClientByNameAndId(string name, int id)
+    {
+        List<UsersDTO> users =
+            _userRepository.GetClientByNameAndId(name,id);
+        var result = _mapper.Map<List<GetClientByNameAndIdInputModel>>(users);
         return result;
     }
 }

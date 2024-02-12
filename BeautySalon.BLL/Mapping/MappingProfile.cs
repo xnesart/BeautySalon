@@ -9,7 +9,8 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<IntеrvalsDTO, IntervalsOutputModel>();
-        CreateMap<UsersDTO, AllWorkersByRoleIdOutputModel>();
+        CreateMap<UsersDTO, GetAllWorkersByRoleIdInputModel>();
+        CreateMap<UsersDTO, GetClientByNameAndIdInputModel>();
 
         //CreateMap<ShiftsDTO, ShiftsOutputModel>();
     }
