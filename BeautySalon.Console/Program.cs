@@ -11,20 +11,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        // IOrderRepository orderRepository = new OrderRepository();
-        // orderRepository.RemoveOrderForClientByOrderId(1);
+        //    IShiftsRepository repository = new ShiftsRepository();
+        //    List<GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO> shifts = repository.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
+        //    shifts.ForEach(shift => { Console.WriteLine(shift.Shifts.Id); });
 
-        #region NotWorks
+        IIntervalsRepository repositoryInt = new IntervalsRepository();
+        List<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO> intervals = repositoryInt.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 1);
+        intervals.ForEach(intervals => { Console.WriteLine(intervals.Interval.StartTime); });
+    }
+}
 
-        // Не пашет
 
-        #endregion
 
-        #region Works
 
-        ////Работает
-        //IUserRepository userRepository4 = new UserRepository();
-        //userRepository4.AddUserByChatId(32423, "Janet342", "Жанна Дарк", "8999324556", "jannet@mail.ru", 3, 0, 0, 0);
+    
 
         ////Работает
         //IUserRepository userRepository2 = new UserRepository();
@@ -220,7 +220,7 @@ class Program
         //{
         //    Console.WriteLine();
         //}
-
+        
         ////Работает
         //IServicesRepository servicesRepository = new ServicesRepository();
         //var services = servicesRepository.GetAllServices();
@@ -236,16 +236,16 @@ class Program
         ////Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.UpdateServicePrice(1, 500);
-
+        
         ////Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.UpdateServiceDuration(6, "00:30");
-
+        
         ////Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.RemoveServiceById(6);
         // Console.ReadLine();
-
+        
         ////Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // var orders = orderRepository.GetAllOrdersOnToday();
@@ -253,34 +253,30 @@ class Program
         // {
         //     Console.WriteLine();
         // }
-
+        
         ////Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.AddClientToFreeMaster(2, 1, 2, 30);
-
+        
         #endregion
-
+        
         #region Bll
-
+        
         ////Работает
         // IntervalsClient intervalsClient = new IntervalsClient();
         // var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
         // Console.ReadLine();
-
+        
         ////Работает
         // IntervalsClient intervalsClient = new IntervalsClient();
         // var q = intervalsClient.GetAllIntervals("2024-02-02");
         // Console.ReadLine();
-
+        
         ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetAllWorkersByRoleId();
-        // Console.ReadLine();  
-   
-        // UserClient userClient = new UserClient();
-        // var q = userClient.GetClientByNameAndId("Анна Петровна Брек",2);
         // Console.ReadLine();
-
+        
         #endregion
     }
 }
