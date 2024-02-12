@@ -14,4 +14,5 @@ class Program
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.RemoveOrderForClientByOrderId(1);
 
-        #region NotWorks
+    }
+}
