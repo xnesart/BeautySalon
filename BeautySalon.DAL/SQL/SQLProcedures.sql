@@ -34,7 +34,7 @@ go
 create proc GetMasterByNameAndPhone
     @Name nvarchar(50), @Phone nvarchar(30) as
 begin
-    select Users.Name as Master, Users.Phone as MasterPhone from Users
+    select Id,ChatId, UserName, Name, Phone,Mail,RoleId,Salary,IsBlocked, IsDeleted from Users
     where Users.Name = @Name and Users.Phone = @Phone
 end
 go
