@@ -1,4 +1,5 @@
 using AutoMapper;
+using BeautySalon.BLL.CreateGetOrdersForClientByIdOutputModel;
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.OrderModels.InputModels;
 using BeautySalon.DAL.DTO;
@@ -10,17 +11,21 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<IntеrvalsDTO, IntervalsInputModel>();
+
         CreateMap<ShiftsDTO, ShiftsInputModel>();
-        CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();
         CreateMap<GetAllShiftsOnTodayDTO, GetAllShiftsOnTodayInputModel>();
+        
+        CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();
+        
         CreateMap<RolesDTO, RolesInputModel>(); 
+
         CreateMap<UsersDTO, GetAllWorkersByRoleIdInputModel>();
         CreateMap<UsersDTO, GetClientByNameAndIdInputModel>();
-        CreateMap<NewOrderInputModel, OrdersDTO>();
         CreateMap<UsersDTO, GetClientByNameAndPhoneInputModel>();
         CreateMap<UsersDTO, GetMasterByNameAndIdInputModel>();
         CreateMap<UsersDTO, GetMasterByNameAndPhoneInputModel>();
 
-        //CreateMap<ShiftsDTO, ShiftsOutputModel>();
+        CreateMap<NewOrderInputModel, OrdersDTO>();
+        CreateMap<OrdersByClientIdDTO, OrdersForClientByIdOutputModel>();
     }
 }

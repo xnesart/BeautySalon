@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BeautySalon.BLL.CreateGetOrdersForClientByIdOutputModel;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.OrderModels.InputModels;
 using BeautySalon.DAL.DTO;
@@ -20,13 +21,20 @@ namespace BeautySalon.BLL.Clents
         public OrderClient()
         {
             _orderRepository = new OrderRepository();
-            var config = new MapperConfiguration(cfg => { cfg.AddProfile(new MappingProfile()); });
+            IConfigurationProvider config = new MapperConfiguration(cfg => { cfg.AddProfile(new MappingProfile()); });
             _mapper = new Mapper(config);
         }
         public void CreateNewOrder(NewOrderInputModel order)
         {
             OrdersDTO newOrder = this._mapper.Map<OrdersDTO>(order);
             this._orderRepository.CreateNewOrder(newOrder);
+        }
+        public List<OrdersForClientByIdOutputModel> GetOrdersForClientById(int Id)
+        {
+            List<OrdersByClientIdDTO> orders = this._orderRepository.GetOrderByClientId(Id);
+            List<OrdersForClientByIdOutputModel> result = this._mapper.Map<List<OrdersForClientByIdOutputModel>>(orders);
+
+            return result;
         }
     }
 }
