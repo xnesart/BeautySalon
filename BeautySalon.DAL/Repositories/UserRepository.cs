@@ -67,7 +67,6 @@ public class UserRepository : IUserRepository
         }
     }
 
-
     public List<UsersDTO> GetClientByNameAndPhone(string name, string phone)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -146,8 +145,8 @@ public class UserRepository : IUserRepository
             connection.Query<UsersDTO>(Procedures.AddWorkerByRoleId, parameters);
         }
     }
-
-    public void RemoveUserById(int id)
+    
+    public UsersDTO RemoveUserById(int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
@@ -155,7 +154,8 @@ public class UserRepository : IUserRepository
             {
                 Id = id
             };
-            connection.Query<UsersDTO>(Procedures.RemoveUserById, parameters);
+            var result=connection.QuerySingle<UsersDTO>(Procedures.RemoveUserById, parameters);
+            return result;
         }
     }
 

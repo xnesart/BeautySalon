@@ -10,6 +10,7 @@ public class MappingProfile : Profile
     {
         CreateMap<IntеrvalsDTO, IntervalsOutputModel>();
         CreateMap<UsersDTO, AllWorkersByRoleIdOutputModel>();
+        CreateMap<UsersDTO, UserIsDeletedOutputModel>();
 
         //CreateMap<ShiftsDTO, ShiftsOutputModel>();
     }

@@ -1,4 +1,5 @@
 using BeautySalon.BLL;
+using BeautySalon.BLL.Models;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
@@ -76,9 +77,9 @@ class Program
         //Console.ReadLine();
 
         ////Работает
-        //IUserRepository userRepository = new UserRepository();
-        //userRepository.RemoveUserById(5);
-        //Console.ReadLine();
+        // IUserRepository userRepository = new UserRepository();
+        // UsersDTO DTO = userRepository.RemoveUserById(5);
+        // Console.WriteLine(DTO.IsDeleted);
 
         ////Работает
         //IShiftsRepository shiftRepository = new ShiftsRepository();
@@ -275,6 +276,15 @@ class Program
         ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetAllWorkersByRoleId();
+        // Console.ReadLine();   
+        
+        ////Работает
+        // UserIdInputModel model = new UserIdInputModel
+        // {
+        //     Id = 3
+        // };
+        // UserClient userClient = new UserClient();
+        // var q = userClient.RemoveUserById(model);
         // Console.ReadLine();
         
         #endregion
