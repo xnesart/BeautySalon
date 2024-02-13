@@ -12,6 +12,7 @@ using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.DAL.DTO;
 using System;
 using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
+using BeautySalon.BLL.RemoveOrderForClientByOrderIInputModel;
 
 class Program
 {
@@ -44,26 +45,26 @@ class Program
         //    Console.WriteLine();
 
 
-            ShiftsClient shiftsClient = new ShiftsClient();
+            //ShiftsClient shiftsClient = new ShiftsClient();
 
-            List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel> shifts = shiftsClient.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
+            //List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel> shifts = shiftsClient.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
 
-            Console.WriteLine("до");
+            //Console.WriteLine("до");
 
-            shifts.ForEach(shiftsWithFreeIntervalsOnCurrentService =>
-            {
+            //shifts.ForEach(shiftsWithFreeIntervalsOnCurrentService =>
+            //{
               
 
-                Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.Id + " ");
-                Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.Title + " ");
-                Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.StartTime + " ");
-                Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.EndTime + " ");
-                Console.WriteLine();
-                Console.WriteLine("----------------------------------------------------------");
+            //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.Id + " ");
+            //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.Title + " ");
+            //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.StartTime + " ");
+            //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.EndTime + " ");
+            //    Console.WriteLine();
+            //    Console.WriteLine("----------------------------------------------------------");
 
-            });
+            //});
 
-        
+
     }
 }
         
