@@ -16,7 +16,7 @@ class Program
 {
     static void Main(string[] args)
     {
-<<<<<<< HEAD
+
         OrderClient orderClient = new OrderClient();
 
         List<OrdersForClientByIdOutputModel> ordersForClients = orderClient.GetOrdersForClientById(1);
@@ -25,8 +25,8 @@ class Program
 
         ordersForClients.ForEach(ordersForClients =>
         {
-            Console.Write(ordersForClients.Master.Id +" ");
-            Console.Write(ordersForClients.Order.Id +" ");
+            Console.Write(ordersForClients.Master.Id + " ");
+            Console.Write(ordersForClients.Order.Id + " ");
             Console.Write(ordersForClients.Order.Id + " ");
 
             //Console.Write(ordersForClients.ClientId + "ClientName ");
@@ -42,10 +42,8 @@ class Program
             Console.WriteLine();
             Console.WriteLine();
         });
-        
-        
-<<<<<<< HEAD
-=======
+
+
         //    IShiftsRepository repository = new ShiftsRepository();
         //    List<GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO> shifts = repository.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
         //    shifts.ForEach(shift => { Console.WriteLine(shift.Shifts.Id); });
@@ -345,7 +343,7 @@ class Program
         // Console.ReadLine();
         //
 
->>>>>>> Tassk_BLLAddWorkerByRoleId
+
         ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetMasterByNameAndPhone("Анна Петровна Брек","8923467127");
@@ -367,7 +365,7 @@ class Program
         // var q = intervalsClient.GetAllFreeIntervalsOnCurrentService(1,2);
         // Console.ReadLine();  
 
-        
+
         // //Работает
         // UserClient userClient = new UserClient();
         // WorkerByRoleIdInputModel model = new WorkerByRoleIdInputModel
@@ -382,13 +380,5 @@ class Program
         // Console.ReadLine();
 
         #endregion
-=======
-        
-
->>>>>>> main
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> Tassk_BLLAddWorkerByRoleId
 }

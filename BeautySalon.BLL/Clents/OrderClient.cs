@@ -2,6 +2,7 @@
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.NewOrderModels.InputModels;
 using BeautySalon.BLL.OrdersForClientById;
+using BeautySalon.BLL.UpdateOrderTimeForClientByIdInputModel;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
@@ -30,6 +31,11 @@ namespace BeautySalon.BLL.Clents
             List<OrdersForClientByIdOutputModel> result = this._mapper.Map<List<OrdersForClientByIdOutputModel>>(orders);
 
             return result;
+        }
+        public void UpdateOrderTimeForClientById(UpdateOrderClientByIdInput orders)
+        {
+            OrdersDTO ordersDTO = this._mapper.Map<OrdersDTO>(orders);
+            this._orderRepository.UpdateOrderTimeForClientById(ordersDTO);
         }
     }
 }
