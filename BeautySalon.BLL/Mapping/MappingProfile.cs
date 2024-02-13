@@ -1,7 +1,7 @@
 using AutoMapper;
-using BeautySalon.BLL.CreateGetOrdersForClientByIdOutputModel;
+using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.BLL.Models;
-using BeautySalon.BLL.OrderModels.InputModels;
+using BeautySalon.BLL.NewOrderModels.InputModels;
 using BeautySalon.DAL.DTO;
 
 namespace BeautySalon.BLL.Mapping;
@@ -27,5 +27,11 @@ public class MappingProfile : Profile
 
         CreateMap<NewOrderInputModel, OrdersDTO>();
         CreateMap<OrdersByClientIdDTO, OrdersForClientByIdOutputModel>();
+        CreateMap<UsersDTO, UsersOrdersForClientByIdOutputModel>();
+        CreateMap<UsersDTO, UsersOrdersForClientByIdOutputModel>();
+        CreateMap<IntеrvalsDTO, IntеrvalsOrdersForClientByIdOutputModel>();
+        CreateMap<ServicesDTO, ServicesOrdersForClientByIdOutputModel>();
+        CreateMap<OrdersDTO, OrdersOrdersForClientByIdOutputModel>();
     }
 }
+
