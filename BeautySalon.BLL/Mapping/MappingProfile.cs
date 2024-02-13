@@ -5,6 +5,7 @@ using BeautySalon.BLL.NewOrderModels.InputModels;
 using BeautySalon.DAL.DTO;
 using BeautySalon.BLL.UpdateOrderTimeForClientByIdInputModel;
 using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
+using BeautySalon.BLL.RemoveOrderForClientByOrderIInputModel;
 
 namespace BeautySalon.BLL.Mapping;
 
@@ -48,6 +49,9 @@ public class MappingProfile : Profile
 
         CreateMap<AllShiftsWithFreeIntervalsOnCurrentServiceDTO, ShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
         CreateMap<ShiftsDTO, ShiftAllShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
+
+        CreateMap<RemoveOrderForClientIdInput,OrdersDTO>();
+
     }
 }
 

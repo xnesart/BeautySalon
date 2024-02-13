@@ -119,15 +119,15 @@ public class OrderRepository : IOrderRepository
             connection.Query(Procedures.UpdateOrderTimeForClientById, parameters).ToList();
         }
     }
-    public void RemoveOrderForClientByOrderId(int orderId)
+    public void RemoveOrderForClientByOrderId(OrdersDTO order)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            var parameters = new
+            var parameter = new
             {
-            OrderId = orderId
+                OrderId = order.Id
             };
-         connection.Query<OrdersDTO>(Procedures.RemoveOrderForClientByOrderId, parameters);
+         connection.Query<OrdersDTO>(Procedures.RemoveOrderForClientByOrderId, parameter);
         }
     }
     public void CreateNewOrder(OrdersDTO newOrder)
