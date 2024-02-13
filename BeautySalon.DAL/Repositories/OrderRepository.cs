@@ -105,16 +105,16 @@ public class OrderRepository : IOrderRepository
         }
     }
 
-    public void UpdateOrderTimeForClientById(int orderId, int clientId, int masterId, int intervalId)
+    public void UpdateOrderTimeForClientById(OrdersDTO orders)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new
             {
-            OrderId = orderId,
-            ClientId = clientId,
-            MasterId = masterId,
-            IntervalId = intervalId
+            OrderId = orders.Id,
+            ClientId = orders.ClientId,
+            MasterId = orders.MasterId,
+            IntervalId = orders.StartIntervalId
             };
             connection.Query(Procedures.UpdateOrderTimeForClientById, parameters).ToList();
         }
