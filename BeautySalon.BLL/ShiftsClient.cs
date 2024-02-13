@@ -1,4 +1,5 @@
 using AutoMapper;
+using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
@@ -23,6 +24,13 @@ public class ShiftsClient
         List<GetAllShiftsOnTodayDTO> shifts =
             _shiftsRepository.GetAllShiftsOnToday();
         var result = _mapper.Map<List<GetAllShiftsOnTodayInputModel>>(shifts);
+        return result;
+    }
+    public List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId)
+    {
+        List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> shifts = this._shiftsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(serviceId);
+        List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel> result = this._mapper.Map<List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel>>(shifts);
+
         return result;
     }
 }

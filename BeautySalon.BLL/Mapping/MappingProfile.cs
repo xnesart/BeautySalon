@@ -4,6 +4,7 @@ using BeautySalon.BLL.Models;
 using BeautySalon.BLL.NewOrderModels.InputModels;
 using BeautySalon.DAL.DTO;
 using BeautySalon.BLL.UpdateOrderTimeForClientByIdInputModel;
+using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
 
 namespace BeautySalon.BLL.Mapping;
 
@@ -15,18 +16,15 @@ public class MappingProfile : Profile
 
         CreateMap<ShiftsDTO, ShiftsInputModel>();
         CreateMap<GetAllShiftsOnTodayDTO, GetAllShiftsOnTodayInputModel>();
-<<<<<<< HEAD
-        //GetAllFreeIntervalsOnCurrentServiceInputModel
+
         CreateMap<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO, GetAllFreeIntervalsOnCurrentServiceInputModel>();
         CreateMap<ServicesDTO, GetAllFreeIntervalsOnCurrentServiceServiceInputModel>();
         CreateMap<ShiftsDTO, GetAllFreeIntervalsOnCurrentServiceShiftInputModel>();
         CreateMap<IntеrvalsDTO, GetAllFreeIntervalsOnCurrentServiceIntervalModelInputModel>();
-=======
+
         
-        CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();
->>>>>>> main
-        
-        //AddWorkerByRoleId
+        CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();   
+
         CreateMap<WorkerByRoleIdInputModel, AddWorkerByRoleIdDTO>();
 
         CreateMap<RolesDTO, RolesInputModel>(); 
@@ -38,6 +36,7 @@ public class MappingProfile : Profile
         CreateMap<UsersDTO, GetMasterByNameAndPhoneInputModel>();
 
         CreateMap<NewOrderInputModel, OrdersDTO>();
+
         CreateMap<OrdersByClientIdDTO, OrdersForClientByIdOutputModel>();
         CreateMap<UsersDTO, UsersOrdersForClientByIdOutputModel>();
         CreateMap<UsersDTO, UsersOrdersForClientByIdOutputModel>();
@@ -47,6 +46,8 @@ public class MappingProfile : Profile
 
         CreateMap<UpdateOrderClientByIdInput, OrdersDTO>();
 
+        CreateMap<AllShiftsWithFreeIntervalsOnCurrentServiceDTO, ShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
+        CreateMap<ShiftsDTO, ShiftAllShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
     }
 }
 
