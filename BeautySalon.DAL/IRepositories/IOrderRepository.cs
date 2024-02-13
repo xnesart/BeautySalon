@@ -7,7 +7,7 @@ public interface IOrderRepository
     public List<GetOrdersByMasterId> GetOrdersByMasterId(int id);
     public List<GetAllOrdersOnTodayForMastersDTO> GetAllOrdersOnTodayForMasters();
     public List<OrdersByClientIdDTO> GetOrderByClientId(int clientid);
-    public void UpdateOrderTimeForClientById(int orderId, int clientId, int masterId, int intervalId);
+    public void UpdateOrderTimeForClientById(OrdersDTO orders);
     public void RemoveOrderForClientByOrderId(int orderId);
     public void CreateNewOrder(OrdersDTO newOrder);
     public List<GetAllOrdersOnTodayDTO> GetAllOrdersOnToday();

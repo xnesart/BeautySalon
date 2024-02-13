@@ -3,6 +3,7 @@ using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.NewOrderModels.InputModels;
 using BeautySalon.DAL.DTO;
+using BeautySalon.BLL.UpdateOrderTimeForClientByIdInputModel;
 
 namespace BeautySalon.BLL.Mapping;
 
@@ -43,6 +44,9 @@ public class MappingProfile : Profile
         CreateMap<IntеrvalsDTO, IntеrvalsOrdersForClientByIdOutputModel>();
         CreateMap<ServicesDTO, ServicesOrdersForClientByIdOutputModel>();
         CreateMap<OrdersDTO, OrdersOrdersForClientByIdOutputModel>();
+
+        CreateMap<UpdateOrderClientByIdInput, OrdersDTO>();
+
     }
 }
 
