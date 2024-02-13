@@ -26,15 +26,6 @@ public class OrderRepository : IOrderRepository
         }
     }
 
-    public List<OrdersDTO> RemoveOrderForClientByOrderId(int orderId)
-    {
-        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-        {
-            var parameters = new { OrderId = orderId };
-            return connection.Query<OrdersDTO>(Procedures.RemoveOrderForClientByOrderId, parameters).ToList();
-        }
-    }
-
     public List<GetAllOrdersOnTodayForMastersDTO> GetAllOrdersOnTodayForMasters()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -111,6 +102,48 @@ public class OrderRepository : IOrderRepository
                      parameter,
                      splitOn: "Id,Id,Id,Id,Id"
                  ).ToList();
+        }
+    }
+
+    public void UpdateOrderTimeForClientById(int orderId, int clientId, int masterId, int intervalId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+            OrderId = orderId,
+            ClientId = clientId,
+            MasterId = masterId,
+            IntervalId = intervalId
+            };
+            connection.Query(Procedures.UpdateOrderTimeForClientById, parameters).ToList();
+        }
+    }
+    public void RemoveOrderForClientByOrderId(int orderId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+            OrderId = orderId
+            };
+         connection.Query<OrdersDTO>(Procedures.RemoveOrderForClientByOrderId, parameters);
+        }
+    }
+    public void CreateNewOrder(OrdersDTO newOrder)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                ClientId = newOrder.ClientId,
+                MasterId = newOrder.MasterId,
+                Date = newOrder.Date,
+                ServiceId = newOrder.ServiceId,
+                IntervalId = newOrder.StartIntervalId
+            };
+
+            connection.Query<OrdersDTO>(Procedures.CreateNewOrder, parameters);
         }
     }
     
