@@ -23,18 +23,18 @@ class Program
 
         ordersForClients.ForEach(ordersForClients =>
         {
-            Console.Write(ordersForClients.OdrerId + "OdrerDate ");
-            Console.Write(ordersForClients.OdrerDate + "OdrerStartIntervalId ");
-            Console.Write(ordersForClients.OdrerStartIntervalId + "ClientId ");
-            Console.Write(ordersForClients.ClientId + "ClientName ");
-            Console.Write(ordersForClients.ClientName + "MasterId ");
-            Console.Write(ordersForClients.MasterId + "MasterName ");
-            Console.Write(ordersForClients.MasterName + "IntervalsId ");
-            Console.Write(ordersForClients.IntervalsId + "IntervalTitle ");
-            Console.Write(ordersForClients.IntervalTitle + "ServicesId ");
-            Console.Write(ordersForClients.ServicesId + "ServicesTitle ");
-            Console.Write(ordersForClients.ServicesTitle + "ServicesPrice ");
-            Console.Write(ordersForClients.ServicesPrice + " ");
+            Console.Write(ordersForClients.Master.Id +" ");
+            Console.Write(ordersForClients.Order.Id +" ");
+            
+            //Console.Write(ordersForClients.ClientId + "ClientName ");
+            //Console.Write(ordersForClients.ClientName + "MasterId ");
+            //Console.Write(ordersForClients.MasterId + "MasterName ");
+            //Console.Write(ordersForClients.MasterName + "IntervalsId ");
+            //Console.Write(ordersForClients.IntervalsId + "IntervalTitle ");
+            //Console.Write(ordersForClients.IntervalTitle + "ServicesId ");
+            //Console.Write(ordersForClients.ServicesId + "ServicesTitle ");
+            //Console.Write(ordersForClients.ServicesTitle + "ServicesPrice ");
+            //Console.Write(ordersForClients.ServicesPrice + " ");
 
             Console.WriteLine();
             Console.WriteLine();
