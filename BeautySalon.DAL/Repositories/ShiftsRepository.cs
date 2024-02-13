@@ -55,7 +55,7 @@ public class ShiftsRepository : IShiftsRepository
                 }, splitOn: "Id,IsBusy").ToList();
         }
     }
-    public List<GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService (int serviceId)
+    public List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService (int serviceId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
@@ -65,21 +65,21 @@ public class ShiftsRepository : IShiftsRepository
                 ServiceId = serviceId,
             };
 
-            return connection.Query<ServicesDTO, ShiftsDTO, GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO>
+            return connection.Query<ServicesDTO, ShiftsDTO, AllShiftsWithFreeIntervalsOnCurrentServiceDTO>
                 (
                 Procedures.GetAllShiftsWithFreeIntervalsOnCurrentService,
                 (service, shift) =>
                 {
-                    GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO getAllShifts = new GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO();
+                    AllShiftsWithFreeIntervalsOnCurrentServiceDTO getAllShifts = new AllShiftsWithFreeIntervalsOnCurrentServiceDTO();
 
                     getAllShifts.Services = new ServicesDTO();
                     getAllShifts.Services.Id = service.Id;
                     getAllShifts.Services.Title = service.Title;
 
-                    getAllShifts.Shifts = new ShiftsDTO();
-                    getAllShifts.Shifts.Id = shift.Id;
-                    getAllShifts.Shifts.Title = shift.Title;
-                    getAllShifts.Shifts.StartTime = shift.StartTime;
+                    getAllShifts.Shift = new ShiftsDTO();
+                    getAllShifts.Shift.Id = shift.Id;
+                    getAllShifts.Shift.Title = shift.Title;
+                    getAllShifts.Shift.StartTime = shift.StartTime;
 
                     return getAllShifts;
                 },
