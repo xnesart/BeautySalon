@@ -14,7 +14,7 @@ public interface IUserRepository
 
     public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId();
 
-    public void AddWorkerByRoleId(int role, string name, string phone, string mail);
+    public void AddWorkerByRoleId(AddWorkerByRoleIdDTO addWorkerByRoleIdDTO);
     public void RemoveUserById(int id);
 
     //public List<ShiftsDTO> GetAllShiftsOnToday();

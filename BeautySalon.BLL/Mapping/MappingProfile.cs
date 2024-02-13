@@ -25,6 +25,9 @@ public class MappingProfile : Profile
         CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();
 >>>>>>> main
         
+        //AddWorkerByRoleId
+        CreateMap<WorkerByRoleIdInputModel, AddWorkerByRoleIdDTO>();
+
         CreateMap<RolesDTO, RolesInputModel>(); 
 
         CreateMap<UsersDTO, GetAllWorkersByRoleIdInputModel>();
