@@ -16,7 +16,6 @@ class Program
 {
     static void Main(string[] args)
     {
-<<<<<<< HEAD
         OrderClient orderClient = new OrderClient();
 
         List<OrdersForClientByIdOutputModel> ordersForClients = orderClient.GetOrdersForClientById(1);
@@ -44,8 +43,7 @@ class Program
         });
         
         
-<<<<<<< HEAD
-=======
+
         //    IShiftsRepository repository = new ShiftsRepository();
         //    List<GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO> shifts = repository.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
         //    shifts.ForEach(shift => { Console.WriteLine(shift.Shifts.Id); });
@@ -345,7 +343,6 @@ class Program
         // Console.ReadLine();
         //
 
->>>>>>> Tassk_BLLAddWorkerByRoleId
         ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetMasterByNameAndPhone("Анна Петровна Брек","8923467127");
@@ -373,22 +370,17 @@ class Program
         // WorkerByRoleIdInputModel model = new WorkerByRoleIdInputModel
         // {
         //     RoleId = 2,
-        //     Name = "Светлана Петровна",
-        //     Mail = "dsffds@gmail.com",
-        //     Phone = "324453"
+        //     Name = "Галина Ивановна Шпак",
+        //     Mail = "fsdfds@gmail.com",
+        //     Phone = "2324243"
         // };
         //
         // userClient.AddWorkerByRoleId(model);
         // Console.ReadLine();
 
         #endregion
-=======
         
 
->>>>>>> main
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> Tassk_BLLAddWorkerByRoleId
 }
