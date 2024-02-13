@@ -70,5 +70,10 @@ public class UserClient
             _userRepository.GetAllWorkersWithContactsByUserId();
         var result = _mapper.Map<List<GetAllWorkersWithContactsByUserIdInputModel>>(users);
         return result;
+    } 
+    public void AddWorkerByRoleId(WorkerByRoleIdInputModel model)
+    {
+        AddWorkerByRoleIdDTO dto = _mapper.Map<AddWorkerByRoleIdDTO>(model);
+        _userRepository.AddWorkerByRoleId(dto);
     }
 }

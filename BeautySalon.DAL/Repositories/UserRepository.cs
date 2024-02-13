@@ -132,16 +132,16 @@ public class UserRepository : IUserRepository
         }
     }
 
-    public void AddWorkerByRoleId(int role, string name, string phone, string mail)
+    public void AddWorkerByRoleId(AddWorkerByRoleIdDTO addWorkerByRoleIdDTO)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new
             {
-                WorkerRole = role,
-                WorkerName = name,
-                WorkerPhone = phone,
-                WorkerMail = mail
+                WorkerRole = addWorkerByRoleIdDTO.RoleId,
+                WorkerName = addWorkerByRoleIdDTO.Name,
+                WorkerPhone = addWorkerByRoleIdDTO.Phone,
+                WorkerMail = addWorkerByRoleIdDTO.Mail
             };
             connection.Query<UsersDTO>(Procedures.AddWorkerByRoleId, parameters);
         }

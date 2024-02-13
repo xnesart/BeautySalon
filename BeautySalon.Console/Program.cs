@@ -1,4 +1,5 @@
 using BeautySalon.BLL;
+using BeautySalon.BLL.Models;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
@@ -19,7 +20,7 @@ class Program
         // List<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO> intervals = repositoryInt.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 1);
         // intervals.ForEach(intervals => { Console.WriteLine(intervals.Interval.StartTime); });
 
-         // IOrderRepository orderRepository = new OrderRepository();
+        // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.RemoveOrderForClientByOrderId(1);
 
         #region NotWorks
@@ -290,11 +291,11 @@ class Program
         // UserClient userClient = new UserClient();
         // var q = userClient.GetAllWorkersByRoleId();
         // Console.ReadLine();  
-   
+
         // UserClient userClient = new UserClient();
         // var q = userClient.GetClientByNameAndId("Анна Петровна Брек",2);
         // Console.ReadLine();
-        
+
         //Работает
         // UserClient client = new UserClient();
         // client.AddUserByChatId(1232,"rabbit","Петя Петров Витальевич","87474344334","jerr@mail.com",3,0,0,0);
@@ -303,13 +304,13 @@ class Program
         // UserClient userClient = new UserClient();
         // var q = userClient.GetClientByNameAndPhone("Кристина Валерьевна Заливняк","642894209");
         // Console.ReadLine();
-        
+
         ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetMasterByNameAndId("Анна Петровна Брек",2);
         // Console.ReadLine();
         //
-        
+
         ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetMasterByNameAndPhone("Анна Петровна Брек","8923467127");
@@ -319,8 +320,8 @@ class Program
         // UserClient userClient = new UserClient();
         // var q = userClient.GetAllWorkersWithContactsByUserId();
         // Console.ReadLine();  
-        
-        
+
+
         // //Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var q = shiftsClient.GetAllShiftsOnToday();
@@ -330,7 +331,21 @@ class Program
         // IntervalsClient intervalsClient = new IntervalsClient();
         // var q = intervalsClient.GetAllFreeIntervalsOnCurrentService(1,2);
         // Console.ReadLine();  
+
+        
+        // //Работает
+        // UserClient userClient = new UserClient();
+        // WorkerByRoleIdInputModel model = new WorkerByRoleIdInputModel
+        // {
+        //     RoleId = 2,
+        //     Name = "Светлана Петровна",
+        //     Mail = "dsffds@gmail.com",
+        //     Phone = "324453"
+        // };
+        //
+        // userClient.AddWorkerByRoleId(model);
+        // Console.ReadLine();
+
         #endregion
     }
-    
 }

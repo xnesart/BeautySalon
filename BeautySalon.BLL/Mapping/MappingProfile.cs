@@ -18,6 +18,9 @@ public class MappingProfile : Profile
         CreateMap<ShiftsDTO, GetAllFreeIntervalsOnCurrentServiceShiftInputModel>();
         CreateMap<IntеrvalsDTO, GetAllFreeIntervalsOnCurrentServiceIntervalModelInputModel>();
         
+        //AddWorkerByRoleId
+        CreateMap<WorkerByRoleIdInputModel, AddWorkerByRoleIdDTO>();
+
         CreateMap<RolesDTO, RolesInputModel>(); 
         CreateMap<UsersDTO, GetAllWorkersByRoleIdInputModel>();
         CreateMap<UsersDTO, GetClientByNameAndIdInputModel>();
