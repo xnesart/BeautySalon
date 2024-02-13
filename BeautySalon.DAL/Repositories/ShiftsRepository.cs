@@ -46,12 +46,12 @@ public class ShiftsRepository : IShiftsRepository
         }
     }
 
-    public List<GetAllShiftsWithFreeIntervalsDTO> GetAllShiftsWithFreeIntervals()
+    public List<GetAllShiftsWithFreeIntervalsOnTodayDTO> GetAllShiftsWithFreeIntervalsOnToday()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllShiftsWithFreeIntervalsDTO, IntеrvalsDTO, GetAllShiftsWithFreeIntervalsDTO>(
-                Procedures.GetAllShiftsWithFreeIntervals,
+            return connection.Query<GetAllShiftsWithFreeIntervalsOnTodayDTO, IntеrvalsDTO, GetAllShiftsWithFreeIntervalsOnTodayDTO>(
+                Procedures.GetAllShiftsWithFreeIntervalsOnToday,
                 (shifts, intervals) =>
                 {
                     if (shifts.Intervals == null)

@@ -1,6 +1,6 @@
 namespace BeautySalon.DAL.DTO;
 
-public class GetAllShiftsWithFreeIntervalsDTO
+public class GetAllShiftsWithFreeIntervalsOnTodayDTO
 {
     public int? Id { get; set; }
     public string? Title { get; set; }

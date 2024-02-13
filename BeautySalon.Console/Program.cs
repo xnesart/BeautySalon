@@ -103,7 +103,7 @@ class Program
 
         ////Работает
         // IShiftsRepository shiftsRepository = new ShiftsRepository();
-        // var shiftsRepositories = shiftsRepository.GetAllShiftsWithFreeIntervals();
+        // var shiftsRepositories = shiftsRepository.GetAllShiftsWithFreeIntervalsOnToday();
         // foreach (var shift in shiftsRepositories)
         // {
         //     Console.WriteLine();

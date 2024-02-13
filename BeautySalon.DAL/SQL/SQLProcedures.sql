@@ -101,7 +101,7 @@ begin
     where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
 end
 go
--- ✓ Добавить мастера в ВЫБРАННУЮ смену
+-- ✓ Добавить мастера в ВЫБРАННУЮ смену !!! НЕ ДОБАВЛЯЕТ, А ПЕРЕЗАПИСЫВАЕТ
 create proc AddMasterToShift
     @MasterId int, @ShiftId int as
 begin
