@@ -1,4 +1,4 @@
-﻿--процедуры для админа
+﻿----процедуры для админа
 -- ✓ Зарегистрировать пользователя по ChatId, заполнив его имя, телефон и почту
 create proc AddUserByChatId
     @ChatId int, @UserName nvarchar(50), @Name nvarchar(50), @Phone nvarchar(30), @Mail nvarchar(30), @RoleId int, @Salary decimal, @IsBlocked bit, @IsDeleted bit as
@@ -42,23 +42,14 @@ go
 create proc GetAllWorkersByRoleId 
 as
 begin
-<<<<<<< HEAD
-<<<<<<< HEAD
 select Users.Id, Users.RoleId, Roles.Title as Worker,
 Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
 join Roles on Users.RoleId = Roles.Id
 where RoleId = 1 or RoleId = 2
-=======
-=======
->>>>>>> main
     select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker, 
            Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
     join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> main
 end
 go
 -- ✓ Вывести всех сотрудников по Id и их контакты
@@ -146,27 +137,6 @@ begin
            Intervals.IsBusy, Intervals.IsDeleted from Intervals
     join Shifts on Shifts.Id = Intervals.ShiftId
     where @ShiftID = Intervals.ShiftId
-end
-go
--- ✓ Вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи
-create proc GetAllShiftsWithFreeIntervals 
-as
-begin
-    declare @Today datetime
-    set @Today = GETDATE()
-    select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.StartTime from Shifts
-    join Intervals on Intervals.ShiftId = Shifts.Id
-    where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
-end
-go
--- ✓ Для ВЫБРАННОЙ смены вывести все СВОБОДНЫЕ для записи интервалы
-create proc GetAllFreeIntervalsByShiftId
-@ShiftId int as
-begin
-    select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime,
-    Intervals.IsBusy, Intervals.IsDeleted from Intervals
-    join Shifts on Shifts.Id = Intervals.ShiftId
-    where @ShiftId = Shifts.Id and Intervals.IsBusy = 0
 end
 go
 -- ✓ Вывести все типы услуг
@@ -346,6 +316,53 @@ from
 where Client.Id = @Id and Orders.IsDeleted = 0
 end
 
+-- ✓ Вывести свободных мастеров и свободные интервалы для записи
+create proc GetFreeMastersAndIntervalsOnToday
+    as
+begin
+    declare @Today datetime
+    set @Today = GETDATE()
+    select Users.Id as MasterId, Users.Name as Master, Intervals.Id, Intervals.Title, Intervals.StartTime from Users
+    join Shifts on Users.Id = Shifts.MasterId
+    join Intervals on Shifts.Id = Intervals.ShiftId
+    where Users.IsDeleted = 0 and Shifts.IsDeleted = 0 and Intervals.IsDeleted = 0 and Intervals.IsBusy = 0
+end
+go
+---- ✓ Вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи (с дублированием смен по количеству интервалов)
+--create proc GetAllShiftsWithFreeIntervalsOnToday
+--as
+--begin
+    --declare @Today datetime
+    --set @Today = GETDATE()
+    --select Shifts.Id, Shifts.Title, Shifts.StartTime from Shifts
+    --join Intervals on Intervals.ShiftId = Shifts.Id
+    --where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
+--end
+--go
+-- ✓ Вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи (без дублирования смен)
+create proc GetAllShiftsWithFreeIntervalsOnToday
+    as
+begin
+    declare @Today datetime
+    set @Today = GETDATE()
+    select Shifts.Id, Shifts.Title, Shifts.StartTime from Shifts
+    where Shifts.Id in 
+        (
+        select distinct Intervals.ShiftId from Intervals
+        where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
+        );
+end
+go
+-- ✓ Для ВЫБРАННОЙ смены вывести все СВОБОДНЫЕ для записи интервалы
+create proc GetAllFreeIntervalsByShiftId
+@ShiftId int as
+begin
+    select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime,
+       Intervals.IsBusy, Intervals.IsDeleted from Intervals
+    join Shifts on Shifts.Id = Intervals.ShiftId
+    where @ShiftId = Shifts.Id and Intervals.IsBusy = 0
+end
+go
 -- ✓ Для ВЫБРАННОЙ услуги вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи
 create proc GetAllShiftsWithFreeIntervalsOnCurrentService
 @ServiceId int as
