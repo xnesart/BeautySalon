@@ -79,11 +79,14 @@ end
 go
 -- ✓ Удалить пользователя из базы по Id
 create proc RemoveUserById
-@Id int as
+    @Id int
+as
 begin
+    -- Обновляем IsDeleted для пользователя с указанным Id
     update Users
     set IsDeleted = 1
-    where Id = @Id
+    output deleted.IsDeleted
+    where Id = @Id;
 end
 go
 -- ✓ Вывести все смены на сегодня
