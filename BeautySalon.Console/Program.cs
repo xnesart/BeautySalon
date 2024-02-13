@@ -5,9 +5,9 @@ using BeautySalon.DAL.Repositories;
 namespace BeautySalon.Console;
 
 using BeautySalon.BLL.Clents;
-using BeautySalon.BLL.CreateGetOrdersForClientByIdOutputModel;
+using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.BLL.Models;
-using BeautySalon.BLL.OrderModels.InputModels;
+using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.DAL.DTO;
 using System;
 
@@ -25,7 +25,8 @@ class Program
         {
             Console.Write(ordersForClients.Master.Id +" ");
             Console.Write(ordersForClients.Order.Id +" ");
-            
+            Console.Write(ordersForClients.Order.Id + " ");
+
             //Console.Write(ordersForClients.ClientId + "ClientName ");
             //Console.Write(ordersForClients.ClientName + "MasterId ");
             //Console.Write(ordersForClients.MasterId + "MasterName ");
