@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
-using BeautySalon.BLL.CreateGetOrdersForClientByIdOutputModel;
 using BeautySalon.BLL.Mapping;
-using BeautySalon.BLL.OrderModels.InputModels;
+using BeautySalon.BLL.NewOrderModels.InputModels;
+using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BeautySalon.BLL.Clents
 {

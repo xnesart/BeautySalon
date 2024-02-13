@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BeautySalon.BLL.OrderModels.InputModels
+namespace BeautySalon.BLL.NewOrderModels.InputModels
 {
     public class NewOrderInputModel
     {
