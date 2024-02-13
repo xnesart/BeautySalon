@@ -100,6 +100,18 @@ class Program
         //        Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
         //    }
         //}
+        
+        ////Работает
+        // IUserRepository userRepository = new UserRepository();
+        // var userRepositories = userRepository.GetFreeMastersAndIntervalsOnToday();
+        // foreach (var users in userRepositories)
+        // {
+        //     Console.WriteLine();
+        //     foreach (var value in users.Intervals)
+        //     {
+        //         Console.WriteLine();
+        //     }
+        // }
 
         ////Работает
         // IShiftsRepository shiftsRepository = new ShiftsRepository();

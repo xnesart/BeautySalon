@@ -16,4 +16,5 @@ public interface IUserRepository
     public void RemoveMasterFromShift(int masterId, int shiftId);
     public List<GetMastersShiftsById> GetMastersShiftsById(int id);
     public List<UsersDTO> GetClientByNameAndId(string name, int id);
+    public List<GetFreeMastersAndIntervalsOnTodayDTO> GetFreeMastersAndIntervalsOnToday();
 }
