@@ -73,7 +73,7 @@ create proc GetAllWorkersWithContactsByUserId
 as
 begin
     select Users.Id, Users.RoleId,  Users.Name, Users.Phone, Users.Mail ,Roles.Title as Worker from Users
-                                                                                                        join Roles on Users.RoleId = Roles.Id
+    join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
 end
 go
