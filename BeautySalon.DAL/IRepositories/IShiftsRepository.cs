@@ -7,5 +7,5 @@ public interface IShiftsRepository
     public List<GetAllShiftsOnTodayDTO> GetAllShiftsOnToday();
     public List<GetAllShiftsAndEmployeesDTO> GetAllShiftsAndEmployeesOnToday();
     public List<GetAllShiftsWithFreeIntervalsDTO> GetAllShiftsWithFreeIntervals();
-    public List<GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId);
+    public List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId);
 }

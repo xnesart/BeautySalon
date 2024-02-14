@@ -4,6 +4,8 @@ using BeautySalon.BLL.Models;
 using BeautySalon.BLL.NewOrderModels.InputModels;
 using BeautySalon.DAL.DTO;
 using BeautySalon.BLL.UpdateOrderTimeForClientByIdInputModel;
+using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
+using BeautySalon.BLL.RemoveOrderForClientByOrderIInputModel;
 
 namespace BeautySalon.BLL.Mapping;
 
@@ -14,6 +16,7 @@ public class MappingProfile : Profile
         CreateMap<IntеrvalsDTO, IntervalsOutputModel>();
 
         CreateMap<ShiftsDTO, ShiftsInputModel>();
+
         
         //GetAllShiftsOnToday
         CreateMap<GetAllShiftsOnTodayDTO, AllShiftsOnTodayOutputModel>();
@@ -31,8 +34,17 @@ public class MappingProfile : Profile
         
         CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();
 
+        CreateMap<GetAllShiftsOnTodayDTO, GetAllShiftsOnTodayInputModel>();
+
+        CreateMap<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO, GetAllFreeIntervalsOnCurrentServiceInputModel>();
+        CreateMap<ServicesDTO, GetAllFreeIntervalsOnCurrentServiceServiceInputModel>();
+        CreateMap<ShiftsDTO, GetAllFreeIntervalsOnCurrentServiceShiftInputModel>();
+        CreateMap<IntеrvalsDTO, GetAllFreeIntervalsOnCurrentServiceIntervalModelInputModel>();
+
+
         
-        //AddWorkerByRoleId
+        CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();   
+
         CreateMap<WorkerByRoleIdInputModel, AddWorkerByRoleIdDTO>();
 
         CreateMap<RolesDTO, RolesInputModel>(); 
@@ -47,6 +59,7 @@ public class MappingProfile : Profile
         CreateMap<UsersDTO, ClientByNameAndPhoneOutputModel>();
 
         CreateMap<NewOrderInputModel, OrdersDTO>();
+
         CreateMap<OrdersByClientIdDTO, OrdersForClientByIdOutputModel>();
         CreateMap<UsersDTO, UsersOrdersForClientByIdOutputModel>();
         CreateMap<UsersDTO, UsersOrdersForClientByIdOutputModel>();
@@ -55,6 +68,11 @@ public class MappingProfile : Profile
         CreateMap<OrdersDTO, OrdersOrdersForClientByIdOutputModel>();
 
         CreateMap<UpdateOrderClientByIdInput, OrdersDTO>();
+
+        CreateMap<AllShiftsWithFreeIntervalsOnCurrentServiceDTO, ShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
+        CreateMap<ShiftsDTO, ShiftAllShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
+
+        CreateMap<RemoveOrderForClientIdInput,OrdersDTO>();
 
     }
 }
