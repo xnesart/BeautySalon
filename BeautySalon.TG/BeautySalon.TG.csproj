@@ -9,12 +9,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Telegram.Bot" Version="19.0.0" />
+      <ProjectReference Include="..\BeautySalon.BLL\BeautySalon.BLL.csproj" />
+      <ProjectReference Include="..\BeautySalon.DAL\BeautySalon.DAL.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BeautySalon.BLL\BeautySalon.BLL.csproj" />
-      <ProjectReference Include="..\BeautySalon.DAL\BeautySalon.DAL.csproj" />
+      <PackageReference Include="Telegram.Bot" Version="19.0.0" />
     </ItemGroup>
 
 </Project>

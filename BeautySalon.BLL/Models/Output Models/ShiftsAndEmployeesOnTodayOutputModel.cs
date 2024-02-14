@@ -1,4 +1,6 @@
-﻿namespace BeautySalon.BLL.Models;
+﻿using System.Collections.Generic;
+
+namespace BeautySalon.BLL.Models;
 
 public class ShiftsAndEmployeesOnTodayOutputModel
 {

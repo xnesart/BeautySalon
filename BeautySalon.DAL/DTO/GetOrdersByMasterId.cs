@@ -1,4 +1,6 @@
-﻿namespace BeautySalon.DAL.DTO;
+﻿using System;
+
+namespace BeautySalon.DAL.DTO;
 
 public class GetOrdersByMasterId
 {

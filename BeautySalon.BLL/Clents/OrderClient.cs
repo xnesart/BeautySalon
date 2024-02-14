@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.NewOrderModels.InputModels;

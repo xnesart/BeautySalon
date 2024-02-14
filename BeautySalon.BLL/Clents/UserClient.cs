@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AutoMapper;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
