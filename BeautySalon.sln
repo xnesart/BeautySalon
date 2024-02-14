@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.DAL", "BeautySa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.BLL", "BeautySalon.BLL\BeautySalon.BLL.csproj", "{6657A555-5C14-48A2-83C2-FEC6B9223346}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeuatySalon.TG", "BeuatySalon.TG\BeuatySalon.TG.csproj", "{AF55D43E-3115-4CFE-956B-13BCEB90CFF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.TG", "BeautySalon.TG\BeautySalon.TG.csproj", "{AF55D43E-3115-4CFE-956B-13BCEB90CFF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

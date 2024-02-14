@@ -1,27 +1,20 @@
 --удаление процедур
+    --процедуры для админа
 drop proc AddUserByChatId
 drop proc GetClientByNameAndId
 drop proc GetClientByNameAndPhone
 drop proc GetMasterByNameAndId
 drop proc GetMasterByNameAndPhone
-
 drop proc GetAllWorkersByRoleId
-
 drop proc GetAllWorkersWithContactsByUserId
-
 drop proc AddWorkerByRoleId
 drop proc RemoveUserById
-
 drop proc GetAllShiftsOnToday
-
 drop proc GetAllShiftsAndEmployees
-
-drop proc AddMasterToShift
+drop proc ChangeMasterInShift
 drop proc RemoveMasterFromShift
 drop proc GetAllIntervals
 drop proc GetAllIntervalsByShiftId
-drop proc GetAllShiftsWithFreeIntervals
-drop proc GetAllFreeIntervalsByShiftId
 drop proc GetAllServiceTypes
 drop proc GetAllServicesByIdFromCurrentType
 drop proc GetAllServices
@@ -33,8 +26,13 @@ drop proc RemoveServiceById
 drop proc AddClientToFreeMaster
 drop proc GetAllOrdersOnToday
 drop proc GetAllOrdersOnTodayForMasters
+     --процедуры для мастера
 drop proc GetMastersShiftsById
-drop proc GetMastersOrdersById
+drop proc GetOrdersByMasterId
+     --процедуры для клиента
+drop proc GetFreeMastersAndIntervalsOnToday
+drop proc GetAllShiftsWithFreeIntervalsOnToday
+drop proc GetAllFreeIntervalsByShiftId
 drop proc GetAllShiftsWithFreeIntervalsOnCurrentService
 drop proc GetAllFreeIntervalsInCurrentShiftOnCurrentService
 drop proc GetAllFreeIntervalsOnCurrentService

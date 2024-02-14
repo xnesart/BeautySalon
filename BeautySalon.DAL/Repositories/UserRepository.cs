@@ -66,7 +66,6 @@ public class UserRepository : IUserRepository
         }
     }
 
-
     public List<UsersDTO> GetClientByNameAndPhone(string name, string phone)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -156,8 +155,8 @@ public class UserRepository : IUserRepository
             connection.Query<UsersDTO>(Procedures.AddWorkerByRoleId, parameters);
         }
     }
-
-    public void RemoveUserById(int id)
+    
+    public UsersDTO RemoveUserById(int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
@@ -165,11 +164,12 @@ public class UserRepository : IUserRepository
             {
                 Id = id
             };
-            connection.Query<UsersDTO>(Procedures.RemoveUserById, parameters);
+            var result=connection.QuerySingle<UsersDTO>(Procedures.RemoveUserById, parameters);
+            return result;
         }
     }
 
-    public void AddMasterToShift(int masterId, int shiftId)
+    public void ChangeMasterInShift(int masterId, int shiftId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
@@ -178,7 +178,7 @@ public class UserRepository : IUserRepository
                 MasterId = masterId,
                 ShiftId = shiftId
             };
-            connection.Query<UsersDTO>(Procedures.AddMasterToShift, parameters);
+            connection.Query<UsersDTO>(Procedures.ChangeMasterInShift, parameters);
         }
     }
 
@@ -192,6 +192,24 @@ public class UserRepository : IUserRepository
                 ShiftId = shiftId
             };
             connection.Query<UsersDTO>(Procedures.RemoveMasterFromShift, parameters);
+        }
+    }
+
+    public List<GetFreeMastersAndIntervalsOnTodayDTO> GetFreeMastersAndIntervalsOnToday()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetFreeMastersAndIntervalsOnTodayDTO, IntеrvalsDTO, GetFreeMastersAndIntervalsOnTodayDTO>(
+                Procedures.GetFreeMastersAndIntervalsOnToday,
+                (users, intervals) =>
+                {
+                    if (users.Intervals == null)
+                    {
+                        users.Intervals = new List<IntеrvalsDTO>();
+                    }
+                    users.Intervals.Add(intervals);
+                    return users;
+                }, splitOn: "Id,Title").ToList();
         }
     }
 }

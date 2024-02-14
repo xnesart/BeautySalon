@@ -18,11 +18,11 @@ public class ShiftsRepository : IShiftsRepository
         }
     }    
     
-    public List<GetAllShiftsAndEmployeesDTO> GetAllShiftsAndEmployeesOnToday()
+    public List<GetAllShiftsAndEmployeesOnTodayDTO> GetAllShiftsAndEmployeesOnToday()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllShiftsAndEmployeesDTO, ShiftsDTO, GetAllShiftsAndEmployeesDTO>(
+            return connection.Query<GetAllShiftsAndEmployeesOnTodayDTO, ShiftsDTO, GetAllShiftsAndEmployeesOnTodayDTO>(
                 Procedures.GetAllShiftsAndEmployeesOnToday,
                 (users, shifts) =>
                 {
@@ -37,22 +37,21 @@ public class ShiftsRepository : IShiftsRepository
         }
     }
 
-    public List<GetAllShiftsWithFreeIntervalsDTO> GetAllShiftsWithFreeIntervals()
+    public List<GetAllShiftsWithFreeIntervalsOnTodayDTO> GetAllShiftsWithFreeIntervalsOnToday()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllShiftsWithFreeIntervalsDTO, IntеrvalsDTO, GetAllShiftsWithFreeIntervalsDTO>(
-                Procedures.GetAllShiftsWithFreeIntervals,
+            return connection.Query<GetAllShiftsWithFreeIntervalsOnTodayDTO, IntеrvalsDTO, GetAllShiftsWithFreeIntervalsOnTodayDTO>(
+                Procedures.GetAllShiftsWithFreeIntervalsOnToday,
                 (shifts, intervals) =>
                 {
                     if (shifts.Intervals == null)
                     {
                         shifts.Intervals = new List<IntеrvalsDTO>();
                     }
-
                     shifts.Intervals.Add(intervals);
                     return shifts;
-                }, splitOn: "Id,IsBusy").ToList();
+                }, splitOn: "Id,StartTime").ToList();
         }
     }
     public List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService (int serviceId)
@@ -85,7 +84,7 @@ public class ShiftsRepository : IShiftsRepository
                 },
                 parameter ,
                 splitOn: "Id,Id"
-                 ).ToList();
+                ).ToList();
         }
     }
 }
