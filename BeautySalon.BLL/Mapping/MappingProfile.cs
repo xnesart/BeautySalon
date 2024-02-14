@@ -43,6 +43,8 @@ public class MappingProfile : Profile
         CreateMap<IntеrvalsDTO, AllFreeIntervalsOnCurrentServiceIntervalModelOutputModel>();
         //GetAllChatId
         CreateMap<GetAllChatIdDTO, AllChatIdOutputModel>();
+        CreateMap<GetAllIntervalsByShiftIdDTO, GetAllIntervalsByShiftIdOutputModel>();
+        CreateMap<ShiftsDTO, ShiftsOutputModel>();
 
 
         

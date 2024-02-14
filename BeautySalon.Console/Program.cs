@@ -206,10 +206,15 @@ class Program
         // UserClient userClient = new UserClient();
         // var res = userClient.GetAllChatId();
         // Console.WriteLine();
+        //
+        // UserClient userClient = new UserClient();
+        // userClient.RemoveMasterFromShift(2,1);
         
-        UserClient userClient = new UserClient();
-        userClient.RemoveMasterFromShift(2,1);
         
+        // IntervalsClient intervals = new IntervalsClient();
+        // var res = intervals.GetAllIntervalsByShiftId(1);
+        // Console.WriteLine();
+        //
 
         #endregion
     }
