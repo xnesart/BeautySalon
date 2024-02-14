@@ -9,15 +9,7 @@ namespace BeautySalon.DAL.Repositories;
 
 public class IntervalsRepository : IIntervalsRepository
 {
-    public List<IntеrvalsDTO> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId)
-    {
-        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-        {
-            var parameters = new { ServiceId = serviceId };
-            return connection.Query<IntеrvalsDTO>(Procedures.GetAllShiftsWithFreeIntervalsOnCurrentService, parameters)
-                .ToList();
-        }
-    }
+   
 
     public List<GetAllIntervalsByShiftIdDTO> GetAllIntervalsByShiftId(int shiftId)
     {
@@ -56,6 +48,63 @@ public class IntervalsRepository : IIntervalsRepository
                     intervals.Shifts.Add(shifts);
                     return intervals;
                 }, parameters, splitOn: "Id,Id").ToList();
+        }
+    }
+
+    public List<IntеrvalsDTO> GetAllIntervals(string day)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new { Day = day };
+            return connection.Query<ShiftsDTO, IntеrvalsDTO, IntеrvalsDTO>(
+                Procedures.GetAllIntervals,
+                (shifts, intervals) =>
+                {
+                    if (intervals.Shifts == null)
+                    {
+                        intervals.Shifts = new List<ShiftsDTO>();
+                    }
+                    intervals.Shifts.Add(shifts);
+                    return intervals;
+                }, parameters, splitOn: "Id").ToList();
+        }
+    }
+    public List<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO> GetAllFreeIntervalsInCurrentShiftOnCurrentService(int serviceId, int shiftId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                ServiceId = serviceId,
+                ShiftId = shiftId
+            };
+
+            return connection.Query<ServicesDTO, ShiftsDTO, IntеrvalsDTO, GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO>
+                (
+                Procedures.GetAllFreeIntervalsInCurrentShiftOnCurrentService,
+                (service, shift, interval) =>
+                {
+                    GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO getAllFree = new GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO();
+
+                    getAllFree.Services = new ServicesDTO();
+                    getAllFree.Services.Id = service.Id;
+                    getAllFree.Services.Title = service.Title;
+
+                    getAllFree.Shifts = new ShiftsDTO();
+                    getAllFree.Shifts.Id = shift.Id;
+                    getAllFree.Shifts.Title = shift.Title;
+                    getAllFree.Shifts.StartTime = shift.StartTime;
+
+                    getAllFree.Interval = new IntеrvalsDTO();
+                    getAllFree.Interval.Id = interval.Id;
+                    getAllFree.Interval.Title = interval.Title;
+                    getAllFree.Interval.StartTime = interval.StartTime;
+
+                    return getAllFree;
+                },
+                parameters,
+                splitOn: "Id,Id,Id"
+                 ).ToList();
         }
     }
 }

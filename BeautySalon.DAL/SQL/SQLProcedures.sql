@@ -1,4 +1,8 @@
-﻿--процедуры для админа
+<<<<<<< HEAD
+﻿----процедуры для админа
+=======
+--процедуры для админа
+>>>>>>> TatianaYstinova/main
 -- ✓ Зарегистрировать пользователя по ChatId, заполнив его имя, телефон и почту
 create proc AddUserByChatId
     @ChatId int, @UserName nvarchar(50), @Name nvarchar(50), @Phone nvarchar(30), @Mail nvarchar(30), @RoleId int, @Salary decimal, @IsBlocked bit, @IsDeleted bit as
@@ -18,46 +22,61 @@ go
 create proc GetClientByNameAndPhone
     @Name nvarchar(50), @Phone nvarchar(30) as
 begin
-    select Users.Name as Name, Users.Phone as Phone from Users
-    where Users.Name = @Name and Users.Phone = @Phone
+    select Id,ChatId, UserName, Name, Phone,Mail,RoleId,Salary,IsBlocked, IsDeleted from Users
+    where Users.Name = @Name and Users.Phone = @Phone and RoleId = 3
 end
 go
 -- ✓ Найти мастера по имени и id
 create proc GetMasterByNameAndId
     @Name nvarchar(50), @Id int as
 begin
-    select Users.Name as Master, Users.Id as MasterId from Users
-    where Users.Name = @Name and Users.Id = @Id
+    select Id ,ChatId, UserName, Name , Phone,Mail,RoleId,Salary,IsBlocked, IsDeleted from Users
+    where Users.Name = @Name and Users.Id = @Id and RoleId = 2
 end
 go
 -- ✓ Найти мастера по имени и телефону
 create proc GetMasterByNameAndPhone
     @Name nvarchar(50), @Phone nvarchar(30) as
 begin
-    select Users.Name as Master, Users.Phone as MasterPhone from Users
+    select Id,ChatId, UserName, Name, Phone,Mail,RoleId,Salary,IsBlocked, IsDeleted from Users
     where Users.Name = @Name and Users.Phone = @Phone
 end
 go
 -- ✓ Вывести всех сотрудников по RoleId
-create proc GetAllWorkersByRoleId
+create proc GetAllWorkersByRoleId 
 as
 begin
-select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker, 
+<<<<<<< HEAD
+=======
+
+>>>>>>> TatianaYstinova/main
+select Users.Id, Users.RoleId, Roles.Title as Worker,
 Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
 join Roles on Users.RoleId = Roles.Id
 where RoleId = 1 or RoleId = 2
+<<<<<<< HEAD
+=======
+
+>>>>>>> TatianaYstinova/main
+    select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker, 
+           Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
+    join Roles on Users.RoleId = Roles.Id
+    where RoleId = 1 or RoleId = 2
+<<<<<<< HEAD
+=======
+
+>>>>>>> TatianaYstinova/main
 end
 go
 -- ✓ Вывести всех сотрудников по Id и их контакты
 create proc GetAllWorkersWithContactsByUserId
 as
 begin
-    select Users.Id as WorkerId, Users.RoleId as WorkerRoleId,  Users.Name, Users.Phone, Users.Mail ,Roles.Title as Worker from Users
-                                                                                                                                    join Roles on Users.RoleId = Roles.Id
+    select Users.Id, Users.RoleId,  Users.Name, Users.Phone, Users.Mail ,Roles.Title as Worker from Users
+    join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
 end
 go
-
 -- ✓ Добавить сотрудника в базу через бота по RoleId
 create proc AddWorkerByRoleId
     @WorkerRole int, @WorkerName nvarchar(50), @WorkerPhone nvarchar(30), @WorkerMail nvarchar(30) as
@@ -65,49 +84,48 @@ begin
     insert into Users (RoleId, Name, Phone, Mail) values(@WorkerRole, @WorkerName, @WorkerPhone, @WorkerMail)
 end
 go
-
 -- ✓ Удалить пользователя из базы по Id
 create proc RemoveUserById
-@Id int as
+    @Id int
+as
 begin
+    -- Обновляем IsDeleted для пользователя с указанным Id
     update Users
     set IsDeleted = 1
-    where Id = @Id
+    output deleted.IsDeleted
+    where Id = @Id;
 end
 go
-
 -- ✓ Вывести все смены на сегодня
-create proc GetAllShiftsOnToday as
-begin
-declare @Today datetime
-set @Today = GETDATE()
-
-select Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime from Shifts
-where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
-end
-go
-
--- ✓ Вывести все смены и работающих в них сотрудников
-create proc GetAllShiftsAndEmployeesOnToday as
+create proc GetAllShiftsOnToday 
+as
 begin
     declare @Today datetime
     set @Today = GETDATE()
-
-    select Users.Name, Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime, Shifts.MasterId from Shifts
-                                                                                                           join Users on Shifts.MasterId = Users.id
+    select Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime from Shifts
     where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
 end
 go
--- ✓ Добавить мастера в ВЫБРАННУЮ смену
-create proc AddMasterToShift
-    @MasterId int, @ShiftId int as
+-- ✓ Вывести все смены и работающих в них сотрудников
+create proc GetAllShiftsAndEmployeesOnToday 
+as
 begin
-    update Shifts
-    set Shifts.MasterId = @MasterId
-    where Shifts.Id = @ShiftId
+    declare @Today datetime
+    set @Today = GETDATE()
+    select Users.Name, Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime, Shifts.MasterId from Shifts
+    join Users on Shifts.MasterId = Users.id
+    where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
 end
 go
-
+-- ✓ Назначить на выбранную смену другого мастера
+create proc ChangeMasterInShift
+    @MasterId int, @ShiftId int as
+begin
+update Shifts
+set Shifts.MasterId = @MasterId
+where Shifts.Id = @ShiftId
+end
+go
 -- ✓ Удалить мастера из ВЫБРАННОЙ смены
 create proc RemoveMasterFromShift
     @MasterId int, @ShiftId int as
@@ -119,10 +137,11 @@ end
 go
 -- ✓ Вывести все интервалы
 create proc GetAllIntervals
-@Day datetime  as
+@Day datetime as
 begin
-    select Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime, Intervals.IsBusy, Intervals.IsDeleted, Shifts.Id, Shifts.Title from Intervals
-                                                                                                                                                          join Shifts on Intervals.ShiftId = Shifts.Id
+select Shifts.Id, Shifts.Title,
+    Intervals.Id, Intervals.Title, Intervals.StartTime, Intervals.IsBusy, Intervals.IsDeleted from Intervals
+    join Shifts on Intervals.ShiftId = Shifts.Id
     where convert(DATE, Intervals.StartTime) = convert(DATE, @Day)
 end
 go
@@ -132,32 +151,13 @@ create proc GetAllIntervalsByShiftId
 begin
     select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime,
            Intervals.IsBusy, Intervals.IsDeleted from Intervals
-                                                          join Shifts on Shifts.Id = Intervals.ShiftId
+    join Shifts on Shifts.Id = Intervals.ShiftId
     where @ShiftID = Intervals.ShiftId
 end
 go
--- ✓ Вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи
-create proc GetAllShiftsWithFreeIntervals as
-begin
-    declare @Today datetime
-    set @Today = GETDATE()
-    select Shifts.Id, Shifts.Title, Shifts.StartTime, Intervals.IsBusy from Shifts
-                                                                                        join Intervals on Intervals.ShiftId = Shifts.Id
-    where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
-end
-go
--- ✓ Для ВЫБРАННОЙ смены вывести все СВОБОДНЫЕ для записи интервалы
-create proc GetAllFreeIntervalsByShiftId
-@ShiftId int as
-begin
-    select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime,
-           Intervals.IsBusy, Intervals.IsDeleted from Intervals
-                                                          join Shifts on Shifts.Id = Intervals.ShiftId
-    where @ShiftId = Shifts.Id and Intervals.IsBusy = 0
-end
-go
 -- ✓ Вывести все типы услуг
-create proc GetAllServiceTypes as
+create proc GetAllServiceTypes 
+as
 begin
     select Types.Id, Types.Title, Types.IsDeleted from Types
 end
@@ -167,17 +167,17 @@ create proc GetAllServicesByIdFromCurrentType
 @Id int as
 begin
     select Services.Id, Services.Title,Services.Price, Services.Duration, Types.Id, Types.Title from Types
-                                                                                                         join Services on Services.TypeId = Types.Id
+    join Services on Services.TypeId = Types.Id
     where Types.Id = @Id
 end
 go
 -- ✓ Вывести все услуги
-create proc GetAllServices as
+create proc GetAllServices 
+as
 begin
-    select Services.Id, Services.Title, Services.Duration, Services.Price, Services.IsDeleted,  Services.TypeId, Types.Title from Services
-                                                                                                                                      join Types on Services.TypeId = Types.Id
+    select Services.Id, Services.Title, Services.Duration, Services.Price, Services.IsDeleted, Services.TypeId, Types.Title from Services
+    join Types on Services.TypeId = Types.Id
 end
-
 go
 -- ✓ Добавить услугу
 create proc AddServiceById
@@ -185,14 +185,13 @@ create proc AddServiceById
 begin
     insert into Services values(@ServiceTitle, @ServiceType, @ServiceDuration, @ServicePrice, 0)
 end
-
 go
 -- ✓ Изменить название услуги
 create proc UpdateServiceTitle
-    @ServiceId int, @ServiceName nvarchar(50) as
+    @ServiceId int, @ServiceTitle nvarchar(50) as
 begin
     update Services
-    set Services.Title = @ServiceName
+    set Services.Title = @ServiceTitle
     where @ServiceId = Services.Id
 end
 go
@@ -220,55 +219,64 @@ create proc RemoveServiceById
 begin
     update Services
     set IsDeleted = 1
-    where Id = @Id
-end
-
-go
--- ✓ Записать клиента к СВОБОДНОМУ мастеру ?? Тут надо разобраться!
-create proc AddClientToFreeMaster
-    @ClientId INT, @ServiceId INT, @ShiftId INT, @IntervalId INT, @Date DATETIME as
-begin
-    if exists (select 1 from Intervals where Id = @IntervalId AND IsBusy = 0)
-        begin
-            -- Проверка, что мастер свободен в выбранном интервале
-            if not exists (
-                select 1
-                from Orders
-                where MasterId IN (select MasterId FROM Shifts WHERE Id = @ShiftId)
-                  and StartIntervalId = @IntervalId
-                  and Date = @Date
-            )
-                begin
-                    -- Вставка заказа
-                    INSERT INTO Orders (Date, MasterId, ClientId, ServiceId, StartIntervalId, IsDeleted)
-                    VALUES (@Date, (SELECT MasterId FROM Shifts WHERE Id = @ShiftId), @ClientId, @ServiceId, @IntervalId, 0)
-
--- Пометить интервал как занятый
-                    UPDATE Intervals SET IsBusy = 1 WHERE Id = @IntervalId
-                end
-        end
+    where Id = @Id  
 end
 go
-
+-- -- ✓ Записать клиента к СВОБОДНОМУ мастеру ?? Тут надо разобраться!
+-- create proc AddClientToFreeMaster
+--     @ClientId INT, @ServiceId INT, @ShiftId INT, @IntervalId INT, @Date DATETIME as
+-- begin
+--     if exists (select 1 from Intervals where Id = @IntervalId AND IsBusy = 0)
+--         begin
+--             -- Проверка, что мастер свободен в выбранном интервале
+--             if not exists (
+--                 select 1
+--                 from Orders
+--                 where MasterId IN (select MasterId FROM Shifts WHERE Id = @ShiftId)
+--                   and StartIntervalId = @IntervalId
+--                   and Date = @Date
+--             )
+--                 begin
+--                     -- Вставка заказа
+--                     INSERT INTO Orders (Date, MasterId, ClientId, ServiceId, StartIntervalId, IsDeleted)
+--                     VALUES (@Date, (SELECT MasterId FROM Shifts WHERE Id = @ShiftId), @ClientId, @ServiceId, @IntervalId, 0)
+--             -- Пометить интервал как занятый
+--                     UPDATE Intervals SET IsBusy = 1 WHERE Id = @IntervalId
+--                 end
+--         end
+-- end
+-- go
+-- ✓ Записать клиента к СВОБОДНОМУ мастеру
+CREATE PROCEDURE AddClientToFreeMaster
+    @ClientId INT,
+    @ServiceId INT,
+    @ShiftId INT,
+    @IntervalId INT
+AS
+BEGIN
+    DECLARE @TodayDate DATETIME = GETDATE();
+    INSERT INTO Orders (Date, MasterId, ClientId, ServiceId, StartIntervalId, IsDeleted)
+    VALUES (@TodayDate, (SELECT MasterId FROM Shifts WHERE Id = @ShiftId), @ClientId, @ServiceId, @IntervalId, 0)
+    UPDATE Intervals
+    SET IsBusy=1 WHERE @IntervalId=Intervals.Id
+END
+go
 -- ✓ Вывести все заказы на сегодня
 create proc GetAllOrdersOnToday
 as
 begin
     declare @Today datetime
     set @Today = getdate()
-
-    select Orders.Date, Orders.MasterId, Orders.ClientId, Orders.ServiceId, Orders.StartIntervalId, Orders.IsCompleted, Orders.IsDeleted from Orders
-    where convert(date, Orders.Date) = convert(date, @Today)
+    select Orders.Id, Orders.Date, Orders.MasterId, Orders.ClientId, Orders.ServiceId, Orders.StartIntervalId, Orders.IsCompleted, Orders.IsDeleted from Orders
+    where convert(date, Orders.Date) = convert(date, @Today) and IsDeleted = 0
 end
 go
-
 -- ✓ Вывести все заказы на сегодня для всех мастеров
 create proc GetAllOrdersOnTodayForMasters
 as
 begin
     declare @Today datetime
     set @Today = getdate()
-
     select Orders.Id, Orders.Date, Orders.ServiceId, Orders.StartIntervalId,Orders.IsCompleted, Orders.IsDeleted,
            Orders.MasterId, Orders.ClientId, Master.Id ,Master.Name, Services.Title, Services.Price, Intervals.Title,
            Client.Name from Orders
@@ -280,17 +288,15 @@ join Intervals on Orders.StartIntervalId = Intervals.Id
 end
 go
 
-
 ----процедуры для мастера
 -- ✓ Вывести смены выбранного мастера на сегодня
 create proc GetMastersShiftsById
 @Id int as
 begin
     select Users.Id as MasterId, Users.Name as Master, Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime from Users
-                                                                                                                          join Shifts on Shifts.MasterId = Users.Id
+    join Shifts on Shifts.MasterId = Users.Id
     where Shifts.MasterId = @Id
 end
-
 go
 -- ✓ Вывести заказы выбранного мастера на сегодня
 create proc GetOrdersByMasterId
@@ -309,37 +315,98 @@ end
 go
 
 ----процедуры для клиента
+CREATE proc [dbo].[GetOrdersByClientId2]
+@Id int as
+begin
+select Orders.Id,  Orders.Date, Orders.StartIntervalId,
+	Client.Id, Client.Name,
+	Master.Id, Master.Name,
+	Intervals.Id, Intervals.Title,
+	Services.Id, Services.Title, Services.Duration, Services.Price
+from
+	Orders
+	join Users as Client on Orders.ClientId = Client.Id
+	join Users as Master on Orders.MasterId = Master.Id
+	join Intervals on Orders.StartIntervalId = Intervals.Id
+	join Services on Orders.ServiceId = Services.Id
+where Client.Id = @Id and Orders.IsDeleted = 0
+end
+
+-- ✓ Вывести свободных мастеров и свободные интервалы для записи
+create proc GetFreeMastersAndIntervalsOnToday
+    as
+begin
+    declare @Today datetime
+    set @Today = GETDATE()
+    select Users.Id as MasterId, Users.Name as Master, Intervals.Id, Intervals.Title, Intervals.StartTime from Users
+    join Shifts on Users.Id = Shifts.MasterId
+    join Intervals on Shifts.Id = Intervals.ShiftId
+    where Users.IsDeleted = 0 and Shifts.IsDeleted = 0 and Intervals.IsDeleted = 0 and Intervals.IsBusy = 0
+end
+go
+---- ✓ Вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи (с дублированием смен по количеству интервалов)
+--create proc GetAllShiftsWithFreeIntervalsOnToday
+--as
+--begin
+    --declare @Today datetime
+    --set @Today = GETDATE()
+    --select Shifts.Id, Shifts.Title, Shifts.StartTime from Shifts
+    --join Intervals on Intervals.ShiftId = Shifts.Id
+    --where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
+--end
+--go
+-- ✓ Вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи (без дублирования смен)
+create proc GetAllShiftsWithFreeIntervalsOnToday
+    as
+begin
+    declare @Today datetime
+    set @Today = GETDATE()
+    select Shifts.Id, Shifts.Title, Shifts.StartTime from Shifts
+    where Shifts.Id in 
+        (
+        select distinct Intervals.ShiftId from Intervals
+        where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
+        );
+end
+go
+-- ✓ Для ВЫБРАННОЙ смены вывести все СВОБОДНЫЕ для записи интервалы
+create proc GetAllFreeIntervalsByShiftId
+@ShiftId int as
+begin
+    select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime,
+       Intervals.IsBusy, Intervals.IsDeleted from Intervals
+    join Shifts on Shifts.Id = Intervals.ShiftId
+    where @ShiftId = Shifts.Id and Intervals.IsBusy = 0
+end
+go
 -- ✓ Для ВЫБРАННОЙ услуги вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи
 create proc GetAllShiftsWithFreeIntervalsOnCurrentService
 @ServiceId int as
 begin
     select Services.Id, Services.Title, Shifts.Id, Shifts.Title, Shifts.StartTime from Shifts
-                                                                                           join Services on Services.Id = @ServiceId
-                                                                                           join Intervals on Intervals.ShiftId = Shifts.Id
+    join Services on Services.Id = @ServiceId
+    join Intervals on Intervals.ShiftId = Shifts.Id
     where Intervals.IsBusy = 0
 end
-
 go
 -- ✓ Для ВЫБРАННОЙ услуги в ВЫБРАННУЮ смену вывести все СВОБОДНЫЕ интервалы для записи
 create proc GetAllFreeIntervalsInCurrentShiftOnCurrentService
     @ServiceId int, @ShiftId int as
 begin
     select Services.Id, Services.Title, Shifts.Id, Shifts.Title, Shifts.StartTime, Intervals.Id, Intervals.Title, Intervals.StartTime from Intervals
-                                                                                                                                               join Services on Services.Id = @ServiceId
-                                                                                                                                               join Shifts on Shifts.Id = @ShiftId
+    join Services on Services.Id = @ServiceId
+    join Shifts on Shifts.Id = @ShiftId
     where Intervals.IsBusy = 0
 end
-
 go
 -- ✓ Для ВЫБРАННОЙ услуги вывести все СВОБОДНЫЕ интервалы для записи
 create proc GetAllFreeIntervalsOnCurrentService
 @ServiceId int as
 begin
     select Services.Id, Services.Title, Intervals.Id, Intervals.Title, Intervals.StartTime from Intervals
-                                                                                                    join Services on Services.Id = @ServiceId
+    join Services on Services.Id = @ServiceId
     where Intervals.IsBusy = 0
 end
-
 go
 -- ✓ Создать запись, выбрав услугу, смену и интервал
 create proc CreateNewOrder
@@ -353,7 +420,6 @@ begin
             where Intervals.Id = @IntervalId
         end
 end
-
 go
 -- ✓ Вывести  записи клиента на сегодня
 create proc GetOrdersForClientById
@@ -362,13 +428,12 @@ begin
     select Client.Id as ClientId, Client.Name as Client, Master.Id as MasterId, Master.Name as Master,
            Orders.Id,  Orders.Date, Orders.StartIntervalId, Intervals.Id, Intervals.Title,
            Services.Id, Services.Title, Services.Duration, Services.Price from Orders
-                                                                                   join Users as Client on Orders.ClientId = Client.Id
-                                                                                   join Users as Master on Orders.MasterId = Master.Id
-                                                                                   join Intervals on Orders.StartIntervalId = Intervals.Id
-                                                                                   join Services on Orders.ServiceId = Services.Id
+    join Users as Client on Orders.ClientId = Client.Id
+    join Users as Master on Orders.MasterId = Master.Id
+    join Intervals on Orders.StartIntervalId = Intervals.Id
+    join Services on Orders.ServiceId = Services.Id
     where Client.Id = @Id and Orders.IsDeleted = 0
 end
-
 go
 -- ✓ Изменить время записи клиента
 create proc UpdateOrderTimeForClientById
@@ -378,7 +443,6 @@ begin
     set MasterId = @MasterId, StartIntervalId = @IntervalId
     where Orders.Id = @OrderId and Orders.ClientId = @ClientId
 end
-
 go
 -- ✓ Удалить запись клиента
 create proc RemoveOrderForClientByOrderId
