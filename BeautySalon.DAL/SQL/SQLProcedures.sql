@@ -10,6 +10,12 @@ begin
     insert into Users values(@ChatId, @UserName, @Name, @Phone, @Mail, @RoleId, null, 0, 0)
 end
 go
+--получить все юзер id от всех пользователей
+create proc GetAllUsersChatId as
+begin
+    select ChatId from Users
+end
+go
 -- ✓ Найти клиента по имени и id
 create proc GetClientByNameAndId
     @Name nvarchar(50), @Id int as

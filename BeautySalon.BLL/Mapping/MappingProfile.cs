@@ -29,7 +29,17 @@ public class MappingProfile : Profile
         CreateMap<ShiftsDTO, AllFreeIntervalsOnCurrentServiceShiftOutputModel>();
         CreateMap<IntеrvalsDTO, AllFreeIntervalsOnCurrentServiceIntervalModelOutputModel>();
         CreateMap<GetAllChatIdDTO, AllChatIdOutputModel>();
+<<<<<<< HEAD
         CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();  
+=======
+        CreateMap<GetAllIntervalsByShiftIdDTO, GetAllIntervalsByShiftIdOutputModel>();
+        CreateMap<ShiftsDTO, ShiftsOutputModel>();
+
+
+        
+        CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();   
+
+>>>>>>> 76556b0c5afc8535320ea5d96b5ec67c075cf402
         CreateMap<WorkerByRoleIdInputModel, AddWorkerByRoleIdDTO>();
         CreateMap<RolesDTO, RolesOutputModel>(); 
         CreateMap<UsersDTO, AllWorkersByRoleIdOutputModel>();
