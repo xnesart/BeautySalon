@@ -23,7 +23,7 @@ public class Procedures
 
     public const string GetAllShiftsAndEmployeesOnToday = "GetAllShiftsAndEmployeesOnToday";
 
-    public const string AddMasterToShift = "AddMasterToShift";
+    public const string ChangeMasterInShift = "ChangeMasterInShift";
     public const string RemoveMasterFromShift = "RemoveMasterFromShift";
     public const string GetFreeMastersAndIntervalsOnToday = "GetFreeMastersAndIntervalsOnToday";
     public const string GetAllShiftsWithFreeIntervalsOnToday = "GetAllShiftsWithFreeIntervalsOnToday";

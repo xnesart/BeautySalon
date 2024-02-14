@@ -12,7 +12,7 @@ public interface IUserRepository
     public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId();
     public void AddWorkerByRoleId(int role, string name, string phone, string mail);
     public UsersDTO RemoveUserById(int id);
-    public void AddMasterToShift(int masterId, int shiftId);
+    public void ChangeMasterInShift(int masterId, int shiftId);
     public void RemoveMasterFromShift(int masterId, int shiftId);
     public List<GetMastersShiftsById> GetMastersShiftsById(int id);
     public List<UsersDTO> GetClientByNameAndId(string name, int id);
