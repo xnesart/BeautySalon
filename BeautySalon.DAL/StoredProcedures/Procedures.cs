@@ -42,7 +42,8 @@ public class Procedures
     public const string UpdateServiceDuration = "UpdateServiceDuration";
     public const string RemoveServiceById = "RemoveServiceById";
     public const string AddClientToFreeMaster = "AddClientToFreeMaster";
-    public const string GetAllOrdersOnToday = "GetAllOrdersOnToday";
+    public const string GetAllOrdersOnToday = "GetAllOrdersOnToday"; 
+    public const string GetAllChatId = "GetAllUsersChatId";
 
 
     public const string GetOrdersByClientId2 = "GetOrdersByClientId2";

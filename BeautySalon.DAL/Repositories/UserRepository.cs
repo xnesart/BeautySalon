@@ -9,22 +9,21 @@ namespace BeautySalon.DAL.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    public List<UsersDTO> AddUserByChatId(int chatId, string userName, string name, string phone, string mail,
-        int roleId, decimal salary, int isBlocked, int isDeleted)
+    public List<UsersDTO> AddUserByChatId(UsersDTO usersDTO)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new
             {
-                ChatId = chatId,
-                UserName = userName,
-                Name = name,
-                Phone = phone,
-                Mail = mail,
-                RoleID = roleId,
-                Salary = salary,
-                IsBlocked = isBlocked,
-                IsDeleted = isDeleted
+                ChatId = usersDTO.ChatId,
+                UserName = usersDTO.UserName,
+                Name = usersDTO.Name,
+                Phone = usersDTO.Phone,
+                Mail = usersDTO.Mail,
+                RoleID = usersDTO.RoleId,
+                Salary = usersDTO.Salary,
+                IsBlocked = usersDTO.IsBlocked,
+                IsDeleted = usersDTO.IsDeleted,
             };
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
@@ -32,16 +31,16 @@ public class UserRepository : IUserRepository
 
     public List<GetMastersShiftsById> GetMastersShiftsById(int id)
     {
-        using (IDbConnection connection =new SqlConnection(Options.ConnectionString))
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new
             {
                 Id = id
             };
             return connection
-                .Query<GetMastersShiftsById, ShiftsDTO,GetMastersShiftsById>(
+                .Query<GetMastersShiftsById, ShiftsDTO, GetMastersShiftsById>(
                     Procedures.GetMastersShiftsById,
-                    (master,shifts) =>
+                    (master, shifts) =>
                     {
                         if (master.Shifts == null)
                         {
@@ -115,20 +114,31 @@ public class UserRepository : IUserRepository
         }
     }
 
+    public List<GetAllChatIdDTO> GetAllChatId()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetAllChatIdDTO>(Procedures.GetAllChatId).ToList();
+        }
+    }
+
     public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllWorkersWithContactsByUserIdDTO, RolesDTO, GetAllWorkersWithContactsByUserIdDTO>(Procedures.GetAllWorkersWithContactsByUserId,
-                (users, roles) =>
-                {
-                    if (users.Roles == null)
+            return connection
+                .Query<GetAllWorkersWithContactsByUserIdDTO, RolesDTO, GetAllWorkersWithContactsByUserIdDTO>(
+                    Procedures.GetAllWorkersWithContactsByUserId,
+                    (users, roles) =>
                     {
-                        users.Roles = new List<RolesDTO>();
-                    }
-                    users.Roles.Add(roles);
-                    return users;
-                }, splitOn: "Id,Worker").ToList();
+                        if (users.Roles == null)
+                        {
+                            users.Roles = new List<RolesDTO>();
+                        }
+
+                        users.Roles.Add(roles);
+                        return users;
+                    }, splitOn: "Id,Worker").ToList();
         }
     }
 
@@ -170,8 +180,8 @@ public class UserRepository : IUserRepository
             };
             connection.Query<UsersDTO>(Procedures.AddMasterToShift, parameters);
         }
-    }    
-    
+    }
+
     public void RemoveMasterFromShift(int masterId, int shiftId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))

@@ -37,8 +37,9 @@ public class UserClient : IUserClient
 
     public void AddUserByChatId(AddUserByChatIdInputModel model)
     {
+        UsersDTO dto = _mapper.Map<UsersDTO>(model);
         List<UsersDTO> users =
-            _userRepository.AddUserByChatId(model.ChatId, model.UserName, model.Name, model.Phone, model.Mail, model.RoleId, model.Salary, model.IsBlocked, model.IsDeleted);
+            _userRepository.AddUserByChatId(dto);
     }
     
     public List<ClientByNameAndPhoneOutputModel> GetClientByNameAndPhone(string name, string phone)
@@ -74,5 +75,12 @@ public class UserClient : IUserClient
     {
         AddWorkerByRoleIdDTO dto = _mapper.Map<AddWorkerByRoleIdDTO>(model);
         _userRepository.AddWorkerByRoleId(dto);
+    }  
+    public List<AllChatIdOutputModel> GetAllChatId()
+    {
+        List<GetAllChatIdDTO> chats =
+            _userRepository.GetAllChatId();
+        var result = _mapper.Map<List<AllChatIdOutputModel>>(chats);
+        return result;
     }
 }
