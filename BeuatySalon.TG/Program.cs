@@ -46,6 +46,14 @@ public class Program
             Console.WriteLine($"{update.Message.Chat.Id} {update.Message.Chat.FirstName} {update.Message.Text}");
         }
 
+        foreach (var chat in Chats)
+        {
+            if (chat.ChatId == 301921042)
+            {
+                botClient.SendTextMessageAsync(update.Message.Chat.Id,
+                    $" {update.Message.Chat.FirstName} {update.Message.Chat.LastName} Здравствуй, о Администратор)))");
+            }
+        }
         botClient.SendTextMessageAsync(update.Message.Chat.Id,
             $" {update.Message.Chat.FirstName} {update.Message.Chat.LastName} сам ты {update.Message.Text}");
 
