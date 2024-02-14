@@ -379,8 +379,7 @@ go
 create proc GetAllFreeIntervalsByShiftId
 @ShiftId int as
 begin
-    select Shifts.Id, Shifts.Title, Intervals.Id, Intervals.Title, Intervals.ShiftId, Intervals.StartTime,
-       Intervals.IsBusy, Intervals.IsDeleted from Intervals
+    select Intervals.Id, Intervals.Title, Intervals.StartTime from Intervals
     join Shifts on Shifts.Id = Intervals.ShiftId
     where @ShiftId = Shifts.Id and Intervals.IsBusy = 0
 end
