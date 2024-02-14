@@ -3,6 +3,7 @@ using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
+using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.BLL;
@@ -94,5 +95,5 @@ public class UserClient : IUserClient
         UsersDTO dto = userRepository.RemoveUserById(model.Id);
         var result = _mapper.Map<UserIsDeletedOutputModel>(dto);
         return result;
-    }  
+    }    
 }
