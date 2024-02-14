@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BeautySalon.BLL\BeautySalon.BLL.csproj" />
       <ProjectReference Include="..\BeautySalon.DAL\BeautySalon.DAL.csproj" />
     </ItemGroup>
 
