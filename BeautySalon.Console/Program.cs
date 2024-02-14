@@ -361,10 +361,12 @@ class Program
         // userClient.AddWorkerByRoleId(model);
         // Console.ReadLine();
 
+<<<<<<< HEAD
         ////Работает
         // UserClient userclient = new UserClient();
         // var res = userclient.GetAllChatId();
         // Console.WriteLine();
+<<<<<<< HEAD
         
         ////Работает
         ShiftsClient shiftsClient = new ShiftsClient();
@@ -372,6 +374,25 @@ class Program
         Console.WriteLine();
         
         
+=======
+=======
+        //Работает
+        // UserClient userClient = new UserClient();
+        // var res = userClient.GetAllChatId();
+        // Console.WriteLine();
+        
+        UserClient userClient = new UserClient();
+        userClient.RemoveMasterFromShift(2,1);
+        
+<<<<<<< Updated upstream
+        // IntervalsClient intervals = new IntervalsClient();
+        // var res = intervals.GetAllIntervalsByShiftId(1);
+        // Console.WriteLine();
+        //
+>>>>>>> 76556b0c5afc8535320ea5d96b5ec67c075cf402
+=======
+>>>>>>> Stashed changes
+>>>>>>> a955929b067e7e998f9b217d5da86b258aa50bf1
 
         #endregion
     }
