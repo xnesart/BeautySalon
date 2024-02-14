@@ -53,6 +53,11 @@ public class Program
                 botClient.SendTextMessageAsync(update.Message.Chat.Id,
                     $" {update.Message.Chat.FirstName} {update.Message.Chat.LastName} Здравствуй, о Администратор)))");
             }
+
+            if (chat.ChatId != update.Message.Chat.Id)
+            {
+                
+            }
         }
         botClient.SendTextMessageAsync(update.Message.Chat.Id,
             $" {update.Message.Chat.FirstName} {update.Message.Chat.LastName} сам ты {update.Message.Text}");
