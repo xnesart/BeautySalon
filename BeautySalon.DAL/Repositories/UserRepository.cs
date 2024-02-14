@@ -9,22 +9,21 @@ namespace BeautySalon.DAL.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    public List<UsersDTO> AddUserByChatId(int chatId, string userName, string name, string phone, string mail,
-        int roleId, decimal salary, int isBlocked, int isDeleted)
+    public List<UsersDTO> AddUserByChatId(UsersDTO usersDTO)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new
             {
-                ChatId = chatId,
-                UserName = userName,
-                Name = name,
-                Phone = phone,
-                Mail = mail,
-                RoleID = roleId,
-                Salary = salary,
-                IsBlocked = isBlocked,
-                IsDeleted = isDeleted
+                ChatId = usersDTO.ChatId,
+                UserName = usersDTO.UserName,
+                Name = usersDTO.Name,
+                Phone = usersDTO.Phone,
+                Mail = usersDTO.Mail,
+                RoleID = usersDTO.RoleId,
+                Salary = usersDTO.Salary,
+                IsBlocked = usersDTO.IsBlocked,
+                IsDeleted = usersDTO.IsDeleted,
             };
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }

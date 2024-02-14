@@ -36,8 +36,9 @@ public class UserClient
 
     public void AddUserByChatId(AddUserByChatIdInputModel model)
     {
+        UsersDTO dto = _mapper.Map<UsersDTO>(model);
         List<UsersDTO> users =
-            _userRepository.AddUserByChatId(model.ChatId, model.UserName, model.Name, model.Phone, model.Mail, model.RoleId, model.Salary, model.IsBlocked, model.IsDeleted);
+            _userRepository.AddUserByChatId(dto);
     }
     
     public List<ClientByNameAndPhoneOutputModel> GetClientByNameAndPhone(string name, string phone)

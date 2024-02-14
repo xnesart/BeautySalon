@@ -35,6 +35,7 @@ public class MappingProfile : Profile
         CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();
 
         CreateMap<GetAllShiftsOnTodayDTO, AllShiftsOnTodayOutputModel>();
+        CreateMap<AddUserByChatIdInputModel, UsersDTO>();
 
         CreateMap<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO, AllFreeIntervalsOnCurrentServiceOutputModel>();
         CreateMap<ServicesDTO, AllFreeIntervalsOnCurrentServiceServiceOtputModel>();

@@ -141,20 +141,20 @@ class Program
         // Console.ReadLine();
 
         //Работает
-        UserClient client = new UserClient();
-        AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
-        {
-            ChatId = 123223,
-            UserName = "rabbit3",
-            Name = "Ивасик Петров Витальевич",
-            Phone = "8546654645",
-            Mail = "fdggfdg@fdgfgfd",
-            RoleId = 3,
-            Salary = 0,
-            IsBlocked = 0,
-            IsDeleted = 0
-        };
-        client.AddUserByChatId(model);
+        // UserClient client = new UserClient();
+        // AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
+        // {
+        //     ChatId = 1234323,
+        //     UserName = "432KKK",
+        //     Name = "Лера Павловна ",
+        //     Phone = "854356654645",
+        //     Mail = "ffdggfddg@fdgfgfd",
+        //     RoleId = 3,
+        //     Salary = 0,
+        //     IsBlocked = 0,
+        //     IsDeleted = 0
+        // };
+        // client.AddUserByChatId(model);
 
         //Работает
         // UserClient userClient = new UserClient();
