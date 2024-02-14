@@ -122,16 +122,17 @@ class Program
         //     }
         // }
 
-        ////Работает, но не добавляет, а перезаписывает
+        ////Работает
         // IUserRepository userRepository = new UserRepository();
-        // userRepository.AddMasterToShift(7, 3);
+        // userRepository.ChangeMasterInShift(7, 3);
+        // Console.WriteLine();
+        
         // IOrderRepository orderRepository = new OrderRepository();
         // var repositories = orderRepository.GetAllOrdersForClient();
         // foreach (var repository in repositories)
         // {
         //     Console.WriteLine($"{repository.Id} {repository.Date} {repository.ClientId} {repository.MasterId}");
         // }
-        //
 
         ////Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();

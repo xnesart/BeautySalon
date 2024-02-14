@@ -159,7 +159,7 @@ public class UserRepository : IUserRepository
         }
     }
 
-    public void AddMasterToShift(int masterId, int shiftId)
+    public void ChangeMasterInShift(int masterId, int shiftId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
@@ -168,7 +168,7 @@ public class UserRepository : IUserRepository
                 MasterId = masterId,
                 ShiftId = shiftId
             };
-            connection.Query<UsersDTO>(Procedures.AddMasterToShift, parameters);
+            connection.Query<UsersDTO>(Procedures.ChangeMasterInShift, parameters);
         }
     }    
     

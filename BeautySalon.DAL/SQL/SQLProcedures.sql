@@ -101,13 +101,13 @@ begin
     where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
 end
 go
--- ✓ Добавить мастера в ВЫБРАННУЮ смену !!! НЕ ДОБАВЛЯЕТ, А ПЕРЕЗАПИСЫВАЕТ
-create proc AddMasterToShift
+-- ✓ Назначить на выбранную смену другого мастера
+create proc ChangeMasterInShift
     @MasterId int, @ShiftId int as
 begin
-    update Shifts
-    set Shifts.MasterId = @MasterId
-    where Shifts.Id = @ShiftId
+update Shifts
+set Shifts.MasterId = @MasterId
+where Shifts.Id = @ShiftId
 end
 go
 -- ✓ Удалить мастера из ВЫБРАННОЙ смены

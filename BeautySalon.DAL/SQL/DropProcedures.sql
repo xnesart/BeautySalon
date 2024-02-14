@@ -11,7 +11,7 @@ drop proc AddWorkerByRoleId
 drop proc RemoveUserById
 drop proc GetAllShiftsOnToday
 drop proc GetAllShiftsAndEmployees
-drop proc AddMasterToShift
+drop proc ChangeMasterInShift
 drop proc RemoveMasterFromShift
 drop proc GetAllIntervals
 drop proc GetAllIntervalsByShiftId
