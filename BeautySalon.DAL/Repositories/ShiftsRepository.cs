@@ -18,11 +18,11 @@ public class ShiftsRepository : IShiftsRepository
         }
     }    
     
-    public List<GetAllShiftsAndEmployeesDTO> GetAllShiftsAndEmployeesOnToday()
+    public List<GetAllShiftsAndEmployeesOnTodayDTO> GetAllShiftsAndEmployeesOnToday()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllShiftsAndEmployeesDTO, ShiftsDTO, GetAllShiftsAndEmployeesDTO>(
+            return connection.Query<GetAllShiftsAndEmployeesOnTodayDTO, ShiftsDTO, GetAllShiftsAndEmployeesOnTodayDTO>(
                 Procedures.GetAllShiftsAndEmployeesOnToday,
                 (users, shifts) =>
                 {
@@ -84,7 +84,7 @@ public class ShiftsRepository : IShiftsRepository
                 },
                 parameter ,
                 splitOn: "Id,Id"
-                 ).ToList();
+                ).ToList();
         }
     }
 }

@@ -93,16 +93,16 @@ class Program
         //}
 
         ////Работает
-        //IShiftsRepository shiftsRepository = new ShiftsRepository();
-        //var shiftsRepositories = shiftRepository.GetAllShiftsAndEmployeesOnToday();
-        //foreach (var shift in shiftsRepositories)
-        //{
-        //    Console.WriteLine($"{shift.Name}");
-        //    foreach (var value in shift.Shifts)
-        //    {
-        //        Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
-        //    }
-        //}
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // var shiftsRepositories = shiftsRepository.GetAllShiftsAndEmployeesOnToday();
+        // foreach (var shift in shiftsRepositories)
+        // {
+        //     Console.WriteLine($"{shift.Name}");
+        //     foreach (var value in shift.Shifts)
+        //     {
+        //         Console.WriteLine($"{value.Id}, {value.Title}, {value.StartTime}, {value.EndTime}");
+        //     }
+        // }
 
         ////Работает
         // IUserRepository userRepository = new UserRepository();

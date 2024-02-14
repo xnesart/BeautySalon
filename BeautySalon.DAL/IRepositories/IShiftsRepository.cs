@@ -5,7 +5,7 @@ namespace BeautySalon.DAL.IRepositories;
 public interface IShiftsRepository
 {
     public List<GetAllShiftsOnTodayDTO> GetAllShiftsOnToday();
-    public List<GetAllShiftsAndEmployeesDTO> GetAllShiftsAndEmployeesOnToday();
+    public List<GetAllShiftsAndEmployeesOnTodayDTO> GetAllShiftsAndEmployeesOnToday();
     public List<GetAllShiftsWithFreeIntervalsOnTodayDTO> GetAllShiftsWithFreeIntervalsOnToday();
     public List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId);
 }
