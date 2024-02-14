@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.NewOrderModels.InputModels;
 using BeautySalon.BLL.OrdersForClientById;
@@ -10,7 +11,7 @@ using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.BLL.Clents
 {
-    public class OrderClient
+    public class OrderClient : IOrderClient
     {
         private IOrderRepository _orderRepository;
         private Mapper _mapper;
