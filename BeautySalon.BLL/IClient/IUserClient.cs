@@ -15,7 +15,6 @@ namespace BeautySalon.BLL.IClient
         public List<ClientByNameAndPhoneOutputModel> GetClientByNameAndPhone(string name, string phone);
         public List<MasterByNameAndIdOutputModel> GetMasterByNameAndId(string name, int id);
         public UserIsDeletedOutputModel RemoveUserById(UserIdInputModel model);
-
-
+        public void ChangeMasterInShift(int masterId, int shiftId);
     }
 }
