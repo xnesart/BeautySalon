@@ -34,4 +34,12 @@ public class ShiftsClient : IShiftsClient
 
         return result;
     }
+
+    public List<ShiftsAndEmployeesOnTodayOutputModel> GetAllShiftsAndEmployeesOnToday()
+    {
+        List<GetAllShiftsAndEmployeesOnTodayDTO> shifts =
+            _shiftsRepository.GetAllShiftsAndEmployeesOnToday();
+        var result = _mapper.Map<List<ShiftsAndEmployeesOnTodayOutputModel>>(shifts);
+        return result;
+    }
 }

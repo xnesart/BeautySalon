@@ -292,16 +292,16 @@ class Program
         ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetAllWorkersByRoleId();
-        // Console.ReadLine();
-
-        ////Работает
-        // UserIdInputModel model = new UserIdInputModel
-        // {
-        //     Id = 3
-        // };
-        // UserClient userClient = new UserClient();
-        // var q = userClient.RemoveUserById(model);
-        // Console.ReadLine();
+        // Console.ReadLine();   
+        
+        //Работает
+         // UserIdInputModel model = new UserIdInputModel
+         // {
+         //     Id = 3
+         // };
+         // UserClient userClient = new UserClient();
+         // var q = userClient.RemoveUserById(model);
+         // Console.ReadLine();
 
         ////Работает
         // UserClient userClient = new UserClient();
@@ -365,6 +365,13 @@ class Program
         // UserClient userclient = new UserClient();
         // var res = userclient.GetAllChatId();
         // Console.WriteLine();
+        
+        ////Работает
+        ShiftsClient shiftsClient = new ShiftsClient();
+        var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
+        Console.WriteLine();
+        
+        
 
         #endregion
     }

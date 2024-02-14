@@ -3,6 +3,7 @@ using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
+using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.BLL;
@@ -49,6 +50,7 @@ public class UserClient : IUserClient
         var result = _mapper.Map<List<ClientByNameAndPhoneOutputModel>>(users);
         return result;
     }  
+    
     public List<MasterByNameAndIdOutputModel> GetMasterByNameAndId(string name, int id)
     {
         List<UsersDTO> users =
@@ -64,6 +66,7 @@ public class UserClient : IUserClient
         var result = _mapper.Map<List<MasterByNameAndPhoneOutputModel>>(users);
         return result;
     } 
+    
     public List<AllWorkersWithContactsByUserIdOutputModel> GetAllWorkersWithContactsByUserId()
     {
         List<GetAllWorkersWithContactsByUserIdDTO> users =
@@ -71,11 +74,13 @@ public class UserClient : IUserClient
         var result = _mapper.Map<List<AllWorkersWithContactsByUserIdOutputModel>>(users);
         return result;
     } 
+    
     public void AddWorkerByRoleId(WorkerByRoleIdInputModel model)
     {
         AddWorkerByRoleIdDTO dto = _mapper.Map<AddWorkerByRoleIdDTO>(model);
         _userRepository.AddWorkerByRoleId(dto);
     }  
+    
     public List<AllChatIdOutputModel> GetAllChatId()
     {
         List<GetAllChatIdDTO> chats =
@@ -83,4 +88,12 @@ public class UserClient : IUserClient
         var result = _mapper.Map<List<AllChatIdOutputModel>>(chats);
         return result;
     }
+    
+    public UserIsDeletedOutputModel RemoveUserById(UserIdInputModel model)
+    {
+        IUserRepository userRepository = new UserRepository();
+        UsersDTO dto = userRepository.RemoveUserById(model.Id);
+        var result = _mapper.Map<UserIsDeletedOutputModel>(dto);
+        return result;
+    }    
 }

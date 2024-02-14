@@ -7,5 +7,5 @@ public class AllWorkersWithContactsByUserIdOutputModel
     public string? Name { get; set; }
     public string? Phone { get; set; }
     public string? Mail { get; set; }
-    public List<RolesInputModel> Roles { get; set; }
+    public List<RolesOutputModel> Roles { get; set; }
 }

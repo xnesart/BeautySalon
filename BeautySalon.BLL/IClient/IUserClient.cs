@@ -14,6 +14,7 @@ namespace BeautySalon.BLL.IClient
         public void AddUserByChatId(AddUserByChatIdInputModel model);
         public List<ClientByNameAndPhoneOutputModel> GetClientByNameAndPhone(string name, string phone);
         public List<MasterByNameAndIdOutputModel> GetMasterByNameAndId(string name, int id);
+        public UserIsDeletedOutputModel RemoveUserById(UserIdInputModel model);
 
 
     }

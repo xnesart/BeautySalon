@@ -4,7 +4,7 @@ namespace BeautySalon.BLL.Models;
 
 public class IntervalsOutputModel
 {
-    public List<ShiftsInputModel> Shifts { get; set; }
+    public List<ShiftsOutputModel> Shifts { get; set; }
     
     public int? Id { get; set; }
 

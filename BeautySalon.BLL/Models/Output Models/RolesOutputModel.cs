@@ -1,6 +1,6 @@
 namespace BeautySalon.BLL.Models;
 
-public class RolesInputModel
+public class RolesOutputModel
 {
     public int Id { get; set; }
 
