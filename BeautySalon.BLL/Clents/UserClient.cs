@@ -49,6 +49,7 @@ public class UserClient : IUserClient
         var result = _mapper.Map<List<ClientByNameAndPhoneOutputModel>>(users);
         return result;
     }  
+    
     public List<MasterByNameAndIdOutputModel> GetMasterByNameAndId(string name, int id)
     {
         List<UsersDTO> users =
@@ -64,6 +65,7 @@ public class UserClient : IUserClient
         var result = _mapper.Map<List<MasterByNameAndPhoneOutputModel>>(users);
         return result;
     } 
+    
     public List<AllWorkersWithContactsByUserIdOutputModel> GetAllWorkersWithContactsByUserId()
     {
         List<GetAllWorkersWithContactsByUserIdDTO> users =
@@ -71,11 +73,13 @@ public class UserClient : IUserClient
         var result = _mapper.Map<List<AllWorkersWithContactsByUserIdOutputModel>>(users);
         return result;
     } 
+    
     public void AddWorkerByRoleId(WorkerByRoleIdInputModel model)
     {
         AddWorkerByRoleIdDTO dto = _mapper.Map<AddWorkerByRoleIdDTO>(model);
         _userRepository.AddWorkerByRoleId(dto);
     }  
+    
     public List<AllChatIdOutputModel> GetAllChatId()
     {
         List<GetAllChatIdDTO> chats =
@@ -83,4 +87,5 @@ public class UserClient : IUserClient
         var result = _mapper.Map<List<AllChatIdOutputModel>>(chats);
         return result;
     }
+    
 }

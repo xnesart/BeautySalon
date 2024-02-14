@@ -295,13 +295,13 @@ class Program
         // Console.ReadLine();
 
         ////Работает
-        // UserIdInputModel model = new UserIdInputModel
-        // {
-        //     Id = 3
-        // };
-        // UserClient userClient = new UserClient();
-        // var q = userClient.RemoveUserById(model);
-        // Console.ReadLine();
+        UserIdInputModel model = new UserIdInputModel
+        {
+            Id = 3
+        };
+        UserClient userClient = new UserClient();
+        var q = userClient.RemoveUserById(model);
+        Console.ReadLine();
 
         ////Работает
         // UserClient userClient = new UserClient();
