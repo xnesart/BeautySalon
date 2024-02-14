@@ -381,6 +381,11 @@ class Program
         // var res = intervals.GetAllIntervalsByShiftId(1);
         // Console.WriteLine();
 
+        ////Работает
+        // UserClient userClient = new UserClient();
+        // userClient.ChangeMasterInShift(7,1);
+        // Console.WriteLine();
+        
         #endregion
     }
 }
