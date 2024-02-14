@@ -1,4 +1,5 @@
 using AutoMapper;
+using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
@@ -6,7 +7,7 @@ using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.BLL;
 
-public class UserClient
+public class UserClient : IUserClient
 {
     private UserRepository _userRepository;
     private Mapper _mapper;

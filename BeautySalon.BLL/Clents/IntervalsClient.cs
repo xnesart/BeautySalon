@@ -1,4 +1,5 @@
 using AutoMapper;
+using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
@@ -7,7 +8,7 @@ using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.BLL.Clents;
 
-public class IntervalsClient
+public class IntervalsClient : IIntervalsClient
 {
     private IntervalsRepository _intervalsRepository;
     private Mapper _mapper;
