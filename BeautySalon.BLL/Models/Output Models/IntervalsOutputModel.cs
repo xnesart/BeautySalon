@@ -10,7 +10,6 @@ public class IntervalsOutputModel
 
     public string? Title { get; set; }
 
-
     public DateTime? StartTime { get; set; }
 
     public bool? IsBusy { get; set; }
