@@ -365,6 +365,13 @@ class Program
         // UserClient userclient = new UserClient();
         // var res = userclient.GetAllChatId();
         // Console.WriteLine();
+        
+        ////Работает
+        ShiftsClient shiftsClient = new ShiftsClient();
+        var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
+        Console.WriteLine();
+        
+        
 
         #endregion
     }
