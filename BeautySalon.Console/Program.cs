@@ -18,36 +18,6 @@ class Program
 {
     static void Main(string[] args)
     {
-
-    
-        OrderClient orderClient = new OrderClient();
-
-
-        //OrderClient orderClient = new OrderClient();
-
-        //List<OrdersForClientByIdOutputModel> ordersForClients = orderClient.GetOrdersForClientById(1);
-
-
-        ordersForClients.ForEach(ordersForClients =>
-            {
-                Console.Write(ordersForClients.Master.Id + " ");
-                Console.Write(ordersForClients.Order.Id + " ");
-                Console.Write(ordersForClients.Order.Id + " ");
-
-                //Console.Write(ordersForClients.ClientId + "ClientName ");
-                //Console.Write(ordersForClients.ClientName + "MasterId ");
-                //Console.Write(ordersForClients.MasterId + "MasterName ");
-                //Console.Write(ordersForClients.MasterName + "IntervalsId ");
-                //Console.Write(ordersForClients.IntervalsId + "IntervalTitle ");
-                //Console.Write(ordersForClients.IntervalTitle + "ServicesId ");
-                //Console.Write(ordersForClients.ServicesId + "ServicesTitle ");
-                //Console.Write(ordersForClients.ServicesTitle + "ServicesPrice ");
-                //Console.Write(ordersForClients.ServicesPrice + " ");
-
-                Console.WriteLine();
-                Console.WriteLine();
-            });
- 
         //    IShiftsRepository repository = new ShiftsRepository();
         //    List<GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO> shifts = repository.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
         //    shifts.ForEach(shift => { Console.WriteLine(shift.Shifts.Id); });
@@ -131,24 +101,24 @@ class Program
         //    Console.WriteLine();
 
 
-            //ShiftsClient shiftsClient = new ShiftsClient();
+        //ShiftsClient shiftsClient = new ShiftsClient();
 
-            //List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel> shifts = shiftsClient.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
+        //List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel> shifts = shiftsClient.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
 
-            //Console.WriteLine("до");
+        //Console.WriteLine("до");
 
-            //shifts.ForEach(shiftsWithFreeIntervalsOnCurrentService =>
-            //{
-              
+        //shifts.ForEach(shiftsWithFreeIntervalsOnCurrentService =>
+        //{
 
-            //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.Id + " ");
-            //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.Title + " ");
-            //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.StartTime + " ");
-            //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.EndTime + " ");
-            //    Console.WriteLine();
-            //    Console.WriteLine("----------------------------------------------------------");
 
-            //});
+        //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.Id + " ");
+        //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.Title + " ");
+        //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.StartTime + " ");
+        //    Console.Write(shiftsWithFreeIntervalsOnCurrentService.Shift.EndTime + " ");
+        //    Console.WriteLine();
+        //    Console.WriteLine("----------------------------------------------------------");
+
+        //});
 
         ////Работает
         // IntervalsClient intervalsClient = new IntervalsClient();
@@ -183,14 +153,13 @@ class Program
             Salary = 0,
             IsBlocked = 0,
             IsDeleted = 0
-            
         };
         client.AddUserByChatId(model);
 
         //Работает
-         // UserClient userClient = new UserClient();
-         // var q = userClient.GetClientByNameAndPhone("Кристина Валерьевна Заливняк","642894209");
-         // Console.ReadLine();
+        // UserClient userClient = new UserClient();
+        // var q = userClient.GetClientByNameAndPhone("Кристина Валерьевна Заливняк","642894209");
+        // Console.ReadLine();
 
         ////Работает
         // UserClient userClient = new UserClient();
@@ -235,10 +204,4 @@ class Program
 
         #endregion
     }
-
-
-    
 }
-        
-        
-
