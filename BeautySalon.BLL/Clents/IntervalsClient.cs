@@ -19,16 +19,16 @@ public class IntervalsClient
         _mapper = new Mapper(config);
     }
 
-    public List<IntervalsInputModel> GetAllIntervals(string day)
+    public List<IntervalsOutputModel> GetAllIntervals(string day)
     {
         List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllIntervals(day);
-        var result = _mapper.Map<List<IntervalsInputModel>>(intervals);
+        var result = _mapper.Map<List<IntervalsOutputModel>>(intervals);
         return result;
     }  
-    public List<GetAllFreeIntervalsOnCurrentServiceInputModel> GetAllFreeIntervalsOnCurrentService(int serviceId, int shiftId)
+    public List<AllFreeIntervalsOnCurrentServiceOutputModel> GetAllFreeIntervalsOnCurrentService(int serviceId, int shiftId)
     {
         List<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO> intervals = _intervalsRepository.GetAllFreeIntervalsInCurrentShiftOnCurrentService(serviceId,shiftId);
-        var result = _mapper.Map<List<GetAllFreeIntervalsOnCurrentServiceInputModel>>(intervals);
+        var result = _mapper.Map<List<AllFreeIntervalsOnCurrentServiceOutputModel>>(intervals);
         return result;
     }
 }

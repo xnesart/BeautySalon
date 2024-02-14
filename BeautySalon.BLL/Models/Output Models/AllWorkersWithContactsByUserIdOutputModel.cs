@@ -1,6 +1,6 @@
 namespace BeautySalon.BLL.Models;
 
-public class GetAllWorkersWithContactsByUserIdInputModel
+public class AllWorkersWithContactsByUserIdOutputModel
 {
     public int? Id { get; set; }
     public int? RoleId { get; set; }

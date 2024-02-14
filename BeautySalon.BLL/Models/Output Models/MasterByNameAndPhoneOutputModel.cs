@@ -1,6 +1,6 @@
 namespace BeautySalon.BLL.Models;
 
-public class GetMasterByNameAndIdInputModel
+public class MasterByNameAndPhoneOutputModel
 {
     public int? Id { get; set; }
     public int? ChatId { get; set; }

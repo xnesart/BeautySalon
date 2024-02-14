@@ -16,10 +16,7 @@ class Program
 {
     static void Main(string[] args)
     {
-<<<<<<< HEAD
-
-=======
->>>>>>> AttemptsToCleanUp
+    
         OrderClient orderClient = new OrderClient();
 
         List<OrdersForClientByIdOutputModel> ordersForClients = orderClient.GetOrdersForClientById(1);
@@ -27,31 +24,25 @@ class Program
         Console.WriteLine("до");
 
         ordersForClients.ForEach(ordersForClients =>
-        {
-            Console.Write(ordersForClients.Master.Id + " ");
-            Console.Write(ordersForClients.Order.Id + " ");
-            Console.Write(ordersForClients.Order.Id + " ");
+            {
+                Console.Write(ordersForClients.Master.Id + " ");
+                Console.Write(ordersForClients.Order.Id + " ");
+                Console.Write(ordersForClients.Order.Id + " ");
 
-            //Console.Write(ordersForClients.ClientId + "ClientName ");
-            //Console.Write(ordersForClients.ClientName + "MasterId ");
-            //Console.Write(ordersForClients.MasterId + "MasterName ");
-            //Console.Write(ordersForClients.MasterName + "IntervalsId ");
-            //Console.Write(ordersForClients.IntervalsId + "IntervalTitle ");
-            //Console.Write(ordersForClients.IntervalTitle + "ServicesId ");
-            //Console.Write(ordersForClients.ServicesId + "ServicesTitle ");
-            //Console.Write(ordersForClients.ServicesTitle + "ServicesPrice ");
-            //Console.Write(ordersForClients.ServicesPrice + " ");
+                //Console.Write(ordersForClients.ClientId + "ClientName ");
+                //Console.Write(ordersForClients.ClientName + "MasterId ");
+                //Console.Write(ordersForClients.MasterId + "MasterName ");
+                //Console.Write(ordersForClients.MasterName + "IntervalsId ");
+                //Console.Write(ordersForClients.IntervalsId + "IntervalTitle ");
+                //Console.Write(ordersForClients.IntervalTitle + "ServicesId ");
+                //Console.Write(ordersForClients.ServicesId + "ServicesTitle ");
+                //Console.Write(ordersForClients.ServicesTitle + "ServicesPrice ");
+                //Console.Write(ordersForClients.ServicesPrice + " ");
 
-            Console.WriteLine();
-            Console.WriteLine();
-        });
-<<<<<<< HEAD
-
-=======
-        
-        
->>>>>>> AttemptsToCleanUp
-
+                Console.WriteLine();
+                Console.WriteLine();
+            });
+ 
         //    IShiftsRepository repository = new ShiftsRepository();
         //    List<GetAllShiftsWithFreeIntervalsOnCurrentServiceDTO> shifts = repository.GetAllShiftsWithFreeIntervalsOnCurrentService(1);
         //    shifts.ForEach(shift => { Console.WriteLine(shift.Shifts.Id); });
@@ -319,12 +310,12 @@ class Program
 
         ////Работает
         // IntervalsClient intervalsClient = new IntervalsClient();
-        // var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
+        // var q = intervalsClient.GetAllFreeIntervalsOnCurrentService(1, 2);
         // Console.ReadLine();
 
         ////Работает
         // IntervalsClient intervalsClient = new IntervalsClient();
-        // var q = intervalsClient.GetAllIntervals("2024-02-12");
+        // var q = intervalsClient.GetAllIntervals("2024-02-14");
         // Console.ReadLine();
 
         ////Работает
@@ -332,18 +323,32 @@ class Program
         // var q = userClient.GetAllWorkersByRoleId();
         // Console.ReadLine();  
 
+        ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetClientByNameAndId("Анна Петровна Брек",2);
         // Console.ReadLine();
 
         //Работает
-        // UserClient client = new UserClient();
-        // client.AddUserByChatId(1232,"rabbit","Петя Петров Витальевич","87474344334","jerr@mail.com",3,0,0,0);
+        UserClient client = new UserClient();
+        AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
+        {
+            ChatId = 123223,
+            UserName = "rabbit3",
+            Name = "Ивасик Петров Витальевич",
+            Phone = "8546654645",
+            Mail = "fdggfdg@fdgfgfd",
+            RoleId = 3,
+            Salary = 0,
+            IsBlocked = 0,
+            IsDeleted = 0
+            
+        };
+        client.AddUserByChatId(model);
 
-        ////Работает
-        // UserClient userClient = new UserClient();
-        // var q = userClient.GetClientByNameAndPhone("Кристина Валерьевна Заливняк","642894209");
-        // Console.ReadLine();
+        //Работает
+         // UserClient userClient = new UserClient();
+         // var q = userClient.GetClientByNameAndPhone("Кристина Валерьевна Заливняк","642894209");
+         // Console.ReadLine();
 
         ////Работает
         // UserClient userClient = new UserClient();
@@ -351,10 +356,6 @@ class Program
         // Console.ReadLine();
         //
 
-<<<<<<< HEAD
-
-=======
->>>>>>> AttemptsToCleanUp
         ////Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetMasterByNameAndPhone("Анна Петровна Брек","8923467127");
@@ -382,22 +383,14 @@ class Program
         // WorkerByRoleIdInputModel model = new WorkerByRoleIdInputModel
         // {
         //     RoleId = 2,
-        //     Name = "Галина Ивановна Шпак",
-        //     Mail = "fsdfds@gmail.com",
-        //     Phone = "2324243"
+        //     Name = "Иваска Петровна Шнюк",
+        //     Mail = "23уцкапв@gmail.com",
+        //     Phone = "232424356"
         // };
         //
         // userClient.AddWorkerByRoleId(model);
         // Console.ReadLine();
 
         #endregion
-<<<<<<< HEAD
     }
 }
-=======
-        
-
-    }
-
-}
->>>>>>> AttemptsToCleanUp

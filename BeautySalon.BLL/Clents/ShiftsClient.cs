@@ -18,11 +18,11 @@ public class ShiftsClient
         _mapper = new Mapper(config);
     }
     
-    public List<GetAllShiftsOnTodayInputModel> GetAllShiftsOnToday()
+    public List<AllShiftsOnTodayOutputModel> GetAllShiftsOnToday()
     {
         List<GetAllShiftsOnTodayDTO> shifts =
             _shiftsRepository.GetAllShiftsOnToday();
-        var result = _mapper.Map<List<GetAllShiftsOnTodayInputModel>>(shifts);
+        var result = _mapper.Map<List<AllShiftsOnTodayOutputModel>>(shifts);
         return result;
     }
 }

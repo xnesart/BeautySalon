@@ -18,57 +18,55 @@ public class UserClient
         _mapper = new Mapper(config);
     }
 
-    public List<GetAllWorkersByRoleIdInputModel> GetAllWorkersByRoleId()
+    public List<AllWorkersByRoleIdOutputModel> GetAllWorkersByRoleId()
     {
         List<UsersDTO> users =
             _userRepository.GetAllWorkersByRoleId();
-        var result = _mapper.Map<List<GetAllWorkersByRoleIdInputModel>>(users);
+        var result = _mapper.Map<List<AllWorkersByRoleIdOutputModel>>(users);
         return result;
     }
 
-    public List<GetClientByNameAndIdInputModel> GetClientByNameAndId(string name, int id)
+    public List<ClientByNameAndIdOutputModel> GetClientByNameAndId(string name, int id)
     {
         List<UsersDTO> users =
             _userRepository.GetClientByNameAndId(name, id);
-        var result = _mapper.Map<List<GetClientByNameAndIdInputModel>>(users);
+        var result = _mapper.Map<List<ClientByNameAndIdOutputModel>>(users);
         return result;
     }
 
-    public void AddUserByChatId(int chatId, string userName, string name, string phone, string mail,
-        int roleId, decimal salary, int isBlocked, int isDeleted)
+    public void AddUserByChatId(AddUserByChatIdInputModel model)
     {
         List<UsersDTO> users =
-            _userRepository.AddUserByChatId(chatId, userName, name, phone, mail,
-                roleId, salary, isBlocked, isDeleted);
+            _userRepository.AddUserByChatId(model.ChatId, model.UserName, model.Name, model.Phone, model.Mail, model.RoleId, model.Salary, model.IsBlocked, model.IsDeleted);
     }
     
-    public List<GetClientByNameAndPhoneInputModel> GetClientByNameAndPhone(string name, string phone)
+    public List<ClientByNameAndPhoneOutputModel> GetClientByNameAndPhone(string name, string phone)
     {
         List<UsersDTO> users =
             _userRepository.GetClientByNameAndPhone(name,phone);
-        var result = _mapper.Map<List<GetClientByNameAndPhoneInputModel>>(users);
+        var result = _mapper.Map<List<ClientByNameAndPhoneOutputModel>>(users);
         return result;
     }  
-    public List<GetMasterByNameAndIdInputModel> GetMasterByNameAndId(string name, int id)
+    public List<MasterByNameAndIdOutputModel> GetMasterByNameAndId(string name, int id)
     {
         List<UsersDTO> users =
             _userRepository.GetMasterByNameAndId(name,id);
-        var result = _mapper.Map<List<GetMasterByNameAndIdInputModel>>(users);
+        var result = _mapper.Map<List<MasterByNameAndIdOutputModel>>(users);
         return result;
     }   
     
-    public List<GetMasterByNameAndPhoneInputModel> GetMasterByNameAndPhone(string name, string phone)
+    public List<MasterByNameAndPhoneOutputModel> GetMasterByNameAndPhone(string name, string phone)
     {
         List<UsersDTO> users =
             _userRepository.GetMasterByNameAndPhone(name,phone);
-        var result = _mapper.Map<List<GetMasterByNameAndPhoneInputModel>>(users);
+        var result = _mapper.Map<List<MasterByNameAndPhoneOutputModel>>(users);
         return result;
     } 
-    public List<GetAllWorkersWithContactsByUserIdInputModel> GetAllWorkersWithContactsByUserId()
+    public List<AllWorkersWithContactsByUserIdOutputModel> GetAllWorkersWithContactsByUserId()
     {
         List<GetAllWorkersWithContactsByUserIdDTO> users =
             _userRepository.GetAllWorkersWithContactsByUserId();
-        var result = _mapper.Map<List<GetAllWorkersWithContactsByUserIdInputModel>>(users);
+        var result = _mapper.Map<List<AllWorkersWithContactsByUserIdOutputModel>>(users);
         return result;
     } 
     public void AddWorkerByRoleId(WorkerByRoleIdInputModel model)

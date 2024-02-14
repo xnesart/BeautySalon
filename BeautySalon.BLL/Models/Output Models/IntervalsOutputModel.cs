@@ -2,7 +2,7 @@ using BeautySalon.DAL.DTO;
 
 namespace BeautySalon.BLL.Models;
 
-public class IntervalsInputModel
+public class IntervalsOutputModel
 {
     public List<ShiftsInputModel> Shifts { get; set; }
     

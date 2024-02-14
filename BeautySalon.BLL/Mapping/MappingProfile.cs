@@ -11,39 +11,40 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<IntеrvalsDTO, IntervalsInputModel>();
+        CreateMap<IntеrvalsDTO, IntervalsOutputModel>();
 
         CreateMap<ShiftsDTO, ShiftsInputModel>();
-        CreateMap<GetAllShiftsOnTodayDTO, GetAllShiftsOnTodayInputModel>();
-<<<<<<< HEAD
-
-=======
->>>>>>> AttemptsToCleanUp
+        
+        //GetAllShiftsOnToday
+        CreateMap<GetAllShiftsOnTodayDTO, AllShiftsOnTodayOutputModel>();
+        
         //GetAllFreeIntervalsOnCurrentServiceInputModel
-        CreateMap<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO, GetAllFreeIntervalsOnCurrentServiceInputModel>();
-        CreateMap<ServicesDTO, GetAllFreeIntervalsOnCurrentServiceServiceInputModel>();
-        CreateMap<ShiftsDTO, GetAllFreeIntervalsOnCurrentServiceShiftInputModel>();
-        CreateMap<IntеrvalsDTO, GetAllFreeIntervalsOnCurrentServiceIntervalModelInputModel>();
-<<<<<<< HEAD
+        CreateMap<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO, AllFreeIntervalsOnCurrentServiceOutputModel>();
+        CreateMap<ServicesDTO, AllFreeIntervalsOnCurrentServiceServiceOtputModel>();
+        CreateMap<ShiftsDTO, AllFreeIntervalsOnCurrentServiceShiftOutputModel>();
+        CreateMap<IntеrvalsDTO, AllFreeIntervalsOnCurrentServiceIntervalModelOutputModel>();
+
+        //AllWorkersWithContactsByUser
+        CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();
+
 
         
-        CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();
+        CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();
 
-=======
-        
-        CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();
->>>>>>> AttemptsToCleanUp
         
         //AddWorkerByRoleId
         CreateMap<WorkerByRoleIdInputModel, AddWorkerByRoleIdDTO>();
 
         CreateMap<RolesDTO, RolesInputModel>(); 
 
-        CreateMap<UsersDTO, GetAllWorkersByRoleIdInputModel>();
-        CreateMap<UsersDTO, GetClientByNameAndIdInputModel>();
-        CreateMap<UsersDTO, GetClientByNameAndPhoneInputModel>();
-        CreateMap<UsersDTO, GetMasterByNameAndIdInputModel>();
-        CreateMap<UsersDTO, GetMasterByNameAndPhoneInputModel>();
+        CreateMap<UsersDTO, AllWorkersByRoleIdOutputModel>();
+        //GetClientByNameAndId
+        CreateMap<UsersDTO, ClientByNameAndIdOutputModel>();
+        //GetMasterByNameAndId
+        CreateMap<UsersDTO, MasterByNameAndIdOutputModel>();
+        //GetMasterByNameAndPhone
+        CreateMap<UsersDTO, MasterByNameAndPhoneOutputModel>();
+        CreateMap<UsersDTO, ClientByNameAndPhoneOutputModel>();
 
         CreateMap<NewOrderInputModel, OrdersDTO>();
         CreateMap<OrdersByClientIdDTO, OrdersForClientByIdOutputModel>();
