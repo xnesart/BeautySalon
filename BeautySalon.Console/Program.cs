@@ -365,20 +365,8 @@ class Program
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
         // Console.WriteLine();
-<<<<<<< HEAD
-        
-        ////Работает
-=======
-
-        
-        ////Работает
-        ShiftsClient shiftsClient = new ShiftsClient();
-        var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
-        Console.WriteLine();
-        
 
         //Работает
->>>>>>> TatianaYstinova/main
         // UserClient userClient = new UserClient();
         // var res = userClient.GetAllChatId();
         // Console.WriteLine();
@@ -388,19 +376,10 @@ class Program
         // userClient.RemoveMasterFromShift(2,1);
         // Console.WriteLine();
         
-<<<<<<< HEAD
         ////Работает
         // IntervalsClient intervals = new IntervalsClient();
         // var res = intervals.GetAllIntervalsByShiftId(1);
         // Console.WriteLine();
-=======
-
-        // IntervalsClient intervals = new IntervalsClient();
-        // var res = intervals.GetAllIntervalsByShiftId(1);
-        // Console.WriteLine();
-        //
-
->>>>>>> TatianaYstinova/main
 
         #endregion
     }
