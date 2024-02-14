@@ -1,6 +1,6 @@
 namespace BeautySalon.BLL.Models;
 
-public class GetAllFreeIntervalsOnCurrentServiceServiceInputModel
+public class AllFreeIntervalsOnCurrentServiceServiceInputModel
 {
     public int? Id { get; set; }
 

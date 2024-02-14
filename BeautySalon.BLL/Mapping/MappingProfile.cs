@@ -15,16 +15,24 @@ public class MappingProfile : Profile
 
         CreateMap<ShiftsDTO, ShiftsInputModel>();
         CreateMap<GetAllShiftsOnTodayDTO, GetAllShiftsOnTodayInputModel>();
+<<<<<<< HEAD
 
+=======
+>>>>>>> AttemptsToCleanUp
         //GetAllFreeIntervalsOnCurrentServiceInputModel
         CreateMap<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO, GetAllFreeIntervalsOnCurrentServiceInputModel>();
         CreateMap<ServicesDTO, GetAllFreeIntervalsOnCurrentServiceServiceInputModel>();
         CreateMap<ShiftsDTO, GetAllFreeIntervalsOnCurrentServiceShiftInputModel>();
         CreateMap<IntеrvalsDTO, GetAllFreeIntervalsOnCurrentServiceIntervalModelInputModel>();
+<<<<<<< HEAD
 
         
         CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();
 
+=======
+        
+        CreateMap<GetAllWorkersWithContactsByUserIdDTO, GetAllWorkersWithContactsByUserIdInputModel>();
+>>>>>>> AttemptsToCleanUp
         
         //AddWorkerByRoleId
         CreateMap<WorkerByRoleIdInputModel, AddWorkerByRoleIdDTO>();
