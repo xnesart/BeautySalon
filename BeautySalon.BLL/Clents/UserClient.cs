@@ -89,7 +89,6 @@ public class UserClient : IUserClient
         var result = _mapper.Map<List<AllChatIdOutputModel>>(chats);
         return result;
     }
-
     
     public UserIsDeletedOutputModel RemoveUserById(UserIdInputModel model)
     {
@@ -97,9 +96,8 @@ public class UserClient : IUserClient
         UsersDTO dto = userRepository.RemoveUserById(model.Id);
         var result = _mapper.Map<UserIsDeletedOutputModel>(dto);
         return result;
-    }    
-
-
+    }   
+    
     public void RemoveMasterFromShift(int masterId, int shiftId)
     {
         _userRepository.RemoveMasterFromShift(masterId, shiftId);
