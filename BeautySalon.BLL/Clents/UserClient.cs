@@ -88,6 +88,4 @@ public class UserClient : IUserClient
     {
         _userRepository.RemoveMasterFromShift(masterId, shiftId);
     }
-    
-
 }

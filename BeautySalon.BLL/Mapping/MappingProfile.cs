@@ -14,35 +14,26 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<IntеrvalsDTO, IntervalsOutputModel>();
-
+        CreateMap<UsersDTO, AllWorkersByRoleIdOutputModel>();
+        CreateMap<UsersDTO, UserIsDeletedOutputModel>();
         CreateMap<ShiftsDTO, ShiftsInputModel>();
-
-        
-        //GetAllShiftsOnToday
         CreateMap<GetAllShiftsOnTodayDTO, AllShiftsOnTodayOutputModel>();
-        
-        //GetAllFreeIntervalsOnCurrentServiceInputModel
         CreateMap<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO, AllFreeIntervalsOnCurrentServiceOutputModel>();
         CreateMap<ServicesDTO, AllFreeIntervalsOnCurrentServiceServiceOtputModel>();
         CreateMap<ShiftsDTO, AllFreeIntervalsOnCurrentServiceShiftOutputModel>();
         CreateMap<IntеrvalsDTO, AllFreeIntervalsOnCurrentServiceIntervalModelOutputModel>();
-
-        //AllWorkersWithContactsByUser
         CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();
-
-
-        
-        CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();
-
+        // CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();
         CreateMap<GetAllShiftsOnTodayDTO, AllShiftsOnTodayOutputModel>();
         CreateMap<AddUserByChatIdInputModel, UsersDTO>();
-
         CreateMap<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO, AllFreeIntervalsOnCurrentServiceOutputModel>();
         CreateMap<ServicesDTO, AllFreeIntervalsOnCurrentServiceServiceOtputModel>();
         CreateMap<ShiftsDTO, AllFreeIntervalsOnCurrentServiceShiftOutputModel>();
         CreateMap<IntеrvalsDTO, AllFreeIntervalsOnCurrentServiceIntervalModelOutputModel>();
-        //GetAllChatId
         CreateMap<GetAllChatIdDTO, AllChatIdOutputModel>();
+<<<<<<< HEAD
+        CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();  
+=======
         CreateMap<GetAllIntervalsByShiftIdDTO, GetAllIntervalsByShiftIdOutputModel>();
         CreateMap<ShiftsDTO, ShiftsOutputModel>();
 
@@ -50,33 +41,24 @@ public class MappingProfile : Profile
         
         CreateMap<GetAllWorkersWithContactsByUserIdDTO, AllWorkersWithContactsByUserIdOutputModel>();   
 
+>>>>>>> 76556b0c5afc8535320ea5d96b5ec67c075cf402
         CreateMap<WorkerByRoleIdInputModel, AddWorkerByRoleIdDTO>();
-
         CreateMap<RolesDTO, RolesInputModel>(); 
-
         CreateMap<UsersDTO, AllWorkersByRoleIdOutputModel>();
-        //GetClientByNameAndId
         CreateMap<UsersDTO, ClientByNameAndIdOutputModel>();
-        //GetMasterByNameAndId
         CreateMap<UsersDTO, MasterByNameAndIdOutputModel>();
-        //GetMasterByNameAndPhone
         CreateMap<UsersDTO, MasterByNameAndPhoneOutputModel>();
         CreateMap<UsersDTO, ClientByNameAndPhoneOutputModel>();
-
         CreateMap<NewOrderInputModel, OrdersDTO>();
-
         CreateMap<OrdersByClientIdDTO, OrdersForClientByIdOutputModel>();
         CreateMap<UsersDTO, UsersOrdersForClientByIdOutputModel>();
         CreateMap<UsersDTO, UsersOrdersForClientByIdOutputModel>();
         CreateMap<IntеrvalsDTO, IntеrvalsOrdersForClientByIdOutputModel>();
         CreateMap<ServicesDTO, ServicesOrdersForClientByIdOutputModel>();
         CreateMap<OrdersDTO, OrdersOrdersForClientByIdOutputModel>();
-
         CreateMap<UpdateOrderClientByIdInput, OrdersDTO>();
-
         CreateMap<AllShiftsWithFreeIntervalsOnCurrentServiceDTO, ShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
         CreateMap<ShiftsDTO, ShiftAllShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
-
         CreateMap<RemoveOrderForClientIdInput,OrdersDTO>();
 
     }
