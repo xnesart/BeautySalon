@@ -1,4 +1,6 @@
-﻿using BeautySalon.DAL;
+﻿using BeautySalon.BLL;
+using BeautySalon.BLL.Models;
+using BeautySalon.DAL;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
@@ -8,9 +10,11 @@ namespace BeuatySalon.TG;
 
 public class Program
 {
-    public static List<int> Chats { get; set; }
+    public static List<AllChatIdOutputModel> Chats { get; set; }
     static void Main(string[] args)
     {
+        UserClient userClient = new UserClient();
+        Chats = userClient.GetAllChatId();
         ITelegramBotClient client = new TelegramBotClient(Options.TelegramToken);
         var cts = new CancellationTokenSource(); //это токен связи
         var cancellationToken = cts.Token;

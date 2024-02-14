@@ -202,9 +202,10 @@ class Program
         // userClient.AddWorkerByRoleId(model);
         // Console.ReadLine();
 
-        UserClient userclient = new UserClient();
-        var res = userclient.GetAllChatId();
-        Console.WriteLine();
+        //Работает
+        // UserClient userClient = new UserClient();
+        // var res = userClient.GetAllChatId();
+        // Console.WriteLine();
 
         #endregion
     }
