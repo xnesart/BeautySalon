@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace BeautySalon.BLL.Models;
 
 public class GetAllIntervalsByShiftIdOutputModel

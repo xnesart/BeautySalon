@@ -1,3 +1,5 @@
+using System;
+
 namespace BeautySalon.DAL.DTO;
 
 public class GetAllShiftsOnTodayDTO

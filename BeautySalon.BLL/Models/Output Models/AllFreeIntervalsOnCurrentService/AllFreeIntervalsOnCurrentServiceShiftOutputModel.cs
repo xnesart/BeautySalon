@@ -1,3 +1,5 @@
+using System;
+
 namespace BeautySalon.BLL.Models;
 
 public class AllFreeIntervalsOnCurrentServiceShiftOutputModel

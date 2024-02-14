@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AutoMapper;
 using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
 using BeautySalon.BLL.IClient;
