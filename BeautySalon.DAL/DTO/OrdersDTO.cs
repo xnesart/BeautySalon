@@ -10,8 +10,5 @@ namespace BeautySalon.DAL.DTO
         public int StartIntervalId { get; set; }
         public bool? IsCompleted { get; set; }
         public bool? IsDeleted { get; set; }
-        
-
     }
-
 }

@@ -1,13 +1,14 @@
-﻿using AutoMapper;
+using AutoMapper;
+using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
-namespace BeautySalon.BLL;
+namespace BeautySalon.BLL.Clents;
 
-public class IntervalsClient
+public class IntervalsClient : IIntervalsClient
 {
     private IntervalsRepository _intervalsRepository;
     private Mapper _mapper;
@@ -19,18 +20,16 @@ public class IntervalsClient
         _mapper = new Mapper(config);
     }
 
-    public List<IntеrvalsDTO> GetAllFreeIntervalsInCurrentShiftOnCurrentService(int shiftId, int serviceId)
-    {
-        List<IntеrvalsDTO> intervals =
-            _intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(shiftId, serviceId);
-        return _mapper.Map<List<IntеrvalsDTO>>(intervals);
-        return intervals;
-    }
-
     public List<IntervalsOutputModel> GetAllIntervals(string day)
     {
         List<IntеrvalsDTO> intervals = _intervalsRepository.GetAllIntervals(day);
         var result = _mapper.Map<List<IntervalsOutputModel>>(intervals);
+        return result;
+    }  
+    public List<AllFreeIntervalsOnCurrentServiceOutputModel> GetAllFreeIntervalsOnCurrentService(int serviceId, int shiftId)
+    {
+        List<GetAllFreeIntervalsInCurrentShiftOnCurrentServiceDTO> intervals = _intervalsRepository.GetAllFreeIntervalsInCurrentShiftOnCurrentService(serviceId,shiftId);
+        var result = _mapper.Map<List<AllFreeIntervalsOnCurrentServiceOutputModel>>(intervals);
         return result;
     }
 }

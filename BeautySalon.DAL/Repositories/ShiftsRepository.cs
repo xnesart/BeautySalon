@@ -13,17 +13,8 @@ public class ShiftsRepository : IShiftsRepository
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllShiftsOnTodayDTO, ShiftsDTO, GetAllShiftsOnTodayDTO>(
-                Procedures.GetAllShiftsAndEmployeesOnToday,
-                (allShifts, shifts) =>
-                {
-                    if (allShifts.Shifts == null)
-                    {
-                        allShifts.Shifts = new List<ShiftsDTO>();
-                    }
-                    allShifts.Shifts.Add(shifts);
-                    return allShifts;
-                }).ToList();
+            return connection.Query<GetAllShiftsOnTodayDTO>(
+                Procedures.GetAllShiftsAndEmployeesOnToday).ToList();
         }
     }    
     
@@ -61,6 +52,39 @@ public class ShiftsRepository : IShiftsRepository
                     shifts.Intervals.Add(intervals);
                     return shifts;
                 }, splitOn: "Id,StartTime").ToList();
+        }
+    }
+    public List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService (int serviceId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+
+            var parameter = new
+            {
+                ServiceId = serviceId,
+            };
+
+            return connection.Query<ServicesDTO, ShiftsDTO, AllShiftsWithFreeIntervalsOnCurrentServiceDTO>
+                (
+                Procedures.GetAllShiftsWithFreeIntervalsOnCurrentService,
+                (service, shift) =>
+                {
+                    AllShiftsWithFreeIntervalsOnCurrentServiceDTO getAllShifts = new AllShiftsWithFreeIntervalsOnCurrentServiceDTO();
+
+                    getAllShifts.Services = new ServicesDTO();
+                    getAllShifts.Services.Id = service.Id;
+                    getAllShifts.Services.Title = service.Title;
+
+                    getAllShifts.Shift = new ShiftsDTO();
+                    getAllShifts.Shift.Id = shift.Id;
+                    getAllShifts.Shift.Title = shift.Title;
+                    getAllShifts.Shift.StartTime = shift.StartTime;
+
+                    return getAllShifts;
+                },
+                parameter ,
+                splitOn: "Id,Id"
+                 ).ToList();
         }
     }
 }

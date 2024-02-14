@@ -35,21 +35,24 @@ public class Procedures
     public const string UpdateServiceTitle = "UpdateServiceTitle";
     public const string GetMastersShiftsById = "GetMastersShiftsById";
     public const string GetAllOrdersOnTodayForMasters = "GetAllOrdersOnTodayForMasters";
-    
-    public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
     public const string RemoveOrderForClientByOrderId = "RemoveOrderForClientByOrderId";
-
     public const string GetAllIntervals = "GetAllIntervals";
     public const string GetAllServices = "GetAllServices";
     public const string AddServiceById = "AddServiceById";
     public const string UpdateServicePrice = "UpdateServicePrice";
     public const string UpdateServiceDuration = "UpdateServiceDuration";
     public const string RemoveServiceById = "RemoveServiceById";
-    
     public const string AddClientToFreeMaster = "AddClientToFreeMaster";
-    public const string GetAllOrdersOnToday = "GetAllOrdersOnToday";
+    public const string GetAllOrdersOnToday = "GetAllOrdersOnToday"; 
+    public const string GetAllChatId = "GetAllUsersChatId";
 
 
     public const string GetOrdersByClientId2 = "GetOrdersByClientId2";
+    public const string UpdateOrderTimeForClientById = "UpdateOrderTimeForClientById";
+    public const string CreateNewOrder = "CreateNewOrder";
+    public const string GetOrderInfo = "GetOrderInfo";
+    public const string GetAllFreeIntervalsOnCurrentService = "GetAllFreeIntervalsOnCurrentService";
+    public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
+    public const string GetAllFreeIntervalsInCurrentShiftOnCurrentService = "GetAllFreeIntervalsInCurrentShiftOnCurrentService";
 
 }

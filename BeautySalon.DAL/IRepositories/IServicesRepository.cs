@@ -1,4 +1,4 @@
-﻿using BeautySalon.DAL.DTO;
+using BeautySalon.DAL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace BeautySalon.DAL.IRepositories
 {
     public interface IServicesRepository
     {
-        //public List<ServicesDTO> GetServicesWithPriceAndDuratonByTypeId(int typeId);
+        public List<ServicesDTO> GetServicesWithPriceAndDurationByTypeId(int typeId);
         public List<GetAllServicesByIdFromCurrentTypeDTO> GetAllServicesByIdFromCurrentType(int id);
         public void UpdateServiceTitle(int serviceId, string serviceTitle);
 
@@ -17,5 +17,6 @@ namespace BeautySalon.DAL.IRepositories
         public void AddServiceById(string title, int type, string duration, decimal price);
         public void UpdateServicePrice(int serviceId, decimal servicePrice);
         public void RemoveServiceById(int id);
+        public List<AllFreeIntervalsOnCurrentServiceDTO> GetAllFreeIntervalsOnCurrentService(int serviceId);
     }
 }
