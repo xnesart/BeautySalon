@@ -11,6 +11,7 @@ public interface IUserRepository
     public List<UsersDTO> GetMasterByNameAndPhone(string name, string phone);
 
     public List<UsersDTO> GetAllWorkersByRoleId();
+    public List<GetAllChatIdDTO> GetAllChatId();
 
     public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId();
 
