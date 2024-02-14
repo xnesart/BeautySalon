@@ -74,5 +74,12 @@ public class UserClient
     {
         AddWorkerByRoleIdDTO dto = _mapper.Map<AddWorkerByRoleIdDTO>(model);
         _userRepository.AddWorkerByRoleId(dto);
+    }  
+    public List<AllChatIdOutputModel> GetAllChatId()
+    {
+        List<GetAllChatIdDTO> chats =
+            _userRepository.GetAllChatId();
+        var result = _mapper.Map<List<AllChatIdOutputModel>>(chats);
+        return result;
     }
 }

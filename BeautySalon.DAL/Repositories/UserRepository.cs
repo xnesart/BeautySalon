@@ -31,16 +31,16 @@ public class UserRepository : IUserRepository
 
     public List<GetMastersShiftsById> GetMastersShiftsById(int id)
     {
-        using (IDbConnection connection =new SqlConnection(Options.ConnectionString))
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new
             {
                 Id = id
             };
             return connection
-                .Query<GetMastersShiftsById, ShiftsDTO,GetMastersShiftsById>(
+                .Query<GetMastersShiftsById, ShiftsDTO, GetMastersShiftsById>(
                     Procedures.GetMastersShiftsById,
-                    (master,shifts) =>
+                    (master, shifts) =>
                     {
                         if (master.Shifts == null)
                         {
@@ -114,20 +114,31 @@ public class UserRepository : IUserRepository
         }
     }
 
+    public List<GetAllChatIdDTO> GetAllChatId()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetAllChatIdDTO>(Procedures.GetAllChatId).ToList();
+        }
+    }
+
     public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllWorkersWithContactsByUserIdDTO, RolesDTO, GetAllWorkersWithContactsByUserIdDTO>(Procedures.GetAllWorkersWithContactsByUserId,
-                (users, roles) =>
-                {
-                    if (users.Roles == null)
+            return connection
+                .Query<GetAllWorkersWithContactsByUserIdDTO, RolesDTO, GetAllWorkersWithContactsByUserIdDTO>(
+                    Procedures.GetAllWorkersWithContactsByUserId,
+                    (users, roles) =>
                     {
-                        users.Roles = new List<RolesDTO>();
-                    }
-                    users.Roles.Add(roles);
-                    return users;
-                }, splitOn: "Id,Worker").ToList();
+                        if (users.Roles == null)
+                        {
+                            users.Roles = new List<RolesDTO>();
+                        }
+
+                        users.Roles.Add(roles);
+                        return users;
+                    }, splitOn: "Id,Worker").ToList();
         }
     }
 
@@ -169,8 +180,8 @@ public class UserRepository : IUserRepository
             };
             connection.Query<UsersDTO>(Procedures.AddMasterToShift, parameters);
         }
-    }    
-    
+    }
+
     public void RemoveMasterFromShift(int masterId, int shiftId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
