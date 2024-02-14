@@ -12,9 +12,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // IOrderRepository orderRepository = new OrderRepository();
-        // orderRepository.RemoveOrderForClientByOrderId(1);
-
         #region NotWorks
 
         // Не пашет
