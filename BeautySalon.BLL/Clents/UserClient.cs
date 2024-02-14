@@ -88,4 +88,11 @@ public class UserClient : IUserClient
         return result;
     }
     
+    public UserIsDeletedOutputModel RemoveUserById(UserIdInputModel model)
+    {
+        IUserRepository userRepository = new UserRepository();
+        UsersDTO dto = userRepository.RemoveUserById(model.Id);
+        var result = _mapper.Map<UserIsDeletedOutputModel>(dto);
+        return result;
+    }  
 }
