@@ -16,7 +16,6 @@ public interface IUserRepository
     // public void AddWorkerByRoleId(int role, string name, string phone, string mail);
     public void AddWorkerByRoleId(AddWorkerByRoleIdDTO addWorkerByRoleIdDTO);
     public UsersDTO RemoveUserById(int id);
-    // public void RemoveUserById(int id);
     public void ChangeMasterInShift(int masterId, int shiftId);
     public void RemoveMasterFromShift(int masterId, int shiftId);
     public List<GetMastersShiftsById> GetMastersShiftsById(int id);
