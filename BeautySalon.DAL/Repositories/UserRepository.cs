@@ -184,4 +184,22 @@ public class UserRepository : IUserRepository
             connection.Query<UsersDTO>(Procedures.RemoveMasterFromShift, parameters);
         }
     }
+
+    public List<GetFreeMastersAndIntervalsOnTodayDTO> GetFreeMastersAndIntervalsOnToday()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<GetFreeMastersAndIntervalsOnTodayDTO, IntеrvalsDTO, GetFreeMastersAndIntervalsOnTodayDTO>(
+                Procedures.GetFreeMastersAndIntervalsOnToday,
+                (users, intervals) =>
+                {
+                    if (users.Intervals == null)
+                    {
+                        users.Intervals = new List<IntеrvalsDTO>();
+                    }
+                    users.Intervals.Add(intervals);
+                    return users;
+                }, splitOn: "Id,Title").ToList();
+        }
+    }
 }
