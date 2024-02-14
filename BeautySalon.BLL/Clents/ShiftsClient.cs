@@ -1,5 +1,6 @@
 using AutoMapper;
 using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
+using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
 using BeautySalon.DAL.DTO;
@@ -7,7 +8,7 @@ using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.BLL;
 
-public class ShiftsClient
+public class ShiftsClient : IShiftsClient
 {
     private ShiftsRepository _shiftsRepository;
     private Mapper _mapper;
