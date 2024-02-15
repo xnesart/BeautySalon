@@ -12,6 +12,6 @@ namespace BeautySalon.BLL.IClient
     {
         public List<AllShiftsOnTodayOutputModel> GetAllShiftsOnToday();
         public List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId);
-        public List<ShiftsAndEmployeesOnTodayOutputModel> GetAllShiftsAndEmployeesOnToday();
+        public List<MastersNameAndShiftsOutputModel> GetAllShiftsAndEmployeesOnToday();
     }
 }

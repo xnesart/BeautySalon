@@ -386,6 +386,15 @@ class Program
         // userClient.ChangeMasterInShift(7,1);
         // Console.WriteLine();
         
+        ////Работает
+        // ShiftIdInputModel model = new ShiftIdInputModel
+        // {
+        //     Id = 2
+        // };
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllFreeIntervalsByShiftId(model);
+        // Console.ReadLine();
+        
         #endregion
     }
 }

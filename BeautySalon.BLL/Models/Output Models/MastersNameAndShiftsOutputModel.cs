@@ -2,7 +2,7 @@
 
 namespace BeautySalon.BLL.Models;
 
-public class ShiftsAndEmployeesOnTodayOutputModel
+public class MastersNameAndShiftsOutputModel
 {
     public string Name { get; set; }
     public List<ShiftsOutputModel> Shifts { get; set; }
