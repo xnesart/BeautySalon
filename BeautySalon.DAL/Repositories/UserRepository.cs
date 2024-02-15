@@ -30,6 +30,24 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
+    public List<UsersDTO> CheckAndAddUser(UsersDTO usersDTO)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameter = new
+            {
+                ChatId = usersDTO.ChatId
+            };
+            var result = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter);
+
+            if (!result.Any(users => users.ChatId == usersDTO.ChatId))
+            {
+                result.Add(usersDTO);
+            }
+
+            return result.ToList();
+        }
+    }
 
     public List<GetMastersShiftsById> GetMastersShiftsById(int id)
     {
