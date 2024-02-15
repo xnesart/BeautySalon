@@ -293,6 +293,68 @@ join Intervals on Orders.StartIntervalId = Intervals.Id
     where convert(date, Orders.Date) = convert(date, @Today)
 end
 go
+-- Назначить мастера на выбранную смену, создав для него собственные рабочие интерваалы и не снимая при этом другого мастера с этой смены
+create procedure AddMasterToShiftWithIntervals
+    @MasterId int,
+    @ShiftId int
+as
+begin
+begin transaction; -- начало транзакции
+    -- проверяем, что MasterId принадлежит мастеру с RoleId = 2
+    if not exists (
+        select 1
+        from Users
+        where Id = @MasterId
+        and RoleId = 2
+    )
+begin
+        raiserror ('Specified user is not a "Master".', 16, 1);
+rollback; -- отмена транзакции
+return;
+end
+    -- проверяем, существует ли уже мастер на выбранной смене
+    if exists (
+        select 1
+        from Shifts
+        where Id = @ShiftId
+        and MasterId = @MasterId
+    )
+begin
+        raiserror ('Master is already assigned to this shift.', 16, 1);
+rollback; -- отмена транзакции
+return;
+end
+    -- если мастера с указанным идентификатором нет на выбранной смене, то добавляем его
+    if exists (
+        select 1
+        from Shifts
+        where Id = @ShiftId
+    )
+begin
+        -- создаем копию строки из таблицы shifts, если у выбранной строки есть masterid
+insert into Shifts (Title, StartTime, EndTime, MasterId, IsDeleted)
+select Title, StartTime, EndTime, @MasterId, IsDeleted
+from Shifts
+where Id = @ShiftId;
+-- получаем идентификатор последней вставленной строки
+declare @NewShiftId int;
+        set @NewShiftId = scope_identity();
+        -- создаем соответствующие интервалы
+insert into Intervals (Title, ShiftId, StartTime, IsBusy, IsDeleted)
+select Title, @NewShiftId, StartTime, 0, 0
+from Intervals
+where ShiftId = @ShiftId;
+end
+else
+begin
+        -- обновляем MasterId в выбранной строке
+update Shifts
+set MasterId = @MasterId
+where Id = @ShiftId;
+end
+commit; -- фиксация транзакции
+end
+go
 
 ----процедуры для мастера
 -- ✓ Вывести смены выбранного мастера на сегодня
