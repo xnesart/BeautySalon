@@ -43,4 +43,12 @@ public class ShiftsClient : IShiftsClient
         var result = _mapper.Map<List<MastersNameAndShiftsOutputModel>>(shifts);
         return result;
     }
+    
+    public List<AllShiftsWithFreeIntervalsOnTodayOutputModel> GetAllShiftsWithFreeIntervalsOnToday()
+    {
+        List<GetAllShiftsWithFreeIntervalsOnTodayDTO> shifts =
+            _shiftsRepository.GetAllShiftsWithFreeIntervalsOnToday();
+        var result = _mapper.Map<List<AllShiftsWithFreeIntervalsOnTodayOutputModel>>(shifts);
+        return result;
+    }
 }

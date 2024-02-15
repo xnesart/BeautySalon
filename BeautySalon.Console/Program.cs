@@ -395,6 +395,11 @@ class Program
         // var q = intervalsClient.GetAllFreeIntervalsByShiftId(model);
         // Console.ReadLine();
         
+        // ////Работает
+        // ShiftsClient shiftsClient = new ShiftsClient();
+        // var q = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
+        // Console.ReadLine();
+        
         #endregion
     }
 }
