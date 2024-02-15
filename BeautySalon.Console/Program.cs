@@ -419,5 +419,14 @@ class Program
         // Console.WriteLine();
         
         #endregion
+
+        IUserClient userClient = new UserClient();
+         var result = userClient.CheckAndAddUser(1);
+        Console.WriteLine(result.ToList());
+
+
+
+
+            
     }
 }

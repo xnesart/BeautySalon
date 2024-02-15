@@ -3,6 +3,7 @@ using AutoMapper;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
@@ -107,5 +108,15 @@ public class UserClient : IUserClient
     {
         _userRepository.ChangeMasterInShift(masterId, shiftId);
     }
-
+    public List<CheckAndAddUserOutputModel> CheckAndAddUser(int chatId)
+    {
+        List<UsersDTO> userChatId = this._userRepository.CheckAndAddUser(chatId);
+        if(userChatId.Count != chatId)
+        {
+            userChatId.Add(chatId);
+        }
+        List<CheckAndAddUserOutputModel> result = this._mapper.Map<List<CheckAndAddUserOutputModel>>(userChatId);
+        
+        return result;
+    }
 }
