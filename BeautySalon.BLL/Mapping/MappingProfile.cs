@@ -47,6 +47,7 @@ public class MappingProfile : Profile
         CreateMap<GetAllFreeIntervalsByShiftIdDTO,IntervalsIdTitleStartTimeOutputModel>();
         CreateMap<GetAllShiftsWithFreeIntervalsOnTodayDTO,AllShiftsWithFreeIntervalsOnTodayOutputModel>();
         CreateMap<IntеrvalsDTO,AllShiftsWithFreeIntervalsOnTodayIntervalsOutputModel>();
+        CreateMap<ServiceByIdInputModel, AddServiceByIdDTO>();
     }
 }
 
