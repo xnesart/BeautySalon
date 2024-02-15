@@ -13,6 +13,7 @@ using BeautySalon.DAL.DTO;
 using System;
 using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
 using BeautySalon.BLL.RemoveOrderForClientByOrderIInputModel;
+using BeautySalon.BLL.IClient;
 
 class Program
 {
@@ -368,9 +369,9 @@ class Program
 
         
         ////Работает
-        ShiftsClient shiftsClient = new ShiftsClient();
-        var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
-        Console.WriteLine();
+        //ShiftsClient shiftsClient = new ShiftsClient();
+        //var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
+        //Console.WriteLine();
         
 
         //Работает
@@ -378,8 +379,8 @@ class Program
         // var res = userClient.GetAllChatId();
         // Console.WriteLine();
         
-        UserClient userClient = new UserClient();
-        userClient.RemoveMasterFromShift(2,1);
+        //UserClient userClient = new UserClient();
+        //userClient.RemoveMasterFromShift(2,1);
         
 
         // IntervalsClient intervals = new IntervalsClient();
@@ -389,5 +390,6 @@ class Program
 
 
         #endregion
+
     }
 }
