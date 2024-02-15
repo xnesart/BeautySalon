@@ -26,43 +26,56 @@ public class Program
             AllowedUpdates = [UpdateType.Message, UpdateType.CallbackQuery],
             ThrowPendingUpdates = true
         };
-
-        TelegramClientInstance.Client.StartReceiving
-        (
-            HandleUpdate,
-            HandleError,
-            receiverOptions,
-            cancellationToken
-        );
-        string end = "";
-        do
+        try
         {
-            end = Console.ReadLine();
-        } while (end != "end");
+            TelegramClientInstance.Client.StartReceiving
+            (
+                HandleUpdate,
+                HandleError,
+                receiverOptions,
+                cancellationToken
+            );
+            string end = "";
+            do
+            {
+                end = Console.ReadLine();
+            } while (end != "end");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            
+        }
+        
     }
 
     public static void HandleUpdate(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        if (update.Type == UpdateType.Message)
+
+        if (update?.Message != null && botClient != null)
         {
-            ChatId = update.Message.Chat.Id;
-            if (update.Message.Text == "/start")
+            var message = update.Message;
+            if (update.Type == UpdateType.Message)
             {
-                UserWelcomeHandler welcomeHandler = new UserWelcomeHandler();
-                welcomeHandler.WelcomeUser(botClient, update, cancellationToken);
+                ChatId = update.Message.Chat.Id;
+                if (update.Message.Text == "/start")
+                {
+                    UserWelcomeHandler welcomeHandler = new UserWelcomeHandler();
+                    welcomeHandler.WelcomeUser(botClient, update, cancellationToken);
+                }
+
+                Console.WriteLine($"{update.Message.Chat.Id} {update.Message.Chat.FirstName} {update.Message.Text}");
             }
-
-            Console.WriteLine($"{update.Message.Chat.Id} {update.Message.Chat.FirstName} {update.Message.Text}");
-        }
-        else if (update.Type == UpdateType.CallbackQuery)
-        {
-
-            var callbackQuery = update.CallbackQuery;
-            var data = callbackQuery.Data;
-            if (data == "записаться")
+            else if (update.Type == UpdateType.CallbackQuery)
             {
-                botClient.SendTextMessageAsync(ChatId,
-                    $" {update.Message.Chat.FirstName} {update.Message.Chat.LastName} сам ты {update.Message.Text}");
+
+                var callbackQuery = update.CallbackQuery;
+                var data = callbackQuery.Data;
+                if (data == "записаться")
+                {
+                    ServicesHandler servicesHandler = new ServicesHandler();
+                    servicesHandler.ShowServices(botClient, update, cancellationToken);
+                }
             }
         }
 
