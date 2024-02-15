@@ -2,6 +2,8 @@
 using AutoMapper;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
+using BeautySalon.BLL.Models.Output_Models;
+using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 using System;
@@ -23,7 +25,12 @@ namespace BeautySalon.BLL.Clents
             IConfigurationProvider config = new MapperConfiguration(cfg => { cfg.AddProfile(new MappingProfile()); });
             _mapper = new Mapper(config);
         }
-
+        public List<AllServicesByIdFromCurrentTypeOutputModel> GetAllServicesByIdFromCurrentType(int id)
+        {
+            List< GetAllServicesByIdFromCurrentTypeDTO> getAllServices = this._servicesRepository.GetAllServicesByIdFromCurrentType(id);
+            List<AllServicesByIdFromCurrentTypeOutputModel> result = this._mapper.Map<List<AllServicesByIdFromCurrentTypeOutputModel>>(getAllServices);
+            return result;
+        }
 
 
     }
