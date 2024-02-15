@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AutoMapper;
 using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
 using BeautySalon.BLL.IClient;
@@ -35,11 +36,19 @@ public class ShiftsClient : IShiftsClient
         return result;
     }
 
-    public List<ShiftsAndEmployeesOnTodayOutputModel> GetAllShiftsAndEmployeesOnToday()
+    public List<MastersNameAndShiftsOutputModel> GetAllShiftsAndEmployeesOnToday()
     {
         List<GetAllShiftsAndEmployeesOnTodayDTO> shifts =
             _shiftsRepository.GetAllShiftsAndEmployeesOnToday();
-        var result = _mapper.Map<List<ShiftsAndEmployeesOnTodayOutputModel>>(shifts);
+        var result = _mapper.Map<List<MastersNameAndShiftsOutputModel>>(shifts);
+        return result;
+    }
+    
+    public List<AllShiftsWithFreeIntervalsOnTodayOutputModel> GetAllShiftsWithFreeIntervalsOnToday()
+    {
+        List<GetAllShiftsWithFreeIntervalsOnTodayDTO> shifts =
+            _shiftsRepository.GetAllShiftsWithFreeIntervalsOnToday();
+        var result = _mapper.Map<List<AllShiftsWithFreeIntervalsOnTodayOutputModel>>(shifts);
         return result;
     }
 }

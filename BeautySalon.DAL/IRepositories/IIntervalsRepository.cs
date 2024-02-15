@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BeautySalon.DAL.DTO;
 
 namespace BeautySalon.DAL.IRepositories;

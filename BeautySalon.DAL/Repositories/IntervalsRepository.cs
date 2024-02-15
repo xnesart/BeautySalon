@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.StoredProcedures;
@@ -36,18 +38,8 @@ public class IntervalsRepository : IIntervalsRepository
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new { ShiftID = shiftId };
-            return connection.Query<GetAllFreeIntervalsByShiftIdDTO, ShiftsDTO, GetAllFreeIntervalsByShiftIdDTO>(
-                Procedures.GetAllFreeIntervalsByShiftId,
-                (intervals, shifts) =>
-                {
-                    if (intervals.Shifts == null)
-                    {
-                        intervals.Shifts = new List<ShiftsDTO>();
-                    }
-
-                    intervals.Shifts.Add(shifts);
-                    return intervals;
-                }, parameters, splitOn: "Id,Id").ToList();
+            return connection.Query<GetAllFreeIntervalsByShiftIdDTO>(
+                Procedures.GetAllFreeIntervalsByShiftId, parameters).ToList();
         }
     }
 

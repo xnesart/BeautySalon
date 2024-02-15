@@ -363,15 +363,15 @@ class Program
         // Console.ReadLine();
         
         ////Работает
-        // UserClient userclient = new UserClient();
-        // var res = userclient.GetAllChatId();
+        // ShiftsClient shiftsClient = new ShiftsClient();
+        // var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
         // Console.WriteLine();
 
         
         ////Работает
-        //ShiftsClient shiftsClient = new ShiftsClient();
-        //var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
-        //Console.WriteLine();
+        ShiftsClient shiftsClient = new ShiftsClient();
+        var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
+        Console.WriteLine();
         
 
         //Работает
@@ -379,16 +379,44 @@ class Program
         // var res = userClient.GetAllChatId();
         // Console.WriteLine();
         
-        //UserClient userClient = new UserClient();
-        //userClient.RemoveMasterFromShift(2,1);
+        UserClient userClient = new UserClient();
+        userClient.RemoveMasterFromShift(2,1);
         
-
+        ////Работает
         // IntervalsClient intervals = new IntervalsClient();
         // var res = intervals.GetAllIntervalsByShiftId(1);
         // Console.WriteLine();
-        //
 
-
+        ////Работает
+        // UserClient userClient = new UserClient();
+        // userClient.ChangeMasterInShift(7,1);
+        // Console.WriteLine();
+        
+        ////Работает
+        // ShiftIdInputModel model = new ShiftIdInputModel
+        // {
+        //     Id = 2
+        // };
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllFreeIntervalsByShiftId(model);
+        // Console.ReadLine();
+        
+        // ////Работает
+        // ShiftsClient shiftsClient = new ShiftsClient();
+        // var q = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
+        // Console.ReadLine();
+        
+        //работает
+        // ServiceClient serviceClient = new ServiceClient();
+        // ServiceByIdInputModel model = new ServiceByIdInputModel
+        // {
+        //     Duration = "60",
+        //     Price = 800,
+        //     Title = "Стрижка кислотой",
+        //     Type = 1
+        // };
+        // serviceClient.AddServiceByIdInputModel(model);
+        // Console.WriteLine();
         #endregion
 
     }

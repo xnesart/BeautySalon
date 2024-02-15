@@ -11,5 +11,6 @@ namespace BeautySalon.BLL.IClient
     {
         public List<IntervalsOutputModel> GetAllIntervals(string day);
         public List<AllFreeIntervalsOnCurrentServiceOutputModel> GetAllFreeIntervalsOnCurrentService(int serviceId, int shiftId);
+        public List<IntervalsIdTitleStartTimeOutputModel> GetAllFreeIntervalsByShiftId(ShiftIdInputModel model);
     }
 }
