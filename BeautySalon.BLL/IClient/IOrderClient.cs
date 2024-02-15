@@ -1,7 +1,5 @@
-﻿using BeautySalon.BLL.NewOrderModels.InputModels;
+﻿using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.BLL.OrdersForClientById;
-using BeautySalon.BLL.RemoveOrderForClientByOrderIInputModel;
-using BeautySalon.BLL.UpdateOrderTimeForClientByIdInputModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

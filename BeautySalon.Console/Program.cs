@@ -12,7 +12,7 @@ using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.DAL.DTO;
 using System;
 using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
-using BeautySalon.BLL.RemoveOrderForClientByOrderIInputModel;
+
 using BeautySalon.BLL.IClient;
 
 class Program

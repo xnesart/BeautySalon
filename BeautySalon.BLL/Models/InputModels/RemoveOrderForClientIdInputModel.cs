@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BeautySalon.BLL.RemoveOrderForClientByOrderIInputModel
+namespace BeautySalon.BLL.Models.InputModels
 {
     public class RemoveOrderForClientIdInput
     {
