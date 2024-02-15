@@ -1,12 +1,16 @@
+<<<<<<< HEAD
 using System.Runtime.InteropServices.JavaScript;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
+=======
+>>>>>>> main
 namespace BeautySalon.TG.MessageHandlers;
 
 public class ServicesHandler
 {
+<<<<<<< HEAD
     public async void ShowServices(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         if (update?.Message == null && botClient == null)
@@ -53,4 +57,7 @@ public class ServicesHandler
                 cancellationToken: cancellationToken);
         }
     }
+=======
+    
+>>>>>>> main
 }
