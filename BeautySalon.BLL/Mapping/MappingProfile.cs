@@ -1,11 +1,10 @@
 using AutoMapper;
 using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.BLL.Models;
-using BeautySalon.BLL.NewOrderModels.InputModels;
 using BeautySalon.DAL.DTO;
-using BeautySalon.BLL.UpdateOrderTimeForClientByIdInputModel;
 using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
-using BeautySalon.BLL.RemoveOrderForClientByOrderIInputModel;
+using BeautySalon.BLL.Models.InputModels;
+using BeautySalon.BLL.Models.Output_Models;
 
 namespace BeautySalon.BLL.Mapping;
 
@@ -48,6 +47,15 @@ public class MappingProfile : Profile
         CreateMap<GetAllShiftsWithFreeIntervalsOnTodayDTO,AllShiftsWithFreeIntervalsOnTodayOutputModel>();
         CreateMap<IntеrvalsDTO,AllShiftsWithFreeIntervalsOnTodayIntervalsOutputModel>();
         CreateMap<ServiceByIdInputModel, AddServiceByIdDTO>();
+        //CreateMap<GetAllShiftsAndEmployeesOnTodayDTO,ShiftsAndEmployeesOnTodayOutputModel>();
+        CreateMap<ShiftsDTO,ShiftsOutputModel>();
+
+        CreateMap<TypesDTO, AllServiceTypeOutputModel>();
+
+        CreateMap<GetAllServicesByIdFromCurrentTypeDTO, AllServicesByIdFromCurrentTypeOutputModel>();
+
+        CreateMap<GetAllServicesDTO, AllServicesOutputModel>();
+
     }
 }
 
