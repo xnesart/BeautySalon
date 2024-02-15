@@ -395,6 +395,22 @@ class Program
         // var q = intervalsClient.GetAllFreeIntervalsByShiftId(model);
         // Console.ReadLine();
         
+        // ////Работает
+        // ShiftsClient shiftsClient = new ShiftsClient();
+        // var q = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
+        // Console.ReadLine();
+        
+        //работает
+        // ServiceClient serviceClient = new ServiceClient();
+        // ServiceByIdInputModel model = new ServiceByIdInputModel
+        // {
+        //     Duration = "60",
+        //     Price = 800,
+        //     Title = "Стрижка кислотой",
+        //     Type = 1
+        // };
+        // serviceClient.AddServiceByIdInputModel(model);
+        // Console.WriteLine();
         #endregion
     }
 }
