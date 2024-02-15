@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BeautySalon.BLL.NewOrderModels.InputModels
+namespace BeautySalon.BLL.Models.InputModels
 {
     public class NewOrderInputModel
     {
@@ -13,6 +13,6 @@ namespace BeautySalon.BLL.NewOrderModels.InputModels
         public int ClientId { get; set; }
         public int ServiceId { get; set; }
         public int StartIntervalId { get; set; }
-       
+
     }
 }
