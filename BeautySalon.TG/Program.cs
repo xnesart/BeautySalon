@@ -7,6 +7,7 @@ using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.ReplyMarkups;
 
 namespace BeautySalon.TG;
 
@@ -44,14 +45,12 @@ public class Program
         catch (Exception e)
         {
             Console.WriteLine(e);
-            
         }
-        
     }
 
-    public static void HandleUpdate(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    public static async void HandleUpdate(ITelegramBotClient botClient, Update update,
+        CancellationToken cancellationToken)
     {
-
         if (update?.Message != null && botClient != null)
         {
             var message = update.Message;
@@ -68,14 +67,17 @@ public class Program
             }
             else if (update.Type == UpdateType.CallbackQuery)
             {
-
                 var callbackQuery = update.CallbackQuery;
                 var data = callbackQuery.Data;
-                if (data == "записаться")
-                {
-                    ServicesHandler servicesHandler = new ServicesHandler();
-                    servicesHandler.ShowServices(botClient, update, cancellationToken);
-                }
+            }
+        }
+
+        else if (update.CallbackQuery != null || update.CallbackQuery.Data != null)
+        {
+            if (update.CallbackQuery.Data == "записаться")
+            {
+                ServicesHandler servicesHandler = new ServicesHandler();
+                servicesHandler.ShowServices(botClient, update, cancellationToken);
             }
         }
 
