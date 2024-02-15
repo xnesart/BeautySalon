@@ -400,6 +400,17 @@ class Program
         // var q = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
         // Console.ReadLine();
         
+        //работает
+        // ServiceClient serviceClient = new ServiceClient();
+        // ServiceByIdInputModel model = new ServiceByIdInputModel
+        // {
+        //     Duration = "60",
+        //     Price = 800,
+        //     Title = "Стрижка кислотой",
+        //     Type = 1
+        // };
+        // serviceClient.AddServiceByIdInputModel(model);
+        // Console.WriteLine();
         #endregion
     }
 }
