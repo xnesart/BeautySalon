@@ -13,6 +13,8 @@ namespace BeautySalon.TG;
 public class Program
 {
     public static List<int> Chats { get; set; }
+    public static string Callback { get; set; }
+    public static long ChatId { get; set; }
 
     static void Main(string[] args)
     {
@@ -43,6 +45,7 @@ public class Program
     {
         if (update.Type == UpdateType.Message)
         {
+            ChatId = update.Message.Chat.Id;
             if (update.Message.Text == "/start")
             {
                 UserWelcomeHandler welcomeHandler = new UserWelcomeHandler();
@@ -50,6 +53,17 @@ public class Program
             }
 
             Console.WriteLine($"{update.Message.Chat.Id} {update.Message.Chat.FirstName} {update.Message.Text}");
+        }
+        else if (update.Type == UpdateType.CallbackQuery)
+        {
+
+            var callbackQuery = update.CallbackQuery;
+            var data = callbackQuery.Data;
+            if (data == "записаться")
+            {
+                botClient.SendTextMessageAsync(ChatId,
+                    $" {update.Message.Chat.FirstName} {update.Message.Chat.LastName} сам ты {update.Message.Text}");
+            }
         }
 
         // botClient.SendTextMessageAsync(update.Message.Chat.Id,
