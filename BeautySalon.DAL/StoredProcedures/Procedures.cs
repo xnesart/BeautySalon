@@ -5,24 +5,17 @@ public class Procedures
     public const string GetServiceType = "GetServiceType";
     public const string GetServicesWithPriceAndDurationByTypeId = "GetServicesWithPriceAndDurationByTypeId";
     public const string GetAllRolesProcedure = "GetAllRolesProcedure";
-
     public const string AddUserByChatId = "AddUserByChatId";
     public const string GetClientByNameAndId = "GetClientByNameAndId";
     public const string GetClientByNameAndPhone = "GetClientByNameAndPhone";
     public const string GetMasterByNameAndId = "GetMasterByNameAndId";
     public const string GetMasterByNameAndPhone = "GetMasterByNameAndPhone";
-
     public const string GetAllWorkersByRoleId = "GetAllWorkersByRoleId";
-
     public const string GetAllWorkersWithContactsByUserId = "GetAllWorkersWithContactsByUserId";
-
     public const string AddWorkerByRoleId = "AddWorkerByRoleId";
     public const string RemoveUserById = "RemoveUserById";
-
     public const string GetAllShiftsOnToday = "GetAllShiftsOnToday";
-
     public const string GetAllShiftsAndEmployeesOnToday = "GetAllShiftsAndEmployeesOnToday";
-
     public const string ChangeMasterInShift = "ChangeMasterInShift";
     public const string RemoveMasterFromShift = "RemoveMasterFromShift";
     public const string GetFreeMastersAndIntervalsOnToday = "GetFreeMastersAndIntervalsOnToday";
@@ -45,8 +38,6 @@ public class Procedures
     public const string AddClientToFreeMaster = "AddClientToFreeMaster";
     public const string GetAllOrdersOnToday = "GetAllOrdersOnToday"; 
     public const string GetAllChatId = "GetAllUsersChatId";
-
-
     public const string GetOrdersByClientId2 = "GetOrdersByClientId2";
     public const string UpdateOrderTimeForClientById = "UpdateOrderTimeForClientById";
     public const string CreateNewOrder = "CreateNewOrder";
@@ -54,5 +45,4 @@ public class Procedures
     public const string GetAllFreeIntervalsOnCurrentService = "GetAllFreeIntervalsOnCurrentService";
     public const string GetAllShiftsWithFreeIntervalsOnCurrentService = "GetAllShiftsWithFreeIntervalsOnCurrentService";
     public const string GetAllFreeIntervalsInCurrentShiftOnCurrentService = "GetAllFreeIntervalsInCurrentShiftOnCurrentService";
-
 }

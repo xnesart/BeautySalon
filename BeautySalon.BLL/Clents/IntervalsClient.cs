@@ -33,4 +33,12 @@ public class IntervalsClient : IIntervalsClient
         var result = _mapper.Map<List<AllFreeIntervalsOnCurrentServiceOutputModel>>(intervals);
         return result;
     }
+
+    public List<IntervalsIdTitleStartTimeOutputModel> GetAllFreeIntervalsByShiftId(ShiftIdInputModel model)
+    {
+        IIntervalsRepository intervalsRepository = new IntervalsRepository();
+        List<GetAllFreeIntervalsByShiftIdDTO> dto = intervalsRepository.GetAllFreeIntervalsByShiftId(model.Id);
+        var result = _mapper.Map<List<IntervalsIdTitleStartTimeOutputModel>>(dto);
+        return result;
+    }
 }

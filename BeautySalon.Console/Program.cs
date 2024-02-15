@@ -381,6 +381,20 @@ class Program
         // var res = intervals.GetAllIntervalsByShiftId(1);
         // Console.WriteLine();
 
+        ////Работает
+        // UserClient userClient = new UserClient();
+        // userClient.ChangeMasterInShift(7,1);
+        // Console.WriteLine();
+        
+        ////Работает
+        // ShiftIdInputModel model = new ShiftIdInputModel
+        // {
+        //     Id = 2
+        // };
+        // IntervalsClient intervalsClient = new IntervalsClient();
+        // var q = intervalsClient.GetAllFreeIntervalsByShiftId(model);
+        // Console.ReadLine();
+        
         #endregion
     }
 }

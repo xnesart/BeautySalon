@@ -96,11 +96,16 @@ public class UserClient : IUserClient
         UsersDTO dto = userRepository.RemoveUserById(model.Id);
         var result = _mapper.Map<UserIsDeletedOutputModel>(dto);
         return result;
-    }   
-    
+    }
+
     public void RemoveMasterFromShift(int masterId, int shiftId)
     {
         _userRepository.RemoveMasterFromShift(masterId, shiftId);
+    }
+
+    public void ChangeMasterInShift(int masterId, int shiftId)
+    {
+        _userRepository.ChangeMasterInShift(masterId, shiftId);
     }
 
 }
