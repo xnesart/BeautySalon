@@ -10,5 +10,6 @@ namespace BeautySalon.BLL.IClient
     public interface IServiceClient
     {
         public List<AllServicesByIdFromCurrentTypeOutputModel> GetAllServicesByIdFromCurrentType(int id);
+        public List<AllServicesOutputModel> GetAllServices();
     }
 }
