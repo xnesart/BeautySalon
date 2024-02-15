@@ -38,14 +38,14 @@ public class UserRepository : IUserRepository
             {
                 ChatId = usersDTO.ChatId
             };
-            var result = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter);
+            var result = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter).ToList();
 
             if (!result.Any(users => users.ChatId == usersDTO.ChatId))
             {
                 result.Add(usersDTO);
             }
 
-            return result.ToList();
+            return result;
         }
     }
 
