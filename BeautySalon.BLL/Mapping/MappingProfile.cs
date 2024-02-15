@@ -63,6 +63,8 @@ public class MappingProfile : Profile
 
         CreateMap<GetAllServicesByIdFromCurrentTypeDTO, AllServicesByIdFromCurrentTypeOutputModel>();
 
+        CreateMap<GetAllServicesDTO, AllServicesOutputModel>();
+
     }
 }
 

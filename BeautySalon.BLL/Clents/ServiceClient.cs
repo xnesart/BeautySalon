@@ -31,6 +31,12 @@ namespace BeautySalon.BLL.Clents
             List<AllServicesByIdFromCurrentTypeOutputModel> result = this._mapper.Map<List<AllServicesByIdFromCurrentTypeOutputModel>>(getAllServices);
             return result;
         }
+        public List<AllServicesOutputModel> GetAllServices()
+        {
+            List< GetAllServicesDTO> allServices = this._servicesRepository.GetAllServices();
+            List<AllServicesOutputModel> result = this._mapper.Map<List<AllServicesOutputModel>>(allServices);
+            return result;
+        }
 
 
     }
