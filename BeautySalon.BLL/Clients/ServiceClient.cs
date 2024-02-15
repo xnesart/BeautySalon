@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BeautySalon.BLL.Clents
 {
-    public class ServiceClient :IServiceClient
+    public class ServiceClient : IServiceClient
     {
         private IServicesRepository _servicesRepository;
         private Mapper _mapper;
@@ -27,13 +27,13 @@ namespace BeautySalon.BLL.Clents
         }
         public List<AllServicesByIdFromCurrentTypeOutputModel> GetAllServicesByIdFromCurrentType(int id)
         {
-            List< GetAllServicesByIdFromCurrentTypeDTO> getAllServices = this._servicesRepository.GetAllServicesByIdFromCurrentType(id);
+            List<GetAllServicesByIdFromCurrentTypeDTO> getAllServices = this._servicesRepository.GetAllServicesByIdFromCurrentType(id);
             List<AllServicesByIdFromCurrentTypeOutputModel> result = this._mapper.Map<List<AllServicesByIdFromCurrentTypeOutputModel>>(getAllServices);
             return result;
         }
         public List<AllServicesOutputModel> GetAllServices()
         {
-            List< GetAllServicesDTO> allServices = this._servicesRepository.GetAllServices();
+            List<GetAllServicesDTO> allServices = this._servicesRepository.GetAllServices();
             List<AllServicesOutputModel> result = this._mapper.Map<List<AllServicesOutputModel>>(allServices);
             return result;
         }
