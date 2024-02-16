@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices.JavaScript;
-using BeautySalon.DAL.IRepositories;
-using BeautySalon.DAL.Repositories;
+using BeautySalon.BLL.Clents;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -75,8 +74,8 @@ public class ServicesHandler
 
     public async void ChoseHaircut(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        IServicesRepository servicesRepository = new ServicesRepository();
-        var services = servicesRepository.GetAllServicesByIdFromCurrentType(1);
+        ServiceClient serviceClient = new ServiceClient(); 
+        var services = serviceClient.GetAllServicesByIdFromCurrentType(1);
 
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         int rowsCount = 2;
@@ -107,4 +106,6 @@ public class ServicesHandler
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Список стрижек",
             replyMarkup: inlineKeyboard);
     }
+   
+    
 }
