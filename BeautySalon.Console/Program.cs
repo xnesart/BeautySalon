@@ -12,7 +12,6 @@ using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.DAL.DTO;
 using System;
 using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
-
 using BeautySalon.BLL.IClient;
 
 class Program
@@ -294,15 +293,15 @@ class Program
         // UserClient userClient = new UserClient();
         // var q = userClient.GetAllWorkersByRoleId();
         // Console.ReadLine();   
-        
+
         //Работает
-         // UserIdInputModel model = new UserIdInputModel
-         // {
-         //     Id = 3
-         // };
-         // UserClient userClient = new UserClient();
-         // var q = userClient.RemoveUserById(model);
-         // Console.ReadLine();
+        // UserIdInputModel model = new UserIdInputModel
+        // {
+        //     Id = 3
+        // };
+        // UserClient userClient = new UserClient();
+        // var q = userClient.RemoveUserById(model);
+        // Console.ReadLine();
 
         ////Работает
         // UserClient userClient = new UserClient();
@@ -361,12 +360,12 @@ class Program
         // };
         // userClient.AddWorkerByRoleId(model);
         // Console.ReadLine();
-        
+
         ////Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
         // Console.WriteLine();
-        
+
         ////Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
@@ -376,12 +375,12 @@ class Program
         // UserClient userClient = new UserClient();
         // var res = userClient.GetAllChatId();
         // Console.WriteLine();
-        
+
         ////Работает
         // UserClient userClient = new UserClient();
         // userClient.RemoveMasterFromShift(2,1);
         // Console.WriteLine();
-        
+
         ////Работает
         // IntervalsClient intervals = new IntervalsClient();
         // var res = intervals.GetAllIntervalsByShiftId(1);
@@ -391,7 +390,7 @@ class Program
         // UserClient userClient = new UserClient();
         // userClient.ChangeMasterInShift(7,1);
         // Console.WriteLine();
-        
+
         ////Работает
         // ShiftIdInputModel model = new ShiftIdInputModel
         // {
@@ -400,12 +399,12 @@ class Program
         // IntervalsClient intervalsClient = new IntervalsClient();
         // var q = intervalsClient.GetAllFreeIntervalsByShiftId(model);
         // Console.ReadLine();
-        
+
         // ////Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var q = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
         // Console.ReadLine();
-        
+
         //работает
         // ServiceClient serviceClient = new ServiceClient();
         // ServiceByIdInputModel model = new ServiceByIdInputModel
@@ -417,19 +416,12 @@ class Program
         // };
         // serviceClient.AddServiceByIdInputModel(model);
         // Console.WriteLine();
-        
+
+        //Работает
+        // IUserClient client = new UserClient();
+        // var result = client.CheckAndAddUser(1);
+        // Console.WriteLine(result);
+
         #endregion
-
-        // IUserRepository repository = new UserRepository();
-        //  var result = repository.CheckAndAddUser(1);
-        // Console.WriteLine(result.ToList());
-
-        IUserClient client = new UserClient();
-        var result = client.CheckAndAddUser(1);
-        Console.WriteLine(result);
-
-
-
-
     }
 }

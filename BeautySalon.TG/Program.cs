@@ -26,7 +26,7 @@ public class Program
     static void Main(string[] args)
     {
         IServiceClient serviceClient = new ServiceClient();
-        serviceClient.GetAllServicesByIdFromCurrentType(1);
+        CurrentServices = serviceClient.GetAllServicesByIdFromCurrentType(1);
         var cts = new CancellationTokenSource(); //это токен связи
         var cancellationToken = cts.Token;
 
@@ -80,7 +80,7 @@ public class Program
         }
 
         //здесь мы распознаем и выводим нажатые кнопки
-        else if (update.CallbackQuery != null || update.CallbackQuery.Data != null)
+        else if (update.CallbackQuery != null && update.CallbackQuery.Data != null)
         {
             if (update.CallbackQuery.Data == "записаться")
             {
