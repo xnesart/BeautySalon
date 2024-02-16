@@ -9,7 +9,7 @@ namespace BeautySalon.BLL.Models.Output_Models
 {
     public class CheckAndAddUserOutputModel
     {
-        public List<UsersDTO> ChatId { get; set; }
+        public int ChatId { get; set; }
         public string UserName { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
