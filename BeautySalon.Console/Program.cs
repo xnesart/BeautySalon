@@ -420,8 +420,8 @@ class Program
         
         #endregion
 
-        IUserClient userClient = new UserClient();
-         var result = userClient.CheckAndAddUser(1);
+        IUserRepository repository = new UserRepository();
+         var result = repository.CheckAndAddUser(1);
         Console.WriteLine(result.ToList());
 
 

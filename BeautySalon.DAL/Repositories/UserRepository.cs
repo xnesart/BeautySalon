@@ -30,17 +30,18 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
-    public List<UsersDTO> CheckAndAddUser( int chatId)
+    public List<UsersDTO> CheckAndAddUser(int chatId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameter = new
             {
-                ChatId = chatId
+                ChatId = chatId,
             };
-            List<UsersDTO> result = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter).ToList();
 
-            return result;
+            var users = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter).ToList();
+
+            return users;
         }
     }
 

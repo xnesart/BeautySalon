@@ -108,15 +108,15 @@ public class UserClient : IUserClient
     {
         _userRepository.ChangeMasterInShift(masterId, shiftId);
     }
-    public List<CheckAndAddUserOutputModel> CheckAndAddUser(int chatId)
-    {
-        List<UsersDTO> userChatId = this._userRepository.CheckAndAddUser(chatId);
-        if(userChatId.Count != chatId)
-        {
-            userChatId.Add(chatId);
-        }
-        List<CheckAndAddUserOutputModel> result = this._mapper.Map<List<CheckAndAddUserOutputModel>>(userChatId);
-        
-        return result;
-    }
+    // public CheckAndAddUserOutputModel CheckAndAddUser(int chatId)
+    // {
+    //     List<UsersDTO> userChatId = this._userRepository.CheckAndAddUser(chatId);
+    //     if(userChatId.Count != chatId)
+    //     {
+    //         userChatId.Add(chatId);
+    //     }
+    //     CheckAndAddUserOutputModel result = this._mapper.Map<CheckAndAddUserOutputModel>(userChatId);
+    //     
+    //     return result;
+    // }
 }
