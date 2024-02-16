@@ -111,10 +111,6 @@ public class UserClient : IUserClient
     public List<CheckAndAddUserOutputModel> CheckAndAddUser(int chatId)
     {
         List<UsersDTO> userChatId = this._userRepository.CheckAndAddUser(chatId);
-        // if(userChatId.Count != chatId)
-        // {
-        //     userChatId.Add(chatId);
-        // }
         
         var result = this._mapper.Map<List<CheckAndAddUserOutputModel>>(userChatId).ToList();
         
