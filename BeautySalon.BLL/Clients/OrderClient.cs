@@ -2,10 +2,8 @@
 using AutoMapper;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
-using BeautySalon.BLL.NewOrderModels.InputModels;
+using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.BLL.OrdersForClientById;
-using BeautySalon.BLL.RemoveOrderForClientByOrderIInputModel;
-using BeautySalon.BLL.UpdateOrderTimeForClientByIdInputModel;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
