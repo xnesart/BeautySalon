@@ -1,4 +1,6 @@
 ﻿using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.Output_Models;
+using BeautySalon.DAL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +18,6 @@ namespace BeautySalon.BLL.IClient
         public List<MasterByNameAndIdOutputModel> GetMasterByNameAndId(string name, int id);
         public UserIsDeletedOutputModel RemoveUserById(UserIdInputModel model);
         public void ChangeMasterInShift(int masterId, int shiftId);
+        public List<CheckAndAddUserOutputModel> CheckAndAddUser(int chatId);
     }
 }
