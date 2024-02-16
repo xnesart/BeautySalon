@@ -419,5 +419,17 @@ class Program
         // Console.WriteLine();
         
         #endregion
+
+        // IUserRepository repository = new UserRepository();
+        //  var result = repository.CheckAndAddUser(1);
+        // Console.WriteLine(result.ToList());
+
+        IUserClient client = new UserClient();
+        var result = client.CheckAndAddUser(1);
+        Console.WriteLine(result);
+
+
+
+
     }
 }

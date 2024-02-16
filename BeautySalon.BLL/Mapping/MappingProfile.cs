@@ -50,6 +50,7 @@ public class MappingProfile : Profile
         CreateMap<TypesDTO, AllServiceTypeOutputModel>();
         CreateMap<GetAllServicesByIdFromCurrentTypeDTO, AllServicesByIdFromCurrentTypeOutputModel>();
         CreateMap<GetAllServicesDTO, AllServicesOutputModel>();
+        CreateMap<UsersDTO,CheckAndAddUserOutputModel>();
     }
 }
 
