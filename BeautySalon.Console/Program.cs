@@ -366,21 +366,21 @@ class Program
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
         // Console.WriteLine();
-
         
         ////Работает
-        ShiftsClient shiftsClient = new ShiftsClient();
-        var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
-        Console.WriteLine();
-        
+        // ShiftsClient shiftsClient = new ShiftsClient();
+        // var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
+        // Console.WriteLine();
 
-        //Работает
+        ////Работает
         // UserClient userClient = new UserClient();
         // var res = userClient.GetAllChatId();
         // Console.WriteLine();
         
-        UserClient userClient = new UserClient();
-        userClient.RemoveMasterFromShift(2,1);
+        ////Работает
+        // UserClient userClient = new UserClient();
+        // userClient.RemoveMasterFromShift(2,1);
+        // Console.WriteLine();
         
         ////Работает
         // IntervalsClient intervals = new IntervalsClient();
@@ -417,7 +417,7 @@ class Program
         // };
         // serviceClient.AddServiceByIdInputModel(model);
         // Console.WriteLine();
+        
         #endregion
-
     }
 }
