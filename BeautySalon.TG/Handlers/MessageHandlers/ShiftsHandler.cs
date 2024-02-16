@@ -17,20 +17,16 @@ public class ShiftsHandler
         int rowsCount = 2;
         for (int i = 0; i <= rowsCount; i += rowsCount)
         {
-            // Выбираем порцию услуг для текущего ряда
             var rowShifts = shifts.Skip(i).Take(rowsCount);
 
-            // Создаем массив кнопок для текущего ряда
             InlineKeyboardButton[] row = rowShifts
-                .Select(shift => InlineKeyboardButton.WithCallbackData(text: $"{shift.Title} {shift.StartTime}",
+                .Select(shift => InlineKeyboardButton.WithCallbackData(text: $"{shift.Title}",
                     callbackData: shift.Title.ToLower()))
                 .ToArray();
 
-            // Добавляем массив кнопок в список
             buttons.Add(row);
         }
 
-        //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
             InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
@@ -39,7 +35,7 @@ public class ShiftsHandler
 
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
 
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Список стрижек",
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите время",
             replyMarkup: inlineKeyboard);
     }
 }

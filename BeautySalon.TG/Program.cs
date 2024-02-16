@@ -100,9 +100,11 @@ public class Program
                 servicesHandler.ChoseHaircut(botClient, update, cancellationToken);
             }
 
+            ServiceClient serviceClient = new ServiceClient();
+            CurrentServices = serviceClient.GetAllServicesByIdFromCurrentType(1);
             foreach (var service in CurrentServices)
             {
-                if (service.Title == update.CallbackQuery.Data)
+                if (service.Title.ToLower() == update.CallbackQuery.Data)
                 {
                     ShiftsHandler shiftsHandler = new ShiftsHandler();
                     shiftsHandler.ChoseShift(botClient, update, cancellationToken);
