@@ -1,17 +1,3 @@
-create database BeautifulGirl COLLATE Cyrillic_General_CI_AS;
-go
-
-use BeautifulGirl
-
---удаление таблиц
-drop table Orders;
-drop table Services;
-drop table Types;
-drop table Intervals;
-drop table Shifts;
-drop table Users;
-drop table Roles;
-
 create table Users
 (
     Id int primary key not null identity(1,1),
@@ -36,6 +22,7 @@ create table Roles
 create table Shifts
 (
     Id int primary key not null identity(1,1),
+    Number int,
     Title nvarchar(30) not null,
     StartTime datetime not null,
     EndTime datetime not null,
@@ -48,6 +35,9 @@ create table Intervals
     Id int primary key not null identity(1,1),
     Title nvarchar(30) not null,
     ShiftId int not null,
+    ShiftNumber int,
+    ShiftTitle nvarchar(30) not null,
+    MasterId int,
     StartTime datetime not null,
     IsBusy bit not null default 0,
     IsDeleted bit not null default 0
@@ -99,13 +89,13 @@ insert into Users (ChatId, UserName, Name, Phone, Mail, RoleId, Salary) values(1
                                                                               (4, '@lraikv', 'Оксана Дмитриевна Кек', '877566588690', 'farse@hsdt6rh', 3, null), (5, '@yliivl;i', 'Снежанна Витальевна Соловьева', '892136234', 'gwghw5gh@dsejdfkrutek', 3, null),
                                                                               (6, '@goijrdnr', 'Кристина Валерьевна Заливняк', '642894209', 'fs5g@grq', 3, null)
 
-insert into Shifts (Title, StartTime, EndTime, MasterId) values('УТРО (10:00 - 13:45)', '02/16/2024 10:00', '02/16/2024 13:45', 2),
-                                                               ('ДЕНЬ (14:00 - 17:45)', '02/16/2024 14:00', '02/16/2024 17:45', 2),
-                                                               ('ВЕЧЕР (18:00 - 21:45)', '02/16/2024 18:00', '02/16/2024 21:45', 3)
+insert into Shifts (Number, Title, StartTime, EndTime, MasterId) values(1, 'УТРО (10:00 - 13:45)', '02/16/2024 10:00', '02/16/2024 13:45', null),
+                                                                       (2, 'ДЕНЬ (14:00 - 17:45)', '02/16/2024 14:00', '02/16/2024 17:45', null),
+                                                                       (3, 'ВЕЧЕР (18:00 - 21:45)', '02/16/2024 18:00', '02/16/2024 21:45', null)
 
-insert into Intervals (Title, ShiftId, StartTime) values('10:00', 1, '02/16/2024 10:00'), ('11:00', 1, '02/16/2024 11:00'), ('12:00', 1, '02/16/2024 12:00'),('13:00', 1, '02/16/2024 13:00'),
-                                                        ('14:00', 2, '02/16/2024 14:00'), ('15:00', 2, '02/16/2024 15:00'), ('16:00', 2, '02/16/2024 16:00'), ('17:00', 2, '02/16/2024 17:00'),
-                                                        ('18:00', 3, '02/16/2024 18:00'), ('19:00', 3, '02/16/2024 19:00'), ('20:00', 3, '02/16/2024 20:00'), ('21:00', 3, '02/16/2024 21:00')
+insert into Intervals (Title, ShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime) values('10:00', 1, 1, 'УТРО (10:00 - 13:45)', null, '02/16/2024 10:00'), ('11:00', 1, 1, 'УТРО (10:00 - 13:45)', null, '02/16/2024 11:00'), ('12:00', 1, 1, 'УТРО (10:00 - 13:45)', null, '02/16/2024 12:00'),('13:00', 1, 1, 'УТРО (10:00 - 13:45)', null, '02/16/2024 13:00'),
+                                                        ('14:00', 2, 2, 'ДЕНЬ (14:00 - 17:45)', null, '02/16/2024 14:00'), ('15:00', 2, 2, 'ДЕНЬ (14:00 - 17:45)', null, '02/16/2024 15:00'), ('16:00', 2, 2, 'ДЕНЬ (14:00 - 17:45)', null, '02/16/2024 16:00'), ('17:00', 2, 2, 'ДЕНЬ (14:00 - 17:45)', null, '02/16/2024 17:00'),
+                                                        ('18:00', 3, 3, 'ВЕЧЕР (18:00 - 21:45)', null, '02/16/2024 18:00'), ('19:00', 3, 3, 'ВЕЧЕР (18:00 - 21:45)', null, '02/16/2024 19:00'), ('20:00', 3, 3, 'ВЕЧЕР (18:00 - 21:45)', null, '02/16/2024 20:00'), ('21:00', 3, 3, 'ВЕЧЕР (18:00 - 21:45)', null, '02/16/2024 21:00')
 
 insert into Types (Title) values('Стрижка'), ('Покраска'), ('Укладка'), ('Макияж'), ('Маникюр'), ('Педикюр'), ('Эпиляция'),('Пиллинг'), ('Обертывание'),('Массаж')
 
