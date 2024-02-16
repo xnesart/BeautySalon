@@ -340,7 +340,70 @@ end
     commit; -- фиксация транзакции
 end
 go
-
+-- Назначить выбранного мастера на смену по НОМЕРУ смены и создать соответствующие рабочие интервалы при их нехватке
+create procedure AddMasterToShiftWithIntervalsByShiftNumber
+    @Number int,
+    @MasterId int
+as
+begin
+    -- проверка, что MasterId принадлежит мастеру с RoleId= 2
+    if not exists (
+        select 1
+        from users
+        where Id = @MasterId
+        and RoleId = 2
+    )
+    begin
+        raiserror ('Specified user is not a “Master”.', 16, 1);
+        return; -- завершаем процедуру
+    end
+    -- проверка, существует ли уже мастер на выбранной смене с передаваемым number и masterid
+    if exists (
+        select 1
+        from Shifts
+        where Number = @Number
+        and MasterId = @MasterId
+    )
+    begin
+        raiserror ('Master already assigned to the specified shift.', 16, 1);
+        return; -- завершаем процедуру, так как мастер уже назначен на данную смену
+    end
+    -- проверка, существует ли уже мастер на выбранной смене с другим MasterId
+    if exists (
+        select 1
+        from Shifts
+        where Number = @Number
+        and MasterId is not null
+        and MasterId != @MasterId
+    )
+    begin
+    -- создание новой строки в таблице shifts
+    insert into Shifts (Number, Title, StartTime, EndTime, MasterId, IsDeleted)
+    select Number, Title, StartTime, EndTime, @MasterId, IsDeleted
+    from Shifts
+    where Number = @Number;
+    -- получение идентификатора новой смены
+    declare @NewShiftId int;
+    set @NewShiftId = scope_identity();
+    -- создание соответствующих строк в таблице intervals
+    insert into Intervals (Title, ShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, IsBusy, IsDeleted)
+    select Title, @NewShiftId, ShiftNumber, ShiftTitle, @MasterId, StartTime, IsBusy, IsDeleted
+    from Intervals
+    where ShiftNumber = @Number;
+    end
+    else
+    begin
+    -- обновление существующей строки в таблице shifts
+    update Shifts
+    set MasterId = @MasterId
+    where Number = @Number;
+    -- обновление MasterId в соответствующих строках в таблице intervals
+    update Intervals
+    set MasterId = @MasterId
+    where ShiftNumber = @Number;
+    end
+end
+go
 
 ----процедуры для мастера
 -- ✓ Вывести смены выбранного мастера на сегодня
