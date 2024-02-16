@@ -53,7 +53,6 @@ public class Program
     {
         if (update?.Message != null && botClient != null)
         {
-            var message = update.Message;
             if (update.Type == UpdateType.Message)
             {
                 ChatId = update.Message.Chat.Id;
@@ -71,13 +70,24 @@ public class Program
                 var data = callbackQuery.Data;
             }
         }
-
+        
+        //здесь мы распознаем и выводим нажатые кнопки
         else if (update.CallbackQuery != null || update.CallbackQuery.Data != null)
         {
             if (update.CallbackQuery.Data == "записаться")
             {
                 ServicesHandler servicesHandler = new ServicesHandler();
                 servicesHandler.ShowServices(botClient, update, cancellationToken);
+            }
+            if (update.CallbackQuery.Data == "вернуться в главное меню")
+            {
+                ServicesHandler servicesHandler = new ServicesHandler();
+                servicesHandler.GetBackToMenu(botClient, update, cancellationToken);
+            } 
+            if (update.CallbackQuery.Data == "стрижка")
+            {
+                ServicesHandler servicesHandler = new ServicesHandler();
+                servicesHandler.ChoseHaircut(botClient, update, cancellationToken);
             }
         }
 
