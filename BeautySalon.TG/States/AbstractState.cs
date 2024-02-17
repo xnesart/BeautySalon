@@ -13,7 +13,7 @@ public abstract class AbstractState
     public int ServiceId { get; set; }
     public int IntervalId { get; set; }
     public string Phone { get; set; }
-    public string Email { get; set; }
+    public string Mail { get; set; }
     public int TypeId { get; set; }
     
     

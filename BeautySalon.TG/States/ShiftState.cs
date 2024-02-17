@@ -6,6 +6,10 @@ namespace BeautySalon.TG.States;
 
 public class ShiftState:AbstractState
 {
+    public ShiftState(int typeId)
+    {
+        TypeId = typeId;
+    }
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ShiftsHandler shiftsHandler = new ShiftsHandler();
@@ -19,7 +23,7 @@ public class ShiftState:AbstractState
             ShiftId = int.Parse(update.CallbackQuery.Data);
             Console.WriteLine(ShiftId);
             //Передаем в стейт интервалов выбранный айди смены.
-            return new IntervalsState(ShiftId);
+            return new IntervalsState(ShiftId, TypeId);
         }
         return new StartStateFromButton();
     }

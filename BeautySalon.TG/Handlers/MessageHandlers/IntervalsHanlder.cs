@@ -9,6 +9,7 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers;
 
 public class IntervalsHanlder
 {
+    public List<IntervalsIdTitleStartTimeOutputModel> ListOfFreeIntervals { get; set; }
     public async void GetFreeIntervalsOnCurrentShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,int shiftId)
     {
         IntervalsClient intervalsClient = new IntervalsClient();
@@ -19,7 +20,7 @@ public class IntervalsHanlder
         };
         
         var intervals = intervalsClient.GetAllFreeIntervalsByShiftId(model);
-
+        ListOfFreeIntervals = intervals;
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         int rowsCount = 4;
         for (int i = 0; i <= rowsCount; i += rowsCount)

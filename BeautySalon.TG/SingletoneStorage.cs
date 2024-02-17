@@ -1,5 +1,6 @@
 using BeautySalon.DAL;
 using BeautySalon.TG.States;
+using Microsoft.VisualBasic;
 using Telegram.Bot;
 
 namespace BeautySalon.TG;
@@ -10,6 +11,7 @@ public class SingletoneStorage
     public ITelegramBotClient Client { get; private set; }
 
     public Dictionary<long, AbstractState> Clients { get; private set; }
+
 
     //public static ITelegramBotClient Client => _client;
 

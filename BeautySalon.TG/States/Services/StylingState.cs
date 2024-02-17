@@ -1,4 +1,5 @@
 using BeautySalon.BLL.Clents;
+using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.TG.MessageHandlers;
 using Telegram.Bot.Types;
 
@@ -21,7 +22,7 @@ public class StylingState:AbstractState
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
             Console.WriteLine(update.CallbackQuery.Data);
-            return new ShiftState();
+            return new ShiftState(TypeId);
         }
 
         return new StartStateFromButton();

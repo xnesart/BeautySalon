@@ -3,13 +3,14 @@ using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
 
-public class RegistrationState : AbstractState
+public class RegistrationStateName : AbstractState
 {
-    public RegistrationState(int shiftId, int intervalId, int serviceID)
+    public RegistrationStateName(int shiftId, int intervalId, int serviceID, int typeId)
     {
         ServiceId = serviceID;
         ShiftId = shiftId;
         IntervalId = intervalId;
+        TypeId = typeId;
     }
 
     public async override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
@@ -20,6 +21,7 @@ public class RegistrationState : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        throw new NotImplementedException();
+        Name = update?.Message.Text;
+        return new RegistrationStatePhone(ServiceId, ShiftId, IntervalId, TypeId, Name);
     }
 }
