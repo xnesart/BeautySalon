@@ -1,9 +1,10 @@
 using BeautySalon.TG.MessageHandlers;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 
 namespace BeautySalon.TG.States;
 
-public class ServiceState:AbstractState
+public class ServiceState : AbstractState
 {
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
@@ -13,6 +14,45 @@ public class ServiceState:AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        throw new NotImplementedException();
+        if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
+        {
+            if (update.CallbackQuery.Data.ToLower() == "стрижка")
+            {
+                return new HaircutState();
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "покраска")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "укладка")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "макияж")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "маникюр")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "педикюр")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "эпиляция")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "пилинг")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "обертывание")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "массаж")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "вернуться в главное меню")
+            {
+                return new StartStateFromButton();
+            }
+        }
+
+        return null;
     }
 }
