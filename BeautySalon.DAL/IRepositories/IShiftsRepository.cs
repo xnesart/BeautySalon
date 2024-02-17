@@ -9,5 +9,5 @@ public interface IShiftsRepository
     public List<GetAllShiftsAndEmployeesOnTodayDTO> GetAllShiftsAndEmployeesOnToday();
     public List<GetAllShiftsWithFreeIntervalsOnTodayDTO> GetAllShiftsWithFreeIntervalsOnToday();
     public List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId);
-    public List<AddMasterToShiftWithIntervalsByShiftNumberDTO> AddMasterToShiftWithIntervalsByShiftNumber(int number, int masterId);
+    public List<AddMasterToShiftWithCreatedNewIntervalsDTO> AddMasterToShiftWithCreatedNewIntervals(int number, int masterId);
 }

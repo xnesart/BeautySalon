@@ -84,7 +84,7 @@ public class ShiftsRepository : IShiftsRepository
         }
     }
 
-    public List<AddMasterToShiftWithIntervalsByShiftNumberDTO> AddMasterToShiftWithIntervalsByShiftNumber(int number, int masterId)
+    public List<AddMasterToShiftWithCreatedNewIntervalsDTO> AddMasterToShiftWithCreatedNewIntervals(int number, int masterId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
@@ -93,8 +93,8 @@ public class ShiftsRepository : IShiftsRepository
                 Number = number, 
                 MasterId = masterId
             };
-            return connection.Query<AddMasterToShiftWithIntervalsByShiftNumberDTO>(
-                Procedures.AddMasterToShiftWithIntervalsByShiftNumber, parameters).ToList();
+            return connection.Query<AddMasterToShiftWithCreatedNewIntervalsDTO>(
+                Procedures.AddMasterToShiftWithCreatedNewIntervals, parameters).ToList();
         }
     }
 }
