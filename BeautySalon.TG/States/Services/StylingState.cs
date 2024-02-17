@@ -25,6 +25,6 @@ public class StylingState:AbstractState
             return new ShiftState(TypeId);
         }
 
-        return new StartStateFromButton();
+        return new StartState();
     }
 }

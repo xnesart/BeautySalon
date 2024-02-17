@@ -1,4 +1,7 @@
-﻿using Telegram.Bot;
+﻿using BeautySalon.BLL;
+using BeautySalon.BLL.IClient;
+using BeuatySalon.TG.Handlers.MessageHandlers;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
@@ -27,7 +30,12 @@ public class RegistrationStateMail:AbstractState
         Mail = update?.Message.Text;
          SingletoneStorage.GetStorage().Client
             .SendTextMessageAsync(update.Message.Chat.Id, "Будем рады видеть Вас в нашем салоне!\nНаш администратор свяжется с Вами накануне посещения для подтверждения Вашего визита. Хорошего дня!");
-
+         long id = update.Message.Chat.Id;
+         UserHandler userHandler = new UserHandler(ServiceId, ShiftId, IntervalId, TypeId, Name, Phone, id);
+        //Здесь надо зарегать пользователя в системе, затем создать заказ.
+         // TODO
+         OrderHandler orderHandler = new OrderHandler();
+         
          return new StartStateFromButton();
     }
 }

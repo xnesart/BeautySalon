@@ -17,6 +17,12 @@ public class HaircutState:AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        throw new NotImplementedException();
+        if (update.CallbackQuery.Data != "вернуться в главное меню")
+        {
+            Console.WriteLine(update.CallbackQuery.Data);
+            return new ShiftState(TypeId);
+        }
+
+        return new StartState();
     }
 }
