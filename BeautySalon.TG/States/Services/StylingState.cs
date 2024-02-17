@@ -6,7 +6,10 @@ namespace BeautySalon.TG.States;
 
 public class StylingState:AbstractState
 {
-    public string IdServiceStr { get; set; }
+    public StylingState(int typeId)
+    {
+        TypeId = typeId;
+    }
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();

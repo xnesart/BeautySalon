@@ -5,6 +5,11 @@ namespace BeautySalon.TG.States;
 
 public class ColoringState:AbstractState
 {
+    public ColoringState(int typeId)
+    {
+        TypeId = typeId;
+    }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();

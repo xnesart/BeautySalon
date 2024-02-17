@@ -18,15 +18,18 @@ public class ServiceState : AbstractState
         {
             if (update.CallbackQuery.Data.ToLower() == "стрижка")
             {
-                return new HaircutState();
+                this.TypeId = 1;
+                return new HaircutState(TypeId);
             }
             else if (update.CallbackQuery.Data.ToLower() == "покраска")
             {
-                return new ColoringState();
+                this.TypeId = 2;
+                return new ColoringState(TypeId);
             }
             else if (update.CallbackQuery.Data.ToLower() == "укладка")
             {
-                return new StylingState();
+                this.TypeId = 3;
+                return new StylingState(TypeId);
 
             }
             else if (update.CallbackQuery.Data.ToLower() == "макияж")

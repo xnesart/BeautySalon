@@ -1,5 +1,6 @@
 using BeautySalon.BLL.Clents;
 using BeautySalon.BLL.Models;
+using BeautySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -8,13 +9,13 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers;
 
 public class IntervalsHanlder
 {
-    public async void GetFreeIntervalsOnCurrentShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    public async void GetFreeIntervalsOnCurrentShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,int shiftId)
     {
         IntervalsClient intervalsClient = new IntervalsClient();
         
         ShiftIdInputModel model = new ShiftIdInputModel
         {
-            Id = 2
+            Id = shiftId
         };
         
         var intervals = intervalsClient.GetAllFreeIntervalsByShiftId(model);
