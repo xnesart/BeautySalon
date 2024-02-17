@@ -32,7 +32,6 @@ public class ShiftsRepository : IShiftsRepository
                     {
                         users.Shifts = new List<ShiftsDTO>();
                     }
-
                     users.Shifts.Add(shifts);
                     return users;
                 }, splitOn: "Name,Id").ToList();
@@ -60,33 +59,42 @@ public class ShiftsRepository : IShiftsRepository
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-
             var parameter = new
             {
                 ServiceId = serviceId,
             };
-
             return connection.Query<ServicesDTO, ShiftsDTO, AllShiftsWithFreeIntervalsOnCurrentServiceDTO>
                 (
                 Procedures.GetAllShiftsWithFreeIntervalsOnCurrentService,
                 (service, shift) =>
                 {
                     AllShiftsWithFreeIntervalsOnCurrentServiceDTO getAllShifts = new AllShiftsWithFreeIntervalsOnCurrentServiceDTO();
-
                     getAllShifts.Services = new ServicesDTO();
                     getAllShifts.Services.Id = service.Id;
                     getAllShifts.Services.Title = service.Title;
-
                     getAllShifts.Shift = new ShiftsDTO();
                     getAllShifts.Shift.Id = shift.Id;
                     getAllShifts.Shift.Title = shift.Title;
                     getAllShifts.Shift.StartTime = shift.StartTime;
-
                     return getAllShifts;
                 },
                 parameter ,
                 splitOn: "Id,Id"
                 ).ToList();
+        }
+    }
+
+    public List<AddMasterToShiftWithIntervalsByShiftNumberDTO> AddMasterToShiftWithIntervalsByShiftNumber(int number, int masterId)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                Number = number, 
+                MasterId = masterId
+            };
+            return connection.Query<AddMasterToShiftWithIntervalsByShiftNumberDTO>(
+                Procedures.AddMasterToShiftWithIntervalsByShiftNumber, parameters).ToList();
         }
     }
 }

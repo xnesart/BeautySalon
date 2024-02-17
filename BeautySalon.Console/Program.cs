@@ -25,7 +25,7 @@ class Program
 
         #endregion
 
-        #region Works
+        #region Works DAL
 
         ////Работает
         //IUserRepository userRepository4 = new UserRepository();
@@ -275,10 +275,20 @@ class Program
         ////Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.AddClientToFreeMaster(2, 1, 2, 30);
+        
+        ////Работает
+        // IUserRepository repository = new UserRepository();
+        // var result = repository.CheckAndAddUser(1);
+        // Console.WriteLine(result.ToList());       
+        
+        ////Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // var result = shiftsRepository.AddMasterToShiftWithIntervalsByShiftNumber(3, 7);
+        // Console.WriteLine(result.ToList());
 
         #endregion
 
-        #region Bll
+        #region Works Bll
 
         ////Работает
         // IntervalsClient intervalsClient = new IntervalsClient();
@@ -309,7 +319,7 @@ class Program
         // var q = userClient.GetClientByNameAndId("Анна Петровна Брек",2);
         // Console.ReadLine();
 
-        //Работает
+        ////Работает
         // UserClient client = new UserClient();
         // AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
         // {
@@ -401,12 +411,12 @@ class Program
         // var q = intervalsClient.GetAllFreeIntervalsByShiftId(model);
         // Console.ReadLine();
         
-        // ////Работает
+        ////Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var q = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
         // Console.ReadLine();
         
-        //работает
+        ////Работает
         // ServiceClient serviceClient = new ServiceClient();
         // ServiceByIdInputModel model = new ServiceByIdInputModel
         // {
@@ -418,15 +428,12 @@ class Program
         // serviceClient.AddServiceByIdInputModel(model);
         // Console.WriteLine();
         
+        ////Работает
+        // IUserClient client = new UserClient();
+        // var result = client.CheckAndAddUser(1);
+        // Console.WriteLine(result);
+        
         #endregion
-
-        // IUserRepository repository = new UserRepository();
-        //  var result = repository.CheckAndAddUser(1);
-        // Console.WriteLine(result.ToList());
-
-        IUserClient client = new UserClient();
-        var result = client.CheckAndAddUser(1);
-        Console.WriteLine(result);
 
 
 
