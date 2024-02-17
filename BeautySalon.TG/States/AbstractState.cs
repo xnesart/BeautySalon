@@ -4,6 +4,6 @@ namespace BeautySalon.TG.States;
 
 public abstract class AbstractState
 {
-    public abstract void SendMessage(long chatId);
-    public abstract void ReceiveMessage(Update update);
+    public abstract void SendMessage(long chatId, Update update, CancellationToken cancellationToken);
+    public abstract AbstractState ReceiveMessage(Update update);
 }

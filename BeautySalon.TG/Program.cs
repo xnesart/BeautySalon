@@ -39,7 +39,7 @@ public class Program
         };
         try
         {
-            TelegramClientInstance.Client.StartReceiving
+            SingletoneStorage.GetStorage().Client.StartReceiving
             (
                 HandleUpdate,
                 HandleError,
@@ -61,6 +61,7 @@ public class Program
     public static async void HandleUpdate(ITelegramBotClient botClient, Update update,
         CancellationToken cancellationToken)
     {
+        var client = SingletoneStorage.GetStorage().Clients;
         if (update?.Message != null && botClient != null)
         {
             if (update.Type == UpdateType.Message)
