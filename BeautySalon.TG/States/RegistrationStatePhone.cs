@@ -3,7 +3,7 @@ using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
 
-public class RegistrationStatePhone:AbstractState
+public class RegistrationStatePhone : AbstractState
 {
     public RegistrationStatePhone(int shiftId, int intervalId, int serviceID, int typeId, string name)
     {
@@ -18,12 +18,11 @@ public class RegistrationStatePhone:AbstractState
     {
         await SingletoneStorage.GetStorage().Client
             .SendTextMessageAsync(chatId, "Введите Ваш актуальный номер телефона для связи");
-        
     }
 
     public override AbstractState ReceiveMessage(Update update)
     {
         Phone = update?.Message.Text;
-        return new RegistrationStateMail(ServiceId, ShiftId, IntervalId, TypeId, Name, Phone);
+        return new RegistrationStateMail(ServiceId,ShiftId, IntervalId,  TypeId, Name, Phone);
     }
 }

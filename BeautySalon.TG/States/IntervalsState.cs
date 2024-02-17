@@ -6,11 +6,14 @@ namespace BeautySalon.TG.States;
 
 public class IntervalsState:AbstractState
 {
+    public int ShiftId { get; set; }
+    public int TypeId { get; set; }
     private List<IntervalsIdTitleStartTimeOutputModel> _intervals { get; set; }
-    public IntervalsState(int shiftId, int typeId)
+    public IntervalsState(int shiftId, int typeId, int serviceId)
     {
         ShiftId = shiftId;
         TypeId = typeId;
+        ServiceId = serviceId;
     }
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {

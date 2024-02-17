@@ -90,7 +90,7 @@ public class ServicesHandler
             // Создаем массив кнопок для текущего ряда
             InlineKeyboardButton[] row = rowServices
                 .Select(service => InlineKeyboardButton.WithCallbackData(text: $"{service.Title} {service.Price}",
-                    callbackData: service.Title.ToLower()))
+                    callbackData: service.Id.ToString()))
                 .ToArray();
 
             // Добавляем массив кнопок в список

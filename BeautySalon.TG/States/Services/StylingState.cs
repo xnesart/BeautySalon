@@ -21,8 +21,9 @@ public class StylingState:AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
+            ServiceId = int.Parse(update.CallbackQuery.Data);
             Console.WriteLine(update.CallbackQuery.Data);
-            return new ShiftState(TypeId);
+            return new ShiftState(TypeId, ServiceId);
         }
 
         return new StartState();

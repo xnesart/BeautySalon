@@ -5,6 +5,8 @@ namespace BeautySalon.TG.States;
 
 public class HaircutState:AbstractState
 {
+    public int TypeId { get; set; }
+    public int ServiceId { get; set; }
     public HaircutState(int typeId)
     {
         TypeId = typeId;
@@ -19,8 +21,9 @@ public class HaircutState:AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
+            ServiceId = int.Parse(update.CallbackQuery.Data);
             Console.WriteLine(update.CallbackQuery.Data);
-            return new ShiftState(TypeId);
+            return new ShiftState(TypeId, ServiceId);
         }
 
         return new StartState();

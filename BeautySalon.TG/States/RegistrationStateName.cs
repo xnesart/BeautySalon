@@ -5,7 +5,7 @@ namespace BeautySalon.TG.States;
 
 public class RegistrationStateName : AbstractState
 {
-    public RegistrationStateName(int shiftId, int intervalId, int serviceID, int typeId)
+    public RegistrationStateName(int serviceID,int shiftId, int intervalId,  int typeId)
     {
         ServiceId = serviceID;
         ShiftId = shiftId;
