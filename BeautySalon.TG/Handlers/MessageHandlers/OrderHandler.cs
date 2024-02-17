@@ -1,20 +1,17 @@
 using BeautySalon.BLL;
-using BeautySalon.BLL.Clents;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace BeuatySalon.TG.Handlers.MessageHandlers;
 
-public class ShiftsHandler
+public class OrderHandler
 {
-    public async void ChoseShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    public async void GetRegister(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         ShiftsClient shiftsClient = new ShiftsClient(); 
-        var shifts = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
-        //оставляем в списке смен только 3
-        shifts.RemoveRange(3,shifts.Count-3);
-        
+        var shifts = shiftsClient.GetAllShiftsOnToday();
+
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         int rowsCount = 2;
         for (int i = 0; i <= rowsCount; i += rowsCount)
@@ -22,8 +19,8 @@ public class ShiftsHandler
             var rowShifts = shifts.Skip(i).Take(rowsCount);
 
             InlineKeyboardButton[] row = rowShifts
-                .Select(shift => InlineKeyboardButton.WithCallbackData(text: $"{shift.Title}",
-                    callbackData: shift.Id.ToString()))
+                .Select(shift => InlineKeyboardButton.WithCallbackData(text: $"{shift.Title} {shift.StartTime}",
+                    callbackData: shift.Title.ToLower()))
                 .ToArray();
 
             buttons.Add(row);

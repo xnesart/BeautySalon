@@ -8,7 +8,7 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers;
 
 public class IntervalsHanlder
 {
-    public async void ShowFreeIntervalsOnCurrentShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    public async void GetFreeIntervalsOnCurrentShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         IntervalsClient intervalsClient = new IntervalsClient();
         

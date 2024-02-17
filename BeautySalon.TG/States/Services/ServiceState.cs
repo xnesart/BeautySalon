@@ -22,9 +22,12 @@ public class ServiceState : AbstractState
             }
             else if (update.CallbackQuery.Data.ToLower() == "покраска")
             {
+                return new ColoringState();
             }
             else if (update.CallbackQuery.Data.ToLower() == "укладка")
             {
+                return new StylingState();
+
             }
             else if (update.CallbackQuery.Data.ToLower() == "макияж")
             {
