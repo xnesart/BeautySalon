@@ -16,7 +16,7 @@ public class ShiftsRepository : IShiftsRepository
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             return connection.Query<GetAllShiftsOnTodayDTO>(
-                Procedures.GetAllShiftsAndEmployeesOnToday).ToList();
+                Procedures.GetAllShiftsOnToday).ToList();
         }
     }    
     
