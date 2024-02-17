@@ -1,0 +1,50 @@
+using BeautySalon.BLL.Clents;
+using BeautySalon.BLL.Models;
+using Telegram.Bot;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.ReplyMarkups;
+
+namespace BeuatySalon.TG.Handlers.MessageHandlers;
+
+public class IntervalsHanlder
+{
+    public async void ShowFreeIntervalsOnCurrentShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        IntervalsClient intervalsClient = new IntervalsClient();
+        
+        ShiftIdInputModel model = new ShiftIdInputModel
+        {
+            Id = 2
+        };
+        
+        var intervals = intervalsClient.GetAllFreeIntervalsByShiftId(model);
+
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        int rowsCount = 4;
+        for (int i = 0; i <= rowsCount; i += rowsCount)
+        {
+            // Выбираем порцию инервалов для текущего ряда
+            var rowServices = intervals.Skip(i).Take(rowsCount);
+
+            // Создаем массив кнопок для текущего ряда
+            InlineKeyboardButton[] row = rowServices
+                .Select(interval => InlineKeyboardButton.WithCallbackData(text: $"{interval.Title} ",
+                    callbackData: interval.Title.ToLower()))
+                .ToArray();
+
+            // Добавляем массив кнопок в список
+            buttons.Add(row);
+        }
+
+        //добавляем вернуться в главное меню
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите интервал",
+            replyMarkup: inlineKeyboard);
+    }
+}

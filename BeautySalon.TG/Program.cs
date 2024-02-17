@@ -7,6 +7,7 @@ using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL;
 using BeautySalon.TG.MessageHandlers;
+using BeautySalon.TG.States;
 using BeuatySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
@@ -21,6 +22,7 @@ public class Program
     public static List<int> Chats { get; set; }
     public static string Callback { get; set; }
     public static long ChatId { get; set; }
+    public Dictionary<long, AbstractState> ClientState { get; set; }
     public static List<AllServicesByIdFromCurrentTypeOutputModel> CurrentServices { get; set; }
 
     static void Main(string[] args)
@@ -102,13 +104,18 @@ public class Program
 
             foreach (var service in CurrentServices)
             {
-                if (service.Title == update.CallbackQuery.Data)
+                if (service.Title.ToLower() == update.CallbackQuery.Data)
                 {
                     ShiftsHandler shiftsHandler = new ShiftsHandler();
                     shiftsHandler.ChoseShift(botClient, update, cancellationToken);
                 }
             }
-            
+
+            if (update.CallbackQuery.Data.ToLower() == "УТРО (10:00 - 13:45)".ToLower())
+            {
+                IntervalsHanlder intervalsHanlder = new IntervalsHanlder();
+                intervalsHanlder.ShowFreeIntervalsOnCurrentShift(botClient, update, cancellationToken);
+            }
         }
 
         // botClient.SendTextMessageAsync(update.Message.Chat.Id,
