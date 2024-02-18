@@ -30,6 +30,7 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
+    
     public List<UsersDTO> CheckAndAddUser(int chatId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -38,9 +39,7 @@ public class UserRepository : IUserRepository
             {
                 ChatId = chatId,
             };
-
             var users = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter).ToList();
-
             return users;
         }
     }
@@ -62,7 +61,6 @@ public class UserRepository : IUserRepository
                         {
                             master.Shifts = new List<ShiftsDTO>();
                         }
-
                         master.Shifts.Add(shifts);
                         return master;
                     }, parameters, splitOn: "Id").ToList();
@@ -150,7 +148,6 @@ public class UserRepository : IUserRepository
                         {
                             users.Roles = new List<RolesDTO>();
                         }
-
                         users.Roles.Add(roles);
                         return users;
                     }, splitOn: "Id,Worker").ToList();

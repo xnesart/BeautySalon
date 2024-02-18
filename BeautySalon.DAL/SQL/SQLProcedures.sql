@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿----процедуры для админа
-=======
---процедуры для админа
->>>>>>> TatianaYstinova/main
+----процедуры для админа
 -- ✓ Зарегистрировать пользователя по ChatId, заполнив его имя, телефон и почту
 create proc AddUserByChatId
     @ChatId int, @UserName nvarchar(50), @Name nvarchar(50), @Phone nvarchar(30), @Mail nvarchar(30), @RoleId int, @Salary decimal, @IsBlocked bit, @IsDeleted bit as
@@ -52,26 +48,14 @@ go
 create proc GetAllWorkersByRoleId 
 as
 begin
-<<<<<<< HEAD
-=======
-
->>>>>>> TatianaYstinova/main
-select Users.Id, Users.RoleId, Roles.Title as Worker,
-Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
-join Roles on Users.RoleId = Roles.Id
-where RoleId = 1 or RoleId = 2
-<<<<<<< HEAD
-=======
-
->>>>>>> TatianaYstinova/main
+    select Users.Id, Users.RoleId, Roles.Title as Worker,
+    Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
+    join Roles on Users.RoleId = Roles.Id
+    where RoleId = 1 or RoleId = 2
     select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker, 
            Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
     join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
-<<<<<<< HEAD
-=======
-
->>>>>>> TatianaYstinova/main
 end
 go
 -- ✓ Вывести всех сотрудников по Id и их контакты
@@ -293,66 +277,111 @@ join Intervals on Orders.StartIntervalId = Intervals.Id
     where convert(date, Orders.Date) = convert(date, @Today)
 end
 go
--- Назначить мастера на выбранную смену, создав для него собственные рабочие интерваалы и не снимая при этом другого мастера с этой смены
-create procedure AddMasterToShiftWithIntervals
-    @MasterId int,
-    @ShiftId int
-as
+-- -- Назначить мастера на выбранную смену по ShiftId, создав для него собственные рабочие интервалы и не снимая при этом другого мастера с этой смены
+-- -- (из-за привязки к ShiftId бесконечно дублирует строки в таблицах смен и интервалов)
+-- create procedure AddMasterToShiftWithIntervalsByShiftId
+--     @MasterId int, @ShiftId int as
+-- begin
+--     begin transaction; -- начало транзакции
+--     -- проверяем, что MasterId принадлежит мастеру с RoleId = 2
+--     if not exists (
+--         select 1 from Users
+--         where Id = @MasterId and RoleId = 2
+--     )
+-- begin
+--         raiserror ('Specified user is not a "Master".', 16, 1);
+--     rollback; -- отмена транзакции
+--     return;
+-- end
+--     -- проверяем, существует ли уже мастер на выбранной смене
+--     if exists (
+--         select 1 from Shifts
+--         where Id = @ShiftId and MasterId = @MasterId
+--     )
+-- begin
+--         raiserror ('Master is already assigned to this shift.', 16, 1);
+--     rollback; -- отмена транзакции
+--     return;
+-- end
+--     -- если мастера с указанным идентификатором нет на выбранной смене, то добавляем его
+--     if exists (
+--         select 1 from Shifts
+--         where Id = @ShiftId
+--     )
+-- begin
+--     -- создаем копию строки из таблицы shifts, если у выбранной строки есть MasterId
+--     insert into Shifts (Number, Title, StartTime, EndTime, MasterId, IsDeleted)
+--     select Number, Title, StartTime, EndTime, @MasterId, IsDeleted from Shifts
+--     where Id = @ShiftId;
+--     -- получаем идентификатор последней вставленной строки
+--     declare @NewShiftId int;
+--     set @NewShiftId = scope_identity();
+--     -- создаем соответствующие интервалы
+--     insert into Intervals (Title, ShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, IsBusy, IsDeleted)
+--     select Title, @NewShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, 0, 0 from Intervals
+--     where ShiftId = @ShiftId;
+-- end
+-- else
+-- begin
+--     -- обновляем MasterId в выбранной строке
+--     update Shifts
+--     set MasterId = @MasterId
+--     where Id = @ShiftId;
+-- end
+--     commit; -- фиксация транзакции
+-- end
+-- go
+-- Назначить выбранного мастера на смену по НОМЕРУ смены и создать соответствующие рабочие интервалы при их нехватке
+create procedure AddMasterToShiftWithIntervalsByShiftNumber
+    @Number int, @MasterId int as
 begin
-begin transaction; -- начало транзакции
-    -- проверяем, что MasterId принадлежит мастеру с RoleId = 2
+    -- Проверка, что MasterId принадлежит мастеру с RoleId= 2
     if not exists (
-        select 1
-        from Users
-        where Id = @MasterId
-        and RoleId = 2
+        select 1 from users
+        where Id = @MasterId and RoleId = 2
     )
-begin
-        raiserror ('Specified user is not a "Master".', 16, 1);
-rollback; -- отмена транзакции
-return;
+    begin
+        raiserror ('Specified user is not a “Master”.', 16, 1);
+        return; -- Завершаем процедуру, так как передаваемый Id не принадлежит мастеру
 end
-    -- проверяем, существует ли уже мастер на выбранной смене
+    -- Проверка, назначен ли на выбранную смену мастер с передаваемым MasterId
     if exists (
-        select 1
-        from Shifts
-        where Id = @ShiftId
-        and MasterId = @MasterId
+        select 1 from Shifts
+        where Number = @Number and MasterId = @MasterId
     )
-begin
-        raiserror ('Master is already assigned to this shift.', 16, 1);
-rollback; -- отмена транзакции
-return;
-end
-    -- если мастера с указанным идентификатором нет на выбранной смене, то добавляем его
+    begin
+        raiserror ('Master already assigned to the specified shift.', 16, 1);
+        return; -- Завершаем процедуру, так как передаваемый мастер уже назначен на передаваемую смену
+    end
+    -- Проверка, назначен ли какой-либо MasterId на смену с передаваемым Number
     if exists (
-        select 1
-        from Shifts
-        where Id = @ShiftId
+        select 1 from Shifts
+        where Number = @Number and MasterId is not null and MasterId != @MasterId
     )
-begin
-        -- создаем копию строки из таблицы shifts, если у выбранной строки есть masterid
-insert into Shifts (Title, StartTime, EndTime, MasterId, IsDeleted)
-select Title, StartTime, EndTime, @MasterId, IsDeleted
-from Shifts
-where Id = @ShiftId;
--- получаем идентификатор последней вставленной строки
-declare @NewShiftId int;
+    begin
+        -- Создание новой строки в таблице Shifts, так как на выбранную смену назначен кто-то другой
+        insert into Shifts (Number, Title, StartTime, EndTime, MasterId, IsDeleted)
+        select Number, Title, StartTime, EndTime, @MasterId, IsDeleted from Shifts
+        where Number = @Number;
+        -- Получение идентификатора новой смены
+        declare @NewShiftId int;
         set @NewShiftId = scope_identity();
-        -- создаем соответствующие интервалы
-insert into Intervals (Title, ShiftId, StartTime, IsBusy, IsDeleted)
-select Title, @NewShiftId, StartTime, 0, 0
-from Intervals
-where ShiftId = @ShiftId;
-end
+        -- Создание соответствующих строк в таблице Intervals
+        insert into Intervals (Title, ShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, IsBusy, IsDeleted)
+        select Title, @NewShiftId, ShiftNumber, ShiftTitle, @MasterId, StartTime, IsBusy, IsDeleted from Intervals
+        where ShiftNumber = @Number;
+    end
 else
 begin
-        -- обновляем MasterId в выбранной строке
-update Shifts
-set MasterId = @MasterId
-where Id = @ShiftId;
-end
-commit; -- фиксация транзакции
+       -- Обновление существующей строки в таблице Shifts, так как на выбранную смену никто не назначен
+    update Shifts
+    set MasterId = @MasterId
+    where Number = @Number;
+    -- Обновление MasterId в соответствующих строках в таблице Intervals
+    update Intervals
+    set MasterId = @MasterId
+    where ShiftNumber = @Number;
+    end
 end
 go
 
