@@ -441,8 +441,7 @@ class Program
         // ShiftsClient shiftsClient = new ShiftsClient();
         // shiftsClient.AddMasterToShiftWithCreatedNewIntervals(2, 7);
         // Console.WriteLine();
-        
-<<<<<<< HEAD
+
         // //Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // ServiceIdAndServiceTitleInputModel model = new ServiceIdAndServiceTitleInputModel
@@ -454,15 +453,14 @@ class Program
         // serviceClient.UpdateServiceTitle(model);
         // Console.WriteLine();
         
-=======
-        IUserClient userClient = new UserClient();
-        var res = userClient.GetUsersByChatId(1);
-        foreach (var item in res)
-        {
-            Console.WriteLine(res);
-        }
+        // //Работает
+        // IUserClient userClient = new UserClient();
+        // var res = userClient.GetUsersByChatId(1);
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(res);
+        // }
 
->>>>>>> xnesart/main
         #endregion
     }
 }
