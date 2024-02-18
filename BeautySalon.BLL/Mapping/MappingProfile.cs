@@ -56,6 +56,7 @@ public class MappingProfile : Profile
         CreateMap<UsersDTO,UsersByChatIdOutputModel>();
         CreateMap<ServiceIdAndServicePriceInputModel,UpdateServicePriceDTO>();
         CreateMap<ServiceIdAndServiceDurationInputModel,UpdateServiceDurationDTO>();
+        CreateMap<ServicesDTO, ServiceIsDeletedOutputModel>();
     }
 }
 

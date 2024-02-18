@@ -482,6 +482,15 @@ class Program
         // IServiceClient serviceClient = new ServiceClient();
         // serviceClient.UpdateServiceDuration(model);
         // Console.WriteLine();
+        
+        // //Работает
+        // ServiceIdInputModel model = new ServiceIdInputModel
+        // {
+        //     Id = 1
+        // };
+        // ServiceClient serviceClient = new ServiceClient();
+        // var q = serviceClient.RemoveServiceById(model);
+        // Console.ReadLine();
 
         #endregion
     }
