@@ -58,31 +58,47 @@ public class Program
     public static async void HandleUpdate(ITelegramBotClient botClient, Update update,
         CancellationToken cancellationToken)
     {
-        if ((update?.Message != null && botClient != null) ||
-            (update.CallbackQuery != null && update.CallbackQuery.Data != null))
+        try
         {
-            
-            var client = SingletoneStorage.GetStorage().Clients;
-            long id;
-            if (update.Message != null)
+            if ((update?.Message != null && botClient != null) ||
+                (update.CallbackQuery != null && update.CallbackQuery.Data != null))
             {
-                 id = update.Message.Chat.Id;
+
+                var client = SingletoneStorage.GetStorage().Clients;
+                long id;
+                if (update.Message != null)
+                {
+                    id = update.Message.Chat.Id;
+                    if (!client.ContainsKey(id))
+                    {
+                        client.Add(id, new StartState());
+                        client[id].SendMessage(id, update, cancellationToken);
+                    }
+                    else
+                    {
+                        client[id] = client[id].ReceiveMessage(update);
+                        client[id].SendMessage(id, update, cancellationToken);
+                    }
+                }
+                else if(update.CallbackQuery != null)
+                {
+                    id = update.CallbackQuery.From.Id;
+                    if (!client.ContainsKey(id))
+                    {
+                        client.Add(id, new StartState());
+                        client[id].SendMessage(id, update, cancellationToken);
+                    }
+                    else
+                    {
+                        client[id] = client[id].ReceiveMessage(update);
+                        client[id].SendMessage(id, update, cancellationToken);
+                    }
+                }
             }
-            else
-            {
-                id = update.CallbackQuery.From.Id;
-            }
-            
-            if (!client.ContainsKey(id))
-            {
-                client.Add(id, new StartState());
-                client[id].SendMessage(id,update,cancellationToken);
-            }
-            else
-            {
-                client[id] = client[id].ReceiveMessage(update);
-                client[id].SendMessage(id,update, cancellationToken);
-            }
+        }
+        catch (NullReferenceException e)
+        {
+            Console.WriteLine(e);
         }
         
     }

@@ -52,8 +52,8 @@ public class RegistrationStateMail:AbstractState
          int clientIdFromBase = userHandler.GetClientByNameAndPhone(Name, Phone);
          int masterIdFromBase = userHandler.GetMasterByNameAndPhone(Name, Phone);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
-         // TODO
-         OrderHandler orderHandler = new OrderHandler();
+        // TODO
+        OrderHandler orderHandler = new OrderHandler();
          NewOrderInputModel orderInputModel = new NewOrderInputModel
          {
              ClientId = clientIdFromBase,
