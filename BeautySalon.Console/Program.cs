@@ -429,9 +429,9 @@ class Program
         // Console.WriteLine();
         
         // //Работает
-        // IUserClient client = new UserClient();
-        // var result = client.CheckAndAddUser(1);
-        // Console.WriteLine(result);
+        // ShiftsClient shiftsClient = new ShiftsClient();
+        // shiftsClient.AddMasterToShiftWithCreatedNewIntervals(2, 7);
+        // Console.WriteLine();
         
         #endregion
     }
