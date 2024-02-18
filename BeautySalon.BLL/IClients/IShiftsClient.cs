@@ -13,5 +13,7 @@ namespace BeautySalon.BLL.IClient
         public List<AllShiftsOnTodayOutputModel> GetAllShiftsOnToday();
         public List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId);
         public List<MastersNameAndShiftsOutputModel> GetAllShiftsAndEmployeesOnToday();
+        
+        public void AddMasterToShiftWithCreatedNewIntervals(int number, int masterId);
     }
 }
