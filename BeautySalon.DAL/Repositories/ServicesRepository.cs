@@ -47,18 +47,19 @@ namespace BeautySalon.DAL.Repositories
             }
         }
 
-        public void UpdateServiceTitle(int serviceId, string serviceTitle)
+        public void UpdateServiceTitle(UpdateServiceTitleDTO dto)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
                 var parameters = new
                 {
-                    ServiceId = serviceId,
-                    ServiceTitle = serviceTitle
+                    ServiceId = dto.Id,
+                    ServiceTitle = dto.Title
                 };
                 connection.Query(Procedures.UpdateServiceTitle, parameters).ToList();
             }
         }
+
         public List<AllFreeIntervalsOnCurrentServiceDTO> GetAllFreeIntervalsOnCurrentService(int serviceId)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -122,33 +123,33 @@ namespace BeautySalon.DAL.Repositories
             }
         }
 
-        public void UpdateServicePrice(int serviceId, decimal servicePrice)
+        public void UpdateServicePrice(UpdateServicePriceDTO dto)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
                 var parameters = new
                 {
-                    ServiceId = serviceId,
-                    ServicePrice = servicePrice
+                    ServiceId = dto.Id,
+                    ServicePrice = dto.Price
                 };
                 connection.Query(Procedures.UpdateServicePrice, parameters).ToList();
             }
         }
         
-        public void UpdateServiceDuration(int serviceId, string serviceDuration)
+        public void UpdateServiceDuration(UpdateServiceDurationDTO dto)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
                 var parameters = new
                 {
-                    ServiceId = serviceId,
-                    ServiceDuration = serviceDuration
+                    ServiceId = dto.Id,
+                    ServiceDuration = dto.Duration
                 };
                 connection.Query(Procedures.UpdateServiceDuration, parameters).ToList();
             }
         }
-        
-        public void RemoveServiceById(int id)
+
+        public ServicesDTO RemoveServiceById(int id)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
@@ -156,7 +157,8 @@ namespace BeautySalon.DAL.Repositories
                 {
                     Id = id
                 };
-                connection.Query<ServicesDTO>(Procedures.RemoveServiceById, parameters);
+                var result=connection.QuerySingle<ServicesDTO>(Procedures.RemoveServiceById, parameters);
+                return result;
             }
         }
     }

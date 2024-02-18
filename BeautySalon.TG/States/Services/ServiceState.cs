@@ -35,6 +35,8 @@ public class ServiceState : AbstractState
             }
             else if (update.CallbackQuery.Data.ToLower() == "макияж")
             {
+                this.TypeId = 4;
+                return new MakeUpState(TypeId);
             }
             else if (update.CallbackQuery.Data.ToLower() == "маникюр")
             {
@@ -59,7 +61,6 @@ public class ServiceState : AbstractState
                 return new StartState();
             }
         }
-
-        return null;
+        return  new StartState();
     }
 }

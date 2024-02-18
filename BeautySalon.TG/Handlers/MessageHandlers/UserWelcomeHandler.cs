@@ -43,8 +43,6 @@ public class UserWelcomeHandler
                 cancellationToken: cancellationToken);
         }
         
-       
-        
     }
     public async void WelcomeUserFromButton(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {

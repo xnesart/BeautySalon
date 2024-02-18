@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.InputModels;
 
 namespace BeautySalon.BLL.Clents
 {
@@ -38,6 +40,33 @@ namespace BeautySalon.BLL.Clents
             return result;
         }
 
+        public void UpdateServiceTitle(ServiceIdAndServiceTitleInputModel model)
+        {
+            IServicesRepository servicesRepository = new ServicesRepository();
+            UpdateServiceTitleDTO newDTO = this._mapper.Map<UpdateServiceTitleDTO>(model);
+            servicesRepository.UpdateServiceTitle(newDTO);
+        }
 
+        public void UpdateServicePrice(ServiceIdAndServicePriceInputModel model)
+        {
+            IServicesRepository servicesRepository = new ServicesRepository();
+            UpdateServicePriceDTO newDTO = this._mapper.Map<UpdateServicePriceDTO>(model);
+            servicesRepository.UpdateServicePrice(newDTO);
+        }
+
+        public void UpdateServiceDuration(ServiceIdAndServiceDurationInputModel model)
+        {
+            IServicesRepository servicesRepository = new ServicesRepository();
+            UpdateServiceDurationDTO newDTO = this._mapper.Map<UpdateServiceDurationDTO>(model);
+            servicesRepository.UpdateServiceDuration(newDTO);
+        }
+
+        public ServiceIsDeletedOutputModel RemoveServiceById(ServiceIdInputModel model)
+        {
+            IServicesRepository servicesRepository = new ServicesRepository();
+            ServicesDTO dto = _servicesRepository.RemoveServiceById(model.Id);
+            var result = _mapper.Map<ServiceIsDeletedOutputModel>(dto);
+            return result;
+        }
     }
 }

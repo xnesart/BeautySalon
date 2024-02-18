@@ -1,5 +1,6 @@
 using BeautySalon.BLL;
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
@@ -440,13 +441,56 @@ class Program
         // ShiftsClient shiftsClient = new ShiftsClient();
         // shiftsClient.AddMasterToShiftWithCreatedNewIntervals(2, 7);
         // Console.WriteLine();
+
+        // //Работает
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // ServiceIdAndServiceTitleInputModel model = new ServiceIdAndServiceTitleInputModel
+        // {
+        //     Id = 1,
+        //     Title = "Стрижка бензопилой"
+        // };
+        // IServiceClient serviceClient = new ServiceClient();
+        // serviceClient.UpdateServiceTitle(model);
+        // Console.WriteLine();
         
-        IUserClient userClient = new UserClient();
-        var res = userClient.GetUsersByChatId(1);
-        foreach (var item in res)
-        {
-            Console.WriteLine(res);
-        }
+        // //Работает
+        // IUserClient userClient = new UserClient();
+        // var res = userClient.GetUsersByChatId(1);
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(res);
+        // }
+        
+        // //Работает
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // ServiceIdAndServicePriceInputModel model = new ServiceIdAndServicePriceInputModel
+        // {
+        //     Id = 1,
+        //     Price = 0
+        // };
+        // IServiceClient serviceClient = new ServiceClient();
+        // serviceClient.UpdateServicePrice(model);
+        // Console.WriteLine();
+        
+        // //Работает
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // ServiceIdAndServiceDurationInputModel model = new ServiceIdAndServiceDurationInputModel
+        // {
+        //     Id = 1,
+        //     Duration = "00:15"
+        // };
+        // IServiceClient serviceClient = new ServiceClient();
+        // serviceClient.UpdateServiceDuration(model);
+        // Console.WriteLine();
+        
+        // //Работает
+        // ServiceIdInputModel model = new ServiceIdInputModel
+        // {
+        //     Id = 1
+        // };
+        // ServiceClient serviceClient = new ServiceClient();
+        // var q = serviceClient.RemoveServiceById(model);
+        // Console.ReadLine();
 
         #endregion
     }
