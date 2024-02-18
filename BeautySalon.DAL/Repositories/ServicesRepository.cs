@@ -59,7 +59,7 @@ namespace BeautySalon.DAL.Repositories
                 connection.Query(Procedures.UpdateServiceTitle, parameters).ToList();
             }
         }
-        
+
         public List<AllFreeIntervalsOnCurrentServiceDTO> GetAllFreeIntervalsOnCurrentService(int serviceId)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -148,8 +148,8 @@ namespace BeautySalon.DAL.Repositories
                 connection.Query(Procedures.UpdateServiceDuration, parameters).ToList();
             }
         }
-        
-        public void RemoveServiceById(int id)
+
+        public ServicesDTO RemoveServiceById(int id)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
@@ -157,7 +157,8 @@ namespace BeautySalon.DAL.Repositories
                 {
                     Id = id
                 };
-                connection.Query<ServicesDTO>(Procedures.RemoveServiceById, parameters);
+                var result=connection.QuerySingle<ServicesDTO>(Procedures.RemoveServiceById, parameters);
+                return result;
             }
         }
     }

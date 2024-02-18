@@ -212,11 +212,13 @@ end
 go
 -- ✓ Удалить услугу
 create proc RemoveServiceById
-@Id int as
+    @Id int as
 begin
+    -- Обновляем IsDeleted для пользователя с указанным Id
     update Services
     set IsDeleted = 1
-    where Id = @Id  
+    output inserted.IsDeleted
+    where Id = @Id;
 end
 go
 -- ✓ Записать клиента к СВОБОДНОМУ мастеру

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BeautySalon.BLL.Models;
 using BeautySalon.BLL.Models.InputModels;
 
 namespace BeautySalon.BLL.IClient
@@ -15,5 +16,6 @@ namespace BeautySalon.BLL.IClient
         public void UpdateServiceTitle(ServiceIdAndServiceTitleInputModel model);   
         public void UpdateServicePrice(ServiceIdAndServicePriceInputModel model);   
         public void UpdateServiceDuration(ServiceIdAndServiceDurationInputModel model);   
+        public ServiceIsDeletedOutputModel RemoveServiceById(ServiceIdInputModel model);
     }
 }
