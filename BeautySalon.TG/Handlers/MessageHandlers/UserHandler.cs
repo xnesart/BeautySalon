@@ -1,6 +1,7 @@
-﻿using BeautySalon.BLL;
+using BeautySalon.BLL;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
+using BeautySalon.DAL.DTO;
 using BeautySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;

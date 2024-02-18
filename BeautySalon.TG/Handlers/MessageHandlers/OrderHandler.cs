@@ -10,9 +10,14 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers;
 public class OrderHandler
 {
 
-    public void CreateNewOrder(NewOrderInputModel model)
+
+    public void CreateNewOrder()
     {
         OrderClient orderClient = new OrderClient();
-        orderClient.CreateNewOrder(model);
+        
+    }
+    public void GetMyOrders() 
+    {
+       
     }
 }
