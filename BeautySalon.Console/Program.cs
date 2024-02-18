@@ -294,6 +294,15 @@ class Program
         // IShiftsRepository shiftsRepository = new ShiftsRepository();
         // var result = shiftsRepository.AddMasterToShiftWithCreatedNewIntervals(2, 3);
         // Console.WriteLine(result.ToList());
+        
+        // //Работает
+        // IIntervalsRepository intervalsRepository = new IntervalsRepository();
+        // GetFreeMasterIdByIntervalIdDTO model = new GetFreeMasterIdByIntervalIdDTO
+        // {
+        //     Id = 1
+        // };
+        // var res = intervalsRepository.GetFreeMasterIdByIntervalId(model);
+        // Console.WriteLine();
 
         #endregion
 
@@ -491,7 +500,16 @@ class Program
         // ServiceClient serviceClient = new ServiceClient();
         // var q = serviceClient.RemoveServiceById(model);
         // Console.ReadLine();
-
+        
+        // //Работает
+        // IntervalsClient intervals = new IntervalsClient();
+        // IntervalIdInputModel model = new IntervalIdInputModel
+        // {
+        //     Id = 1
+        // };
+        // var res = intervals.GetFreeMasterIdByIntervalId(model);
+        // Console.WriteLine();
+        
         #endregion
     }
 }
