@@ -11,7 +11,7 @@ namespace BeautySalon.DAL.IRepositories
     {
         public List<ServicesDTO> GetServicesWithPriceAndDurationByTypeId(int typeId);
         public List<GetAllServicesByIdFromCurrentTypeDTO> GetAllServicesByIdFromCurrentType(int id);
-        public void UpdateServiceTitle(int serviceId, string serviceTitle);
+        public void UpdateServiceTitle(UpdateServiceTitleDTO dto);
 
         public List<GetAllServicesDTO> GetAllServices();
         public void AddServiceById(AddServiceByIdDTO model);
