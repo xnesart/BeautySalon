@@ -67,8 +67,16 @@ public class UserClient : IUserClient
             _userRepository.GetMasterByNameAndPhone(name,phone);
         var result = _mapper.Map<List<MasterByNameAndPhoneOutputModel>>(users);
         return result;
-    } 
-    
+    }
+
+    public List<UsersByChatIdOutputModel> GetUsersByChatId(int chatId)
+    {
+        List<UsersDTO> users =
+            _userRepository.GetUserByChatId(chatId);
+        var result = _mapper.Map<List<UsersByChatIdOutputModel>>(users);
+        return result;
+    }
+
     public List<AllWorkersWithContactsByUserIdOutputModel> GetAllWorkersWithContactsByUserId()
     {
         List<GetAllWorkersWithContactsByUserIdDTO> users =

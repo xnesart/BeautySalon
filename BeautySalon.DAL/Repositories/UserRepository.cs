@@ -44,6 +44,19 @@ public class UserRepository : IUserRepository
         }
     }
 
+    public List<UsersDTO> GetUserByChatId(int chatid)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameter = new
+            {
+                ChatId = chatid,
+            };
+            var users = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter).ToList();
+            return users;
+        }
+    }
+
     public List<GetMastersShiftsById> GetMastersShiftsById(int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))

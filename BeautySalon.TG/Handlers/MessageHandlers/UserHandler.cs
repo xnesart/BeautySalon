@@ -29,4 +29,17 @@ public class UserHandler
         return 0;
     }
 
+    public int GetMasterByNameAndPhone(string name, string phone)
+    {
+        IUserClient client = new UserClient();
+        List<MasterByNameAndPhoneOutputModel> masters = client.GetMasterByNameAndPhone(name, phone);
+        List<MasterByNameAndPhoneOutputModel> models = client.GetMasterByNameAndPhone(name, phone);
+        foreach (var model in models)
+        {
+            return (int)model.Id;
+        }
+
+        return 0;
+    }
+
 }

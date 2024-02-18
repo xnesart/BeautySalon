@@ -20,6 +20,13 @@ begin
     where Users.Name = @Name and Users.Id = @Id
 end
 go
+create proc GetUserByChatId
+@ChatId int as
+begin
+    select Id,ChatId, UserName,Name,Phone,Mail,RoleId,Salary,IsBlocked,IsDeleted from Users
+    where ChatId = @ChatId
+end
+go
 -- ✓ Найти клиента по имени и телефону
 create proc GetClientByNameAndPhone
     @Name nvarchar(50), @Phone nvarchar(30) as
