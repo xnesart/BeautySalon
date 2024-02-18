@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BeautySalon.BLL.Models.InputModels;
 
 namespace BeautySalon.BLL.Clents
 {
@@ -38,6 +39,11 @@ namespace BeautySalon.BLL.Clents
             return result;
         }
 
-
+        public void UpdateServiceTitle(ServiceIdAndServiceTitleInputModel model)
+        {
+            IServicesRepository servicesRepository = new ServicesRepository();
+            UpdateServiceTitleDTO newDTO = this._mapper.Map<UpdateServiceTitleDTO>(model);
+            servicesRepository.UpdateServiceTitle(newDTO);
+        }
     }
 }

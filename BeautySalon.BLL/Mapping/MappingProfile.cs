@@ -52,6 +52,7 @@ public class MappingProfile : Profile
         CreateMap<GetAllServicesDTO, AllServicesOutputModel>();
         CreateMap<UsersDTO,CheckAndAddUserOutputModel>();
         CreateMap<MasterIdAndShiftNumberInputModel,ShiftsDTO>();
+        CreateMap<ServiceIdAndServiceTitleInputModel,UpdateServiceTitleDTO>();
     }
 }
 
