@@ -55,14 +55,19 @@ public class RegistrationStateMail:AbstractState
          // }
          userHandler.AddUserToDB(model);
          int clientIdFromBase = userHandler.GetClientByNameAndPhone(Name, Phone);
+         int masterIdFromBase = userHandler.GetMasterByNameAndPhone(Name, Phone);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
          // TODO
-         //OrderHandler orderHandler = new OrderHandler();
-         // NewOrderInputModel orderInputModel = new NewOrderInputModel
-         // {
-         //     ClientId = clientIdFromBase,
-         //     MasterId = 
-         // }
+         OrderHandler orderHandler = new OrderHandler();
+         NewOrderInputModel orderInputModel = new NewOrderInputModel
+         {
+             ClientId = clientIdFromBase,
+             MasterId = masterIdFromBase,
+             ServiceId = ServiceId,
+             StartIntervalId = IntervalId,
+             Date = DateTime.Now
+         };
+         orderHandler.CreateNewOrder(orderInputModel);
          
          return new StartState();
     }

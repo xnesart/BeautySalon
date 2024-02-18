@@ -25,6 +25,14 @@ class Program
         #endregion
 
         #region Works DAL
+        
+        //Работает
+        // IUserRepository userRepository = new UserRepository();
+        // var res =userRepository.GetUserByChatId(1);
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(item);
+        // }
 
         // //Работает
         //IUserRepository userRepository4 = new UserRepository();
@@ -132,7 +140,7 @@ class Program
         // IUserRepository userRepository = new UserRepository();
         // userRepository.ChangeMasterInShift(7, 3);
         // Console.WriteLine();
-        
+
         // //Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // var repositories = orderRepository.GetAllOrdersForClient();
@@ -275,12 +283,12 @@ class Program
         // //Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.AddClientToFreeMaster(2, 1, 2, 30);
-        
+
         // //Работает
         // IUserRepository repository = new UserRepository();
         // var result = repository.CheckAndAddUser(1);
         // Console.WriteLine(result.ToList());       
-        
+
         // //Работает
         // IShiftsRepository shiftsRepository = new ShiftsRepository();
         // var result = shiftsRepository.AddMasterToShiftWithCreatedNewIntervals(2, 3);
@@ -410,12 +418,12 @@ class Program
         // IntervalsClient intervalsClient = new IntervalsClient();
         // var q = intervalsClient.GetAllFreeIntervalsByShiftId(model);
         // Console.ReadLine();
-        
+
         // //Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var q = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
         // Console.ReadLine();
-        
+
         // //Работает
         // ServiceClient serviceClient = new ServiceClient();
         // ServiceByIdInputModel model = new ServiceByIdInputModel
@@ -427,12 +435,19 @@ class Program
         // };
         // serviceClient.AddServiceByIdInputModel(model);
         // Console.WriteLine();
-        
+
         // //Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // shiftsClient.AddMasterToShiftWithCreatedNewIntervals(2, 7);
         // Console.WriteLine();
         
+        IUserClient userClient = new UserClient();
+        var res = userClient.GetUsersByChatId(1);
+        foreach (var item in res)
+        {
+            Console.WriteLine(res);
+        }
+
         #endregion
     }
 }
