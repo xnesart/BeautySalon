@@ -17,9 +17,16 @@ public class UserHandler
         client.AddUserByChatId(model);
     }
 
-    public List<ClientByNameAndPhoneOutputModel> GetClientByNameAndPhone(string name, string phone)
+    public int GetClientByNameAndPhone(string name, string phone)
     {
         IUserClient client = new UserClient();
-        return client.GetClientByNameAndPhone(name, phone);
+        List<ClientByNameAndPhoneOutputModel> models = client.GetClientByNameAndPhone(name, phone);
+        foreach (var model in models)
+        {
+            return (int)model.Id;
+        }
+
+        return 0;
     }
+
 }

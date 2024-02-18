@@ -54,13 +54,13 @@ public class RegistrationStateMail:AbstractState
          //    ClientId = 
          // }
          userHandler.AddUserToDB(model);
+         int clientIdFromBase = userHandler.GetClientByNameAndPhone(Name, Phone);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
          // TODO
-         int clientId = GetClientId(Name, Phone);
          //OrderHandler orderHandler = new OrderHandler();
          // NewOrderInputModel orderInputModel = new NewOrderInputModel
          // {
-         //     ClientId = clientId,
+         //     ClientId = clientIdFromBase,
          //     MasterId = 
          // }
          
@@ -68,15 +68,4 @@ public class RegistrationStateMail:AbstractState
     }
 
 
-    public int GetClientId(string name, string phone)
-    {
-        UserHandler userHandler = new UserHandler();
-        List<ClientByNameAndPhoneOutputModel> list = userHandler.GetClientByNameAndPhone(name, phone);
-        foreach (var item in list)
-        {
-            return (int)item.Id;
-        }
-
-        return 0;
-    }
 }
