@@ -374,7 +374,7 @@ from
 	join Services on Orders.ServiceId = Services.Id
 where Client.Id = @Id and Orders.IsDeleted = 0
 end
--- По IntervalId получаем MasterId если этот интервал ещё не занят в Order
+-- Получить MasterId по IntervalId если этот интервал ещё не занят в Order
 create procedure GetFreeMasterIdByIntervalId
     @IntervalId int as
 BEGIN
