@@ -43,16 +43,6 @@ public class UserWelcomeHandler
                 cancellationToken: cancellationToken);
         }
         
-<<<<<<< HEAD
-        Message sentMessage = await botClient.SendTextMessageAsync(
-            chatId: update.Message.Chat.Id,
-            text: $"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", !\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
-            replyMarkup: inlineKeyboard,
-            cancellationToken: cancellationToken);
-=======
-       
->>>>>>> xnesart/main
-        
     }
     public async void WelcomeUserFromButton(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {

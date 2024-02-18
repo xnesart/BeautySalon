@@ -43,7 +43,7 @@ public class RegistrationStateMail:AbstractState
              Phone = Phone,
              Mail = Mail,
              Salary = 0,
-             RoleId = 2,
+             RoleId = 3,
              IsDeleted = 0,
              IsBlocked = 0,
          };

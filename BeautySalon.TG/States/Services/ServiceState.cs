@@ -61,7 +61,6 @@ public class ServiceState : AbstractState
                 return new StartState();
             }
         }
-
-        return  new StartStateFromButton();
+        return  new StartState();
     }
 }
