@@ -20,6 +20,13 @@ begin
     where Users.Name = @Name and Users.Id = @Id
 end
 go
+create proc GetUserByChatId
+@ChatId int as
+begin
+    select Id,ChatId, UserName,Name,Phone,Mail,RoleId,Salary,IsBlocked,IsDeleted from Users
+    where ChatId = @ChatId
+end
+go
 -- ✓ Найти клиента по имени и телефону
 create proc GetClientByNameAndPhone
     @Name nvarchar(50), @Phone nvarchar(30) as
@@ -212,30 +219,6 @@ begin
     where Id = @Id  
 end
 go
--- -- ✓ Записать клиента к СВОБОДНОМУ мастеру ?? Тут надо разобраться!
--- create proc AddClientToFreeMaster
---     @ClientId INT, @ServiceId INT, @ShiftId INT, @IntervalId INT, @Date DATETIME as
--- begin
---     if exists (select 1 from Intervals where Id = @IntervalId AND IsBusy = 0)
---         begin
---             -- Проверка, что мастер свободен в выбранном интервале
---             if not exists (
---                 select 1
---                 from Orders
---                 where MasterId IN (select MasterId FROM Shifts WHERE Id = @ShiftId)
---                   and StartIntervalId = @IntervalId
---                   and Date = @Date
---             )
---                 begin
---                     -- Вставка заказа
---                     INSERT INTO Orders (Date, MasterId, ClientId, ServiceId, StartIntervalId, IsDeleted)
---                     VALUES (@Date, (SELECT MasterId FROM Shifts WHERE Id = @ShiftId), @ClientId, @ServiceId, @IntervalId, 0)
---             -- Пометить интервал как занятый
---                     UPDATE Intervals SET IsBusy = 1 WHERE Id = @IntervalId
---                 end
---         end
--- end
--- go
 -- ✓ Записать клиента к СВОБОДНОМУ мастеру
 CREATE PROCEDURE AddClientToFreeMaster
     @ClientId INT,
@@ -277,103 +260,65 @@ join Intervals on Orders.StartIntervalId = Intervals.Id
     where convert(date, Orders.Date) = convert(date, @Today)
 end
 go
--- -- Назначить мастера на выбранную смену по ShiftId, создав для него собственные рабочие интервалы и не снимая при этом другого мастера с этой смены
--- -- (из-за привязки к ShiftId бесконечно дублирует строки в таблицах смен и интервалов)
--- create procedure AddMasterToShiftWithIntervalsByShiftId
---     @MasterId int, @ShiftId int as
--- begin
---     begin transaction; -- начало транзакции
---     -- проверяем, что MasterId принадлежит мастеру с RoleId = 2
---     if not exists (
---         select 1 from Users
---         where Id = @MasterId and RoleId = 2
---     )
--- begin
---         raiserror ('Specified user is not a "Master".', 16, 1);
---     rollback; -- отмена транзакции
---     return;
--- end
---     -- проверяем, существует ли уже мастер на выбранной смене
---     if exists (
---         select 1 from Shifts
---         where Id = @ShiftId and MasterId = @MasterId
---     )
--- begin
---         raiserror ('Master is already assigned to this shift.', 16, 1);
---     rollback; -- отмена транзакции
---     return;
--- end
---     -- если мастера с указанным идентификатором нет на выбранной смене, то добавляем его
---     if exists (
---         select 1 from Shifts
---         where Id = @ShiftId
---     )
--- begin
---     -- создаем копию строки из таблицы shifts, если у выбранной строки есть MasterId
---     insert into Shifts (Number, Title, StartTime, EndTime, MasterId, IsDeleted)
---     select Number, Title, StartTime, EndTime, @MasterId, IsDeleted from Shifts
---     where Id = @ShiftId;
---     -- получаем идентификатор последней вставленной строки
---     declare @NewShiftId int;
---     set @NewShiftId = scope_identity();
---     -- создаем соответствующие интервалы
---     insert into Intervals (Title, ShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, IsBusy, IsDeleted)
---     select Title, @NewShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, 0, 0 from Intervals
---     where ShiftId = @ShiftId;
--- end
--- else
--- begin
---     -- обновляем MasterId в выбранной строке
---     update Shifts
---     set MasterId = @MasterId
---     where Id = @ShiftId;
--- end
---     commit; -- фиксация транзакции
--- end
--- go
--- Назначить выбранного мастера на смену по НОМЕРУ смены и создать соответствующие рабочие интервалы при их нехватке
-create procedure AddMasterToShiftWithIntervalsByShiftNumber
+-- Назначить передаваемого мастера на передаваемую смену и создать для неё интервалы
+-- (пока оставила StartTime соответствующим времени и дате создания записи в таблице)
+create procedure AddMasterToShiftWithCreatedNewIntervals
     @Number int, @MasterId int as
-begin
-    -- Проверка, что MasterId принадлежит мастеру с RoleId= 2
+BEGIN
+    -- Проверяем, что переданный MasterId существует и является мастером
     if not exists (
-        select 1 from users
-        where Id = @MasterId and RoleId = 2
+        select 1 from Users where Id = @MasterId AND RoleId = 2
     )
-    begin
-        raiserror ('Specified user is not a “Master”.', 16, 1);
-        return; -- Завершаем процедуру, так как передаваемый Id не принадлежит мастеру
-end
+    BEGIN
+        RAISERROR ('Specified user is not a “Master”.', 16, 1);
+        RETURN;
+    END
+    -- Находим пустые строки для назначения нового мастера
+    declare @EmptyShiftId int;
+    select top 1 @EmptyShiftId = Id from Shifts where Number = @Number AND MasterId IS NULL;
     -- Проверка, назначен ли на выбранную смену мастер с передаваемым MasterId
     if exists (
-        select 1 from Shifts
-        where Number = @Number and MasterId = @MasterId
+        select 1 from Shifts where Number = @Number and MasterId = @MasterId
     )
-    begin
-        raiserror ('Master already assigned to the specified shift.', 16, 1);
-        return; -- Завершаем процедуру, так как передаваемый мастер уже назначен на передаваемую смену
-    end
-    -- Проверка, назначен ли какой-либо MasterId на смену с передаваемым Number
-    if exists (
-        select 1 from Shifts
-        where Number = @Number and MasterId is not null and MasterId != @MasterId
-    )
-    begin
+    BEGIN
+        RAISERROR ('Master already assigned to the specified shift.', 16, 1);
+        RETURN; -- Завершаем процедуру, так как передаваемый мастер уже назначен на передаваемую смену
+    END
+    -- Если нет пустых строк, создаем новую строку смены и соответствующие интервалы
+    if @EmptyShiftId IS NULL
+    BEGIN
+        -- Получение названия смены с таким же номером из строки в таблице Shifts
+        DECLARE @ShiftTitle nvarchar(30);
+        select @ShiftTitle = Title from Shifts where Number = @Number;
         -- Создание новой строки в таблице Shifts, так как на выбранную смену назначен кто-то другой
         insert into Shifts (Number, Title, StartTime, EndTime, MasterId, IsDeleted)
-        select Number, Title, StartTime, EndTime, @MasterId, IsDeleted from Shifts
-        where Number = @Number;
+        values (@Number, @ShiftTitle, GETDATE(), GETDATE(), @MasterId, 0);
         -- Получение идентификатора новой смены
-        declare @NewShiftId int;
-        set @NewShiftId = scope_identity();
+        DECLARE @NewShiftId int;
+        set @NewShiftId = SCOPE_IDENTITY();
+        -- Получение названий интервалов из соответствующих строк в таблице Intervals
+        DECLARE @IntervalTitle1 NVARCHAR(30), @IntervalTitle2 NVARCHAR(30), @IntervalTitle3 NVARCHAR(30), @IntervalTitle4 NVARCHAR(30);
+        select @IntervalTitle1 = Title from Intervals where ShiftNumber = @Number
+        ORDER BY (SELECT NULL) OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+        select @IntervalTitle2 = Title from Intervals where ShiftNumber = @Number
+        ORDER BY (SELECT NULL) OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;
+        select @IntervalTitle3 = Title from Intervals where ShiftNumber = @Number
+        ORDER BY (SELECT NULL) OFFSET 2 ROWS FETCH NEXT 1 ROWS ONLY;
+        select @IntervalTitle4 = Title from Intervals where ShiftNumber = @Number
+        ORDER BY (SELECT NULL) OFFSET 3 ROWS FETCH NEXT 1 ROWS ONLY;
         -- Создание соответствующих строк в таблице Intervals
         insert into Intervals (Title, ShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, IsBusy, IsDeleted)
-        select Title, @NewShiftId, ShiftNumber, ShiftTitle, @MasterId, StartTime, IsBusy, IsDeleted from Intervals
-        where ShiftNumber = @Number;
-    end
-else
-begin
-       -- Обновление существующей строки в таблице Shifts, так как на выбранную смену никто не назначен
+        values (@IntervalTitle1, @NewShiftId, @Number, @ShiftTitle, @MasterId, GETDATE(), 0, 0);
+        insert into Intervals (Title, ShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, IsBusy, IsDeleted)
+        values (@IntervalTitle2, @NewShiftId, @Number, @ShiftTitle, @MasterId, GETDATE(), 0, 0);
+        insert into Intervals (Title, ShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, IsBusy, IsDeleted)
+        values (@IntervalTitle3, @NewShiftId, @Number, @ShiftTitle, @MasterId, GETDATE(), 0, 0);
+        insert into Intervals (Title, ShiftId, ShiftNumber, ShiftTitle, MasterId, StartTime, IsBusy, IsDeleted)
+        values (@IntervalTitle4, @NewShiftId, @Number, @ShiftTitle, @MasterId, GETDATE(), 0, 0);
+        -- Возвращаем результат
+        RETURN;
+    END
+    -- Обновление существующей строки в таблице Shifts, так как на выбранную смену никто не назначен
     update Shifts
     set MasterId = @MasterId
     where Number = @Number;
@@ -381,8 +326,7 @@ begin
     update Intervals
     set MasterId = @MasterId
     where ShiftNumber = @Number;
-    end
-end
+END
 go
 
 ----процедуры для мастера
@@ -441,17 +385,6 @@ begin
     where Users.IsDeleted = 0 and Shifts.IsDeleted = 0 and Intervals.IsDeleted = 0 and Intervals.IsBusy = 0
 end
 go
----- ✓ Вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи (с дублированием смен по количеству интервалов)
---create proc GetAllShiftsWithFreeIntervalsOnToday
---as
---begin
-    --declare @Today datetime
-    --set @Today = GETDATE()
-    --select Shifts.Id, Shifts.Title, Shifts.StartTime from Shifts
-    --join Intervals on Intervals.ShiftId = Shifts.Id
-    --where Intervals.IsBusy = 0 and convert(date, Intervals.StartTime) = convert(date, @Today)
---end
---go
 -- ✓ Вывести все смены, имеющие СВОБОДНЫЕ интервалы для записи (без дублирования смен)
 create proc GetAllShiftsWithFreeIntervalsOnToday
     as
