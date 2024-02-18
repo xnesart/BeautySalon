@@ -56,8 +56,27 @@ public class RegistrationStateMail:AbstractState
          userHandler.AddUserToDB(model);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
          // TODO
+         int clientId = GetClientId(Name, Phone);
          //OrderHandler orderHandler = new OrderHandler();
+         // NewOrderInputModel orderInputModel = new NewOrderInputModel
+         // {
+         //     ClientId = clientId,
+         //     MasterId = 
+         // }
          
          return new StartState();
+    }
+
+
+    public int GetClientId(string name, string phone)
+    {
+        UserHandler userHandler = new UserHandler();
+        List<ClientByNameAndPhoneOutputModel> list = userHandler.GetClientByNameAndPhone(name, phone);
+        foreach (var item in list)
+        {
+            return (int)item.Id;
+        }
+
+        return 0;
     }
 }

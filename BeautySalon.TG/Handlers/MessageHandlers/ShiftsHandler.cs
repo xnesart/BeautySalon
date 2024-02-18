@@ -13,7 +13,15 @@ public class ShiftsHandler
         ShiftsClient shiftsClient = new ShiftsClient(); 
         var shifts = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
         //оставляем в списке смен только 3
-        shifts.RemoveRange(3,shifts.Count-3);
+        if (shifts.Count > 3)
+        {
+            shifts.RemoveRange(3,shifts.Count-3);
+        }
+
+        if (shifts.Count == 0)
+        {
+            
+        }
         
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         int rowsCount = 2;
