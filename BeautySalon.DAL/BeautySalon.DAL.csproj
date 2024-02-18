@@ -12,6 +12,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Reference Include="BeautySalon.BLL">
+        <HintPath>..\BeautySalon.TG\bin\Debug\net8.0\BeautySalon.BLL.dll</HintPath>
+      </Reference>
       <Reference Include="Microsoft.Data.SqlClient">
         <HintPath>..\BeautySalon.Console\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll</HintPath>
       </Reference>

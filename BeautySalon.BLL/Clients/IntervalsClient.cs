@@ -3,6 +3,8 @@ using AutoMapper;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.InputModels;
+using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
@@ -39,6 +41,14 @@ public class IntervalsClient : IIntervalsClient
         IIntervalsRepository intervalsRepository = new IntervalsRepository();
         List<GetAllFreeIntervalsByShiftIdDTO> dto = intervalsRepository.GetAllFreeIntervalsByShiftId(model.Id);
         var result = _mapper.Map<List<IntervalsIdTitleStartTimeOutputModel>>(dto);
+        return result;
+    }
+
+    public List<MasterIdOutputModel> GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
+    {
+        IIntervalsRepository intervalsRepository = new IntervalsRepository();
+        var newDTO = intervalsRepository.GetFreeMasterIdByIntervalId(model);
+        var result = _mapper.Map<List<MasterIdOutputModel>>(newDTO);
         return result;
     }
 }
