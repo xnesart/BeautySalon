@@ -52,7 +52,11 @@ public class MappingProfile : Profile
         CreateMap<GetAllServicesDTO, AllServicesOutputModel>();
         CreateMap<UsersDTO,CheckAndAddUserOutputModel>();
         CreateMap<MasterIdAndShiftNumberInputModel,ShiftsDTO>();
+<<<<<<< HEAD
         CreateMap<ServiceIdAndServiceTitleInputModel,UpdateServiceTitleDTO>();
+=======
+        CreateMap<UsersDTO,UsersByChatIdOutputModel>();
+>>>>>>> xnesart/main
     }
 }
 

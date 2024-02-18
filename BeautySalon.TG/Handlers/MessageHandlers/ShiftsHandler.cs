@@ -11,8 +11,18 @@ public class ShiftsHandler
     public async void ChoseShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         ShiftsClient shiftsClient = new ShiftsClient(); 
-        var shifts = shiftsClient.GetAllShiftsOnToday();
+        var shifts = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
+        //оставляем в списке смен только 3
+        if (shifts.Count > 3)
+        {
+            shifts.RemoveRange(3,shifts.Count-3);
+        }
 
+        if (shifts.Count == 0)
+        {
+            
+        }
+        
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         int rowsCount = 2;
         for (int i = 0; i <= rowsCount; i += rowsCount)
@@ -20,8 +30,8 @@ public class ShiftsHandler
             var rowShifts = shifts.Skip(i).Take(rowsCount);
 
             InlineKeyboardButton[] row = rowShifts
-                .Select(shift => InlineKeyboardButton.WithCallbackData(text: $"{shift.Title} {shift.StartTime}",
-                    callbackData: shift.Title.ToLower()))
+                .Select(shift => InlineKeyboardButton.WithCallbackData(text: $"{shift.Title}",
+                    callbackData: shift.Id.ToString()))
                 .ToArray();
 
             buttons.Add(row);
