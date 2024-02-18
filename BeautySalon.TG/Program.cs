@@ -49,7 +49,7 @@ public class Program
                 end = Console.ReadLine();
             } while (end != "end");
         }
-        catch (Exception e)
+        catch (NullReferenceException e)
         {
             Console.WriteLine(e);
         }
