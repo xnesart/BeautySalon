@@ -47,4 +47,5 @@ public class Procedures
     public const string GetAllFreeIntervalsInCurrentShiftOnCurrentService = "GetAllFreeIntervalsInCurrentShiftOnCurrentService";
     public const string CheckAndAddUser = "CheckAndAddUser";
     public const string AddMasterToShiftWithCreatedNewIntervals = "AddMasterToShiftWithCreatedNewIntervals";
+    public const string GetFreeMasterIdByIntervalId = "GetFreeMasterIdByIntervalId";
 }

@@ -57,6 +57,7 @@ public class MappingProfile : Profile
         CreateMap<ServiceIdAndServicePriceInputModel,UpdateServicePriceDTO>();
         CreateMap<ServiceIdAndServiceDurationInputModel,UpdateServiceDurationDTO>();
         CreateMap<ServicesDTO, ServiceIsDeletedOutputModel>();
+        CreateMap<GetFreeMasterIdByIntervalIdDTO, MasterIdOutputModel>();
     }
 }
 
