@@ -1,4 +1,5 @@
 using BeautySalon.TG.MessageHandlers;
+using BeuatySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -28,6 +29,7 @@ public class StartState : AbstractState
             }
             else if (update.CallbackQuery.Data.ToLower() == "мои записи")
             {
+                return new MyRecordsState();
             }
             else if (update.CallbackQuery.Data.ToLower() == "оставить отзыв")
             {
