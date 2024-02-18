@@ -123,27 +123,27 @@ namespace BeautySalon.DAL.Repositories
             }
         }
 
-        public void UpdateServicePrice(int serviceId, decimal servicePrice)
+        public void UpdateServicePrice(UpdateServicePriceDTO dto)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
                 var parameters = new
                 {
-                    ServiceId = serviceId,
-                    ServicePrice = servicePrice
+                    ServiceId = dto.Id,
+                    ServicePrice = dto.Price
                 };
                 connection.Query(Procedures.UpdateServicePrice, parameters).ToList();
             }
         }
         
-        public void UpdateServiceDuration(int serviceId, string serviceDuration)
+        public void UpdateServiceDuration(UpdateServiceDurationDTO dto)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
             {
                 var parameters = new
                 {
-                    ServiceId = serviceId,
-                    ServiceDuration = serviceDuration
+                    ServiceId = dto.Id,
+                    ServiceDuration = dto.Duration
                 };
                 connection.Query(Procedures.UpdateServiceDuration, parameters).ToList();
             }
