@@ -9,7 +9,7 @@ using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
-namespace BeautySalon.BLL.Clents;
+namespace BeautySalon.BLL.Client;
 
 public class IntervalsClient : IIntervalsClient
 {
