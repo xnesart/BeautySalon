@@ -1,6 +1,7 @@
-﻿using BeautySalon.BLL;
+using BeautySalon.BLL;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
+using BeautySalon.DAL.DTO;
 using BeautySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -39,6 +40,16 @@ public class UserHandler
             return (int)model.Id;
         }
 
+        return 0;
+    }
+    public int  GetUsersByChatId(int chatId)
+    {
+        UserClient client = new UserClient();
+         var result = client.GetUsersByChatId(chatId);
+        foreach( var i in result)
+        {
+            return (int)i.Id;
+        }
         return 0;
     }
 

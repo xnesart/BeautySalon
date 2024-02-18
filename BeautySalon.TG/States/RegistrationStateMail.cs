@@ -47,18 +47,13 @@ public class RegistrationStateMail:AbstractState
              IsDeleted = 0,
              IsBlocked = 0,
          };
-         // NewOrderInputModel order = new NewOrderInputModel
-         // {
-         //    Date = DateTime.Today,
-         //    MasterId = 2,
-         //    ClientId = 
-         // }
+      
          userHandler.AddUserToDB(model);
          int clientIdFromBase = userHandler.GetClientByNameAndPhone(Name, Phone);
          int masterIdFromBase = userHandler.GetMasterByNameAndPhone(Name, Phone);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
-         // TODO
-         OrderHandler orderHandler = new OrderHandler();
+        // TODO
+        OrderHandler orderHandler = new OrderHandler();
          NewOrderInputModel orderInputModel = new NewOrderInputModel
          {
              ClientId = clientIdFromBase,
