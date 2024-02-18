@@ -56,7 +56,7 @@ public class ServiceState : AbstractState
             }
             else if (update.CallbackQuery.Data.ToLower() == "вернуться в главное меню")
             {
-                return new StartStateFromButton();
+                return new StartState();
             }
         }
 

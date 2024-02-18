@@ -23,7 +23,7 @@ namespace BeuatySalon.TG.States
 
         public override AbstractState ReceiveMessage(Update update)
         {
-            return new StartStateFromButton();
+            return new StartState();
         }
     }
 }

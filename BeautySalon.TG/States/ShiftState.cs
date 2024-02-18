@@ -27,6 +27,6 @@ public class ShiftState:AbstractState
             //Передаем в стейт интервалов выбранный айди смены.
             return new IntervalsState(ShiftId, TypeId, ServiceId);
         }
-        return new StartStateFromButton();
+        return new StartState();
     }
 }
