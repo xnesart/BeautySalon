@@ -7,6 +7,7 @@ using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL;
 using BeautySalon.TG.MessageHandlers;
+using BeautySalon.TG.States;
 using BeuatySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
@@ -18,15 +19,13 @@ namespace BeautySalon.TG;
 
 public class Program
 {
-    public static List<int> Chats { get; set; }
-    public static string Callback { get; set; }
-    public static long ChatId { get; set; }
+    public Dictionary<long, AbstractState> ClientState { get; set; }
     public static List<AllServicesByIdFromCurrentTypeOutputModel> CurrentServices { get; set; }
 
     static void Main(string[] args)
     {
-        IServiceClient serviceClient = new ServiceClient();
-        CurrentServices = serviceClient.GetAllServicesByIdFromCurrentType(1);
+        // IServiceClient serviceClient = new ServiceClient();
+        // CurrentServices = serviceClient.GetAllServicesByIdFromCurrentType(1);
         var cts = new CancellationTokenSource(); //это токен связи
         var cancellationToken = cts.Token;
 
@@ -37,7 +36,7 @@ public class Program
         };
         try
         {
-            TelegramClientInstance.Client.StartReceiving
+            SingletoneStorage.GetStorage().Client.StartReceiving
             (
                 HandleUpdate,
                 HandleError,
@@ -59,60 +58,33 @@ public class Program
     public static async void HandleUpdate(ITelegramBotClient botClient, Update update,
         CancellationToken cancellationToken)
     {
-        if (update?.Message != null && botClient != null)
+        if ((update?.Message != null && botClient != null) ||
+            (update.CallbackQuery != null && update.CallbackQuery.Data != null))
         {
-            if (update.Type == UpdateType.Message)
+            
+            var client = SingletoneStorage.GetStorage().Clients;
+            long id;
+            if (update.Message != null)
             {
-                ChatId = update.Message.Chat.Id;
-                if (update.Message.Text == "/start")
-                {
-                    UserWelcomeHandler welcomeHandler = new UserWelcomeHandler();
-                    welcomeHandler.WelcomeUser(botClient, update, cancellationToken);
-                }
-
-                Console.WriteLine($"{update.Message.Chat.Id} {update.Message.Chat.FirstName} {update.Message.Text}");
+                 id = update.Message.Chat.Id;
             }
-            else if (update.Type == UpdateType.CallbackQuery)
+            else
             {
-                var callbackQuery = update.CallbackQuery;
-                var data = callbackQuery.Data;
-            }
-        }
-
-        //здесь мы распознаем и выводим нажатые кнопки
-        else if (update.CallbackQuery != null && update.CallbackQuery.Data != null)
-        {
-            if (update.CallbackQuery.Data == "записаться")
-            {
-                ServicesHandler servicesHandler = new ServicesHandler();
-                servicesHandler.ShowServices(botClient, update, cancellationToken);
-            }
-
-            if (update.CallbackQuery.Data == "вернуться в главное меню")
-            {
-                ServicesHandler servicesHandler = new ServicesHandler();
-                servicesHandler.GetBackToMenu(botClient, update, cancellationToken);
-            }
-
-            if (update.CallbackQuery.Data == "стрижка")
-            {
-                ServicesHandler servicesHandler = new ServicesHandler();
-                servicesHandler.ChoseHaircut(botClient, update, cancellationToken);
-            }
-
-            foreach (var service in CurrentServices)
-            {
-                if (service.Title == update.CallbackQuery.Data)
-                {
-                    ShiftsHandler shiftsHandler = new ShiftsHandler();
-                    shiftsHandler.ChoseShift(botClient, update, cancellationToken);
-                }
+                id = update.CallbackQuery.From.Id;
             }
             
+            if (!client.ContainsKey(id))
+            {
+                client.Add(id, new StartState());
+                client[id].SendMessage(id,update,cancellationToken);
+            }
+            else
+            {
+                client[id] = client[id].ReceiveMessage(update);
+                client[id].SendMessage(id,update, cancellationToken);
+            }
         }
-
-        // botClient.SendTextMessageAsync(update.Message.Chat.Id,
-        //     $" {update.Message.Chat.FirstName} {update.Message.Chat.LastName} сам ты {update.Message.Text}");
+        
     }
 
     public static void HandleError(ITelegramBotClient botClient, Exception exception,
