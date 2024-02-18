@@ -13,5 +13,7 @@ namespace BeautySalon.BLL.IClient
         public List<AllServicesByIdFromCurrentTypeOutputModel> GetAllServicesByIdFromCurrentType(int id);
         public List<AllServicesOutputModel> GetAllServices();
         public void UpdateServiceTitle(ServiceIdAndServiceTitleInputModel model);   
+        public void UpdateServicePrice(ServiceIdAndServicePriceInputModel model);   
+        public void UpdateServiceDuration(ServiceIdAndServiceDurationInputModel model);   
     }
 }

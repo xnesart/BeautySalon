@@ -45,5 +45,19 @@ namespace BeautySalon.BLL.Clents
             UpdateServiceTitleDTO newDTO = this._mapper.Map<UpdateServiceTitleDTO>(model);
             servicesRepository.UpdateServiceTitle(newDTO);
         }
+
+        public void UpdateServicePrice(ServiceIdAndServicePriceInputModel model)
+        {
+            IServicesRepository servicesRepository = new ServicesRepository();
+            UpdateServicePriceDTO newDTO = this._mapper.Map<UpdateServicePriceDTO>(model);
+            servicesRepository.UpdateServicePrice(newDTO);
+        }
+
+        public void UpdateServiceDuration(ServiceIdAndServiceDurationInputModel model)
+        {
+            IServicesRepository servicesRepository = new ServicesRepository();
+            UpdateServiceDurationDTO newDTO = this._mapper.Map<UpdateServiceDurationDTO>(model);
+            servicesRepository.UpdateServiceDuration(newDTO);
+        }
     }
 }

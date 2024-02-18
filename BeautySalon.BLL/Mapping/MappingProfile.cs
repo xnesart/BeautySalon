@@ -54,6 +54,8 @@ public class MappingProfile : Profile
         CreateMap<MasterIdAndShiftNumberInputModel,ShiftsDTO>();
         CreateMap<ServiceIdAndServiceTitleInputModel,UpdateServiceTitleDTO>();
         CreateMap<UsersDTO,UsersByChatIdOutputModel>();
+        CreateMap<ServiceIdAndServicePriceInputModel,UpdateServicePriceDTO>();
+        CreateMap<ServiceIdAndServiceDurationInputModel,UpdateServiceDurationDTO>();
     }
 }
 

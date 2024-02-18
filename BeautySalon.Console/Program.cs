@@ -460,6 +460,28 @@ class Program
         // {
         //     Console.WriteLine(res);
         // }
+        
+        // //Работает
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // ServiceIdAndServicePriceInputModel model = new ServiceIdAndServicePriceInputModel
+        // {
+        //     Id = 1,
+        //     Price = 0
+        // };
+        // IServiceClient serviceClient = new ServiceClient();
+        // serviceClient.UpdateServicePrice(model);
+        // Console.WriteLine();
+        
+        // //Работает
+        // IServicesRepository servicesRepository = new ServicesRepository();
+        // ServiceIdAndServiceDurationInputModel model = new ServiceIdAndServiceDurationInputModel
+        // {
+        //     Id = 1,
+        //     Duration = "00:15"
+        // };
+        // IServiceClient serviceClient = new ServiceClient();
+        // serviceClient.UpdateServiceDuration(model);
+        // Console.WriteLine();
 
         #endregion
     }
