@@ -55,34 +55,42 @@ public class Program
         }
     }
 
-    public static async void HandleUpdate(ITelegramBotClient botClient, Update update,
-        CancellationToken cancellationToken)
+    public static async void HandleUpdate(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         if ((update?.Message != null && botClient != null) ||
             (update.CallbackQuery != null && update.CallbackQuery.Data != null))
         {
             
-            var client = SingletoneStorage.GetStorage().Clients;
-            long id;
-            if (update.Message != null)
+            Dictionary<long, AbstractState> handlersStatesByChatIdDictionary = SingletoneStorage.GetStorage().Clients;
+
+            long chatId = 0;
+
+            bool isMessage = update.Message != null;
+            bool isButtonPushed = update.CallbackQuery != null;
+
+            if (isMessage)
             {
-                 id = update.Message.Chat.Id;
+                chatId = update.Message.Chat.Id;
+            }
+
+            if(isButtonPushed)
+            {
+                chatId = update.CallbackQuery.From.Id;
+            }
+
+            bool isNewUser = !handlersStatesByChatIdDictionary.ContainsKey(chatId);
+
+
+            if (isNewUser)
+            {
+                handlersStatesByChatIdDictionary.Add(chatId, new StartState());
             }
             else
             {
-                id = update.CallbackQuery.From.Id;
+                handlersStatesByChatIdDictionary[chatId] = handlersStatesByChatIdDictionary[chatId].ReceiveMessage(update);
             }
             
-            if (!client.ContainsKey(id))
-            {
-                client.Add(id, new StartState());
-                client[id].SendMessage(id,update,cancellationToken);
-            }
-            else
-            {
-                client[id] = client[id].ReceiveMessage(update);
-                client[id].SendMessage(id,update, cancellationToken);
-            }
+            handlersStatesByChatIdDictionary[chatId].SendMessage(chatId,update, cancellationToken);
         }
         
     }
