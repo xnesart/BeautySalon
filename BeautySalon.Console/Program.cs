@@ -26,11 +26,11 @@ class Program
 
         #region Works DAL
 
-        ////Работает
+        // //Работает
         //IUserRepository userRepository4 = new UserRepository();
         //userRepository4.AddUserByChatId(32423, "Janet342", "Жанна Дарк", "8999324556", "jannet@mail.ru", 3, 0, 0, 0);
 
-        ////Работает
+        // //Работает
         //IUserRepository userRepository2 = new UserRepository();
         //var userRepositories2 = userRepository2.GetClientByNameAndId("Оксана Дмитриевна Кек", 4);
         //foreach (var user in userRepositories2)
@@ -38,7 +38,7 @@ class Program
         //    Console.WriteLine($"{user.ClientId} {user.Client}");
         //}
 
-        ////Работает
+        // //Работает
         //IUserRepository userRepository3 = new UserRepository();
         //var userRepositories3 = userRepository3.GetClientByNameAndPhone("Оксана Дмитриевна Кек", "877566588690");
         //foreach (var user in userRepositories3)
@@ -46,7 +46,7 @@ class Program
         //    Console.WriteLine($"{user.Name} {user.Phone}");
         //}
 
-        ////Работает
+        // //Работает
         //IUserRepository userRepository5 = new UserRepository();
         //var userRepositories5 = userRepository5.GetMasterByNameAndId("Анна Петровна Брек", 2);
         //foreach (var user in userRepositories5)
@@ -54,7 +54,7 @@ class Program
         //    Console.WriteLine($"{user.Master} {user.MasterId}");
         //}
 
-        ////Работает
+        // //Работает
         //IUserRepository userRepository = new UserRepository();
         //var usersRepositories = userRepository.GetMasterByNameAndPhone("Анна Петровна Брек", "8923467127");
         //foreach (var user in usersRepositories)
@@ -62,7 +62,7 @@ class Program
         //    Console.WriteLine($"{user.Master}, {user.MasterPhone}");
         //}
 
-        ////Работает
+        // //Работает
         //IUserRepository userRepository = new UserRepository();
         //var userRepositories = userRepository.GetAllWorkersWithContactsByUserId();
         //foreach (var user in userRepositories)
@@ -70,7 +70,7 @@ class Program
         //    Console.WriteLine($"{user.Name}");
         //}
 
-        ////Работает
+        // //Работает
         //IUserRepository userRepository = new UserRepository();
         //userRepository.AddWorkerByRoleId(2, "Кирилл Модестович Мусоргский", "834734269540", "kbslrbkl@sdfsdf");
         //Console.ReadLine();
@@ -79,12 +79,12 @@ class Program
         //userRepository.AddWorkerByRoleId(2, "Александр Максимович Климов", "85459004345", "xghj@hzf");
         //Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // IUserRepository userRepository = new UserRepository();
         // UsersDTO DTO = userRepository.RemoveUserById(5);
         // Console.WriteLine(DTO.IsDeleted);
 
-        ////Работает
+        // //Работает
         //IShiftsRepository shiftRepository = new ShiftsRepository();
         //var shiftsRepositories = shiftRepository.GetAllShiftsOnToday();
         //foreach (var shift in shiftsRepositories)
@@ -92,7 +92,7 @@ class Program
         //    Console.WriteLine();
         //}
 
-        ////Работает
+        // //Работает
         // IShiftsRepository shiftsRepository = new ShiftsRepository();
         // var shiftsRepositories = shiftsRepository.GetAllShiftsAndEmployeesOnToday();
         // foreach (var shift in shiftsRepositories)
@@ -104,7 +104,7 @@ class Program
         //     }
         // }
 
-        ////Работает
+        // //Работает
         // IUserRepository userRepository = new UserRepository();
         // var userRepositories = userRepository.GetFreeMastersAndIntervalsOnToday();
         // foreach (var users in userRepositories)
@@ -116,7 +116,7 @@ class Program
         //     }
         // }
 
-        ////Работает
+        // //Работает
         // IShiftsRepository shiftsRepository = new ShiftsRepository();
         // var shiftsRepositories = shiftsRepository.GetAllShiftsWithFreeIntervalsOnToday();
         // foreach (var shift in shiftsRepositories)
@@ -128,11 +128,12 @@ class Program
         //     }
         // }
 
-        ////Работает
+        // //Работает
         // IUserRepository userRepository = new UserRepository();
         // userRepository.ChangeMasterInShift(7, 3);
         // Console.WriteLine();
-
+        
+        // //Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // var repositories = orderRepository.GetAllOrdersForClient();
         // foreach (var repository in repositories)
@@ -140,7 +141,7 @@ class Program
         //     Console.WriteLine($"{repository.Id} {repository.Date} {repository.ClientId} {repository.MasterId}");
         // }
 
-        ////Работает
+        // //Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService();
         // foreach (var user in userRepositories)
@@ -149,12 +150,12 @@ class Program
         // }
         // Console.WriteLine();
 
-        ////Работает
+        // //Работает
         //IUserRepository userRepository = new UserRepository();
         //userRepository.RemoveMasterFromShift(2, 1);
         //Console.ReadLine();
 
-        ////Работает
+        // //Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
         //var intervalsRepositories = intervalsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(4);
         //foreach (var interval in intervalsRepositories)
@@ -162,7 +163,7 @@ class Program
         //    Console.WriteLine($"");
         //}
 
-        ////Работает
+        // //Работает
         // IUserRepository userRepository = new UserRepository();
         // var userRepositories = userRepository.GetAllWorkersByRoleId();
         // foreach (var user in userRepositories)
@@ -170,7 +171,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Работает
+        // //Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var  intervals = intervalsRepository.GetAllIntervalsByShiftId(1);
         // foreach (var interval in intervals)
@@ -178,7 +179,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Работает
+        // //Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // var  intervals = intervalsRepository.GetAllFreeIntervalsByShiftId(1);
         // foreach (var interval in intervals)
@@ -186,7 +187,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Работает
+        // //Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // var services = servicesRepository.GetAllServicesByIdFromCurrentType(1);
         // foreach (var service in services)
@@ -194,7 +195,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Работает. Разбирали на занятии с Максом.
+        // //Работает. Разбирали на занятии с Максом.
         // IOrderRepository orderRepository = new OrderRepository();
         // var orders = orderRepository.GetOrdersByMasterId(2);
         // foreach (var order in orders)
@@ -202,7 +203,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Работает
+        // //Работает
         // ITypesRepository typesRepository = new TypesRepository();
         // var types = typesRepository.GetAllServiceTypes();
         // foreach (var type in types)
@@ -210,11 +211,11 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Работает
+        // //Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.UpdateServiceTitle(1, "Подравнять кончики");
 
-        ////Работает
+        // //Работает
         //IUserRepository userRepository = new UserRepository();
         //var users = userRepository.GetMastersShiftsById(2);
         //foreach (var user in users)
@@ -222,7 +223,7 @@ class Program
         //    Console.WriteLine();
         //}
 
-        ////Работает
+        // //Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // var orders = orderRepository.GetAllOrdersOnTodayForMasters();
         // foreach (var user in orders)
@@ -230,7 +231,7 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Работает
+        // //Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
         //var intervals = intervalsRepository.GetAllIntervals("2024 - 02 - 02");
         //foreach (var interval in intervals)
@@ -238,7 +239,7 @@ class Program
         //    Console.WriteLine();
         //}
 
-        ////Работает
+        // //Работает
         //IServicesRepository servicesRepository = new ServicesRepository();
         //var services = servicesRepository.GetAllServices();
         //foreach (var service in services)
@@ -246,24 +247,24 @@ class Program
         //    Console.WriteLine();
         //}
 
-        ////Работает
+        // //Работает
         //IServicesRepository servicesRepository = new ServicesRepository();
         //servicesRepository.AddServiceById("Бритьё налысо", 1, "00:45", 500);
 
-        ////Работает
+        // //Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.UpdateServicePrice(1, 500);
 
-        ////Работает
+        // //Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.UpdateServiceDuration(6, "00:30");
 
-        ////Работает
+        // //Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // servicesRepository.RemoveServiceById(6);
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // var orders = orderRepository.GetAllOrdersOnToday();
         // foreach (var user in orders)
@@ -271,40 +272,40 @@ class Program
         //     Console.WriteLine();
         // }
 
-        ////Работает
+        // //Работает
         // IOrderRepository orderRepository = new OrderRepository();
         // orderRepository.AddClientToFreeMaster(2, 1, 2, 30);
         
-        ////Работает
+        // //Работает
         // IUserRepository repository = new UserRepository();
         // var result = repository.CheckAndAddUser(1);
         // Console.WriteLine(result.ToList());       
         
-        ////Работает
+        // //Работает
         // IShiftsRepository shiftsRepository = new ShiftsRepository();
-        // var result = shiftsRepository.AddMasterToShiftWithIntervalsByShiftNumber(3, 7);
+        // var result = shiftsRepository.AddMasterToShiftWithCreatedNewIntervals(2, 3);
         // Console.WriteLine(result.ToList());
 
         #endregion
 
         #region Works Bll
 
-        ////Работает
+        // //Работает
         // IntervalsClient intervalsClient = new IntervalsClient();
         // var q = intervalsClient.GetAllFreeIntervalsInCurrentShiftOnCurrentService(1, 2);
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // IntervalsClient intervalsClient = new IntervalsClient();
         // var q = intervalsClient.GetAllIntervals("2024-02-02");
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetAllWorkersByRoleId();
         // Console.ReadLine();   
 
-        //Работает
+        // //Работает
         // UserIdInputModel model = new UserIdInputModel
         // {
         //     Id = 3
@@ -313,12 +314,12 @@ class Program
         // var q = userClient.RemoveUserById(model);
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetClientByNameAndId("Анна Петровна Брек",2);
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // UserClient client = new UserClient();
         // AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
         // {
@@ -334,32 +335,32 @@ class Program
         // };
         // client.AddUserByChatId(model);
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetClientByNameAndPhone("Кристина Валерьевна Заливняк","642894209");
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetMasterByNameAndId("Анна Петровна Брек",2);
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetMasterByNameAndPhone("Анна Петровна Брек","8923467127");
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // var q = userClient.GetAllWorkersWithContactsByUserId();
         // Console.ReadLine();  
 
-        ////Работает
+        // //Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var q = shiftsClient.GetAllShiftsOnToday();
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // WorkerByRoleIdInputModel model = new WorkerByRoleIdInputModel
         // {
@@ -371,37 +372,37 @@ class Program
         // userClient.AddWorkerByRoleId(model);
         // Console.ReadLine();
 
-        ////Работает
+        // //Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
         // Console.WriteLine();
 
-        ////Работает
+        // //Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var res = shiftsClient.GetAllShiftsAndEmployeesOnToday();
         // Console.WriteLine();
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // var res = userClient.GetAllChatId();
         // Console.WriteLine();
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // userClient.RemoveMasterFromShift(2,1);
         // Console.WriteLine();
 
-        ////Работает
+        // //Работает
         // IntervalsClient intervals = new IntervalsClient();
         // var res = intervals.GetAllIntervalsByShiftId(1);
         // Console.WriteLine();
 
-        ////Работает
+        // //Работает
         // UserClient userClient = new UserClient();
         // userClient.ChangeMasterInShift(7,1);
         // Console.WriteLine();
 
-        ////Работает
+        // //Работает
         // ShiftIdInputModel model = new ShiftIdInputModel
         // {
         //     Id = 2
@@ -410,12 +411,12 @@ class Program
         // var q = intervalsClient.GetAllFreeIntervalsByShiftId(model);
         // Console.ReadLine();
         
-        ////Работает
+        // //Работает
         // ShiftsClient shiftsClient = new ShiftsClient();
         // var q = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
         // Console.ReadLine();
         
-        ////Работает
+        // //Работает
         // ServiceClient serviceClient = new ServiceClient();
         // ServiceByIdInputModel model = new ServiceByIdInputModel
         // {
@@ -427,15 +428,11 @@ class Program
         // serviceClient.AddServiceByIdInputModel(model);
         // Console.WriteLine();
         
-        ////Работает
-        // IUserClient client = new UserClient();
-        // var result = client.CheckAndAddUser(1);
-        // Console.WriteLine(result);
+        // //Работает
+        // ShiftsClient shiftsClient = new ShiftsClient();
+        // shiftsClient.AddMasterToShiftWithCreatedNewIntervals(2, 7);
+        // Console.WriteLine();
         
         #endregion
-
-
-
-
     }
 }
