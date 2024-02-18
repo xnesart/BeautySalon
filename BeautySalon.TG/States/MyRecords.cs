@@ -15,11 +15,14 @@ namespace BeuatySalon.TG.States
 
         public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
-            AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
-            {
-                ChatId = (int)update.CallbackQuery.From.Id
-            };
-           
+
+          UserHandler userHandler = new UserHandler();
+          int Id =userHandler.GetUsersByChatId((int)update.CallbackQuery.From.Id);
+
+            ShowOrder showOrder = new ShowOrder();
+            showOrder.GetOrdersByClientId(Id);
+
+
         }
 
         public override AbstractState ReceiveMessage(Update update)

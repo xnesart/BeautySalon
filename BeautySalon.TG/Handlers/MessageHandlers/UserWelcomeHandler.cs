@@ -27,7 +27,7 @@ public class UserWelcomeHandler
         });
         
         Message sentMessage = await botClient.SendTextMessageAsync(
-            chatId: update.Message.Chat,
+            chatId: update.CallbackQuery.From.Id,
             text: $"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", !\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
             replyMarkup: inlineKeyboard,
             cancellationToken: cancellationToken);

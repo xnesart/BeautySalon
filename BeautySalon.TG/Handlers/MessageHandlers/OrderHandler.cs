@@ -1,23 +1,21 @@
-using BeautySalon.BLL;
-using BeautySalon.BLL.Clents;
+﻿using BeautySalon.BLL.Clents;
 using BeautySalon.BLL.Models.InputModels;
-using Telegram.Bot;
-using Telegram.Bot.Types;
-using Telegram.Bot.Types.ReplyMarkups;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BeuatySalon.TG.Handlers.MessageHandlers;
-
-public class OrderHandler
+namespace BeuatySalon.TG.Handlers.MessageHandlers
 {
-
-
-    public void CreateNewOrder()
+    public class OrderHandler
     {
-        OrderClient orderClient = new OrderClient();
-        
-    }
-    public void GetMyOrders() 
-    {
-       
+
+        public void CreateNewOrder(NewOrderInputModel model)
+        {
+            OrderClient orderClient = new OrderClient();
+            orderClient.CreateNewOrder(model);
+        }
     }
 }
+

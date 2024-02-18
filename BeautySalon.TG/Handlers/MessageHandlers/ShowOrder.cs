@@ -15,8 +15,9 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers
     {
         public List<OrdersOrdersForClientByIdOutputModel> OrdersOrdersForClientById {  get; set; }
 
-        public async void GetOrdersByClientId(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken, int clientId)
+        public async void GetOrdersByClientId( int clientId)
         {
+
             OrderClient orderClient = new OrderClient();
 
             OrdersOrdersForClientByIdOutputModel model = new OrdersOrdersForClientByIdOutputModel

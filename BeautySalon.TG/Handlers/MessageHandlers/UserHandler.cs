@@ -42,5 +42,15 @@ public class UserHandler
 
         return 0;
     }
+    public int  GetUsersByChatId(int chatId)
+    {
+        UserClient client = new UserClient();
+         var result = client.GetUsersByChatId(chatId);
+        foreach( var i in result)
+        {
+            return (int)i.Id;
+        }
+        return 0;
+    }
 
 }
