@@ -1,8 +1,8 @@
-﻿using BeautySalon.BLL;
+using BeautySalon.BLL;
 using BeautySalon.BLL.Client;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
-using BeautySalon.BLL.Models.InputModels;
+using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.TG.States;
 using Telegram.Bot;
@@ -44,15 +44,22 @@ public class UserHandler
 
         return 0;
     }
-    public int  GetUsersByChatId(int chatId)
-    {
-        UserClient client = new UserClient();
-         var result = client.GetUsersByChatId(chatId);
-        foreach( var i in result)
+    public int? GetUserByChatId(long chatId) 
+    { 
+        UserClient client= new UserClient();
+        List<UsersByChatIdOutputModel> result =  client.GetUsersByChatId((int)chatId);
+
+        bool isUserRegistered = result.Count > 0;
+
+        if (isUserRegistered)
         {
-            return (int)i.Id;
+            return result[0].Id;
         }
-        return 0;
+        else
+        {
+            return null;
+        }
+
     }
 
     // public int GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
