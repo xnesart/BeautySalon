@@ -21,7 +21,7 @@ public class UserWelcomeHandler
             // second row
             new []
             {
-                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "21"),
+                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
                 InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "22"),
             },
         });
@@ -59,7 +59,7 @@ public class UserWelcomeHandler
             // second row
             new []
             {
-                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "21"),
+                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
                 InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "22"),
             },
         });

@@ -15,7 +15,8 @@ namespace BeuatySalon.TG.States
         public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
             UserHandler userHandler = new UserHandler();
-            int Id = userHandler.GetUsersByChatId((int)update.CallbackQuery.From.Id);
+            //int Id = userHandler.GetUsersByChatId((int)update.CallbackQuery.From.Id);
+            int Id = 4;
 
             ShowOrder showOrder = new ShowOrder();
             showOrder.GetOrdersByClientId(Id);
