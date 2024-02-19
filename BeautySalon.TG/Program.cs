@@ -57,17 +57,23 @@ public class Program
 
     public static async void HandleUpdate(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        try
+        if ((update?.Message != null && botClient != null) ||
+            (update.CallbackQuery != null && update.CallbackQuery.Data != null))
         {
-            
-            var client = SingletoneStorage.GetStorage().Clients;
-            long id;
-            if (update.Message != null)
+
+            Dictionary<long, AbstractState> handlersStatesByChatIdDictionary = SingletoneStorage.GetStorage().Clients;
+
+            long chatId = 0;
+
+            bool isMessage = update.Message != null;
+            bool isButtonPushed = update.CallbackQuery != null;
+
+            if (isMessage)
             {
-                 id = update.Message.Chat.Id;
+                chatId = update.Message.Chat.Id;
             }
 
-            if(isButtonPushed)
+            if (isButtonPushed)
             {
                 chatId = update.CallbackQuery.From.Id;
             }
@@ -83,14 +89,11 @@ public class Program
             {
                 handlersStatesByChatIdDictionary[chatId] = handlersStatesByChatIdDictionary[chatId].ReceiveMessage(update);
             }
-            
-            handlersStatesByChatIdDictionary[chatId].SendMessage(chatId,update, cancellationToken);
+
+            handlersStatesByChatIdDictionary[chatId].SendMessage(chatId, update, cancellationToken);
         }
-        catch (NullReferenceException e)
-        {
-            Console.WriteLine(e);
-        }
-        
+
+
     }
 
     public static void HandleError(ITelegramBotClient botClient, Exception exception,

@@ -55,7 +55,7 @@ public class RegistrationStateMail:AbstractState
          {
              Id = IntervalId
          };
-         int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId(modelIntervalIdInputModel);
+         int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId (modelIntervalIdInputModel);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
         // TODO
         OrderHandler orderHandler = new OrderHandler();

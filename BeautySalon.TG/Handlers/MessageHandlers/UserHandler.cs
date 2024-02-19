@@ -61,12 +61,11 @@ public class UserHandler
         }
 
     }
-   
 
     public int GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
     {
         IIntervalsClient intervalsClient = new IntervalsClient();
-        var newModel= intervalsClient.GetFreeMasterIdByIntervalId(model);
+        var newModel = intervalsClient.GetFreeMasterIdByIntervalId(model);
         foreach (var item in newModel)
         {
             return item.MasterId;

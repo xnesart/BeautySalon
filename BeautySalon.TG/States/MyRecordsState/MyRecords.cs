@@ -97,6 +97,8 @@ namespace BeuatySalon.TG.States.MyRecordsState
             {
                 return new ServiceState();
             }
+
+            return new StartState();
         }
     }
 }
