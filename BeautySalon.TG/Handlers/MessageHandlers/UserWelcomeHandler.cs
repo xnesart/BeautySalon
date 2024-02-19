@@ -15,7 +15,7 @@ public class UserWelcomeHandler
             // first row
             new []
             {
-                InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "11"),
+                InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "как добраться"),
                 InlineKeyboardButton.WithCallbackData(text: "Записаться", callbackData: "записаться"),
             },
             // second row

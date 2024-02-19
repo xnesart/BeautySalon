@@ -25,8 +25,9 @@ public class StartState : AbstractState
             {
                 return new ServiceState();
             }
-            else if (update.CallbackQuery.Data.ToLower() == "11") //"как добраться"
+            else if (update.CallbackQuery.Data.ToLower() == "как добраться") //"как добраться"
             {
+                return new HowToGetState();
             }
             else if (update.CallbackQuery.Data.ToLower() == "21") //"Мои записи"
             {
