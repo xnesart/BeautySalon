@@ -62,7 +62,7 @@ public class UserHandler
 
     }
 
-    public int GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
+    public int GetFreeMasterIdByIntervalId(IntervalsOutputModel model)
     {
         IIntervalsClient intervalsClient = new IntervalsClient();
         var newModel = intervalsClient.GetFreeMasterIdByIntervalId(model);

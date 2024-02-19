@@ -23,7 +23,8 @@ namespace BeuatySalon.TG.States.MyRecordsState
 
         public override AbstractState ReceiveMessage(Update update)
         {
-            
+            this.Mail = update?.Message.Text;
+    
             SingletoneStorage.GetStorage().Client
             .SendTextMessageAsync(update.Message.Chat.Id, "Спасибо за регистрацию.Будем рады видеть Вас в нашем салоне!. Хорошего дня!");
 
