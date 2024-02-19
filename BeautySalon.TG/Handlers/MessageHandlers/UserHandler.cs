@@ -1,6 +1,8 @@
-using BeautySalon.BLL;
+﻿using BeautySalon.BLL;
+using BeautySalon.BLL.Client;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.DAL.DTO;
 using BeautySalon.TG.States;
 using Telegram.Bot;
@@ -51,6 +53,17 @@ public class UserHandler
             return (int)i.Id;
         }
         return 0;
+    }
+
+    public int GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
+    {
+        IIntervalsClient intervalsClient = new IntervalsClient();
+        var newModel= intervalsClient.GetFreeMasterIdByIntervalId(model);
+        foreach (var item in newModel)
+        {
+            return item.MasterId;
+        }
+        return -1;
     }
 
 }
