@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using BeautySalon.BLL.Models;
-using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.StoredProcedures;
@@ -106,12 +104,12 @@ public class IntervalsRepository : IIntervalsRepository
         }
     }
 
-    public List<GetFreeMasterIdByIntervalIdDTO> GetFreeMasterIdByIntervalId(IntervalsOutputModel model)
+    public List<GetFreeMasterIdByIntervalIdDTO> GetFreeMasterIdByIntervalId (IntervalIdInputModel model)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new
-            {
+            { 
                 IntervalId = model.Id,
             };
             var res = connection

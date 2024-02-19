@@ -1,4 +1,4 @@
-﻿using BeautySalon.BLL;
+using BeautySalon.BLL;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.Models.InputModels;
@@ -55,7 +55,9 @@ public class RegistrationStateMail:AbstractState
          {
              Id = IntervalId
          };
-         int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId (modelIntervalIdInputModel);
+         
+         //TODO
+         int masterIdFromBase = userHandler.GetClientByNameAndPhone(Name, Phone);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
         // TODO
         OrderHandler orderHandler = new OrderHandler();

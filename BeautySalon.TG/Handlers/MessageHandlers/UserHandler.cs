@@ -62,15 +62,15 @@ public class UserHandler
 
     }
 
-    public int GetFreeMasterIdByIntervalId(IntervalsOutputModel model)
-    {
-        IIntervalsClient intervalsClient = new IntervalsClient();
-        var newModel = intervalsClient.GetFreeMasterIdByIntervalId(model);
-        foreach (var item in newModel)
-        {
-            return item.MasterId;
-        }
-        return -1;
-    }
+    // public int GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
+    // {
+    //     IIntervalsClient intervalsClient = new IntervalsClient();
+    //     var newModel= intervalsClient.GetFreeMasterIdByIntervalId(model);
+    //     foreach (var item in newModel)
+    //     {
+    //         return item.MasterId;
+    //     }
+    //     return -1;
+    // }
 
 }

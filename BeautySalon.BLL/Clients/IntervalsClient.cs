@@ -44,11 +44,11 @@ public class IntervalsClient : IIntervalsClient
         return result;
     }
 
-    public List<MasterIdOutputModel> GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
-    {
-        IIntervalsRepository intervalsRepository = new IntervalsRepository();
-        var newDTO = _intervalsRepository.GetFreeMasterIdByIntervalId(model);
-        var result = _mapper.Map<List<MasterIdOutputModel>>(newDTO);
-        return result;
-    }
+    // public List<MasterIdOutputModel> GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
+    // {
+    //     IIntervalsRepository intervalsRepository = new IntervalsRepository();
+    //     var newDTO = intervalsRepository.GetFreeMasterIdByIntervalId(model);
+    //     var result = _mapper.Map<List<MasterIdOutputModel>>(newDTO);
+    //     return result;
+    // }
 }
