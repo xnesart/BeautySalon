@@ -50,7 +50,12 @@ public class RegistrationStateMail:AbstractState
       
          userHandler.AddUserToDB(model);
          int clientIdFromBase = userHandler.GetClientByNameAndPhone(Name, Phone);
-         int masterIdFromBase = userHandler.GetMasterByNameAndPhone(Name, Phone);
+
+         IntervalIdInputModel modelIntervalIdInputModel = new IntervalIdInputModel
+         {
+             Id = IntervalId
+         };
+         int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId(modelIntervalIdInputModel);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
         // TODO
         OrderHandler orderHandler = new OrderHandler();

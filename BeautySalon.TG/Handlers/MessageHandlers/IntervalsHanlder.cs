@@ -1,4 +1,4 @@
-using BeautySalon.BLL.Clents;
+using BeautySalon.BLL.Client;
 using BeautySalon.BLL.Models;
 using BeautySalon.TG.States;
 using Telegram.Bot;

@@ -17,26 +17,25 @@ public class ServiceState : AbstractState
     {
         if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
         {
-            if (update.CallbackQuery.Data.ToLower() == "стрижка")
+            if (update.CallbackQuery.Data.ToLower() == "визаж")
             {
                 this.TypeId = 1;
-                return new HaircutState(TypeId);
+                return new MakeUpState(TypeId);
             }
-            else if (update.CallbackQuery.Data.ToLower() == "покраска")
+            else if (update.CallbackQuery.Data.ToLower() == "стрижки")
             {
                 this.TypeId = 2;
-                return new ColoringState(TypeId);
+                return new HaircutState(TypeId);
             }
-            else if (update.CallbackQuery.Data.ToLower() == "укладка")
+            else if (update.CallbackQuery.Data.ToLower() == "окрашивание")
             {
                 this.TypeId = 3;
-                return new StylingState(TypeId);
-
+                return new ColoringState(TypeId);
             }
-            else if (update.CallbackQuery.Data.ToLower() == "макияж")
+            else if (update.CallbackQuery.Data.ToLower() == "моделирование")
             {
                 this.TypeId = 4;
-                return new MakeUpState(TypeId);
+                return new StylingState(TypeId);
             }
             else if (update.CallbackQuery.Data.ToLower() == "маникюр")
             {
