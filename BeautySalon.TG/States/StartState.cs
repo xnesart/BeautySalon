@@ -30,6 +30,7 @@ public class StartState : AbstractState
             }
             else if (update.CallbackQuery.Data.ToLower() == "21") //"Мои записи"
             {
+                return new MyRecords();
             }
             else if (update.CallbackQuery.Data.ToLower() == "22") //"Оставить отзыв"
             {

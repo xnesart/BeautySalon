@@ -104,17 +104,17 @@ public class IntervalsRepository : IIntervalsRepository
         }
     }
 
-    public List<GetFreeMasterIdByIntervalIdDTO> GetFreeMasterIdByIntervalId (IntervalIdInputModel model)
-    {
-        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-        {
-            var parameters = new
-            { 
-                IntervalId = model.Id,
-            };
-            var res = connection
-                .Query<GetFreeMasterIdByIntervalIdDTO>(Procedures.GetFreeMasterIdByIntervalId, parameters).ToList();
-            return res;
-        }
-    }
+    //public List<GetFreeMasterIdByIntervalIdDTO> GetFreeMasterIdByIntervalId (IntervalIdInputModel model)
+    //{
+    //    using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+    //    {
+    //        var parameters = new
+    //        { 
+    //            IntervalId = model.Id,
+    //        };
+    //        var res = connection
+    //            .Query<GetFreeMasterIdByIntervalIdDTO>(Procedures.GetFreeMasterIdByIntervalId, parameters).ToList();
+    //        return res;
+    //    }
+    //}
 }
