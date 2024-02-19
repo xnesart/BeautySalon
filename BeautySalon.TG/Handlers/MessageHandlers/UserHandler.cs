@@ -1,4 +1,5 @@
 using BeautySalon.BLL;
+using BeautySalon.BLL.Client;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.Models.Output_Models;
@@ -61,5 +62,16 @@ public class UserHandler
 
     }
    
+
+    public int GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
+    {
+        IIntervalsClient intervalsClient = new IntervalsClient();
+        var newModel= intervalsClient.GetFreeMasterIdByIntervalId(model);
+        foreach (var item in newModel)
+        {
+            return item.MasterId;
+        }
+        return -1;
+    }
 
 }

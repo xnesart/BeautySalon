@@ -212,11 +212,13 @@ end
 go
 -- ✓ Удалить услугу
 create proc RemoveServiceById
-@Id int as
+    @Id int as
 begin
+    -- Обновляем IsDeleted для пользователя с указанным Id
     update Services
     set IsDeleted = 1
-    where Id = @Id  
+    output inserted.IsDeleted
+    where Id = @Id;
 end
 go
 -- ✓ Записать клиента к СВОБОДНОМУ мастеру
@@ -372,7 +374,15 @@ from
 	join Services on Orders.ServiceId = Services.Id
 where Client.Id = @Id and Orders.IsDeleted = 0
 end
-
+-- Получить MasterId по IntervalId если этот интервал ещё не занят в Order
+create procedure GetFreeMasterIdByIntervalId
+    @IntervalId int as
+BEGIN
+    select Users.Id as MasterId from Users
+    join Shifts on Users.Id = Shifts.MasterId
+    join Intervals on Shifts.Id = Intervals.ShiftId
+    where Intervals.Id = @IntervalId and Users.IsDeleted = 0 and Shifts.IsDeleted = 0 and Intervals.IsDeleted = 0 and Intervals.IsBusy = 0
+END
 -- ✓ Вывести свободных мастеров и свободные интервалы для записи
 create proc GetFreeMastersAndIntervalsOnToday
     as

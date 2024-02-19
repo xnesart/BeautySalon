@@ -52,7 +52,12 @@ public class MappingProfile : Profile
         CreateMap<GetAllServicesDTO, AllServicesOutputModel>();
         CreateMap<UsersDTO,CheckAndAddUserOutputModel>();
         CreateMap<MasterIdAndShiftNumberInputModel,ShiftsDTO>();
+        CreateMap<ServiceIdAndServiceTitleInputModel,UpdateServiceTitleDTO>();
         CreateMap<UsersDTO,UsersByChatIdOutputModel>();
+        CreateMap<ServiceIdAndServicePriceInputModel,UpdateServicePriceDTO>();
+        CreateMap<ServiceIdAndServiceDurationInputModel,UpdateServiceDurationDTO>();
+        CreateMap<ServicesDTO, ServiceIsDeletedOutputModel>();
+        CreateMap<GetFreeMasterIdByIntervalIdDTO, MasterIdOutputModel>();
     }
 }
 

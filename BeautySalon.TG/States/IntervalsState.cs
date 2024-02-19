@@ -41,6 +41,6 @@ public class IntervalsState:AbstractState
             //Передаем в стейт интервалов выбранный айди смены.
             return new RegistrationStateName(ShiftId, IntervalId,ServiceId, TypeId);
         }
-        return new StartStateFromButton();
+        return new StartState();
     }
 }

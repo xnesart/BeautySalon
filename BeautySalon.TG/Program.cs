@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading;
@@ -49,7 +49,7 @@ public class Program
                 end = Console.ReadLine();
             } while (end != "end");
         }
-        catch (Exception e)
+        catch (NullReferenceException e)
         {
             Console.WriteLine(e);
         }
@@ -57,20 +57,14 @@ public class Program
 
     public static async void HandleUpdate(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        if ((update?.Message != null && botClient != null) ||
-            (update.CallbackQuery != null && update.CallbackQuery.Data != null))
+        try
         {
             
-            Dictionary<long, AbstractState> handlersStatesByChatIdDictionary = SingletoneStorage.GetStorage().Clients;
-
-            long chatId = 0;
-
-            bool isMessage = update.Message != null;
-            bool isButtonPushed = update.CallbackQuery != null;
-
-            if (isMessage)
+            var client = SingletoneStorage.GetStorage().Clients;
+            long id;
+            if (update.Message != null)
             {
-                chatId = update.Message.Chat.Id;
+                 id = update.Message.Chat.Id;
             }
 
             if(isButtonPushed)
@@ -91,6 +85,10 @@ public class Program
             }
             
             handlersStatesByChatIdDictionary[chatId].SendMessage(chatId,update, cancellationToken);
+        }
+        catch (NullReferenceException e)
+        {
+            Console.WriteLine(e);
         }
         
     }
