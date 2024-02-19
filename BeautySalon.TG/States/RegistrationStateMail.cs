@@ -13,7 +13,6 @@ public class RegistrationStateMail:AbstractState
     public RegistrationStateMail(int serviceID, int shiftId, int intervalId,  int typeId, string name, string phone)
     {
         ServiceId = serviceID;
-        ShiftId = shiftId;
         IntervalId = intervalId;
         TypeId = typeId;
         Name = name;
@@ -31,9 +30,11 @@ public class RegistrationStateMail:AbstractState
     {
         Mail = update?.Message.Text;
         UserName = update?.Message.Chat.Username;
+
          SingletoneStorage.GetStorage().Client
             .SendTextMessageAsync(update.Message.Chat.Id, "Будем рады видеть Вас в нашем салоне!\nНаш администратор свяжется с Вами накануне посещения для подтверждения Вашего визита. Хорошего дня!");
          long id = update.Message.Chat.Id;
+
          UserHandler userHandler = new UserHandler();
          AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
          {

@@ -24,8 +24,7 @@ public class Program
 
     static void Main(string[] args)
     {
-        // IServiceClient serviceClient = new ServiceClient();
-        // CurrentServices = serviceClient.GetAllServicesByIdFromCurrentType(1);
+        
         var cts = new CancellationTokenSource(); //это токен связи
         var cancellationToken = cts.Token;
 

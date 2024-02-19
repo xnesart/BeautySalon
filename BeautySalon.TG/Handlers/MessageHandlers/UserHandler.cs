@@ -15,7 +15,6 @@ public class UserHandler
 {
     public async void AddUserToDB(AddUserByChatIdInputModel model)
     {
-        //botClient.SendTextMessageAsync(update.Message.Chat.Id,$"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", ${update.Message.Chat.Username}!\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).");
         IUserClient client = new UserClient();
         client.AddUserByChatId(model);
     }
