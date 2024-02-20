@@ -1,4 +1,4 @@
-using BeautySalon.BLL.Clents;
+using BeautySalon.BLL.Clients;
 using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.TG.MessageHandlers;
 using Telegram.Bot.Types;

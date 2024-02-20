@@ -6,7 +6,7 @@ using BeautySalon.DAL.Repositories;
 
 namespace BeautySalon.Console;
 
-using BeautySalon.BLL.Clents;
+using BLL.Clients;
 using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.OrdersForClientById;
