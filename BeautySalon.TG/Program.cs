@@ -24,10 +24,7 @@ public class Program
 
     static void Main(string[] args)
     {
-<<<<<<< HEAD
-=======
-        
->>>>>>> StatusCancelandRescheduleEntry
+
         var cts = new CancellationTokenSource(); //это токен связи
         var cancellationToken = cts.Token;
 
