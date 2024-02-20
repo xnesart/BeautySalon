@@ -8,7 +8,6 @@ namespace BeautySalon.BLL.Models.InputModels
 {
     public class RemoveOrderForClientIdInput
     {
-        public int ClientId { get; set; }
         public int OrderId { get; set; }
     }
 }

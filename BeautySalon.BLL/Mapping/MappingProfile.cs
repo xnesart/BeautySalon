@@ -40,7 +40,9 @@ public class MappingProfile : Profile
         CreateMap<UpdateOrderClientByIdInput, OrdersDTO>();
         CreateMap<AllShiftsWithFreeIntervalsOnCurrentServiceDTO, ShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
         CreateMap<ShiftsDTO, ShiftAllShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
-        CreateMap<RemoveOrderForClientIdInput,OrdersDTO>();
+
+        CreateMap<RemoveOrderForClientIdInput, OrdersDTO>().ForMember(destonation => destonation.Id, sourse => sourse.MapFrom(opt => opt.OrderId));
+
         CreateMap<GetAllShiftsAndEmployeesOnTodayDTO,MastersNameAndShiftsOutputModel>();
         CreateMap<MasterIdAndShiftIdInputModel,ShiftsDTO>();
         CreateMap<GetAllFreeIntervalsByShiftIdDTO,IntervalsIdTitleStartTimeOutputModel>();

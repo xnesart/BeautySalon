@@ -79,7 +79,7 @@ public class OrderRepository : IOrderRepository
                          orderByClient.Order = new OrdersDTO();
                          orderByClient.Order.Id = order.Id;
                          orderByClient.Order.Date = order.Date;
-                         orderByClient.Order.StartIntervalId = order.StartIntervalId;
+                         orderByClient.Order.IntervalId = order.IntervalId;
 
                          orderByClient.Client = new UsersDTO();
                          orderByClient.Client.Id = client.Id;
@@ -116,7 +116,7 @@ public class OrderRepository : IOrderRepository
             OrderId = orders.Id,
             ClientId = orders.ClientId,
             MasterId = orders.MasterId,
-            IntervalId = orders.StartIntervalId
+            IntervalId = orders.IntervalId
             };
             connection.Query(Procedures.UpdateOrderTimeForClientById, parameters).ToList();
         }
@@ -127,7 +127,7 @@ public class OrderRepository : IOrderRepository
         {
             var parameter = new
             {
-                OrderId = order.Id
+                OrderId = order.Id,
             };
          connection.Query<OrdersDTO>(Procedures.RemoveOrderForClientByOrderId, parameter);
         }
@@ -142,7 +142,7 @@ public class OrderRepository : IOrderRepository
                 MasterId = newOrder.MasterId,
                 Date = newOrder.Date,
                 ServiceId = newOrder.ServiceId,
-                IntervalId = newOrder.StartIntervalId
+                IntervalId = newOrder.IntervalId
             };
 
             connection.Query<OrdersDTO>(Procedures.CreateNewOrder, parameters);

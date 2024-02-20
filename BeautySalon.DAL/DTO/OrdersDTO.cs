@@ -9,8 +9,9 @@ namespace BeautySalon.DAL.DTO
         public int MasterId { get; set; }
         public int ClientId { get; set; }
         public int ServiceId { get; set; }
-        public int StartIntervalId { get; set; }
+        public int IntervalId { get; set; }
         public bool? IsCompleted { get; set; }
         public bool? IsDeleted { get; set; }
+        
     }
 }
