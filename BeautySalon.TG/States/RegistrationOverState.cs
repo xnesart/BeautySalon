@@ -10,8 +10,6 @@ public class RegistrationOverState: AbstractState
 {
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
-        // SingletoneStorage.GetStorage().Client
-        // .SendTextMessageAsync(chatId, );
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         //добавляем вернуться в главное меню
         buttons.Add(new[]
