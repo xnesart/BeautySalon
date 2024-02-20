@@ -43,11 +43,13 @@ public class UserHandler
 
         return 0;
     }
-    public int? GetUserByChatId(long chatId) 
-    { 
-        UserClient client= new UserClient();
-        List<BeautySalon.BLL.Models.Output_Models.UserByChatIdOutputModel> result =  client.GetUserByChatId((int)chatId);
-        List<BeautySalon.BLL.Models.Output_Models.UserByChatIdOutputModel> filteredResult = result.Where((user) => user.IsDeleted == false).ToList();
+
+    public int? GetUserByChatId(long chatId)
+    {
+        UserClient client = new UserClient();
+        List<BeautySalon.BLL.Models.Output_Models.UserByChatIdOutputModel> result = client.GetUserByChatId((int)chatId);
+        List<BeautySalon.BLL.Models.Output_Models.UserByChatIdOutputModel> filteredResult =
+            result.Where((user) => user.IsDeleted == false).ToList();
 
         bool isUserRegistered = result.Count > 0;
 
@@ -59,7 +61,6 @@ public class UserHandler
         {
             return null;
         }
-
     }
 
     public int GetFreeMasterIdByIntervalId(int interval)
@@ -68,30 +69,50 @@ public class UserHandler
         int id = userClient.GetFreeMasterByIntervalIdNew(interval);
         return id;
     }
-    
+
     public async void HowToGet(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
             // first row
-            new []
+            new[]
             {
                 InlineKeyboardButton.WithUrl(text: "Проложить маршрут", url: "https://yandex.ru/maps/"),
             },
             // second row
-            new []
+            new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "вернуться в главное меню"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                    callbackData: "вернуться в главное меню"),
             },
         });
-
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Список стрижек",
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите действие:",
             replyMarkup: inlineKeyboard);
     }
 
-}
-
-public class UserByChatIdOutputModel
-{
+    public async void LeaveFeedback(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            // first row
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Написать администратору",
+                    callbackData: "написать администратору"),
+            },
+            // second row
+            new[]
+            {
+                InlineKeyboardButton.WithUrl(text: "Перейти на сайт", url: "https://irecommend.ru/"),
+            },
+            // third row
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                    callbackData: "вернуться в главное меню"),
+            },
+        });
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите действие:",
+            replyMarkup: inlineKeyboard);
+    }
 }

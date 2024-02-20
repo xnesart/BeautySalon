@@ -29,15 +29,15 @@ public class StartState : AbstractState
             {
                 return new HowToGetState();
             }
-            else if (update.CallbackQuery.Data.ToLower() == "21") //"Мои записи"
+            else if (update.CallbackQuery.Data.ToLower() == "мои записи") //"Мои записи"
             {
                 return new MyRecords();
             }
-            else if (update.CallbackQuery.Data.ToLower() == "22") //"Оставить отзыв"
+            else if (update.CallbackQuery.Data.ToLower() == "оставить отзыв") //"Оставить отзыв"
             {
+                return new LeaveFeedbackState();
             }
         }
-
         return this;
     }
 }
