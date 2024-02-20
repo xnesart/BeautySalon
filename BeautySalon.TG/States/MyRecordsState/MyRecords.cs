@@ -17,13 +17,14 @@ namespace BeuatySalon.TG.States.MyRecordsState
     public class MyRecords : AbstractState
     {
         private List<OrdersForClientByIdOutputModel> orders {  get; set; }
+
         public override async void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
             UserHandler userHandler = new UserHandler();
             OrderHandler orderHandler = new OrderHandler();
 
             int? userId = userHandler.GetUserByChatId(chatId);
-
+            
             bool isUserRegistered = userId != null;
 
             if (isUserRegistered)
@@ -36,13 +37,16 @@ namespace BeuatySalon.TG.States.MyRecordsState
 
                 if(isActiveOrders)
                 {
-                    List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
-                    orders.ForEach(order =>
-                    {
-                        buttons.Add([new InlineKeyboardButton(text: order.Service.Title)]);
-                    });
+                    List<InlineKeyboardButton[]> buttonsRows = this.orders.Select(
+                        order => {
+                            InlineKeyboardButton button = InlineKeyboardButton.WithCallbackData(text: $"{order.Service.Title}, {order.Order.Date}, {order.Service.Price} руб", callbackData: order.Order.Id.ToString());
+                            InlineKeyboardButton[] row = [button];
 
-                    InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+                            return row;
+                        }
+                    ).ToList();
+
+                    InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttonsRows);
 
                     await SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                        chatId: update.CallbackQuery.From.Id,
@@ -55,10 +59,10 @@ namespace BeuatySalon.TG.States.MyRecordsState
                 {
                     await SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                        chatId: update.CallbackQuery.From.Id,
-                       text: $"На данный момент у Вас нет активных записей. Могу предложить зарегистрироваться у нас ?",
+                       text: $"На данный момент у Вас нет активных записей. Могу предложить записаться к нам?",
                        replyMarkup: new InlineKeyboardMarkup(
                         [
-                           [InlineKeyboardButton.WithCallbackData(text: "Записаться на услугу", callbackData: "Записаться на услугу")],
+                            [InlineKeyboardButton.WithCallbackData(text: "Записаться на услугу", callbackData: "Записаться на услугу")],
                             [InlineKeyboardButton.WithCallbackData(text: "Верунться в главное меню", callbackData: "Верунться в главное меню")],
 
                         ]
@@ -81,6 +85,9 @@ namespace BeuatySalon.TG.States.MyRecordsState
                     cancellationToken: cancellationToken
                 );
             }
+
+            
+
         }
 
         public override AbstractState ReceiveMessage(Update update)
@@ -97,6 +104,15 @@ namespace BeuatySalon.TG.States.MyRecordsState
             {
                 return new ServiceState();
             }
+            foreach (var currentOrder in orders)
+            {
+                if(currentOrder.Order.Id.ToString() == update.CallbackQuery.Data.ToString())
+                {
+                    int orderIdToRescheduleOrCancel = int.Parse(update.CallbackQuery.Data.ToString());
+                    return new RescheduleOrCancelationState(orderIdToRescheduleOrCancel);
+                }
+            }
+          
 
             return new StartState();
         }

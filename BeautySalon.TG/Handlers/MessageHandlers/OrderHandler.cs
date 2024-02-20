@@ -1,4 +1,4 @@
-﻿using BeautySalon.BLL.Clents;
+﻿using BeautySalon.BLL.Clients;
 using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.BLL.OrdersForClientById;
 using System;
@@ -25,6 +25,16 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers
             List<OrdersForClientByIdOutputModel> result =  orderClient.GetOrdersForClientById(clientId);
 
             return result;
+        }
+        public void RemoveOrderForClientByOrderId(RemoveOrderForClientIdInput removeOrderForClient)
+        {
+            OrderClient orderClient = new OrderClient();
+            orderClient.RemoveOrderForClientByOrderId(removeOrderForClient);
+        }
+        public void UpdateOrderTimeForClientById(UpdateOrderClientByIdInput orders)
+        {
+            OrderClient orderClient = new OrderClient();
+            orderClient.UpdateOrderTimeForClientById(orders);
         }
     }
 }

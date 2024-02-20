@@ -1,4 +1,5 @@
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.InputModels;
 using BeuatySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot.Types;
 
@@ -6,8 +7,6 @@ namespace BeautySalon.TG.States;
 
 public class IntervalsState:AbstractState
 {
-    public int ShiftId { get; set; }
-    public int TypeId { get; set; }
     private List<IntervalsIdTitleStartTimeOutputModel> _intervals { get; set; }
     public IntervalsState(int shiftId, int typeId, int serviceId)
     {
@@ -28,8 +27,6 @@ public class IntervalsState:AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            
-            string intervalTitle = update.CallbackQuery.Data;
             foreach (var interval in _intervals)
             {
                 if (interval.Title.ToLower() == update.CallbackQuery.Data.ToLower())
@@ -37,10 +34,37 @@ public class IntervalsState:AbstractState
                     this.IntervalId = interval.Id;
                 }
             }
-       
-            //Передаем в стейт интервалов выбранный айди смены.
-            return new RegistrationStateName(ShiftId, IntervalId,ServiceId, TypeId);
+
+            UserHandler userHandler = new UserHandler();
+            long chatId = update.CallbackQuery.From.Id;
+            int? userId = userHandler.GetUserByChatId(chatId);
+
+            bool isUserRegistered = userId != null;
+
+            if  (isUserRegistered == true)
+            {
+
+                OrderHandler orderHandler = new OrderHandler();
+                NewOrderInputModel orderInputModel = new NewOrderInputModel
+                {
+                    
+                    ClientId = (int)userId,
+                    MasterId = (int)userId,
+                    ServiceId = ServiceId,
+                    IntervalId = IntervalId,
+                    Date = DateTime.Now,
+                };
+                orderHandler.CreateNewOrder(orderInputModel);
+
+                return new StartState();
+
+            }
+            else
+            {
+                return new RegistrationStateName(ShiftId, IntervalId, ServiceId, TypeId);
+            }
         }
+
         return new StartState();
     }
 }

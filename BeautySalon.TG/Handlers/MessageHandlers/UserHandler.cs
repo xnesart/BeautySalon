@@ -15,7 +15,6 @@ public class UserHandler
 {
     public async void AddUserToDB(AddUserByChatIdInputModel model)
     {
-        //botClient.SendTextMessageAsync(update.Message.Chat.Id,$"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", ${update.Message.Chat.Username}!\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).");
         IUserClient client = new UserClient();
         client.AddUserByChatId(model);
     }
@@ -47,7 +46,8 @@ public class UserHandler
     public int? GetUserByChatId(long chatId) 
     { 
         UserClient client= new UserClient();
-        List<UsersByChatIdOutputModel> result =  client.GetUsersByChatId((int)chatId);
+        List<BeautySalon.BLL.Models.Output_Models.UserByChatIdOutputModel> result =  client.GetUserByChatId((int)chatId);
+        List<BeautySalon.BLL.Models.Output_Models.UserByChatIdOutputModel> filteredResult = result.Where((user) => user.IsDeleted == false).ToList();
 
         bool isUserRegistered = result.Count > 0;
 
@@ -62,15 +62,36 @@ public class UserHandler
 
     }
 
-    // public int GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
-    // {
-    //     IIntervalsClient intervalsClient = new IntervalsClient();
-    //     var newModel= intervalsClient.GetFreeMasterIdByIntervalId(model);
-    //     foreach (var item in newModel)
-    //     {
-    //         return item.MasterId;
-    //     }
-    //     return -1;
-    // }
+    public int GetFreeMasterIdByIntervalId(int interval)
+    {
+        IUserClient userClient = new UserClient();
+        int id = userClient.GetFreeMasterByIntervalIdNew(interval);
+        return id;
+    }
+    
+    public async void HowToGet(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            // first row
+            new []
+            {
+                InlineKeyboardButton.WithUrl(text: "Проложить маршрут", url: "https://yandex.ru/maps/"),
+            },
+            // second row
+            new []
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "вернуться в главное меню"),
+            },
+        });
 
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Список стрижек",
+            replyMarkup: inlineKeyboard);
+    }
+
+}
+
+public class UserByChatIdOutputModel
+{
 }

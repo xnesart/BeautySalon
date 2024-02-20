@@ -1,5 +1,5 @@
 using BeautySalon.BLL;
-using BeautySalon.BLL.Clents;
+using BeautySalon.BLL.Clients;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -45,7 +45,7 @@ public class ShiftsHandler
 
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
 
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Список стрижек",
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите удобную смену",
             replyMarkup: inlineKeyboard);
     }
 }

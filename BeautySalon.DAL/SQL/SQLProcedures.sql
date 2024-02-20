@@ -20,6 +20,7 @@ begin
     where Users.Name = @Name and Users.Id = @Id
 end
 go
+-- ✓ По ChatId получить данные о User
 create proc GetUserByChatId
 @ChatId int as
 begin

@@ -69,11 +69,11 @@ public class UserClient : IUserClient
         return result;
     }
 
-    public List<UsersByChatIdOutputModel> GetUsersByChatId(int chatId)
+    public List<UserByChatIdOutputModel> GetUserByChatId(int chatId)
     {
         List<UsersDTO> users =
             _userRepository.GetUserByChatId(chatId);
-        var result = _mapper.Map<List<UsersByChatIdOutputModel>>(users);
+        var result = _mapper.Map<List<UserByChatIdOutputModel>>(users);
         return result;
     }
 
@@ -123,5 +123,17 @@ public class UserClient : IUserClient
         var result = this._mapper.Map<List<CheckAndAddUserOutputModel>>(userChatId).ToList();
         
         return result;
+    }
+    
+    public int GetFreeMasterByIntervalIdNew(int intervalId)
+    {
+        List<GetFreeMasterIdByIntervalIdDTO> masterList = _userRepository.GetFreeMasterIdByIntervalId(intervalId);
+        
+        var result = this._mapper.Map<List<MasterIdOutputModel>>(masterList).ToList();
+        foreach (var item in result)
+        {
+            return item.MasterId;
+        }
+        return -1;
     }
 }

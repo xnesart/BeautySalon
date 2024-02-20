@@ -20,6 +20,7 @@ namespace BeautySalon.BLL.IClient
         public void ChangeMasterInShift(int masterId, int shiftId);
         public List<CheckAndAddUserOutputModel> CheckAndAddUser(int chatId);
         public List<MasterByNameAndPhoneOutputModel> GetMasterByNameAndPhone(string name, string phone);
-        public List<UsersByChatIdOutputModel> GetUsersByChatId(int chatId);
+        public List<UserByChatIdOutputModel> GetUserByChatId(int chatId);
+        public int GetFreeMasterByIntervalIdNew(int intervalId);
     }
 }

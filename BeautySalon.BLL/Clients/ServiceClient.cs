@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.Models.InputModels;
 
-namespace BeautySalon.BLL.Clents
+namespace BeautySalon.BLL.Clients
 {
     public class ServiceClient : IServiceClient
     {
