@@ -48,13 +48,12 @@ public class UserHandler
         UserClient client= new UserClient();
         List<UsersByChatIdOutputModel> result =  client.GetUsersByChatId((int)chatId);
 
-        List<UsersByChatIdOutputModel> filteredResult = result.Where((user) => user.IsDeleted == false).ToList();
 
-        bool isUserRegistered = filteredResult.Count > 0;
+        bool isUserRegistered = result.Count > 0;
 
         if (isUserRegistered)
         {
-            return filteredResult[0].Id;
+            return result[0].Id;
         }
         else
         {
