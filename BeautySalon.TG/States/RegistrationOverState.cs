@@ -18,8 +18,16 @@ public class RegistrationOverState: AbstractState
                 callbackData: "вернуться в главное меню")
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
-        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.Message.Chat.Id, "Будем рады видеть Вас в нашем салоне!\nНаш администратор свяжется с Вами накануне посещения для подтверждения Вашего визита.\nВсего Вам наилучшего!",
-            replyMarkup: inlineKeyboard);
+        if (update.Message != null)
+        {
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.Message.Chat.Id, "Будем рады видеть Вас в нашем салоне!\nНаш администратор свяжется с Вами накануне посещения для подтверждения Вашего визита.\nВсего Вам наилучшего!",
+                replyMarkup: inlineKeyboard);    
+        }
+        else
+        {
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.CallbackQuery.From.Id, "Будем рады видеть Вас в нашем салоне!\nНаш администратор свяжется с Вами накануне посещения для подтверждения Вашего визита.\nВсего Вам наилучшего!",
+                replyMarkup: inlineKeyboard);    
+        }
     }
 
     public override AbstractState ReceiveMessage(Update update)
