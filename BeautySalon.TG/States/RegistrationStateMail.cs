@@ -58,7 +58,7 @@ public class RegistrationStateMail:AbstractState
          };
          
          //TODO
-         int masterIdFromBase = userHandler.GetClientByNameAndPhone(Name, Phone);
+         int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId(IntervalId);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
         // TODO
         OrderHandler orderHandler = new OrderHandler();

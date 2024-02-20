@@ -238,4 +238,18 @@ public class UserRepository : IUserRepository
                 }, splitOn: "Id,Title").ToList();
         }
     }
+    
+    public List<GetFreeMasterIdByIntervalIdDTO> GetFreeMasterIdByIntervalId (int interval)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            { 
+                IntervalId = interval,
+            };
+            var res = connection
+                .Query<GetFreeMasterIdByIntervalIdDTO>(Procedures.GetFreeMasterIdByIntervalId, parameters).ToList();
+            return res;
+        }
+    }
 }

@@ -8,7 +8,7 @@ using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
 using BeautySalon.DAL.Repositories;
 
-namespace BeautySalon.BLL.Clents
+namespace BeautySalon.BLL.Clients
 {
     public class OrderClient : IOrderClient
     {

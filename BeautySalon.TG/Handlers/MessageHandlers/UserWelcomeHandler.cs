@@ -15,13 +15,13 @@ public class UserWelcomeHandler
             // first row
             new []
             {
-                InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "11"),
+                InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "как добраться"),
                 InlineKeyboardButton.WithCallbackData(text: "Записаться", callbackData: "записаться"),
             },
             // second row
             new []
             {
-                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "21"),
+                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
                 InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "22"),
             },
         });
@@ -58,7 +58,7 @@ public class UserWelcomeHandler
             // second row
             new []
             {
-                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "21"),
+                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
                 InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "22"),
             },
         });

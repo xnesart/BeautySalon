@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading;
-using BeautySalon.BLL.Clents;
+using BeautySalon.BLL.Clients;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL;
@@ -24,7 +24,7 @@ public class Program
 
     static void Main(string[] args)
     {
-        
+
         var cts = new CancellationTokenSource(); //это токен связи
         var cancellationToken = cts.Token;
 
@@ -54,12 +54,12 @@ public class Program
         }
     }
 
-    public static async void HandleUpdate(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    public static async void HandleUpdate(ITelegramBotClient botClient, Update update,
+        CancellationToken cancellationToken)
     {
         if ((update?.Message != null && botClient != null) ||
             (update.CallbackQuery != null && update.CallbackQuery.Data != null))
         {
-
             Dictionary<long, AbstractState> handlersStatesByChatIdDictionary = SingletoneStorage.GetStorage().Clients;
 
             long chatId = 0;
@@ -86,13 +86,12 @@ public class Program
             }
             else
             {
-                handlersStatesByChatIdDictionary[chatId] = handlersStatesByChatIdDictionary[chatId].ReceiveMessage(update);
+                handlersStatesByChatIdDictionary[chatId] =
+                    handlersStatesByChatIdDictionary[chatId].ReceiveMessage(update);
             }
 
             handlersStatesByChatIdDictionary[chatId].SendMessage(chatId, update, cancellationToken);
         }
-
-
     }
 
     public static void HandleError(ITelegramBotClient botClient, Exception exception,
