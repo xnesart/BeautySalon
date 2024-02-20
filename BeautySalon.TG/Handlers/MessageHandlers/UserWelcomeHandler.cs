@@ -13,7 +13,7 @@ public class UserWelcomeHandler
         string name = "";
         if (update.Message != null)
         {
-            var userChatId = userClient.GetUsersByChatId((int)update.Message.Chat.Id);
+            var userChatId = userClient.GetUserByChatId((int)update.Message.Chat.Id);
             foreach (var item in userChatId)
             {
                 name = item.Name;
@@ -21,7 +21,7 @@ public class UserWelcomeHandler
         }
         else if (update.CallbackQuery != null)
         {
-            var userChatId = userClient.GetUsersByChatId((int)update.CallbackQuery.From.Id);
+            var userChatId = userClient.GetUserByChatId((int)update.CallbackQuery.From.Id);
             foreach (var item in userChatId)
             {
                 name = item.Name;

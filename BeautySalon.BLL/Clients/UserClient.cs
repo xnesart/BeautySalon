@@ -69,11 +69,11 @@ public class UserClient : IUserClient
         return result;
     }
 
-    public List<UsersByChatIdOutputModel> GetUsersByChatId(int chatId)
+    public List<UserByChatIdOutputModel> GetUserByChatId(int chatId)
     {
         List<UsersDTO> users =
             _userRepository.GetUserByChatId(chatId);
-        var result = _mapper.Map<List<UsersByChatIdOutputModel>>(users);
+        var result = _mapper.Map<List<UserByChatIdOutputModel>>(users);
         return result;
     }
 

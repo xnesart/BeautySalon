@@ -46,9 +46,9 @@ public class UserHandler
     public int? GetUserByChatId(long chatId) 
     { 
         UserClient client= new UserClient();
-        List<UsersByChatIdOutputModel> result =  client.GetUsersByChatId((int)chatId);
+        List<BeautySalon.BLL.Models.Output_Models.UserByChatIdOutputModel> result =  client.GetUserByChatId((int)chatId);
 
-        List<UsersByChatIdOutputModel> filteredResult = result.Where((user) => user.IsDeleted == false).ToList();
+        List<BeautySalon.BLL.Models.Output_Models.UserByChatIdOutputModel> filteredResult = result.Where((user) => user.IsDeleted == false).ToList();
 
         bool isUserRegistered = filteredResult.Count > 0;
 
@@ -91,4 +91,8 @@ public class UserHandler
             replyMarkup: inlineKeyboard);
     }
 
+}
+
+public class UserByChatIdOutputModel
+{
 }
