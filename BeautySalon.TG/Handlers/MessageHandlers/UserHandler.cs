@@ -1,8 +1,8 @@
-﻿using BeautySalon.BLL;
+using BeautySalon.BLL;
 using BeautySalon.BLL.Client;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
-using BeautySalon.BLL.Models.InputModels;
+using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.TG.States;
 using Telegram.Bot;
@@ -15,7 +15,6 @@ public class UserHandler
 {
     public async void AddUserToDB(AddUserByChatIdInputModel model)
     {
-        //botClient.SendTextMessageAsync(update.Message.Chat.Id,$"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", ${update.Message.Chat.Username}!\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).");
         IUserClient client = new UserClient();
         client.AddUserByChatId(model);
     }
@@ -44,26 +43,52 @@ public class UserHandler
 
         return 0;
     }
-    public int  GetUsersByChatId(int chatId)
-    {
-        UserClient client = new UserClient();
-         var result = client.GetUsersByChatId(chatId);
-        foreach( var i in result)
+    public int? GetUserByChatId(long chatId) 
+    { 
+        UserClient client= new UserClient();
+        List<UsersByChatIdOutputModel> result =  client.GetUsersByChatId((int)chatId);
+
+        List<UsersByChatIdOutputModel> filteredResult = result.Where((user) => user.IsDeleted == false).ToList();
+
+        bool isUserRegistered = filteredResult.Count > 0;
+
+        if (isUserRegistered)
         {
-            return (int)i.Id;
+            return filteredResult[0].Id;
         }
-        return 0;
+        else
+        {
+            return null;
+        }
+
     }
 
-    public int GetFreeMasterIdByIntervalId(IntervalIdInputModel model)
+    public int GetFreeMasterIdByIntervalId(int interval)
     {
-        IIntervalsClient intervalsClient = new IntervalsClient();
-        var newModel= intervalsClient.GetFreeMasterIdByIntervalId(model);
-        foreach (var item in newModel)
+        IUserClient userClient = new UserClient();
+        int id = userClient.GetFreeMasterByIntervalIdNew(interval);
+        return id;
+    }
+    
+    public async void HowToGet(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
-            return item.MasterId;
-        }
-        return -1;
+            // first row
+            new []
+            {
+                InlineKeyboardButton.WithUrl(text: "Проложить маршрут", url: "https://yandex.ru/maps/"),
+            },
+            // second row
+            new []
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "вернуться в главное меню"),
+            },
+        });
+
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Список стрижек",
+            replyMarkup: inlineKeyboard);
     }
 
 }

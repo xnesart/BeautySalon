@@ -52,7 +52,7 @@ public class UserRepository : IUserRepository
             {
                 ChatId = chatid,
             };
-            var users = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter).ToList();
+            List<UsersDTO> users = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter).ToList();
             return users;
         }
     }
@@ -236,6 +236,20 @@ public class UserRepository : IUserRepository
                     users.Intervals.Add(intervals);
                     return users;
                 }, splitOn: "Id,Title").ToList();
+        }
+    }
+    
+    public List<GetFreeMasterIdByIntervalIdDTO> GetFreeMasterIdByIntervalId (int interval)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            { 
+                IntervalId = interval,
+            };
+            var res = connection
+                .Query<GetFreeMasterIdByIntervalIdDTO>(Procedures.GetFreeMasterIdByIntervalId, parameters).ToList();
+            return res;
         }
     }
 }

@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BeautySalon.BLL.Clents
+namespace BeautySalon.BLL.Clients
 {
     public class TypeClient :ITypeClient
     {

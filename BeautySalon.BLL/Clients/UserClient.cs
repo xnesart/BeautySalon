@@ -124,4 +124,16 @@ public class UserClient : IUserClient
         
         return result;
     }
+    
+    public int GetFreeMasterByIntervalIdNew(int intervalId)
+    {
+        List<GetFreeMasterIdByIntervalIdDTO> masterList = _userRepository.GetFreeMasterIdByIntervalId(intervalId);
+        
+        var result = this._mapper.Map<List<MasterIdOutputModel>>(masterList).ToList();
+        foreach (var item in result)
+        {
+            return item.MasterId;
+        }
+        return -1;
+    }
 }
