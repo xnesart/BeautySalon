@@ -464,7 +464,7 @@ class Program
         
         // //Работает
         // IUserClient userClient = new UserClient();
-        // var res = userClient.GetUsersByChatId(1);
+        // var res = userClient.GetUserByChatId(1);
         // foreach (var item in res)
         // {
         //     Console.WriteLine(res);

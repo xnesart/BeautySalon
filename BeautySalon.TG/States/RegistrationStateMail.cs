@@ -23,7 +23,7 @@ public class RegistrationStateMail:AbstractState
     public async override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         await SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(chatId, "Пожалуйста укажите Ваш e-mail для рассылки спецпредложений (по желанию):");
+            .SendTextMessageAsync(chatId, "Желаете оставить Ваш e-mail для подписки на нашу рассылку с акциями и персональными предложениями?");
     }
 
     public override  AbstractState ReceiveMessage(Update update)
