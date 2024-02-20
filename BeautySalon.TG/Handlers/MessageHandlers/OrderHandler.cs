@@ -26,7 +26,7 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers
 
             return result;
         }
-        public void RemovePrderForClientByOrderId(RemoveOrderForClientIdInput removeOrderForClient)
+        public void RemoveOrderForClientByOrderId(RemoveOrderForClientIdInput removeOrderForClient)
         {
             OrderClient orderClient = new OrderClient();
             orderClient.RemoveOrderForClientByOrderId(removeOrderForClient);

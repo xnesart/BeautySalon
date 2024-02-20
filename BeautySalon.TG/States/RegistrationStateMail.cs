@@ -67,7 +67,7 @@ public class RegistrationStateMail:AbstractState
              ClientId = clientIdFromBase,
              MasterId = masterIdFromBase,
              ServiceId = ServiceId,
-             StartIntervalId = IntervalId,
+             IntervalId = IntervalId,
              Date = DateTime.Now
          };
          orderHandler.CreateNewOrder(orderInputModel);

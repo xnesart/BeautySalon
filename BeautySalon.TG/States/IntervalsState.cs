@@ -51,7 +51,7 @@ public class IntervalsState:AbstractState
                     ClientId = (int)userId,
                     MasterId = (int)userId,
                     ServiceId = ServiceId,
-                    StartIntervalId = IntervalId,
+                    IntervalId = IntervalId,
                     Date = DateTime.Now,
                 };
                 orderHandler.CreateNewOrder(orderInputModel);

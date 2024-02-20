@@ -37,44 +37,42 @@ namespace BeuatySalon.TG.States
         }
         public override AbstractState ReceiveMessage(Update update)
         {
-            if(update.CallbackQuery.Data == "Отменить запись")
+            if (update.CallbackQuery.Data == "Вернуться в главное меню")
             {
-                UserHandler userHandler = new UserHandler();
-                long chatId = update.CallbackQuery.From.Id;
-                int? userId = userHandler.GetUserByChatId(chatId);
-
-                RemoveOrderForClientIdInput removeOrderForClientIdInput = new RemoveOrderForClientIdInput()
+                return new StartState();
+            }
+            else
+            {
+                if (update.CallbackQuery.Data == "Отменить запись")
                 {
-                    ClientId = (int)userId,
-                    OrderId = this.OrderId
-                };
-                OrderHandler orderHandler = new OrderHandler();
-                orderHandler.RemovePrderForClientByOrderId(removeOrderForClientIdInput);
-            }
-            if(update.CallbackQuery.Data == "Перенести запись")
-            {
-                UserHandler userHandler = new UserHandler();
-
-                long chatId = update.CallbackQuery.From.Id;
-                int? userId = userHandler.GetUserByChatId(chatId);
-
-                UpdateOrderClientByIdInput updateOrderClientByIdInput = new UpdateOrderClientByIdInput()
+                    RemoveOrderForClientIdInput removeOrderForClientIdInput = new RemoveOrderForClientIdInput()
+                    {
+                        OrderId = this.OrderId
+                    };
+                    OrderHandler orderHandler = new OrderHandler();
+                    orderHandler.RemoveOrderForClientByOrderId(removeOrderForClientIdInput);
+                }
+                if(update.CallbackQuery.Data == "Перенести запись")
                 {
-                    Id = (int)userId,
-                    ClientId = (int)userId,
-                    IntervalId = this.IntervalId,
-                    MasterId = (int)userId,
-                };
-                OrderHandler orderHandler = new OrderHandler();
-                orderHandler.UpdateOrderTimeForClientById(updateOrderClientByIdInput);
+                    UserHandler userHandler = new UserHandler();
 
-            }
-            if(update.CallbackQuery.Data == "Вернуться в главное меню")
-            {
-                 return new StartState();
+                    long chatId = update.CallbackQuery.From.Id;
+                    int? userId = userHandler.GetUserByChatId(chatId);
 
+                    UpdateOrderClientByIdInput updateOrderClientByIdInput = new UpdateOrderClientByIdInput()
+                    {
+                        Id = (int)userId,
+                        ClientId = (int)userId,
+                        IntervalId = this.IntervalId,
+                        MasterId = (int)userId,
+                    };
+                    OrderHandler orderHandler = new OrderHandler();
+                    orderHandler.UpdateOrderTimeForClientById(updateOrderClientByIdInput);
+
+                }
+            
+                return new StartState();
             }
-            return new StartState();
         }
         
         
