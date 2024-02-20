@@ -45,7 +45,7 @@ public class ShiftsHandler
 
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
 
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Список стрижек",
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите удобную смену",
             replyMarkup: inlineKeyboard);
     }
 }

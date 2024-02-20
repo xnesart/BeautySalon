@@ -30,7 +30,7 @@ public class UserWelcomeHandler
         {
             Message sendMessage = await botClient.SendTextMessageAsync(
                 chatId: update.Message.Chat.Id,
-                text: $"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", !\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
+                text: $"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", {update.Message.Chat.Username}!\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
                 replyMarkup: inlineKeyboard,
                 cancellationToken: cancellationToken);
         }
@@ -38,7 +38,7 @@ public class UserWelcomeHandler
         {
             Message sendMessage = await botClient.SendTextMessageAsync(
                 chatId: update.CallbackQuery.From.Id,
-                text: $"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", !\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
+                text: $"Рады снова видеть Вас, {update.CallbackQuery.From.Username}!",
                 replyMarkup: inlineKeyboard,
                 cancellationToken: cancellationToken);
         }
