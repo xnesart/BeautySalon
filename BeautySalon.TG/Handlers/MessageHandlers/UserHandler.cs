@@ -94,12 +94,12 @@ public class UserHandler
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
-            // first row
-            new[]
-            {
-                InlineKeyboardButton.WithCallbackData(text: "Написать администратору",
-                    callbackData: "написать администратору"),
-            },
+            // // first row
+            // new[]
+            // {
+            //     InlineKeyboardButton.WithCallbackData(text: "Написать администратору",
+            //         callbackData: "написать администратору"),
+            // },
             // second row
             new[]
             {
