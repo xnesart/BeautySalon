@@ -52,7 +52,7 @@ public class UserRepository : IUserRepository
             {
                 ChatId = chatid,
             };
-            var users = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter).ToList();
+            List<UsersDTO> users = connection.Query<UsersDTO>(Procedures.CheckAndAddUser, parameter).ToList();
             return users;
         }
     }

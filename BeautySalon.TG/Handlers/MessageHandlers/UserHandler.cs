@@ -15,7 +15,6 @@ public class UserHandler
 {
     public async void AddUserToDB(AddUserByChatIdInputModel model)
     {
-        //botClient.SendTextMessageAsync(update.Message.Chat.Id,$"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", ${update.Message.Chat.Username}!\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).");
         IUserClient client = new UserClient();
         client.AddUserByChatId(model);
     }
@@ -49,11 +48,13 @@ public class UserHandler
         UserClient client= new UserClient();
         List<UsersByChatIdOutputModel> result =  client.GetUsersByChatId((int)chatId);
 
-        bool isUserRegistered = result.Count > 0;
+        List<UsersByChatIdOutputModel> filteredResult = result.Where((user) => user.IsDeleted == false).ToList();
+
+        bool isUserRegistered = filteredResult.Count > 0;
 
         if (isUserRegistered)
         {
-            return result[0].Id;
+            return filteredResult[0].Id;
         }
         else
         {

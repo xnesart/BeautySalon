@@ -127,7 +127,8 @@ public class OrderRepository : IOrderRepository
         {
             var parameter = new
             {
-                OrderId = order.Id
+                OrderId = order.Id,
+                
             };
          connection.Query<OrdersDTO>(Procedures.RemoveOrderForClientByOrderId, parameter);
         }
