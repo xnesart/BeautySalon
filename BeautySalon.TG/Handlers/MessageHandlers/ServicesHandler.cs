@@ -1,5 +1,5 @@
 using System.Runtime.InteropServices.JavaScript;
-using BeautySalon.BLL.Clents;
+using BeautySalon.BLL.Clients;
 using BeautySalon.BLL.Models.Output_Models;
 using Telegram.Bot;
 using Telegram.Bot.Types;
