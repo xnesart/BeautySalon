@@ -49,4 +49,5 @@ public class Procedures
     public const string AddMasterToShiftWithCreatedNewIntervals = "AddMasterToShiftWithCreatedNewIntervals";
     public const string GetFreeMasterIdByIntervalId = "GetFreeMasterIdByIntervalId";
     public const string GetWorkerNameByPassword = "GetWorkerNameByPassword";
+    public const string ChangeChatIdAndUserNameByPassword = "ChangeChatIdAndUserNameByPassword";
 }
