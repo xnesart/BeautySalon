@@ -27,7 +27,7 @@ class Program
 
         #region Works DAL
         
-        //Работает
+        // //Работает
         // IUserRepository userRepository = new UserRepository();
         // var res =userRepository.GetUserByChatId(1);
         // foreach (var item in res)
@@ -303,6 +303,20 @@ class Program
         // };
         // var res = intervalsRepository.GetFreeMasterIdByIntervalId(model);
         // Console.WriteLine();
+        
+        // //Работает
+        // IUserRepository userRepository = new UserRepository();
+        // var res =userRepository.GetWorkerNameByPassword("12345");
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(item);
+        // }
+        // Console.WriteLine();
+        
+        // //Работает
+        // IUserRepository userRepository = new UserRepository();
+        // userRepository.ChangeChatIdAndUserNameByPassword("12345",3, "3");
+        // Console.WriteLine();
 
         #endregion
 
@@ -464,7 +478,7 @@ class Program
         
         // //Работает
         // IUserClient userClient = new UserClient();
-        // var res = userClient.GetUsersByChatId(1);
+        // var res = userClient.GetUserByChatId(1);
         // foreach (var item in res)
         // {
         //     Console.WriteLine(res);
@@ -508,6 +522,19 @@ class Program
         //     Id = 1
         // };
         // var res = intervals.GetFreeMasterIdByIntervalId(model);
+        // Console.WriteLine();
+        
+        // //Работает
+        // IUserClient userClient = new UserClient();
+        // var res = userClient.GetWorkerNameByPassword("12345");
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(res);
+        // }
+        
+        // //Работает
+        // UserClient userClient = new UserClient();
+        // userClient.ChangeChatIdAndUserNameByPassword("12345", 5, "5");
         // Console.WriteLine();
         
         #endregion

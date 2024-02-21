@@ -6,7 +6,25 @@ begin
     insert into Users values(@ChatId, @UserName, @Name, @Phone, @Mail, @RoleId, null, 0, 0)
 end
 go
---получить все юзер id от всех пользователей
+-- ✓ По Password получить Name
+create procedure GetWorkerNameByPassword
+    @Password nvarchar(30) as
+begin
+select Name
+from Users
+where Password = @Password;
+end;
+go
+-- ✓ По Password обновить ChatId и UserName в таблице Users
+create procedure ChangeChatIdAndUserNameByPassword
+    @Password nvarchar(30), @ChatId int, @UserName nvarchar(50) as
+begin
+update Users
+set Users.ChatId = @ChatId, Users.UserName = @UserName
+where Users.Password = @Password
+end;
+go
+-- ✓ Получить ChatId всех пользователей
 create proc GetAllUsersChatId as
 begin
     select ChatId from Users
@@ -20,6 +38,7 @@ begin
     where Users.Name = @Name and Users.Id = @Id
 end
 go
+-- ✓ По ChatId получить данные о User
 create proc GetUserByChatId
 @ChatId int as
 begin

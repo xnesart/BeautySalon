@@ -252,4 +252,31 @@ public class UserRepository : IUserRepository
             return res;
         }
     }
+
+    public List<GetWorkerNameByPasswordDTO> GetWorkerNameByPassword(string password)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameter = new
+            {
+                Password = password,
+            };
+            var users = connection.Query<GetWorkerNameByPasswordDTO>(Procedures.GetWorkerNameByPassword, parameter).ToList();
+            return users;
+        }
+    }
+
+    public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                Password = password,
+                ChatId = chatId,
+                UserName = userName
+            };
+            connection.Query<ChangeChatIdAndUserNameByPasswordDTO>(Procedures.ChangeChatIdAndUserNameByPassword, parameters);
+        }
+    }
 }

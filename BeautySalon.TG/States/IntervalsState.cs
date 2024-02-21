@@ -1,6 +1,7 @@
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.Models.InputModels;
 using BeuatySalon.TG.Handlers.MessageHandlers;
+using BeuatySalon.TG.States;
 using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
@@ -43,21 +44,19 @@ public class IntervalsState:AbstractState
 
             if  (isUserRegistered == true)
             {
-
+                int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId(IntervalId);
                 OrderHandler orderHandler = new OrderHandler();
                 NewOrderInputModel orderInputModel = new NewOrderInputModel
                 {
-                    
                     ClientId = (int)userId,
-                    MasterId = (int)userId,
+                    MasterId = masterIdFromBase,
                     ServiceId = ServiceId,
-                    StartIntervalId = IntervalId,
+                    IntervalId = IntervalId,
                     Date = DateTime.Now,
                 };
                 orderHandler.CreateNewOrder(orderInputModel);
 
-                return new StartState();
-
+                return new RegistrationOverState();
             }
             else
             {

@@ -12,7 +12,7 @@ namespace BeautySalon.BLL.Models.InputModels
         public int MasterId { get; set; }
         public int ClientId { get; set; }
         public int ServiceId { get; set; }
-        public int StartIntervalId { get; set; }
+        public int IntervalId { get; set; }
 
     }
 }

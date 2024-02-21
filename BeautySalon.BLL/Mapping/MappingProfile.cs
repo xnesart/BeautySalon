@@ -40,7 +40,9 @@ public class MappingProfile : Profile
         CreateMap<UpdateOrderClientByIdInput, OrdersDTO>();
         CreateMap<AllShiftsWithFreeIntervalsOnCurrentServiceDTO, ShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
         CreateMap<ShiftsDTO, ShiftAllShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
-        CreateMap<RemoveOrderForClientIdInput,OrdersDTO>();
+
+        CreateMap<RemoveOrderForClientIdInput, OrdersDTO>().ForMember(destonation => destonation.Id, sourse => sourse.MapFrom(opt => opt.OrderId));
+
         CreateMap<GetAllShiftsAndEmployeesOnTodayDTO,MastersNameAndShiftsOutputModel>();
         CreateMap<MasterIdAndShiftIdInputModel,ShiftsDTO>();
         CreateMap<GetAllFreeIntervalsByShiftIdDTO,IntervalsIdTitleStartTimeOutputModel>();
@@ -53,11 +55,13 @@ public class MappingProfile : Profile
         CreateMap<UsersDTO,CheckAndAddUserOutputModel>();
         CreateMap<MasterIdAndShiftNumberInputModel,ShiftsDTO>();
         CreateMap<ServiceIdAndServiceTitleInputModel,UpdateServiceTitleDTO>();
-        CreateMap<UsersDTO,UsersByChatIdOutputModel>();
+        CreateMap<UsersDTO,UserByChatIdOutputModel>();
         CreateMap<ServiceIdAndServicePriceInputModel,UpdateServicePriceDTO>();
         CreateMap<ServiceIdAndServiceDurationInputModel,UpdateServiceDurationDTO>();
         CreateMap<ServicesDTO, ServiceIsDeletedOutputModel>();
         CreateMap<GetFreeMasterIdByIntervalIdDTO, MasterIdOutputModel>();
+        CreateMap<GetWorkerNameByPasswordDTO, NameOutputModel>();
+        CreateMap<PasswordChatIdUserNameInputModel, ChangeChatIdAndUserNameByPasswordDTO>();
     }
 }
 

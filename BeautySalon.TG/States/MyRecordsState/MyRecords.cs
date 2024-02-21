@@ -24,7 +24,7 @@ namespace BeuatySalon.TG.States.MyRecordsState
             OrderHandler orderHandler = new OrderHandler();
 
             int? userId = userHandler.GetUserByChatId(chatId);
-
+            
             bool isUserRegistered = userId != null;
 
             if (isUserRegistered)
@@ -59,7 +59,7 @@ namespace BeuatySalon.TG.States.MyRecordsState
                 {
                     await SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                        chatId: update.CallbackQuery.From.Id,
-                       text: $"На данный момент у Вас нет активных записей. Могу предложить зарегистрироваться у нас ?",
+                       text: $"На данный момент у Вас нет активных записей. Могу предложить записаться к нам?",
                        replyMarkup: new InlineKeyboardMarkup(
                         [
                             [InlineKeyboardButton.WithCallbackData(text: "Записаться на услугу", callbackData: "Записаться на услугу")],

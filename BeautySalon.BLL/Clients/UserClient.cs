@@ -69,11 +69,11 @@ public class UserClient : IUserClient
         return result;
     }
 
-    public List<UsersByChatIdOutputModel> GetUsersByChatId(int chatId)
+    public List<UserByChatIdOutputModel> GetUserByChatId(int chatId)
     {
         List<UsersDTO> users =
             _userRepository.GetUserByChatId(chatId);
-        var result = _mapper.Map<List<UsersByChatIdOutputModel>>(users);
+        var result = _mapper.Map<List<UserByChatIdOutputModel>>(users);
         return result;
     }
 
@@ -116,6 +116,7 @@ public class UserClient : IUserClient
     {
         _userRepository.ChangeMasterInShift(masterId, shiftId);
     }
+    
     public List<CheckAndAddUserOutputModel> CheckAndAddUser(int chatId)
     {
         List<UsersDTO> userChatId = this._userRepository.CheckAndAddUser(chatId);
@@ -135,5 +136,22 @@ public class UserClient : IUserClient
             return item.MasterId;
         }
         return -1;
+    }
+
+    public string GetWorkerNameByPassword(string password)
+    {
+        string result = "";
+        IUserRepository userRepository = new UserRepository();
+        var res = userRepository.GetWorkerNameByPassword(password);
+        foreach (var item in res)
+        {
+            return result = item.Name;
+        }
+        return result;
+    }
+
+    public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName)
+    {
+        _userRepository.ChangeChatIdAndUserNameByPassword(password, chatId, userName);
     }
 }
