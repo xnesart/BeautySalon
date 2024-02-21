@@ -27,7 +27,7 @@ class Program
 
         #region Works DAL
         
-        //Работает
+        // //Работает
         // IUserRepository userRepository = new UserRepository();
         // var res =userRepository.GetUserByChatId(1);
         // foreach (var item in res)
@@ -302,6 +302,15 @@ class Program
         //     Id = 1
         // };
         // var res = intervalsRepository.GetFreeMasterIdByIntervalId(model);
+        // Console.WriteLine();
+        
+        // //Работает
+        // IUserRepository userRepository = new UserRepository();
+        // var res =userRepository.GetWorkerNameByPassword("12345");
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(item);
+        // }
         // Console.WriteLine();
 
         #endregion
