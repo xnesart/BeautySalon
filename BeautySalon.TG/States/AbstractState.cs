@@ -15,7 +15,6 @@ public abstract class AbstractState
     public string Phone { get; set; }
     public string Mail { get; set; }
     public int TypeId { get; set; }
-
     public int OrderId { get; set; }
     
     

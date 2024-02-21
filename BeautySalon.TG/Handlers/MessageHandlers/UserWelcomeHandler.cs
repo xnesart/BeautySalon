@@ -23,6 +23,8 @@ public class UserWelcomeHandler
             {
                 InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
                 InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "22"),
+                InlineKeyboardButton.WithCallbackData(text: "Я сотрудник", callbackData: "я сотрудник")
+
             },
         });
 
