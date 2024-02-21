@@ -27,7 +27,7 @@ class Program
 
         #region Works DAL
         
-        //Работает
+        // //Работает
         // IUserRepository userRepository = new UserRepository();
         // var res =userRepository.GetUserByChatId(1);
         // foreach (var item in res)
@@ -303,6 +303,15 @@ class Program
         // };
         // var res = intervalsRepository.GetFreeMasterIdByIntervalId(model);
         // Console.WriteLine();
+        
+        // //Работает
+        // IUserRepository userRepository = new UserRepository();
+        // var res =userRepository.GetWorkerNameByPassword("12345");
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(item);
+        // }
+        // Console.WriteLine();
 
         #endregion
 
@@ -509,6 +518,14 @@ class Program
         // };
         // var res = intervals.GetFreeMasterIdByIntervalId(model);
         // Console.WriteLine();
+        
+        // //Работает
+        // IUserClient userClient = new UserClient();
+        // var res = userClient.GetWorkerNameByPassword("12345");
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(res);
+        // }
         
         #endregion
     }

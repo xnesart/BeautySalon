@@ -6,7 +6,16 @@ begin
     insert into Users values(@ChatId, @UserName, @Name, @Phone, @Mail, @RoleId, null, 0, 0)
 end
 go
---получить все юзер id от всех пользователей
+-- ✓ По Password получить Name
+create procedure GetWorkerNameByPassword
+    @Password nvarchar(30) as
+begin
+select Name
+from Users
+where Password = @Password;
+end;
+go
+-- ✓ Получить ChatId всех пользователей
 create proc GetAllUsersChatId as
 begin
     select ChatId from Users
