@@ -532,6 +532,11 @@ class Program
         //     Console.WriteLine(res);
         // }
         
+        // //Работает
+        // UserClient userClient = new UserClient();
+        // userClient.ChangeChatIdAndUserNameByPassword("12345", 5, "5");
+        // Console.WriteLine();
+        
         #endregion
     }
 }

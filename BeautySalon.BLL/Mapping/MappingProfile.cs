@@ -61,6 +61,7 @@ public class MappingProfile : Profile
         CreateMap<ServicesDTO, ServiceIsDeletedOutputModel>();
         CreateMap<GetFreeMasterIdByIntervalIdDTO, MasterIdOutputModel>();
         CreateMap<GetWorkerNameByPasswordDTO, NameOutputModel>();
+        CreateMap<PasswordChatIdUserNameInputModel, ChangeChatIdAndUserNameByPasswordDTO>();
     }
 }
 
