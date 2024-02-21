@@ -519,6 +519,14 @@ class Program
         // var res = intervals.GetFreeMasterIdByIntervalId(model);
         // Console.WriteLine();
         
+        // //Работает
+        // IUserClient userClient = new UserClient();
+        // var res = userClient.GetWorkerNameByPassword("12345");
+        // foreach (var item in res)
+        // {
+        //     Console.WriteLine(res);
+        // }
+        
         #endregion
     }
 }
