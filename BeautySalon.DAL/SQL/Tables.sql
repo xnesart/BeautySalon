@@ -1,7 +1,7 @@
 create table Users
 (
     Id int primary key not null identity(1,1),
-    Password nvarchar(30) unique,
+    Password nvarchar(30),
     ChatId int,
     UserName nvarchar(50),
     Name nvarchar(50) not null,
@@ -91,7 +91,8 @@ insert into Users (Password, ChatId, UserName, Name, Phone, Mail, RoleId, Salary
                                                                               (null, 6, '@goijrdnr', 'Кристина Валерьевна Заливняк', '642894209', 'fs5g@grq', 3, null),
                                                                               ('1236', null, null, 'Константин Михайлович Пожиняка', '5678966789', 'sfgert@gerg', 2, 50000), ('1237', null, null, 'Антон Васильевич Грида', '8436758755', 'sgdsd@sgsh', 2, 50000),
                                                                               ('1238', null, null, 'Денис Валерьевич Мдень', '8234043545', 'vdbdfb@oljk', 2, 50000),
-                                                                              (null, 1536667079, null, 'Маша', '1258', '78', 1, null), (123, null, null, null, null, null, 1, null)
+                                                                              (null, 1536667079, null, 'Маша', '1258', '78', 1, null)
+--                                                                               , (123, null, null, null, null, null, 1, null)
 
 
 insert into Shifts (Number, Title, StartTime, EndTime, MasterId) values(1, 'УТРО (10:00 - 13:45)', '02/22/2024 10:00', '02/22/2024 13:45', 2),
