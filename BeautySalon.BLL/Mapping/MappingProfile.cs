@@ -60,6 +60,7 @@ public class MappingProfile : Profile
         CreateMap<ServiceIdAndServiceDurationInputModel,UpdateServiceDurationDTO>();
         CreateMap<ServicesDTO, ServiceIsDeletedOutputModel>();
         CreateMap<GetFreeMasterIdByIntervalIdDTO, MasterIdOutputModel>();
+        CreateMap<GetWorkerNameByPasswordDTO, NameOutputModel>();
     }
 }
 
