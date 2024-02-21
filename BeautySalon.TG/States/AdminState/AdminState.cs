@@ -36,7 +36,6 @@ public class AdminState : AbstractState
                 return new StartState();
             }
         }
-
         return this;
     }
 }

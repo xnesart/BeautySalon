@@ -11,6 +11,7 @@ public class AdminControlPanelState: AbstractState
     {
         Password = password;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         UserWelcomeHandler userWelcomeHandler = new UserWelcomeHandler();
@@ -19,6 +20,13 @@ public class AdminControlPanelState: AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        throw new NotImplementedException();
+        if (update.CallbackQuery.Data != "вернуться в главное меню")
+        {
+            // ShiftId = int.Parse(update.CallbackQuery.Data);
+            // Console.WriteLine(ShiftId);
+            // //Передаем в стейт интервалов выбранный айди смены.
+            // return new IntervalsState(ShiftId, TypeId, ServiceId);
+        }
+        return new StartState();
     }
 }
