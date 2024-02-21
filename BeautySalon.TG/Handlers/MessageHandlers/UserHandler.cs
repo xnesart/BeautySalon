@@ -27,7 +27,6 @@ public class UserHandler
         {
             return (int)model.Id;
         }
-
         return 0;
     }
 
@@ -40,7 +39,6 @@ public class UserHandler
         {
             return (int)model.Id;
         }
-
         return 0;
     }
 

@@ -60,7 +60,7 @@ public class UserWelcomeHandler
                 Message sendMessage = await botClient.SendTextMessageAsync(
                     chatId: update.Message.Chat.Id,
                     text:
-                    $"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", {update.Message.Chat.Username}!\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
+                    $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {update.Message.Chat.Username}!\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
                     replyMarkup: inlineKeyboard,
                     cancellationToken: cancellationToken);
             }
@@ -81,37 +81,10 @@ public class UserWelcomeHandler
                 Message sendMessage = await botClient.SendTextMessageAsync(
                     chatId: update.CallbackQuery.From.Id,
                     text:
-                    $"Добро пожаловать к виртуальному помощнику сети салонов красоты \"Beautiful girl\", {update.CallbackQuery.From.Username}!\n\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
+                    $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {update.CallbackQuery.From.Username}!\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
                     replyMarkup: inlineKeyboard,
                     cancellationToken: cancellationToken);
             }
         }
-    }
-
-    public async void WelcomeUserFromButton(ITelegramBotClient botClient, Update update,
-        CancellationToken cancellationToken)
-    {
-        InlineKeyboardMarkup inlineKeyboard = new(new[]
-        {
-            // first row
-            new[]
-            {
-                InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "11"),
-                InlineKeyboardButton.WithCallbackData(text: "Записаться", callbackData: "записаться"),
-            },
-            // second row
-            new[]
-            {
-                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
-                InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "22"),
-            },
-        });
-
-        Message sentMessage = await botClient.SendTextMessageAsync(
-            chatId: update.CallbackQuery.From.Id,
-            text:
-            $"$\"Добро пожаловать к виртуальному помощнику сети салонов красоты \\\"Beautiful girl\\\", !\\n\\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
-            replyMarkup: inlineKeyboard,
-            cancellationToken: cancellationToken);
     }
 }
