@@ -39,7 +39,7 @@ public class StartState : AbstractState
             }
             else if(update.CallbackQuery.Data.ToLower() == "Я сотрудник")
             {
-
+                return new StaffEntranceState();
             }
         }
         return this;
