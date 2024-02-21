@@ -46,7 +46,7 @@ public class IntervalsHanlder
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
 
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите интервал",
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите подходящий интервал",
             replyMarkup: inlineKeyboard);
     }
 }

@@ -33,15 +33,15 @@ public class StartState : AbstractState
             {
                 return new MyRecords();
             }
-            else if (update.CallbackQuery.Data.ToLower() == "22") //"Оставить отзыв"
+            else if (update.CallbackQuery.Data.ToLower() == "оставить отзыв") //"Оставить отзыв"
             {
+                return new LeaveFeedbackState();
             }
             else if(update.CallbackQuery.Data.ToLower() == "Я сотрудник")
             {
 
             }
         }
-
         return this;
     }
 }

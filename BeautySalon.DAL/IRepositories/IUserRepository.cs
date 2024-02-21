@@ -22,5 +22,5 @@ public interface IUserRepository
     public List<GetMastersShiftsById> GetMastersShiftsById(int id);
     public List<GetFreeMastersAndIntervalsOnTodayDTO> GetFreeMastersAndIntervalsOnToday();
     public List<UsersDTO> CheckAndAddUser(int chatId);
-    public List<UsersDTO> GetUserByChatId(int chatid);
+    public List<UsersDTO> GetUserByChatId(int chatId);
 }

@@ -1,8 +1,9 @@
-using BeautySalon.BLL;
+﻿using BeautySalon.BLL;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.Models.InputModels;
 using BeuatySalon.TG.Handlers.MessageHandlers;
+using BeuatySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
@@ -22,8 +23,7 @@ public class RegistrationStateMail:AbstractState
     public async override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         await SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(chatId, "Пожалуйста укажите Ваш e-mail для рассылки спецпредложений (по желанию):");
-        
+            .SendTextMessageAsync(chatId, "Желаете оставить Ваш e-mail для подписки на нашу рассылку с акциями и персональными предложениями?");
     }
 
     public override  AbstractState ReceiveMessage(Update update)
@@ -32,9 +32,9 @@ public class RegistrationStateMail:AbstractState
         UserName = update?.Message.Chat.Username;
 
          SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(update.Message.Chat.Id, "Будем рады видеть Вас в нашем салоне!\nНаш администратор свяжется с Вами накануне посещения для подтверждения Вашего визита. Хорошего дня!");
+            .SendTextMessageAsync(update.Message.Chat.Id, "Поздравляем, Вы успешно зарегистрировались в виртуальной системе салона Beautiful Girl!");
          long id = update.Message.Chat.Id;
-
+         
          UserHandler userHandler = new UserHandler();
          AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
          {
@@ -72,8 +72,6 @@ public class RegistrationStateMail:AbstractState
          };
          orderHandler.CreateNewOrder(orderInputModel);
          
-         return new StartState();
+         return new RegistrationOverState();
     }
-
-
 }

@@ -1,6 +1,6 @@
 namespace BeautySalon.BLL.Models.Output_Models;
 
-public class UsersByChatIdOutputModel
+public class UserByChatIdOutputModel
 {
     public int Id { get; set; }
     public int ClientId { get; set; }
