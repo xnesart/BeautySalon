@@ -18,6 +18,10 @@ public class StartState : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
+        if (update.Message.Text == "/admin")
+        {
+            return new AdminState();
+        }
         //проверяем, что пришедшее сообщение является нажатием на кнопку и не равно null
         if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
         {
@@ -37,10 +41,7 @@ public class StartState : AbstractState
             {
                 return new LeaveFeedbackState();
             }
-            else if(update.CallbackQuery.Data.ToLower() == "Я сотрудник")
-            {
-                return new StaffEntranceState();
-            }
+           
         }
         return this;
     }

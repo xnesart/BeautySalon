@@ -137,4 +137,15 @@ public class UserClient : IUserClient
         return -1;
     }
 
+    public string GetWorkerNameByPassword(string password)
+    {
+        string result = "";
+        IUserRepository userRepository = new UserRepository();
+        var res = userRepository.GetWorkerNameByPassword(password);
+        foreach (var item in res)
+        {
+            return result = item.Name;
+        }
+        return result;
+    }
 }

@@ -252,42 +252,10 @@ public class UserRepository : IUserRepository
             return res;
         }
     }
-    public void AddPassword(AddPasswordDTO addPassword)
-    {
-        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-        {
-            var parameter = new
-            {
-                Password = addPassword.Password,
-                RoleId = addPassword.RoleId,
-            };
 
-            connection.Query(Procedures.AddPassword, parameter).ToList();
-
-        }
-    }
+   
 }
-    //public List<GetPasswordDTO> GetPassword(int id)
-    //{
-    //    using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
-    //    {
-    //        var parameter = new
-    //        {
-    //            Role = id,
-    //        };
-    //        return connection.Query <AddPasswordDTO, GetPasswordDTO>
-    //           (
-    //              Procedures.GetPassword,
-    //              ( role) =>
-    //              {
-    //                  GetPasswordDTO getPassword = new GetPasswordDTO();
-    //                  getPassword.RoleId = role.Id;
 
-    //                  return getPassword;
 
-    //              },
-    //              parameter
-    //              ).ToList();
-        
-    
+
 
