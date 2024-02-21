@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 
 namespace BeuatySalon.TG.States;
 
-public class AdminPasswordState: AbstractState
+public class AdminPasswordState : AbstractState
 {
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
@@ -17,6 +17,9 @@ public class AdminPasswordState: AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-
+        if (update.Message.Text == "12345")
+        {
+            return new AdminControlPanelState()
+        }
     }
 }
