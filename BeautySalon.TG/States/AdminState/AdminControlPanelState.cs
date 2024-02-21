@@ -7,10 +7,14 @@ namespace BeuatySalon.TG.States;
 
 public class AdminControlPanelState: AbstractState
 {
+    public AdminControlPanelState(string password)
+    {
+        Password = password;
+    }
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         UserWelcomeHandler userWelcomeHandler = new UserWelcomeHandler();
-        userWelcomeHandler.WelcomeUser(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        userWelcomeHandler.WelcomeAdminControl(SingletoneStorage.GetStorage().Client, update, cancellationToken, Password);
     }
 
     public override AbstractState ReceiveMessage(Update update)

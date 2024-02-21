@@ -7,7 +7,7 @@ using Telegram.Bot.Types.Enums;
 
 namespace BeuatySalon.TG.States;
 
-public class AdminState: AbstractState
+public class AdminState : AbstractState
 {
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
@@ -17,11 +17,14 @@ public class AdminState: AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        if (update.Message.Text == "/admin")
+        if (update.Message != null)
         {
-            return new AdminState();
+            if (update.Message.Text == "/admin")
+            {
+                return new AdminState();
+            }
         }
-        //проверяем, что пришедшее сообщение является нажатием на кнопку и не равно null
+
         if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
         {
             if (update.CallbackQuery.Data.ToLower() == "ввести пароль")
@@ -33,6 +36,7 @@ public class AdminState: AbstractState
                 return new StartState();
             }
         }
+
         return this;
     }
 }

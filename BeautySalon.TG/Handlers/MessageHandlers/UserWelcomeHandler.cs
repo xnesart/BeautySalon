@@ -1,4 +1,5 @@
 using BeautySalon.BLL;
+using BeautySalon.BLL.IClient;
 using BeuatySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -116,26 +117,11 @@ public class UserWelcomeHandler
     }
 
     public async void WelcomeAdminControl(ITelegramBotClient botClient, Update update,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken, string password)
     {
         UserClient userClient = new UserClient();
-        string name = "";
-        if (update.Message != null)
-        {
-            var userChatId = userClient.GetUserByChatId((int)update.Message.Chat.Id);
-            foreach (var item in userChatId)
-            {
-                name = item.Name;
-            }
-        }
-        else if (update.CallbackQuery != null)
-        {
-            var userChatId = userClient.GetUserByChatId((int)update.CallbackQuery.From.Id);
-            foreach (var item in userChatId)
-            {
-                name = item.Name;
-            }
-        }
+
+        string name = userClient.GetWorkerNameByPassword(password);
 
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
@@ -168,40 +154,40 @@ public class UserWelcomeHandler
                 Message sendMessage = await botClient.SendTextMessageAsync(
                     chatId: update.Message.Chat.Id,
                     text:
-                    $"Рады снова видеть Вас в виртуальной сети салона \"Beautiful girl\", {name}!",
+                    $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {name}!\nЧто Вы хотите сделать?",
                     replyMarkup: inlineKeyboard,
                     cancellationToken: cancellationToken);
             }
-            else
-            {
-                Message sendMessage = await botClient.SendTextMessageAsync(
-                    chatId: update.Message.Chat.Id,
-                    text:
-                    $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {update.Message.Chat.Username}!\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
-                    replyMarkup: inlineKeyboard,
-                    cancellationToken: cancellationToken);
-            }
+            // else
+            // {
+            //     Message sendMessage = await botClient.SendTextMessageAsync(
+            //         chatId: update.Message.Chat.Id,
+            //         text:
+            //         $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {update.Message.Chat.Username}!\nЧто Вы хотите сделать?",
+            //         replyMarkup: inlineKeyboard,
+            //         cancellationToken: cancellationToken);
+            // }
         }
-        else
-        {
-            if (name != null && name != "")
-            {
-                Message sendMessage = await botClient.SendTextMessageAsync(
-                    chatId: update.CallbackQuery.From.Id,
-                    text:
-                    $"Рады снова видеть Вас в виртуальной сети салона \"Beautiful girl\", {name}!",
-                    replyMarkup: inlineKeyboard,
-                    cancellationToken: cancellationToken);
-            }
-            else
-            {
-                Message sendMessage = await botClient.SendTextMessageAsync(
-                    chatId: update.CallbackQuery.From.Id,
-                    text:
-                    $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {update.CallbackQuery.From.Username}!\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
-                    replyMarkup: inlineKeyboard,
-                    cancellationToken: cancellationToken);
-            }
-        }
+        // else
+        // {
+        //     if (name != null && name != "")
+        //     {
+        //         Message sendMessage = await botClient.SendTextMessageAsync(
+        //             chatId: update.CallbackQuery.From.Id,
+        //             text:
+        //             $"Рады снова видеть Вас в виртуальной сети салона \"Beautiful girl\", {name}!\nЧто Вы хотите сделать?",
+        //             replyMarkup: inlineKeyboard,
+        //             cancellationToken: cancellationToken);
+        //     }
+        //     else
+        //     {
+        //         Message sendMessage = await botClient.SendTextMessageAsync(
+        //             chatId: update.CallbackQuery.From.Id,
+        //             text:
+        //             $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {update.CallbackQuery.From.Username}!\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
+        //             replyMarkup: inlineKeyboard,
+        //             cancellationToken: cancellationToken);
+        //     }
+        // }
     }
 }

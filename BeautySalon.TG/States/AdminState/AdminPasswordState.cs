@@ -1,4 +1,5 @@
-﻿using BeautySalon.TG;
+﻿using BeautySalon.BLL;
+using BeautySalon.TG;
 using BeautySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -17,9 +18,16 @@ public class AdminPasswordState : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        if (update.Message.Text == "12345")
+        UserClient userClient = new UserClient();
+        string adminName = userClient.GetWorkerNameByPassword(update.Message.Text);
+        if (adminName != null)
         {
-            return new AdminControlPanelState()
+            Password = update.Message.Text;
+            return new AdminControlPanelState(Password);
+        }
+        else
+        {
+            return this;
         }
     }
 }
