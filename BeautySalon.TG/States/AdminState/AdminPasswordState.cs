@@ -23,6 +23,7 @@ public class AdminPasswordState : AbstractState
         if (adminName != null)
         {
             Password = update.Message.Text;
+            userClient.ChangeChatIdAndUserNameByPassword(Password, (int)update.Message.Chat.Id, update.Message.Chat.Username);
             return new AdminControlPanelState(Password);
         }
         else
