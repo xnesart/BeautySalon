@@ -265,4 +265,18 @@ public class UserRepository : IUserRepository
             return users;
         }
     }
+
+    public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                Password = password,
+                ChatId = chatId,
+                UserName = userName
+            };
+            connection.Query<ChangeChatIdAndUserNameByPasswordDTO>(Procedures.ChangeChatIdAndUserNameByPassword, parameters);
+        }
+    }
 }

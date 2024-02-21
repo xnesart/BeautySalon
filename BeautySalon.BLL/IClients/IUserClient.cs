@@ -23,5 +23,6 @@ namespace BeautySalon.BLL.IClient
         public List<UserByChatIdOutputModel> GetUserByChatId(int chatId);
         public int GetFreeMasterByIntervalIdNew(int intervalId);
         public string GetWorkerNameByPassword(string password);
+        public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName);
     }
 }

@@ -312,6 +312,11 @@ class Program
         //     Console.WriteLine(item);
         // }
         // Console.WriteLine();
+        
+        // //Работает
+        // IUserRepository userRepository = new UserRepository();
+        // userRepository.ChangeChatIdAndUserNameByPassword("12345",3, "3");
+        // Console.WriteLine();
 
         #endregion
 
@@ -526,6 +531,11 @@ class Program
         // {
         //     Console.WriteLine(res);
         // }
+        
+        // //Работает
+        // UserClient userClient = new UserClient();
+        // userClient.ChangeChatIdAndUserNameByPassword("12345", 5, "5");
+        // Console.WriteLine();
         
         #endregion
     }

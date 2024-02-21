@@ -24,4 +24,5 @@ public interface IUserRepository
     public List<UsersDTO> CheckAndAddUser(int chatId);
     public List<UsersDTO> GetUserByChatId(int chatId);
     public List<GetWorkerNameByPasswordDTO> GetWorkerNameByPassword(string password);
+    public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName);
 }
