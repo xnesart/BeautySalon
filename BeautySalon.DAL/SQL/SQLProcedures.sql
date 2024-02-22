@@ -42,7 +42,7 @@ go
 create proc GetUserByChatId
 @ChatId int as
 begin
-    select Id,ChatId, UserName,Name,Phone,Mail,RoleId,Salary,IsBlocked,IsDeleted from Users
+    select Id, Password, ChatId, UserName, Name, Phone, Mail, RoleId, Salary, IsBlocked, IsDeleted from Users
     where ChatId = @ChatId
 end
 go
