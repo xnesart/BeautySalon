@@ -94,8 +94,17 @@ public class ServicesHandler
                 callbackData: "вернуться в главное меню")
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите услугу для редактирования",
-            replyMarkup: inlineKeyboard);
+        if (update.Message != null)
+        {
+            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Выберите услугу для редактирования",
+                replyMarkup: inlineKeyboard);
+        }
+        else
+        {
+            await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+                "Выберите услугу для редактирования",
+                replyMarkup: inlineKeyboard);
+        }
     }
 
     public async void ChoseMakeUp(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
@@ -232,9 +241,10 @@ public class ServicesHandler
         };
         serviceClient.RemoveServiceById(model);
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Услуга удалена");
-            
     }
-    public async void ServiceUpdatePrice(ITelegramBotClient botClient, Update update, int serviceId, decimal servicePrice)
+
+    public async void ServiceUpdatePrice(ITelegramBotClient botClient, Update update, int serviceId,
+        decimal servicePrice)
     {
         IServiceClient serviceClient = new ServiceClient();
         ServiceIdAndServicePriceInputModel model = new ServiceIdAndServicePriceInputModel
@@ -243,8 +253,25 @@ public class ServicesHandler
             Price = servicePrice
         };
         serviceClient.UpdateServicePrice(model);
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Цена изменена");
-            
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                    callbackData: "вернуться в главное меню"),
+            },
+        });
+        if (update.Message != null)
+        {
+            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Цена изменена",replyMarkup: inlineKeyboard);
+        }
+        else
+        {
+            await botClient.SendTextMessageAsync(update.CallbackQuery.From.Id, "Цена изменена");
+        }
+        
+        
+        
     }
 
     public async void ChoseStyling(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)

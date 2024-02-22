@@ -19,12 +19,16 @@ public class EditPriceState : AbstractState
     {
         SingletoneStorage.GetStorage().Client
             .SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Введите цену услуги");
-        ServicesHandler servicesHandler = new ServicesHandler();
-        servicesHandler.ServiceUpdatePrice(SingletoneStorage.GetStorage().Client, update, cancellationToken, ServiceId,
-            Price);
     }
 
     public override AbstractState ReceiveMessage(Update update)
     {
+        if (update.Message.Text != null)
+        {
+            decimal Price = decimal.Parse(update.Message.Text);
+            return new EditCompleteState(TypeId, ServiceId, Password, Price);
+        }
+
+        return new StartState();
     }
 }

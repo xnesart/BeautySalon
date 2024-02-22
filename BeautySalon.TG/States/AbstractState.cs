@@ -17,6 +17,7 @@ public abstract class AbstractState
     public int TypeId { get; set; }
     public int OrderId { get; set; }
     public string Password { get; set; }
+    public decimal Price { get; set; }
     
     public abstract void SendMessage(long chatId, Update update, CancellationToken cancellationToken);
     public abstract AbstractState ReceiveMessage(Update update);
