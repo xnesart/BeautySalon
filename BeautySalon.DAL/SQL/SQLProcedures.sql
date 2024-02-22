@@ -182,9 +182,9 @@ go
 create proc GetAllServicesByIdFromCurrentType
 @Id int as
 begin
-    select Services.Id, Services.Title,Services.Price, Services.Duration, Types.Id, Types.Title from Types
-    join Services on Services.TypeId = Types.Id
-    where Types.Id = @Id
+select Services.Id, Services.Title,Services.Price, Services.Duration, Types.Id, Types.Title from Types
+                                                                                                     join Services on Services.TypeId = Types.Id
+where Types.Id = @Id and Services.IsDeleted = 0
 end
 go
 -- ✓ Вывести все услуги

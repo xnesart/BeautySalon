@@ -1,6 +1,7 @@
 ﻿using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
+using BeuatySalon.TG.States.Services;
 using Telegram.Bot.Types;
 
 namespace BeuatySalon.TG.States;
@@ -22,8 +23,8 @@ public class AdminControlPanelState: AbstractState
     {
         if (update.CallbackQuery.Data == "редактировать услугу")
         {
-            return new ServiceState();
+            return new ServiceForModifyState(Password);
         }
-        return new StartState();
+        return this;
     }
 }

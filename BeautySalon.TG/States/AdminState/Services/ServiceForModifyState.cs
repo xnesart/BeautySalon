@@ -1,6 +1,71 @@
+using BeautySalon.TG;
+using BeautySalon.TG.MessageHandlers;
+using BeautySalon.TG.States;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+
 namespace BeuatySalon.TG.States.Services;
 
-public class ServiceForModifyState
+public class ServiceForModifyState:AbstractState
 {
-    
+    public ServiceForModifyState(string password)
+    {
+        Password = password;
+    }
+
+    public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
+    {
+        ServicesHandler servicesHandler = new ServicesHandler();
+        servicesHandler.ShowServicesForModify(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+    }
+
+    public override AbstractState ReceiveMessage(Update update)
+    {
+        if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
+        {
+            if (update.CallbackQuery.Data.ToLower() == "визаж")
+            {
+                this.TypeId = 1;
+                return new MakeUpState(TypeId);
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "стрижки")
+            {
+                this.TypeId = 2;
+                return new HaircutState(TypeId);
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "окрашивание")
+            {
+                this.TypeId = 3;
+                return new ColoringForModifyState(TypeId, Password);
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "моделирование")
+            {
+                this.TypeId = 4;
+                return new StylingState(TypeId);
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "маникюр")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "педикюр")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "эпиляция")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "пилинг")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "обертывание")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "массаж")
+            {
+            }
+            else if (update.CallbackQuery.Data.ToLower() == "вернуться в главное меню")
+            {
+                return new AdminControlPanelState(Password);
+            }
+        }
+        return  new AdminControlPanelState(Password);
+    }
 }
