@@ -20,12 +20,9 @@ public class AdminControlPanelState: AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        if (update.CallbackQuery.Data != "вернуться в главное меню")
+        if (update.CallbackQuery.Data == "редактировать услугу")
         {
-            // ShiftId = int.Parse(update.CallbackQuery.Data);
-            // Console.WriteLine(ShiftId);
-            // //Передаем в стейт интервалов выбранный айди смены.
-            // return new IntervalsState(ShiftId, TypeId, ServiceId);
+            return new ServiceState();
         }
         return new StartState();
     }
