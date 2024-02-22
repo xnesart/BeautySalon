@@ -1,14 +1,13 @@
 ﻿using BeautySalon.TG;
-using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Services;
+namespace BeuatySalon.TG.States.Services.EditDuration;
 
-public class EditPriceState : AbstractState
+public class EditDurationState:AbstractState
 {
-    public EditPriceState(int typeId, int serviceId, string password)
+    public EditDurationState(int typeId, int serviceId, string password)
     {
         TypeId = typeId;
         ServiceId = serviceId;
@@ -18,15 +17,15 @@ public class EditPriceState : AbstractState
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Введите цену услуги");
+            .SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Введите длительность услуги услуги");
     }
 
     public override AbstractState ReceiveMessage(Update update)
     {
         if (update.Message.Text != null)
         {
-            decimal Price = decimal.Parse(update.Message.Text);
-            return new EditPriceCompleteState(TypeId, ServiceId, Password, Price);
+            string duration = update.Message.Text;
+            return new EditDurationCompleteState(TypeId, ServiceId, Password, duration);
         }
         return new StartState();
     }

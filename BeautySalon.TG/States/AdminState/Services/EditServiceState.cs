@@ -1,6 +1,7 @@
 ﻿using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
+using BeuatySalon.TG.States.Services.EditDuration;
 using Telegram.Bot.Types;
 
 namespace BeuatySalon.TG.States.Services;
@@ -32,6 +33,11 @@ public class EditServiceState:AbstractState
             if (update.CallbackQuery.Data == "изменить цену")
             {
                 return new EditPriceState(TypeId, ServiceId, Password);
+            }
+
+            if (update.CallbackQuery.Data == "изменить длительность")
+            {
+                return new EditDurationState(TypeId, ServiceId, Password);
             }
         }
         return new ServiceForModifyState(Password);

@@ -126,6 +126,7 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
+
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -262,15 +263,41 @@ public class ServicesHandler
         });
         if (update.Message != null)
         {
-            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Цена изменена",replyMarkup: inlineKeyboard);
+            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Цена изменена", replyMarkup: inlineKeyboard);
         }
         else
         {
             await botClient.SendTextMessageAsync(update.CallbackQuery.From.Id, "Цена изменена");
         }
-        
-        
-        
+    }
+
+    public async void ServiceUpdateDuration(ITelegramBotClient botClient, Update update, int serviceId,
+        string duration)
+    {
+        IServiceClient serviceClient = new ServiceClient();
+        ServiceIdAndServiceDurationInputModel model = new ServiceIdAndServiceDurationInputModel
+        {
+            Id = serviceId,
+            Duration = duration
+        };
+        serviceClient.UpdateServiceDuration(model);
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                    callbackData: "вернуться в главное меню"),
+            },
+        });
+        if (update.Message != null)
+        {
+            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Продолжительность услуги изменена",
+                replyMarkup: inlineKeyboard);
+        }
+        else
+        {
+            await botClient.SendTextMessageAsync(update.CallbackQuery.From.Id, "Продолжительность услуги изменена");
+        }
     }
 
     public async void ChoseStyling(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)

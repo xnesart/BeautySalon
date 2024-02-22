@@ -5,9 +5,9 @@ using Telegram.Bot.Types;
 
 namespace BeuatySalon.TG.States.Services;
 
-public class EditCompleteState : AbstractState
+public class EditPriceCompleteState : AbstractState
 {
-    public EditCompleteState(int typeId, int serviceId, string password, decimal price)
+    public EditPriceCompleteState(int typeId, int serviceId, string password, decimal price)
     {
         TypeId = typeId;
         ServiceId = serviceId;
