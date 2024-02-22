@@ -25,7 +25,6 @@ public class ColoringState:AbstractState
             Console.WriteLine(update.CallbackQuery.Data);
             return new ShiftState(TypeId, ServiceId);
         }
-
         return new StartState();
     }
 }

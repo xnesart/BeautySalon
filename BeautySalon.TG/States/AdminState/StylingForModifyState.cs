@@ -1,13 +1,14 @@
-using BeautySalon.TG;
+﻿using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
+using BeuatySalon.TG.States.Services;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Services;
+namespace BeuatySalon.TG.States;
 
-public class ColoringForModifyState : AbstractState
+public class StylingForModifyState: AbstractState
 {
-    public ColoringForModifyState(int typeId, string password)
+    public StylingForModifyState(int typeId, string password)
     {
         TypeId = typeId;
         Password = password;

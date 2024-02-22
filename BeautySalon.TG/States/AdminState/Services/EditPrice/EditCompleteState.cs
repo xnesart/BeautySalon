@@ -35,7 +35,6 @@ public class EditCompleteState : AbstractState
         {
             return new ServiceForModifyState(Password);
         }
-
         return new ServiceForModifyState(Password);
     }
 }

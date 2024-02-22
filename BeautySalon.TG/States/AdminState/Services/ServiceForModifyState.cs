@@ -41,7 +41,7 @@ public class ServiceForModifyState:AbstractState
             else if (update.CallbackQuery.Data.ToLower() == "моделирование")
             {
                 this.TypeId = 4;
-                return new StylingState(TypeId);
+                return new StylingForModifyState(TypeId, Password);
             }
             else if (update.CallbackQuery.Data.ToLower() == "маникюр")
             {
@@ -63,6 +63,5 @@ public class ServiceForModifyState:AbstractState
             }
         }
         return  new AdminControlPanelState(Password);
-        
     }
 }

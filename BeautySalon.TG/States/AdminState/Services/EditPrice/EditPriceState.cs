@@ -28,7 +28,6 @@ public class EditPriceState : AbstractState
             decimal Price = decimal.Parse(update.Message.Text);
             return new EditCompleteState(TypeId, ServiceId, Password, Price);
         }
-
         return new StartState();
     }
 }
