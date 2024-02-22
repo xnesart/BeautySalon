@@ -23,20 +23,17 @@ public class EditServiceState:AbstractState
     public override AbstractState ReceiveMessage(Update update)
     {
         ServicesHandler servicesHandler = new ServicesHandler();
-        if (update.CallbackQuery.Data != "вернуться в главное меню")
+        if (update.CallbackQuery.Data != "вернуться к выбору услуг")
         {
             if (update.CallbackQuery.Data == "удалить")
             {
                 servicesHandler.ServiceRemove(SingletoneStorage.GetStorage().Client, update, ServiceId);
             }
-
             if (update.CallbackQuery.Data == "изменить цену")
             {
                 return new EditPriceState(TypeId, ServiceId, Password);
             }
-
         }
-
         return new ServiceForModifyState(Password);
     }
 }

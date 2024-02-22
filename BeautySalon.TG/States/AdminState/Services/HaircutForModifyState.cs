@@ -26,7 +26,6 @@ public class HaircutForModifyState:AbstractState
             Console.WriteLine(update.CallbackQuery.Data);
             return new EditServiceState(TypeId, ServiceId, Password);
         }
-
         return new AdminControlPanelState(Password);
     }
 }

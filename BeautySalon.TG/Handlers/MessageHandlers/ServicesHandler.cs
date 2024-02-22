@@ -96,13 +96,13 @@ public class ServicesHandler
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         if (update.Message != null)
         {
-            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Выберите услугу для редактирования",
+            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Выберите интересующий Вас тип услуги:",
                 replyMarkup: inlineKeyboard);
         }
         else
         {
             await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-                "Выберите услугу для редактирования",
+                "Выберите интересующий Вас тип услуги:",
                 replyMarkup: inlineKeyboard);
         }
     }
@@ -126,7 +126,6 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
-
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -224,8 +223,8 @@ public class ServicesHandler
             // second row
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
-                    callbackData: "вернуться в главное меню"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
+                    callbackData: "вернуться к выбору услуги"),
             },
         });
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Главное меню",

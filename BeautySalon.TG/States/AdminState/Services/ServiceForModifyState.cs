@@ -26,7 +26,7 @@ public class ServiceForModifyState:AbstractState
             if (update.CallbackQuery.Data.ToLower() == "визаж")
             {
                 this.TypeId = 1;
-                return new MakeUpState(TypeId);
+                return new MakeUpForModifyState(TypeId, Password);
             }
             else if (update.CallbackQuery.Data.ToLower() == "стрижки")
             {
@@ -61,11 +61,8 @@ public class ServiceForModifyState:AbstractState
             else if (update.CallbackQuery.Data.ToLower() == "массаж")
             {
             }
-            else if (update.CallbackQuery.Data.ToLower() == "вернуться в главное меню")
-            {
-                return new AdminControlPanelState(Password);
-            }
         }
         return  new AdminControlPanelState(Password);
+        
     }
 }
