@@ -1,5 +1,5 @@
-BeautySalon.DAL/Options.cs
-BeautySalon.DAL/Option.cs
+Options.cs
+Option.cs
 Option.cs
 # Common IntelliJ Platform excludes
 .idea/
