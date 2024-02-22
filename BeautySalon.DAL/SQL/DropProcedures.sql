@@ -1,6 +1,9 @@
 --удаление процедур
     --процедуры для админа
 drop proc AddUserByChatId
+drop proc GetWorkerNameByPassword
+drop proc ChangeChatIdAndUserNameByPassword
+drop proc GetAllUsersChatId
 drop proc GetClientByNameAndId
 drop proc GetClientByNameAndPhone
 drop proc GetMasterByNameAndId

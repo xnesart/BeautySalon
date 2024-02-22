@@ -116,6 +116,7 @@ public class UserClient : IUserClient
     {
         _userRepository.ChangeMasterInShift(masterId, shiftId);
     }
+    
     public List<CheckAndAddUserOutputModel> CheckAndAddUser(int chatId)
     {
         List<UsersDTO> userChatId = this._userRepository.CheckAndAddUser(chatId);
@@ -147,5 +148,10 @@ public class UserClient : IUserClient
             return result = item.Name;
         }
         return result;
+    }
+
+    public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName)
+    {
+        _userRepository.ChangeChatIdAndUserNameByPassword(password, chatId, userName);
     }
 }

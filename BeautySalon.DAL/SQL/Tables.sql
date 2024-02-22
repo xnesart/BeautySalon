@@ -1,6 +1,7 @@
 create table Users
 (
     Id int primary key not null identity(1,1),
+    Password nvarchar(30),
     ChatId int,
     Password nvarchar(30) unique,
     UserName nvarchar(50),
@@ -85,12 +86,15 @@ alter table Orders add foreign key (StartIntervalId) references Intervals(Id)
 
 insert into Roles (Title) values('Администратор салона'), ('Мастер'), ('Клиент')
 
-insert into Users (ChatId, UserName, Password, Name, Phone, Mail, RoleId, Salary) values(1, null, '12345', 'Иван Петрович Веселов', '89663542334', 'gdeakueh@dsejdfek', 1, 50000),
-                                                                              (2, null, '1234', 'Анна Петровна Брек', '8923467127', 'ewqgtg@fsfgs', 2, 50000), (3, null, '1235', 'Ирина Васильевна Вассильева', '8924350512', 'hseyje@gesdtt', 2, 50000),
-                                                                              (4, '@lraikv', null, 'Оксана Дмитриевна Кек', '877566588690', 'farse@hsdt6rh', 3, null), (5, '@yliivl;i', 'Снежанна Витальевна Соловьева', '892136234', 'gwghw5gh@dsejdfkrutek', 3, null),
-                                                                              (6, '@goijrdnr', null, 'Кристина Валерьевна Заливняк', '642894209', 'fs5g@grq', 3, null),
-                                                                              (7, null, '1236', 'Константин Михайлович Пожиняка', '5678966789', 'sfgert@gerg', 2, 50000), (8, null, '1237', 'Антон Васильевич Грида', '8436758755', 'sgdsd@sgsh', 2, 50000),
-                                                                              (9, null, '1238', 'Денис Валерьевич Мдень', '8234043545', 'vdbdfb@oljk', 2, 50000)
+insert into Users (Password, ChatId, UserName, Name, Phone, Mail, RoleId, Salary) values('12345', null, null, 'Иван Петрович Веселов', '89663542334', 'gdeakueh@dsejdfek', 1, 50000),
+                                                                              ('1234', null, null, 'Анна Петровна Брек', '8923467127', 'ewqgtg@fsfgs', 2, 50000), ('1235', null, null, 'Ирина Васильевна Вассильева', '8924350512', 'hseyje@gesdtt', 2, 50000),
+                                                                              (null, 4, '@lraikv', 'Оксана Дмитриевна Кек', '877566588690', 'farse@hsdt6rh', 3, null), (null, 5, '@yliivl;i', 'Снежанна Витальевна Соловьева', '892136234', 'gwghw5gh@dsejdfkrutek', 3, null),
+                                                                              (null, 6, '@goijrdnr', 'Кристина Валерьевна Заливняк', '642894209', 'fs5g@grq', 3, null),
+                                                                              ('1236', null, null, 'Константин Михайлович Пожиняка', '5678966789', 'sfgert@gerg', 2, 50000), ('1237', null, null, 'Антон Васильевич Грида', '8436758755', 'sgdsd@sgsh', 2, 50000),
+                                                                              ('1238', null, null, 'Денис Валерьевич Мдень', '8234043545', 'vdbdfb@oljk', 2, 50000),
+                                                                              (null, 1536667079, null, 'Маша', '1258', '78', 1, null)
+--                                                                               , (123, null, null, null, null, null, 1, null)
+
 
 insert into Shifts (Number, Title, StartTime, EndTime, MasterId) values(1, 'УТРО (10:00 - 13:45)', '02/22/2024 10:00', '02/22/2024 13:45', 2),
                                                                        (2, 'ДЕНЬ (14:00 - 17:45)', '02/22/2024 14:00', '02/22/2024 17:45', 2),

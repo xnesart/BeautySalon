@@ -102,8 +102,7 @@ public class UserWelcomeHandler
             new[]
             {
                 InlineKeyboardButton.WithCallbackData(text: "Ввести пароль", callbackData: "ввести пароль"),
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
-                    callbackData: "вернуться в главное меню"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "вернуться в главное меню"),
             },
         });
 
@@ -147,49 +146,21 @@ public class UserWelcomeHandler
                 InlineKeyboardButton.WithCallbackData(text: "Показать активные записи",
                     callbackData: "показать активные записи"),
             },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                    callbackData: "вернуться в главное меню"),
+            },
         });
 
         if (update.Message != null)
         {
-            if (name != null && name != "")
-            {
-                Message sendMessage = await botClient.SendTextMessageAsync(
-                    chatId: update.Message.Chat.Id,
-                    text:
-                    $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {name}!\nЧто Вы хотите сделать?",
-                    replyMarkup: inlineKeyboard,
-                    cancellationToken: cancellationToken);
-            }
-            // else
-            // {
-            //     Message sendMessage = await botClient.SendTextMessageAsync(
-            //         chatId: update.Message.Chat.Id,
-            //         text:
-            //         $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {update.Message.Chat.Username}!\nЧто Вы хотите сделать?",
-            //         replyMarkup: inlineKeyboard,
-            //         cancellationToken: cancellationToken);
-            // }
+            Message sendMessage = await botClient.SendTextMessageAsync(
+                chatId: update.Message.Chat.Id,
+                text:
+                $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {name}!\nЧто Вы хотите сделать?",
+                replyMarkup: inlineKeyboard,
+                cancellationToken: cancellationToken);
         }
-        // else
-        // {
-        //     if (name != null && name != "")
-        //     {
-        //         Message sendMessage = await botClient.SendTextMessageAsync(
-        //             chatId: update.CallbackQuery.From.Id,
-        //             text:
-        //             $"Рады снова видеть Вас в виртуальной сети салона \"Beautiful girl\", {name}!\nЧто Вы хотите сделать?",
-        //             replyMarkup: inlineKeyboard,
-        //             cancellationToken: cancellationToken);
-        //     }
-        //     else
-        //     {
-        //         Message sendMessage = await botClient.SendTextMessageAsync(
-        //             chatId: update.CallbackQuery.From.Id,
-        //             text:
-        //             $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {update.CallbackQuery.From.Username}!\nДля новых клиентов у нас действует скидка 10% (обязательно ею воспользуйся!).",
-        //             replyMarkup: inlineKeyboard,
-        //             cancellationToken: cancellationToken);
-        //     }
-        // }
     }
 }

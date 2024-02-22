@@ -1,4 +1,4 @@
-﻿using BeautySalon.TG;
+using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
 using BeuatySalon.TG.States.MyRecordsState;
@@ -36,7 +36,6 @@ public class AdminState : AbstractState
                 return new StartState();
             }
         }
-
         return this;
     }
 }

@@ -15,6 +15,15 @@ from Users
 where Password = @Password;
 end;
 go
+-- ✓ По Password обновить ChatId и UserName в таблице Users
+create procedure ChangeChatIdAndUserNameByPassword
+    @Password nvarchar(30), @ChatId int, @UserName nvarchar(50) as
+begin
+update Users
+set Users.ChatId = @ChatId, Users.UserName = @UserName
+where Users.Password = @Password
+end;
+go
 -- ✓ Получить ChatId всех пользователей
 create proc GetAllUsersChatId as
 begin
@@ -33,7 +42,7 @@ go
 create proc GetUserByChatId
 @ChatId int as
 begin
-    select Id,ChatId, UserName,Name,Phone,Mail,RoleId,Salary,IsBlocked,IsDeleted from Users
+    select Id, Password, ChatId, UserName, Name, Phone, Mail, RoleId, Salary, IsBlocked, IsDeleted from Users
     where ChatId = @ChatId
 end
 go
