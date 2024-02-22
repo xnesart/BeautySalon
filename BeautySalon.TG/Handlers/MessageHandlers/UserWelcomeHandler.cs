@@ -151,10 +151,10 @@ public class UserWelcomeHandler
             },
         });
 
-        if (update.Message != null)
+        if (update.Message != null || update.CallbackQuery != null)
         {
             Message sendMessage = await botClient.SendTextMessageAsync(
-                chatId: update.Message.Chat.Id,
+                chatId: update.Message != null ? update.Message.Chat.Id : update.CallbackQuery.From.Id,
                 text:
                 $"Добро пожаловать к виртуальному помощнику салона красоты \"Beautiful girl\", {name}!\nЧто Вы хотите сделать?",
                 replyMarkup: inlineKeyboard,
