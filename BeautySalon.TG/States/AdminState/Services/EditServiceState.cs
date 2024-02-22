@@ -29,7 +29,12 @@ public class EditServiceState:AbstractState
             {
                 servicesHandler.ServiceRemove(SingletoneStorage.GetStorage().Client, update, ServiceId);
             }
-            
+
+            if (update.CallbackQuery.Data == "изменить цену")
+            {
+                return new EditPriceState(TypeId, ServiceId, Password);
+            }
+
         }
 
         return new ServiceForModifyState(Password);

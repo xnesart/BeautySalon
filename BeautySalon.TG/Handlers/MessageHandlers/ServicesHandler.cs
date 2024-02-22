@@ -2,6 +2,7 @@ using System.Runtime.InteropServices.JavaScript;
 using BeautySalon.BLL.Clients;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.BLL.Models.Output_Models;
 using BeuatySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
@@ -231,6 +232,18 @@ public class ServicesHandler
         };
         serviceClient.RemoveServiceById(model);
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Услуга удалена");
+            
+    }
+    public async void ServiceUpdatePrice(ITelegramBotClient botClient, Update update, int serviceId, decimal servicePrice)
+    {
+        IServiceClient serviceClient = new ServiceClient();
+        ServiceIdAndServicePriceInputModel model = new ServiceIdAndServicePriceInputModel
+        {
+            Id = serviceId,
+            Price = servicePrice
+        };
+        serviceClient.UpdateServicePrice(model);
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Цена изменена");
             
     }
 
