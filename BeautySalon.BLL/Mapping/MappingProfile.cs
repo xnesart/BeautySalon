@@ -62,6 +62,8 @@ public class MappingProfile : Profile
         CreateMap<GetFreeMasterIdByIntervalIdDTO, MasterIdOutputModel>();
         CreateMap<GetWorkerNameByPasswordDTO, NameOutputModel>();
         CreateMap<PasswordChatIdUserNameInputModel, ChangeChatIdAndUserNameByPasswordDTO>();
+        CreateMap<GetAllOrdersOnTodayForMasterDTO, GetAllOrdersOnTodayForMasterOutputModel>();
+
     }
 }
 

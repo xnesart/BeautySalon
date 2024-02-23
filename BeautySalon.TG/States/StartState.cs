@@ -1,5 +1,6 @@
 using BeautySalon.TG.MessageHandlers;
 using BeuatySalon.TG.States;
+using BeuatySalon.TG.States.MasterState;
 using BeuatySalon.TG.States.MyRecordsState;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -18,14 +19,18 @@ public class StartState : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        if (update.Message != null)
+        if (update.Type == UpdateType.Message && UpdateType.Message != null)
         {
             if (update.Message.Text == "/admin")
             {
                 return new AdminState();
             }
+            if(update.Message.Text == "/master")
+            {
+                return new MasterState();
+            }
         }
-
+         
         //проверяем, что пришедшее сообщение является нажатием на кнопку и не равно null
         if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
         {

@@ -28,34 +28,56 @@ public class OrderRepository : IOrderRepository
         }
     }
 
-    public List<GetAllOrdersOnTodayForMastersDTO> GetAllOrdersOnTodayForMasters()
+    public List<GetAllOrdersOnTodayForMasterDTO> GetAllOrdersOnTodayForMaster()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllOrdersOnTodayForMastersDTO, UsersDTO, ServicesDTO, IntеrvalsDTO, UsersDTO, GetAllOrdersOnTodayForMastersDTO>(Procedures.GetAllOrdersOnTodayForMasters,
-                    (order, master, service, intervals, client) =>
+            return connection.Query< UsersDTO, ServicesDTO, IntеrvalsDTO, UsersDTO,OrdersDTO, GetAllOrdersOnTodayForMasterDTO>(Procedures.GetAllOrdersOnTodayForMasters,
+                    ( master, service, intervals, client,order) =>
                     {
-                        if (order.Master == null)
-                        {
-                            order.Master = new List<UsersDTO>();
-                        }
-                        order.Master.Add(master);
-                        if (order.Services == null)
-                        {
-                            order.Services = new List<ServicesDTO>();
-                        }
-                        order.Services.Add(service);
-                        if (order.Intervals == null)
-                        {
-                            order.Intervals = new List<IntеrvalsDTO>();
-                        }
-                        order.Intervals.Add(intervals);
-                        if (order.Client == null)
-                        {
-                            order.Client = new List<UsersDTO>();
-                        }
-                        order.Client.Add(client);
-                        return order;
+                        GetAllOrdersOnTodayForMasterDTO getAllOrdersOn = new GetAllOrdersOnTodayForMasterDTO();
+
+
+                        getAllOrdersOn.Master = new UsersDTO();
+                        getAllOrdersOn.Master.Id = master.Id;
+                        getAllOrdersOn.Master.Salary = master.Salary;
+                        getAllOrdersOn.Master.UserName = master.UserName;
+                        getAllOrdersOn.Master.Name = master.Name;
+                        getAllOrdersOn.Master.ChatId = master.ChatId;
+                        getAllOrdersOn.Master.RoleId = master.RoleId;
+
+                        getAllOrdersOn.Services = new ServicesDTO();
+                        getAllOrdersOn.Services.Title = service.Title;
+                        getAllOrdersOn.Services.Price = service.Price;
+                        getAllOrdersOn.Services.Duration = service.Duration;
+                        getAllOrdersOn.Services.TypeId = service.TypeId;
+
+                        getAllOrdersOn.Intervals = new IntеrvalsDTO();
+                        getAllOrdersOn.Intervals.Id = intervals.Id;
+                        getAllOrdersOn.Intervals.IsBusy = intervals.IsBusy;
+                        getAllOrdersOn.Intervals.Shifts = intervals.Shifts;
+                        getAllOrdersOn.Intervals.ShiftId = intervals.ShiftId;
+                        getAllOrdersOn.Intervals.StartTime = intervals.StartTime;
+                        getAllOrdersOn.Intervals.Title = intervals.Title;
+
+                        getAllOrdersOn.Client = new UsersDTO();
+                        getAllOrdersOn.Client.ChatId = client.ChatId;
+                        getAllOrdersOn.Client.Id= client.Id;
+                        getAllOrdersOn.Client.RoleId = client.RoleId;
+                        getAllOrdersOn.Client.Name = client.Name;
+                        getAllOrdersOn.Client.Phone = client.Phone;
+                        getAllOrdersOn.Client.UserName = client.UserName;
+
+                        getAllOrdersOn.Orders = new OrdersDTO();
+                        getAllOrdersOn.Orders.ClientId = order.ClientId;
+                        getAllOrdersOn.Orders.IntervalId=order.IntervalId;
+                        getAllOrdersOn.Orders.ServiceId = order.ServiceId;
+                        getAllOrdersOn.Orders.MasterId = order.MasterId;
+                        getAllOrdersOn.Orders.Id = order.Id;
+                        getAllOrdersOn.Orders.Date = order.Date;
+
+                        return getAllOrdersOn;
+
                     }, splitOn: "Id,Title,Title,Name")
                 .ToList();
         }
