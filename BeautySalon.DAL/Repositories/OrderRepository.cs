@@ -28,11 +28,11 @@ public class OrderRepository : IOrderRepository
         }
     }
 
-    public List<GetAllOrdersOnTodayForMastersDTO> GetAllOrdersOnTodayForMasters()
+    public List<GetAllOrdersOnTodayForMasterDTO> GetAllOrdersOnTodayForMaster()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllOrdersOnTodayForMastersDTO, UsersDTO, ServicesDTO, IntеrvalsDTO, UsersDTO, GetAllOrdersOnTodayForMastersDTO>(Procedures.GetAllOrdersOnTodayForMasters,
+            return connection.Query<GetAllOrdersOnTodayForMasterDTO, UsersDTO, ServicesDTO, IntеrvalsDTO, UsersDTO, GetAllOrdersOnTodayForMasterDTO>(Procedures.GetAllOrdersOnTodayForMasters,
                     (order, master, service, intervals, client) =>
                     {
                         if (order.Master == null)

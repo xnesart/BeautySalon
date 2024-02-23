@@ -1,6 +1,4 @@
 using BeautySalon.BLL;
-using BeautySalon.BLL.IClient;
-using BeuatySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -43,7 +41,7 @@ public class UserWelcomeHandler
             {
                 InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
                 InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "22"),
-                InlineKeyboardButton.WithCallbackData(text: "Я сотрудник", callbackData: "я сотрудник")
+                
 
             },
         });
@@ -122,7 +120,7 @@ public class UserWelcomeHandler
     {
         UserClient userClient = new UserClient();
 
-        string name = userClient.GetWorkerNameByPassword(password);
+        string? name = userClient.GetWorkerNameByPassword(password);
 
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
@@ -163,4 +161,46 @@ public class UserWelcomeHandler
                 cancellationToken: cancellationToken);
         }
     }
+    public async void WelcomeMaster(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Ввести пароль", callbackData: "ввести пароль"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "вернуться в главное меню"),
+            },
+        });
+
+        if (update.Message != null)
+        {
+            await botClient.SendTextMessageAsync(
+                chatId: update.Message.Chat.Id,
+                text:
+                $"Здраствуйте! Введите пароль мастера или вернитесь в главное меню",
+                replyMarkup: inlineKeyboard,
+                cancellationToken: cancellationToken
+            );
+        }
+    }
+    public async void MasterMenu(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Текущие записи ", callbackData: "Текущие записи"),
+            },
+        });
+
+        await botClient.SendTextMessageAsync(
+            chatId: update.Message.Chat.Id,
+            text:
+            $"Текущие записи",
+            replyMarkup: inlineKeyboard,
+            cancellationToken: cancellationToken
+        );
+    }
+    
 }

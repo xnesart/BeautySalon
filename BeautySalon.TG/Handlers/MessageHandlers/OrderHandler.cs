@@ -1,13 +1,10 @@
 ﻿using BeautySalon.BLL.Clients;
 using BeautySalon.BLL.Models.InputModels;
+using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.BLL.OrdersForClientById;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
+using Telegram.Bot;
 
 namespace BeuatySalon.TG.Handlers.MessageHandlers
 {
@@ -22,7 +19,7 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers
         public List<OrdersForClientByIdOutputModel> GetOrdersByClientId(int clientId)
         {
             OrderClient orderClient = new OrderClient();
-            List<OrdersForClientByIdOutputModel> result =  orderClient.GetOrdersForClientById(clientId);
+            List<OrdersForClientByIdOutputModel> result = orderClient.GetOrdersForClientById(clientId);
 
             return result;
         }
@@ -36,6 +33,14 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers
             OrderClient orderClient = new OrderClient();
             orderClient.UpdateOrderTimeForClientById(orders);
         }
+        public List<GetAllOrdersOnTodayForMasterOutputModel> GetAllOrdersOnTodayForMasters()
+        {
+            OrderClient orderClient = new OrderClient();
+            List<GetAllOrdersOnTodayForMasterOutputModel> result = orderClient.GetAllOrdersOnTodayForMasters();
+            return result;
+
+        }
+
     }
 }
 

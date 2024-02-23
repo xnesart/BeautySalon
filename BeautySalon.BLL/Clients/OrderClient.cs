@@ -3,6 +3,7 @@ using AutoMapper;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models.InputModels;
+using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
@@ -42,6 +43,12 @@ namespace BeautySalon.BLL.Clients
         {
             OrdersDTO orders = this._mapper.Map<OrdersDTO>(removeOrderForClient);
             this._orderRepository.RemoveOrderForClientByOrderId(orders);
+        }
+        public List<GetAllOrdersOnTodayForMasterOutputModel> GetAllOrdersOnTodayForMasters()
+        {
+            List<GetAllOrdersOnTodayForMasterDTO> getAllOrdersOnToday = _orderRepository.GetAllOrdersOnTodayForMaster();
+            List<GetAllOrdersOnTodayForMasterOutputModel> result = this._mapper.Map<List<GetAllOrdersOnTodayForMasterOutputModel>>(getAllOrdersOnToday);
+            return result;
         }
     }
 }
