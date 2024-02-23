@@ -1,6 +1,7 @@
 using BeautySalon.TG;
 using BeautySalon.TG.States;
 using BeuatySalon.TG.Handlers.MessageHandlers;
+using BeuatySalon.TG.States.Employees.AddWorkers;
 using BeuatySalon.TG.States.Services;
 using Telegram.Bot.Types;
 
@@ -25,7 +26,7 @@ public class EditWorkerStartState : AbstractState
         {
             if (update.CallbackQuery.Data == "добавить сотрудника")
             {
-                
+                return new AddWorkersState(Password);
             }
             else
             {

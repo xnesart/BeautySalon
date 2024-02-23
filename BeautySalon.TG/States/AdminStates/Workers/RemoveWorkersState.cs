@@ -23,7 +23,6 @@ public class RemoveWorkersState:AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            //WorkerId = int.Parse(update.CallbackQuery.Data);
             return new RemoveWorkersComplete(Password, WorkerId);
         }
 

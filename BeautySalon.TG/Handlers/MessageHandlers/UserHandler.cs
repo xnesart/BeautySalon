@@ -27,6 +27,7 @@ public class UserHandler
         {
             return (int)model.Id;
         }
+
         return 0;
     }
 
@@ -39,6 +40,7 @@ public class UserHandler
         {
             return (int)model.Id;
         }
+
         return 0;
     }
 
@@ -133,6 +135,11 @@ public class UserHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Добавить сотрудника",
+                callbackData: "добавить сотрудника")
+        });
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -140,13 +147,13 @@ public class UserHandler
                 callbackData: "вернуться в главное меню")
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
-         botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+        botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
             "Выберите сотрудника",
             replyMarkup: inlineKeyboard);
-        
     }
-    
-    public async void RemoveWorkerGetButtons(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+
+    public async void RemoveWorkerGetButtons(ITelegramBotClient botClient, Update update,
+        CancellationToken cancellationToken)
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
@@ -164,8 +171,9 @@ public class UserHandler
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите действие:",
             replyMarkup: inlineKeyboard);
     }
-    
-    public async void RemoveWorkerById(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken, int workerId)
+
+    public async void RemoveWorkerById(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,
+        int workerId)
     {
         IUserClient userClient = new UserClient();
         UserIdInputModel model = new UserIdInputModel
@@ -173,6 +181,45 @@ public class UserHandler
             Id = workerId
         };
         userClient.RemoveUserById(model);
-        
     }
+
+    public async void AddWorkersStateGetButtons(ITelegramBotClient botClient, Update update,
+        CancellationToken cancellationToken)
+    {
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Администратор",
+                    callbackData: "администратор"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Мастер",
+                    callbackData: "мастер"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                    callbackData: "вернуться в главное меню"),
+            },
+        });
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите действие:",
+            replyMarkup: inlineKeyboard);
+    }
+    
+    public async void AddWorkerByRoleId(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,int roleId, string name,
+         string phone, string mail)
+    {
+        UserClient userClient = new UserClient();
+        WorkerByRoleIdInputModel model = new WorkerByRoleIdInputModel
+        {
+            Name = name,
+            RoleId = roleId,
+            Mail = mail,
+            Phone = phone
+        };
+        userClient.AddWorkerByRoleId(model);
+    }
+    
 }
