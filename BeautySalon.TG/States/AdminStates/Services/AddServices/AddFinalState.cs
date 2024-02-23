@@ -33,10 +33,14 @@ public class AddFinalState : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        if (update.Message.Text != null)
+        if (update.Message != null)
         {
-            string price = update.Message.Text;
-            return new StartState();
+            if (update.Message.Text != null)
+            {
+                string price = update.Message.Text;
+                return new StartState();
+            }
+            
         }
 
         return new StartState();

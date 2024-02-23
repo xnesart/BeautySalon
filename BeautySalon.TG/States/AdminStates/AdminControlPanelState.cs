@@ -22,6 +22,10 @@ public class AdminControlPanelState: AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
+        if (update.Message != null && update.Message.Text == "/start")
+        {
+            return new StartState();
+        }
         if (update.CallbackQuery.Data == "редактировать услугу")
         {
             return new ServiceForModifyState(Password);
