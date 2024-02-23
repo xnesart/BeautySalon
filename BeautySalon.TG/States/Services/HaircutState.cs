@@ -11,6 +11,7 @@ public class HaircutState:AbstractState
     {
         TypeId = typeId;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();

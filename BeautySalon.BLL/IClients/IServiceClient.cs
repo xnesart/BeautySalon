@@ -17,5 +17,6 @@ namespace BeautySalon.BLL.IClient
         public void UpdateServicePrice(ServiceIdAndServicePriceInputModel model);   
         public void UpdateServiceDuration(ServiceIdAndServiceDurationInputModel model);   
         public ServiceIsDeletedOutputModel RemoveServiceById(ServiceIdInputModel model);
+        public void AddServiceById(ServiceByIdInputModel model);
     }
 }
