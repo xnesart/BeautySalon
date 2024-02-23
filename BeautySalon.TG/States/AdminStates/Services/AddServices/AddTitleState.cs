@@ -8,8 +8,11 @@ using Telegram.Bot.Types;
 namespace BeautySalon.TG.States.AdminStates.Services.AddServices;
 
 public class AddTitleState: AbstractState
-{    
-
+{
+    public AddTitleState(int typeId)
+    {
+        TypeId = typeId;
+    }
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Введите название услуги:");
@@ -19,7 +22,7 @@ public class AddTitleState: AbstractState
         if (update.Message.Text != null)
         {
             string title = update.Message.Text;
-            return new AddTypeState(title);
+            return new AddDurationState(title, TypeId);
         }
         return new StartState();
     }

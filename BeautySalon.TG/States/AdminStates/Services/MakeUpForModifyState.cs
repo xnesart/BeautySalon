@@ -29,7 +29,7 @@ public class MakeUpForModifyState : AbstractState
         {
             if (update.CallbackQuery.Data == "добавить услугу")
             {
-                return new AddTitleState();
+                return new AddTitleState(TypeId);
             }
             else
             {
