@@ -52,6 +52,7 @@ public class StartState : AbstractState
             }
            
         }
+
         return this;
     }
 }
