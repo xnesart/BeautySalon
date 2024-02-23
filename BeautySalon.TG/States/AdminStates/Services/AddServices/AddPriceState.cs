@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 
 namespace BeuatySalon.TG.States.AdminStates.Services.AddServices;
 
-public class AddPriceState: AbstractState
+public class AddPriceState : AbstractState
 {
     public AddPriceState(string title, int typeId, string duration)
     {
@@ -13,10 +13,12 @@ public class AddPriceState: AbstractState
         TypeId = typeId;
         Duration = duration;
     }
+
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Назначьте цену услуги:");
     }
+
     public override AbstractState ReceiveMessage(Update update)
     {
         if (update.Message.Text != null)
@@ -24,6 +26,7 @@ public class AddPriceState: AbstractState
             decimal price = decimal.Parse(update.Message.Text);
             return new AddFinalState(Title, TypeId, Duration, price);
         }
+
         return new StartState();
     }
 }

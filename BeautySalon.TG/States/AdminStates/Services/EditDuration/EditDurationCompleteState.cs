@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 
 namespace BeuatySalon.TG.States.Services.EditDuration;
 
-public class EditDurationCompleteState:AbstractState
+public class EditDurationCompleteState : AbstractState
 {
     public EditDurationCompleteState(int typeId, int serviceId, string password, string duration)
     {
@@ -35,6 +35,7 @@ public class EditDurationCompleteState:AbstractState
         {
             return new ServiceForModifyState(Password);
         }
+
         return new ServiceForModifyState(Password);
     }
 }

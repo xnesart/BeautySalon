@@ -27,6 +27,7 @@ public class ColoringForModifyState : AbstractState
             Console.WriteLine(update.CallbackQuery.Data);
             return new EditServiceState(TypeId, ServiceId, Password);
         }
+
         return new AdminControlPanelState(Password);
     }
 }

@@ -6,9 +6,9 @@ using Telegram.Bot.Types;
 
 namespace BeuatySalon.TG.States.Services;
 
-public class EditServiceState:AbstractState
+public class EditServiceState : AbstractState
 {
-    public EditServiceState(int typeId,int serviceId, string password)
+    public EditServiceState(int typeId, int serviceId, string password)
     {
         TypeId = typeId;
         ServiceId = serviceId;
@@ -30,6 +30,7 @@ public class EditServiceState:AbstractState
             {
                 servicesHandler.ServiceRemove(SingletoneStorage.GetStorage().Client, update, ServiceId);
             }
+
             if (update.CallbackQuery.Data == "изменить цену")
             {
                 return new EditPriceState(TypeId, ServiceId, Password);
@@ -40,6 +41,7 @@ public class EditServiceState:AbstractState
                 return new EditDurationState(TypeId, ServiceId, Password);
             }
         }
+
         return new ServiceForModifyState(Password);
     }
 }

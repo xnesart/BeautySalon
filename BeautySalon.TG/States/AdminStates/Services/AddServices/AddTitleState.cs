@@ -9,10 +9,7 @@ namespace BeuatySalon.TG.States.AdminStates.Services.AddServices;
 
 public class AddTitleState: AbstractState
 {    
-    public AddTitleState(string title)
-    {
-        Title = title;
-    }
+
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Введите название услуги:");

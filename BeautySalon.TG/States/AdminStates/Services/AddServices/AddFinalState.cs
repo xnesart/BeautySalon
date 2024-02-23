@@ -8,7 +8,7 @@ using Telegram.Bot.Types;
 
 namespace BeuatySalon.TG.States.AdminStates.Services.AddServices;
 
-public class AddFinalState: AbstractState
+public class AddFinalState : AbstractState
 {
     public AddFinalState(string title, int typeId, string duration, decimal price)
     {
@@ -17,9 +17,9 @@ public class AddFinalState: AbstractState
         Duration = duration;
         Price = price;
     }
+
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
-        // SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Вы успешно добавили новою услугу в базу данных.");
         ServicesHandler servicesHandler = new ServicesHandler();
         ServiceByIdInputModel model = new ServiceByIdInputModel
         {
@@ -28,8 +28,9 @@ public class AddFinalState: AbstractState
             Duration = Duration,
             Price = Price,
         };
-        servicesHandler.AddNewService(SingletoneStorage.GetStorage().Client, update,model);
+        servicesHandler.AddNewService(SingletoneStorage.GetStorage().Client, update, model);
     }
+
     public override AbstractState ReceiveMessage(Update update)
     {
         if (update.Message.Text != null)
@@ -37,6 +38,7 @@ public class AddFinalState: AbstractState
             string price = update.Message.Text;
             return new StartState();
         }
+
         return new StartState();
     }
 }

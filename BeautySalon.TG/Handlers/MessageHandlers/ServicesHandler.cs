@@ -469,7 +469,7 @@ public class ServicesHandler
                 callbackData: "вернуться в главное меню")
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
-        botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+        botClient.SendTextMessageAsync(update.Message.Chat.Id,
             "Вы успешно добавили новою услугу в базу данных.",
             replyMarkup: inlineKeyboard);
     }
