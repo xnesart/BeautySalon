@@ -1,21 +1,22 @@
-﻿using BeautySalon.TG;
+using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
 using Telegram.Bot.Types;
 
 namespace BeuatySalon.TG.States.Services;
 
-public class HaircutForModifyState:AbstractState
+public class ColoringForModifyState : AbstractState
 {
-    public HaircutForModifyState(int typeId, string password)
+    public ColoringForModifyState(int typeId, string password)
     {
         TypeId = typeId;
         Password = password;
     }
+
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();
-        servicesHandler.ChoseHaircut(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        servicesHandler.ChoseColoringForModify(SingletoneStorage.GetStorage().Client, update, cancellationToken);
     }
 
     public override AbstractState ReceiveMessage(Update update)
@@ -26,7 +27,6 @@ public class HaircutForModifyState:AbstractState
             Console.WriteLine(update.CallbackQuery.Data);
             return new EditServiceState(TypeId, ServiceId, Password);
         }
-        var state = new AdminControlPanelState(Password);
-        return state;
+        return new AdminControlPanelState(Password);
     }
 }

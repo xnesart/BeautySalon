@@ -24,7 +24,7 @@ public class EditServiceState:AbstractState
     public override AbstractState ReceiveMessage(Update update)
     {
         ServicesHandler servicesHandler = new ServicesHandler();
-        if (update.CallbackQuery.Data != "вернуться к выбору услуг")
+        if (update.CallbackQuery.Data != "вернуться к выбору типа услуг")
         {
             if (update.CallbackQuery.Data == "удалить")
             {

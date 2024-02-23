@@ -14,7 +14,6 @@ namespace BeautySalon.TG.MessageHandlers;
 public class ServicesHandler
 {
     public static List<AllServicesByIdFromCurrentTypeOutputModel> Services { get; set; }
-
     public async void GetBackToMenu(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]
@@ -54,7 +53,6 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
-
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -86,7 +84,6 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
-
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -126,7 +123,6 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
-
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -138,7 +134,44 @@ public class ServicesHandler
             "В нашем салоне доступны следующие услуги по визажу:",
             replyMarkup: inlineKeyboard);
     }
-
+    
+    public async void ChoseMakeUpForModify(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        ServiceClient serviceClient = new ServiceClient();
+        var services = serviceClient.GetAllServicesByIdFromCurrentType(1);
+        Services = serviceClient.GetAllServicesByIdFromCurrentType(1);
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        int rowsCount = 2;
+        for (int i = 0; i <= services.Count; i += rowsCount)
+        {
+            // Выбираем порцию услуг для текущего ряда
+            var rowServices = services.Skip(i).Take(rowsCount);
+            // Создаем массив кнопок для текущего ряда
+            InlineKeyboardButton[] row = rowServices
+                .Select(service => InlineKeyboardButton.WithCallbackData(text: $"{service.Title} {service.Price}",
+                    callbackData: service.Id.ToString()))
+                .ToArray();
+            // Добавляем массив кнопок в список
+            buttons.Add(row);
+        }
+        //добавляем Добавить услугу
+        buttons.Add(new []
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Добавить услугу",
+                callbackData: "добавить услугу")
+        });
+        //добавляем вернуться в главное меню
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "В нашем салоне доступны следующие услуги по визажу:",
+            replyMarkup: inlineKeyboard);
+    }
+    
     public async void ChoseHaircut(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         ServiceClient serviceClient = new ServiceClient();
@@ -158,7 +191,6 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
-
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -171,6 +203,37 @@ public class ServicesHandler
             replyMarkup: inlineKeyboard);
     }
 
+    public async void ChoseHaircutForModify(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        ServiceClient serviceClient = new ServiceClient();
+        var services = serviceClient.GetAllServicesByIdFromCurrentType(2);
+        Services = serviceClient.GetAllServicesByIdFromCurrentType(2);
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        int rowsCount = 2;
+        for (int i = 0; i <= services.Count; i += rowsCount)
+        {
+            // Выбираем порцию услуг для текущего ряда
+            var rowServices = services.Skip(i).Take(rowsCount);
+            // Создаем массив кнопок для текущего ряда
+            InlineKeyboardButton[] row = rowServices
+                .Select(service => InlineKeyboardButton.WithCallbackData(text: $"{service.Title} {service.Price}",
+                    callbackData: service.Id.ToString()))
+                .ToArray();
+            // Добавляем массив кнопок в список
+            buttons.Add(row);
+        }
+        //добавляем вернуться в главное меню
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "В нашем салоне доступны следующие виды стрижек:",
+            replyMarkup: inlineKeyboard);
+    }
+    
     public async void ChoseColoring(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         ServiceClient serviceClient = new ServiceClient();
@@ -190,7 +253,38 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
+        //добавляем вернуться в главное меню
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "В нашем салоне доступны следующие виды окрашивания:",
+            replyMarkup: inlineKeyboard);
+    }
 
+    public async void ChoseColoringForModify(ITelegramBotClient botClient, Update update,
+        CancellationToken cancellationToken)
+    {
+        ServiceClient serviceClient = new ServiceClient();
+        var services = serviceClient.GetAllServicesByIdFromCurrentType(3);
+        Services = serviceClient.GetAllServicesByIdFromCurrentType(3);
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        int rowsCount = 2;
+        for (int i = 0; i <= services.Count; i += rowsCount)
+        {
+            // Выбираем порцию услуг для текущего ряда
+            var rowServices = services.Skip(i).Take(rowsCount);
+            // Создаем массив кнопок для текущего ряда
+            InlineKeyboardButton[] row = rowServices
+                .Select(service => InlineKeyboardButton.WithCallbackData(text: $"{service.Title} {service.Price}",
+                    callbackData: service.Id.ToString()))
+                .ToArray();
+            // Добавляем массив кнопок в список
+            buttons.Add(row);
+        }
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -224,11 +318,11 @@ public class ServicesHandler
             // second row
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
-                    callbackData: "вернуться к выбору услуги"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору типа услуги",
+                    callbackData: "вернуться к выбору типа услуги"),
             },
         });
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Главное меню",
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Меню редактирования услуги",
             replyMarkup: inlineKeyboard);
     }
 
@@ -320,7 +414,6 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
-
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -330,6 +423,54 @@ public class ServicesHandler
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
             "В нашем салоне доступны следующие услуги по моделированию волос:",
+            replyMarkup: inlineKeyboard);
+    }
+
+    public async void ChoseStylingForModify(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        ServiceClient serviceClient = new ServiceClient();
+        var services = serviceClient.GetAllServicesByIdFromCurrentType(4);
+        Services = serviceClient.GetAllServicesByIdFromCurrentType(4);
+
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        int rowsCount = 2;
+        for (int i = 0; i <= services.Count; i += rowsCount)
+        {
+            // Выбираем порцию услуг для текущего ряда
+            var rowServices = services.Skip(i).Take(rowsCount);
+            // Создаем массив кнопок для текущего ряда
+            InlineKeyboardButton[] row = rowServices
+                .Select(service => InlineKeyboardButton.WithCallbackData(text: $"{service.Title} {service.Price}",
+                    callbackData: service.Id.ToString()))
+                .ToArray();
+            // Добавляем массив кнопок в список
+            buttons.Add(row);
+        }
+        //добавляем вернуться в главное меню
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "В нашем салоне доступны следующие услуги по моделированию волос:",
+            replyMarkup: inlineKeyboard);
+    }
+
+    public void AddNewService(ITelegramBotClient botClient, Update update, ServiceByIdInputModel model)
+    {
+        IServiceClient serviceClient = new ServiceClient();
+        serviceClient.AddServiceById(model);
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+        botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "Вы успешно добавили новою услугу в базу данных.",
             replyMarkup: inlineKeyboard);
     }
 }
