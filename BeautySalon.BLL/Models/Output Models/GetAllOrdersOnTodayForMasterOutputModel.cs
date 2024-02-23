@@ -11,10 +11,11 @@ namespace BeautySalon.BLL.Models.Output_Models
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public List<ServicesDTO> Services { get; set; }
-        public List<UsersDTO> Master { get; set; }
-        public List<UsersDTO> Client { get; set; }
-        public List<IntеrvalsDTO> Intervals { get; set; }
+        public ServicesDTO Services { get; set; }
+        public UsersDTO Master { get; set; }
+        public UsersDTO Client { get; set; }
+        public IntеrvalsDTO Intervals { get; set; }
+        public OrdersDTO Orders { get; set; } 
        
     }
 }

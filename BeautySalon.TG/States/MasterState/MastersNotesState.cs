@@ -27,21 +27,17 @@ namespace BeuatySalon.TG.States.MasterState
 
             this.onTodayForMasterOutputModels = model;
 
-            List<InlineKeyboardButton[]> buttonsRows = new List<InlineKeyboardButton[]>();
+            string text = "Ваши записи:\n";
 
             foreach (GetAllOrdersOnTodayForMasterOutputModel order in model)
             {
-                InlineKeyboardButton button = InlineKeyboardButton.WithCallbackData(text: $"{order.Date}, {order.Client}, {order.Services} руб", callbackData: order.Date.ToString());
-                InlineKeyboardButton[] row = [button];
-
-                buttonsRows.Add(row);
+                text += $"{order.Client.Name},{order.Orders.Date}.\n";
             }
 
-            InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttonsRows);
+            
             SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                 chatId: update.CallbackQuery.From.Id,
-                text: $"Ваши записи:",
-                replyMarkup: inlineKeyboard,
+                text: text,
                 cancellationToken: cancellationToken
             );
         }
