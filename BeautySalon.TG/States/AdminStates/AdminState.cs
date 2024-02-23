@@ -24,14 +24,13 @@ public class AdminState : AbstractState
                 return new AdminState();
             }
         }
-
         if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
         {
             if (update.CallbackQuery.Data.ToLower() == "ввести пароль")
             {
                 return new AdminPasswordState();
             }
-            else if (update.CallbackQuery.Data.ToLower() == "вернуться в главное меню") //"как добраться"
+            else if (update.CallbackQuery.Data.ToLower() == "вернуться в главное меню")
             {
                 return new StartState();
             }

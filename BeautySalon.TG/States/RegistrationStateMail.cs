@@ -9,9 +9,9 @@ using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
 
-public class RegistrationStateMail:AbstractState
+public class RegistrationStateMail : AbstractState
 {
-    public RegistrationStateMail(int serviceID, int shiftId, int intervalId,  int typeId, string name, string phone)
+    public RegistrationStateMail(int serviceID, int shiftId, int intervalId, int typeId, string name, string phone)
     {
         ServiceId = serviceID;
         IntervalId = intervalId;
@@ -23,55 +23,51 @@ public class RegistrationStateMail:AbstractState
     public async override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         await SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(chatId, "Желаете оставить Ваш e-mail для подписки на нашу рассылку с акциями и персональными предложениями?");
+            .SendTextMessageAsync(chatId,
+                "Желаете оставить Ваш e-mail для подписки на нашу рассылку с акциями и персональными предложениями?");
     }
 
-    public override  AbstractState ReceiveMessage(Update update)
+    public override AbstractState ReceiveMessage(Update update)
     {
         Mail = update?.Message.Text;
         UserName = update?.Message.Chat.Username;
-
-         SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(update.Message.Chat.Id, "Поздравляем, Вы успешно зарегистрировались в виртуальной системе салона Beautiful Girl!");
-         long id = update.Message.Chat.Id;
-         
-         UserHandler userHandler = new UserHandler();
-         AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
-         {
-             ChatId = Convert.ToInt32(id),
-             UserName = UserName,
-             Name = Name,
-             Phone = Phone,
-             Mail = Mail,
-             Salary = 0,
-             RoleId = 3,
-             IsDeleted = 0,
-             IsBlocked = 0,
-         };
-      
-         userHandler.AddUserToDB(model);
-         int clientIdFromBase = userHandler.GetClientByNameAndPhone(Name, Phone);
-
-         IntervalIdInputModel modelIntervalIdInputModel = new IntervalIdInputModel
-         {
-             Id = IntervalId
-         };
-         
-         //TODO
-         int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId(IntervalId);
+        SingletoneStorage.GetStorage().Client
+            .SendTextMessageAsync(update.Message.Chat.Id,
+                "Поздравляем! Вы успешно зарегистрировались в виртуальной системе салона \"Beautiful Girl\".");
+        long id = update.Message.Chat.Id;
+        UserHandler userHandler = new UserHandler();
+        AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
+        {
+            ChatId = Convert.ToInt32(id),
+            UserName = UserName,
+            Name = Name,
+            Phone = Phone,
+            Mail = Mail,
+            Salary = 0,
+            RoleId = 3,
+            IsDeleted = 0,
+            IsBlocked = 0,
+        };
+        userHandler.AddUserToDB(model);
+        int clientIdFromBase = userHandler.GetClientByNameAndPhone(Name, Phone);
+        IntervalIdInputModel modelIntervalIdInputModel = new IntervalIdInputModel
+        {
+            Id = IntervalId
+        };
+        //TODO
+        int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId(IntervalId);
         //Здесь надо зарегать пользователя в системе, затем создать заказ.
         // TODO
         OrderHandler orderHandler = new OrderHandler();
-         NewOrderInputModel orderInputModel = new NewOrderInputModel
-         {
-             ClientId = clientIdFromBase,
-             MasterId = masterIdFromBase,
-             ServiceId = ServiceId,
-             IntervalId = IntervalId,
-             Date = DateTime.Now
-         };
-         orderHandler.CreateNewOrder(orderInputModel);
-         
-         return new RegistrationOverState();
+        NewOrderInputModel orderInputModel = new NewOrderInputModel
+        {
+            ClientId = clientIdFromBase,
+            MasterId = masterIdFromBase,
+            ServiceId = ServiceId,
+            IntervalId = IntervalId,
+            Date = DateTime.Now
+        };
+        orderHandler.CreateNewOrder(orderInputModel);
+        return new RegistrationOverState();
     }
 }

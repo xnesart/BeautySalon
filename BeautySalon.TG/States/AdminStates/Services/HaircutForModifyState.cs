@@ -1,6 +1,7 @@
 ﻿using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
+using BeautySalon.TG.States.AdminStates.Services.AddServices;
 using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States.Services;
@@ -22,11 +23,17 @@ public class HaircutForModifyState:AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            ServiceId = int.Parse(update.CallbackQuery.Data);
-            Console.WriteLine(update.CallbackQuery.Data);
-            return new EditServiceState(TypeId, ServiceId, Password);
+            if (update.CallbackQuery.Data == "добавить услугу к типу \"Стрижка\"")
+            {
+                return new AddTitleState(TypeId);
+            }
+            else
+            {
+                ServiceId = int.Parse(update.CallbackQuery.Data);
+                Console.WriteLine(update.CallbackQuery.Data);
+                return new EditServiceState(TypeId, ServiceId, Password);
+            }
         }
-        var state = new AdminControlPanelState(Password);
-        return state;
+        return new AdminControlPanelState(Password);
     }
 }

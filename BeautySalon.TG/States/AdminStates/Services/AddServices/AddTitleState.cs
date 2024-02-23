@@ -13,10 +13,12 @@ public class AddTitleState: AbstractState
     {
         TypeId = typeId;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Введите название услуги:");
     }
+    
     public override AbstractState ReceiveMessage(Update update)
     {
         if (update.Message.Text != null)

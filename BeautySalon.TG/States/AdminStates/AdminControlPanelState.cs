@@ -30,7 +30,6 @@ public class AdminControlPanelState: AbstractState
         {
             return new ServiceForModifyState(Password);
         }
-
         if (update.CallbackQuery.Data == "редактировать сотрудника")
         {
             return new EditWorkerStartState(Password);

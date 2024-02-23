@@ -42,7 +42,6 @@ public class AddFinalState : AbstractState
             }
             
         }
-
         return new StartState();
     }
 }

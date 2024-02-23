@@ -26,7 +26,6 @@ public class AddPriceState : AbstractState
             decimal price = decimal.Parse(update.Message.Text);
             return new AddFinalState(Title, TypeId, Duration, price);
         }
-
         return new StartState();
     }
 }

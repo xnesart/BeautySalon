@@ -25,7 +25,6 @@ public class AddDurationState : AbstractState
             string duration = update.Message.Text;
             return new AddPriceState(Title, TypeId, duration);
         }
-
         return new StartState();
     }
 }

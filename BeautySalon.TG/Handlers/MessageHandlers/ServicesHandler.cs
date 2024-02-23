@@ -157,8 +157,8 @@ public class ServicesHandler
         //добавляем Добавить услугу
         buttons.Add(new[]
         {
-            InlineKeyboardButton.WithCallbackData(text: "Добавить услугу",
-                callbackData: "добавить услугу")
+            InlineKeyboardButton.WithCallbackData(text: "Добавить услугу к типу \"Визаж\"",
+                callbackData: "добавить услугу к типу \"Визаж\"")
         });
         //добавляем вернуться в главное меню
         buttons.Add(new[]
@@ -223,6 +223,12 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
+        //добавляем Добавить услугу
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Добавить услугу к типу \"Стрижка\"",
+                callbackData: "добавить услугу к типу \"Стрижка\"")
+        });
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -286,6 +292,12 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
+        //добавляем Добавить услугу
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Добавить услугу к типу Окрашивание",
+                callbackData: "добавить услугу к типу Окрашивание")
+        });
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
@@ -349,6 +361,12 @@ public class ServicesHandler
             // Добавляем массив кнопок в список
             buttons.Add(row);
         }
+        //добавляем Добавить услугу
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Добавить услугу",
+                callbackData: "добавить услугу")
+        });
         //добавляем вернуться в главное меню
         buttons.Add(new[]
         {

@@ -27,7 +27,7 @@ public class MakeUpForModifyState : AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            if (update.CallbackQuery.Data == "добавить услугу")
+            if (update.CallbackQuery.Data == "добавить услугу к типу \"Визаж\"")
             {
                 return new AddTitleState(TypeId);
             }
@@ -38,7 +38,6 @@ public class MakeUpForModifyState : AbstractState
                 return new EditServiceState(TypeId, ServiceId, Password);
             }
         }
-
         return new AdminControlPanelState(Password);
     }
 }
