@@ -30,18 +30,19 @@ public class EditServiceState : AbstractState
             {
                 servicesHandler.ServiceRemove(SingletoneStorage.GetStorage().Client, update, ServiceId);
             }
-
             if (update.CallbackQuery.Data == "изменить цену")
             {
                 return new EditPriceState(TypeId, ServiceId, Password);
             }
-
-            if (update.CallbackQuery.Data == "изменить длительность")
+            if (update.CallbackQuery.Data == "изменить название")
+            {
+                return new EditTitleState(TypeId, ServiceId, Password);
+            }
+            if (update.CallbackQuery.Data == "изменить продолжительность")
             {
                 return new EditDurationState(TypeId, ServiceId, Password);
             }
         }
-
         return new ServiceForModifyState(Password);
     }
 }

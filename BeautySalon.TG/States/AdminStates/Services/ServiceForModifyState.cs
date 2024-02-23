@@ -28,7 +28,7 @@ public class ServiceForModifyState:AbstractState
                 this.TypeId = 1;
                 return new MakeUpForModifyState(TypeId, Password);
             }
-            else if (update.CallbackQuery.Data.ToLower() == "стрижки")
+            else if (update.CallbackQuery.Data.ToLower() == "стрижка")
             {
                 this.TypeId = 2;
                 return new HaircutForModifyState(TypeId, Password);

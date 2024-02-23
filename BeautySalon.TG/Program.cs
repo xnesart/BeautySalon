@@ -20,14 +20,13 @@ namespace BeautySalon.TG;
 public class Program
 {
     public Dictionary<long, AbstractState> ClientState { get; set; }
+    
     public static List<AllServicesByIdFromCurrentTypeOutputModel> CurrentServices { get; set; }
 
     static void Main(string[] args)
     {
-
         var cts = new CancellationTokenSource(); //это токен связи
         var cancellationToken = cts.Token;
-
         var receiverOptions = new ReceiverOptions()
         {
             AllowedUpdates = [UpdateType.Message, UpdateType.CallbackQuery],
@@ -61,25 +60,18 @@ public class Program
             (update.CallbackQuery != null && update.CallbackQuery.Data != null))
         {
             Dictionary<long, AbstractState> handlersStatesByChatIdDictionary = SingletoneStorage.GetStorage().Clients;
-
             long chatId = 0;
-
             bool isMessage = update.Message != null;
             bool isButtonPushed = update.CallbackQuery != null;
-
             if (isMessage)
             {
                 chatId = update.Message.Chat.Id;
             }
-
             if (isButtonPushed)
             {
                 chatId = update.CallbackQuery.From.Id;
             }
-
             bool isNewUser = !handlersStatesByChatIdDictionary.ContainsKey(chatId);
-
-
             if (isNewUser)
             {
                 handlersStatesByChatIdDictionary.Add(chatId, new StartState());
@@ -89,7 +81,6 @@ public class Program
                 handlersStatesByChatIdDictionary[chatId] =
                     handlersStatesByChatIdDictionary[chatId].ReceiveMessage(update);
             }
-
             handlersStatesByChatIdDictionary[chatId].SendMessage(chatId, update, cancellationToken);
         }
     }

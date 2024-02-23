@@ -3,7 +3,7 @@ using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States.AdminStates.Services;
 
-public class ReturnServiceState: AbstractState
+public class ReturnMenuState: AbstractState
 {
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {

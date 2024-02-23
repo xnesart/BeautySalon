@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States.Services;
 
-public class EditPriceCompleteState : AbstractState
+public class EditPriceCompleteState: AbstractState
 {
     public EditPriceCompleteState(int typeId, int serviceId, string password, decimal price)
     {
@@ -30,7 +30,6 @@ public class EditPriceCompleteState : AbstractState
                 return new ServiceForModifyState(Password);
             }
         }
-
         if (update.CallbackQuery.Data == "вернуться в главное меню")
         {
             return new ServiceForModifyState(Password);

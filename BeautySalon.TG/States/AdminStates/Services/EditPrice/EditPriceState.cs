@@ -18,7 +18,7 @@ public class EditPriceState : AbstractState
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Введите цену услуги");
+            .SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Назначьте новую цену услуги:");
     }
 
     public override AbstractState ReceiveMessage(Update update)

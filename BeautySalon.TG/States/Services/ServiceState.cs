@@ -22,7 +22,7 @@ public class ServiceState : AbstractState
                 this.TypeId = 1;
                 return new MakeUpState(TypeId);
             }
-            else if (update.CallbackQuery.Data.ToLower() == "стрижки")
+            else if (update.CallbackQuery.Data.ToLower() == "стрижка")
             {
                 this.TypeId = 2;
                 return new HaircutState(TypeId);

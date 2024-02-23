@@ -10,7 +10,7 @@ public abstract class AbstractState
     public int WorkerId { get; set; }
     public  int ShiftId { get; set; }
     public  int RoleId { get; set; }
-    public string ServiceName { get; set; }
+    public string ServiceTitle { get; set; }
     public int ServiceId { get; set; }
     public int IntervalId { get; set; }
     public string Phone { get; set; }

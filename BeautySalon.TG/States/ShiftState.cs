@@ -7,11 +7,13 @@ namespace BeautySalon.TG.States;
 public class ShiftState:AbstractState
 {
     public int ShiftId { get; set; }
+    
     public ShiftState(int typeId, int serviceId)
     {
         TypeId = typeId;
         ServiceId = serviceId;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ShiftsHandler shiftsHandler = new ShiftsHandler();

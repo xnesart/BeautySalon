@@ -17,7 +17,7 @@ public class EditDurationState : AbstractState
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Введите длительность услуги услуги");
+            .SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Укажите новую продолжительность услуги:");
     }
 
     public override AbstractState ReceiveMessage(Update update)
@@ -27,7 +27,6 @@ public class EditDurationState : AbstractState
             string duration = update.Message.Text;
             return new EditDurationCompleteState(TypeId, ServiceId, Password, duration);
         }
-
         return new StartState();
     }
 }
