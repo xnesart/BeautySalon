@@ -1,9 +1,9 @@
 using BeautySalon.TG;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Employees.AddWorkers;
+namespace BeautySalon.TG.States.Employees.AddWorkers;
 
 public class AddWorkersState:AbstractState
 {

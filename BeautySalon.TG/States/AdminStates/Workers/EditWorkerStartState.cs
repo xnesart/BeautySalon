@@ -1,11 +1,11 @@
 using BeautySalon.TG;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.Handlers.MessageHandlers;
-using BeuatySalon.TG.States.Employees.AddWorkers;
-using BeuatySalon.TG.States.Services;
+using BeautySalon.TG.States.Employees.AddWorkers;
+using BeautySalon.TG.States.Services;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Employees;
+namespace BeautySalon.TG.States.Employees;
 
 public class EditWorkerStartState : AbstractState
 {

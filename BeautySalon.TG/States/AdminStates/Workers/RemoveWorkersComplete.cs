@@ -1,11 +1,11 @@
 using BeautySalon.TG;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace BeuatySalon.TG.States.Employees;
+namespace BeautySalon.TG.States.Employees;
 
 public class RemoveWorkersComplete : AbstractState
 {

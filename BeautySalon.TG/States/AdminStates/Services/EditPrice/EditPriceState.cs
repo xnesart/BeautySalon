@@ -4,7 +4,7 @@ using BeautySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Services;
+namespace BeautySalon.TG.States.Services;
 
 public class EditPriceState : AbstractState
 {

@@ -1,10 +1,10 @@
 ﻿using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.States.Services.EditDuration;
+using BeautySalon.TG.States.Services.EditDuration;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Services;
+namespace BeautySalon.TG.States.Services;
 
 public class EditServiceState : AbstractState
 {

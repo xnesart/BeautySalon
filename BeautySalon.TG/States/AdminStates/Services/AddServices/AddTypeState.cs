@@ -3,7 +3,7 @@ using BeautySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.AdminStates.Services.AddServices;
+namespace BeautySalon.TG.States.AdminStates.Services.AddServices;
 
 public class AddTypeState: AbstractState
 {

@@ -3,7 +3,7 @@ using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Services.EditDuration;
+namespace BeautySalon.TG.States.Services.EditDuration;
 
 public class EditDurationCompleteState : AbstractState
 {

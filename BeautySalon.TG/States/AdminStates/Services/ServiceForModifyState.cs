@@ -4,7 +4,7 @@ using BeautySalon.TG.States;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-namespace BeuatySalon.TG.States.Services;
+namespace BeautySalon.TG.States.Services;
 
 public class ServiceForModifyState:AbstractState
 {

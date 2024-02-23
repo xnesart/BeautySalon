@@ -1,5 +1,5 @@
 using BeautySalon.TG.MessageHandlers;
-using BeuatySalon.TG.Handlers.MessageHandlers;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;

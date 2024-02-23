@@ -1,7 +1,7 @@
 ﻿using BeautySalon.TG.States;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.AdminStates.Services;
+namespace BeautySalon.TG.States.AdminStates.Services;
 
 public class ReturnServiceState: AbstractState
 {

@@ -1,6 +1,6 @@
 using BeautySalon.TG.MessageHandlers;
-using BeuatySalon.TG.States;
-using BeuatySalon.TG.States.MyRecordsState;
+using BeautySalon.TG.States;
+using BeautySalon.TG.States.MyRecordsState;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;

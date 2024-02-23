@@ -3,7 +3,7 @@ using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Services;
+namespace BeautySalon.TG.States.Services;
 
 public class ColoringForModifyState : AbstractState
 {

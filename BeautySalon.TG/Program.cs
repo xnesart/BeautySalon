@@ -8,7 +8,7 @@ using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.Handlers.MessageHandlers;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;

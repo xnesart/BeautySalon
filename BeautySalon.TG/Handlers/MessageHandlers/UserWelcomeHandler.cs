@@ -1,6 +1,6 @@
 using BeautySalon.BLL;
 using BeautySalon.BLL.IClient;
-using BeuatySalon.TG.States;
+using BeautySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;

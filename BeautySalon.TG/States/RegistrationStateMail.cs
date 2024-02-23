@@ -2,8 +2,8 @@
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.Models.InputModels;
-using BeuatySalon.TG.Handlers.MessageHandlers;
-using BeuatySalon.TG.States;
+using BeautySalon.TG.Handlers.MessageHandlers;
+using BeautySalon.TG.States;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 

@@ -4,10 +4,10 @@ using BeautySalon.BLL.Models;
 using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.States.AdminStates.Services.AddServices;
+using BeautySalon.TG.States.AdminStates.Services.AddServices;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Services;
+namespace BeautySalon.TG.States.Services;
 
 public class MakeUpForModifyState : AbstractState
 {

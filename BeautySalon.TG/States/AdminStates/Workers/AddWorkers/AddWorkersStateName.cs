@@ -4,7 +4,7 @@ using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace BeuatySalon.TG.States.Employees.AddWorkers;
+namespace BeautySalon.TG.States.Employees.AddWorkers;
 
 public class AddWorkersStateName:AbstractState
 {

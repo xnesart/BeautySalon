@@ -1,11 +1,11 @@
 ﻿using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.States.Employees;
-using BeuatySalon.TG.States.Services;
+using BeautySalon.TG.States.Employees;
+using BeautySalon.TG.States.Services;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States;
+namespace BeautySalon.TG.States;
 
 public class AdminControlPanelState: AbstractState
 {

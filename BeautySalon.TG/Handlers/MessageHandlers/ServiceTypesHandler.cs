@@ -1,4 +1,4 @@
-namespace BeuatySalon.TG.Handlers.MessageHandlers;
+namespace BeautySalon.TG.Handlers.MessageHandlers;
 
 public class ServiceTypesHandler
 {

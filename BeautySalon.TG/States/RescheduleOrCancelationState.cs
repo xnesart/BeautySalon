@@ -1,17 +1,17 @@
 ﻿using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.TG;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.Handlers.MessageHandlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace BeuatySalon.TG.States
+namespace BeautySalon.TG.States
 {
     public class RescheduleOrCancelationState : AbstractState
     {

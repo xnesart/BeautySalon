@@ -1,9 +1,9 @@
 using BeautySalon.TG;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.Employees;
+namespace BeautySalon.TG.States.Employees;
 
 public class RemoveWorkersState:AbstractState
 {

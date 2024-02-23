@@ -2,11 +2,11 @@
 using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.States.Services;
+using BeautySalon.TG.States.Services;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.AdminStates.Services.AddServices;
+namespace BeautySalon.TG.States.AdminStates.Services.AddServices;
 
 public class AddFinalState : AbstractState
 {

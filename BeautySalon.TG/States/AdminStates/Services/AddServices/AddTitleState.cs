@@ -1,11 +1,11 @@
 ﻿using BeautySalon.TG;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.States.Services;
-using BeuatySalon.TG.States.Services.EditDuration;
+using BeautySalon.TG.States.Services;
+using BeautySalon.TG.States.Services.EditDuration;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States.AdminStates.Services.AddServices;
+namespace BeautySalon.TG.States.AdminStates.Services.AddServices;
 
 public class AddTitleState: AbstractState
 {    
