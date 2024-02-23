@@ -7,6 +7,7 @@ public abstract class AbstractState
     public  string Name { get; set; }
     public  string UserName { get; set; }
     public  long Id { get; set; }
+    public int WorkerId { get; set; }
     public  int ShiftId { get; set; }
     public  int RoleId { get; set; }
     public string ServiceName { get; set; }

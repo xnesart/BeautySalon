@@ -23,15 +23,9 @@ public class StartState : AbstractState
             if (update.Message.Text == "/admin")
             {
                 return new AdminState();
-<<<<<<< HEAD
             }
         }
 
-=======
-            } 
-        }
-        
->>>>>>> UpdateServiceDuration
         //проверяем, что пришедшее сообщение является нажатием на кнопку и не равно null
         if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
         {

@@ -113,4 +113,66 @@ public class UserHandler
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите действие:",
             replyMarkup: inlineKeyboard);
     }
+
+    public void GetAllWorkersByRoleId(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        IUserClient userClient = new UserClient();
+        var workers = userClient.GetAllWorkersByRoleId();
+
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        int rowsCount = 2;
+        for (int i = 0; i <= workers.Count; i += rowsCount)
+        {
+            // Выбираем порцию услуг для текущего ряда
+            var rowServices = workers.Skip(i).Take(rowsCount);
+            // Создаем массив кнопок для текущего ряда
+            InlineKeyboardButton[] row = rowServices
+                .Select(worker => InlineKeyboardButton.WithCallbackData(text: $"{worker.Name} {worker.RoleId}",
+                    callbackData: worker.Id.ToString()))
+                .ToArray();
+            // Добавляем массив кнопок в список
+            buttons.Add(row);
+        }
+        //добавляем вернуться в главное меню
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+         botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "Выберите сотрудника",
+            replyMarkup: inlineKeyboard);
+        
+    }
+    
+    public async void RemoveWorkerGetButtons(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Удалить сотрудника",
+                    callbackData: "удалить сотрудника"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                    callbackData: "вернуться в главное меню"),
+            },
+        });
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите действие:",
+            replyMarkup: inlineKeyboard);
+    }
+    
+    public async void RemoveWorkerById(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken, int workerId)
+    {
+        IUserClient userClient = new UserClient();
+        UserIdInputModel model = new UserIdInputModel
+        {
+            Id = workerId
+        };
+        userClient.RemoveUserById(model);
+        
+    }
 }
