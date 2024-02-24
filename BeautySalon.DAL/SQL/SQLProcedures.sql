@@ -138,6 +138,15 @@ begin
     where Shifts.Title = @ShiftTitle and RoleId = 2
 end
 go
+-- ✓ Вывести мастеров, отсутствующих в выбранной смене
+create proc GetMastersAbsentedInSelectedShift
+    @ShiftTitle nvarchar(30) as
+begin
+    select distinct Users.Id, Users.RoleId, Users.Name from Users
+    left join Shifts on Users.Id = Shifts.MasterId and Shifts.Title = @ShiftTitle
+    where Users.RoleId = 2 and Shifts.MasterId is null or Users.RoleId = 2 and Shifts.MasterId != Shifts.MasterId;
+end;
+go
 -- ✓ Удалить мастера из ВЫБРАННОЙ смены по названию смены
 create proc RemoveMasterFromShiftByShiftTitle
     @MasterId int, @ShiftTitle nvarchar(30) as
