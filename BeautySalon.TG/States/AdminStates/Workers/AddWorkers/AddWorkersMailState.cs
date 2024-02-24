@@ -15,18 +15,19 @@ public class AddWorkersMailState:AbstractState
         Name = name;
         Phone = phone;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню администратора",
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
                     callbackData: "вернуться в главное меню"),
             },
         });
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.Message.Chat.Id,
-            "Введите e-mail сотрудника для связи:",
+            "Введите e-mail сотрудника:",
             replyMarkup: inlineKeyboard);
     }
 
@@ -39,7 +40,7 @@ public class AddWorkersMailState:AbstractState
         else
         {
             string mail = update.Message.Text;
-            return new AddWorkersCompleteState(Password, RoleId, Name,Phone ,mail);
+            return new AddWorkersCompleteState(Password, RoleId, Name, Phone, mail);
         }
     }
 }

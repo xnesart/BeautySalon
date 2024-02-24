@@ -1,4 +1,5 @@
 using BeautySalon.TG.MessageHandlers;
+using BeautySalon.TG.States.MyRecordsState;
 using BeuatySalon.TG.States;
 using BeuatySalon.TG.States.MasterState;
 using BeuatySalon.TG.States.MyRecordsState;
@@ -30,7 +31,6 @@ public class StartState : AbstractState
                 return new MasterState();
             }
         }
-         
         //проверяем, что пришедшее сообщение является нажатием на кнопку и не равно null
         if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
         {
@@ -50,7 +50,6 @@ public class StartState : AbstractState
             {
                 return new LeaveFeedbackState();
             }
-           
         }
         return this;
     }

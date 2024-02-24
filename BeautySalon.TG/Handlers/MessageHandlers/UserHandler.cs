@@ -148,7 +148,7 @@ public class UserHandler
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-            "Выберите сотрудника",
+            "Выберите сотрудника:",
             replyMarkup: inlineKeyboard);
     }
 
@@ -221,5 +221,4 @@ public class UserHandler
         };
         userClient.AddWorkerByRoleId(model);
     }
-    
 }

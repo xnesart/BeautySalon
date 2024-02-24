@@ -20,7 +20,7 @@ public class AddWorkersStatePhone:AbstractState
         {
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню администратора",
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
                     callbackData: "вернуться в главное меню"),
             },
         });

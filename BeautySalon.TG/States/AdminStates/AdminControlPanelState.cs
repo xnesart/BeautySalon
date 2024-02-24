@@ -2,6 +2,7 @@
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
 using BeautySalon.TG.States.Employees;
+using BeautySalon.TG.States.Schedule;
 using BeautySalon.TG.States.Services;
 using Telegram.Bot.Types;
 
@@ -34,10 +35,10 @@ public class AdminControlPanelState: AbstractState
         {
             return new EditWorkerStartState(Password);
         }
-        // if (update.CallbackQuery.Data == "редактировать расписание")
-        // {
-        //     return new ServiceForModifyState(Password);
-        // }
+        if (update.CallbackQuery.Data == "редактировать расписание")
+        {
+            return new SelectShiftState(Password);
+        }
         // if (update.CallbackQuery.Data == "показать активные записи")
         // {
         //     return new EditWorkerStartState(Password);

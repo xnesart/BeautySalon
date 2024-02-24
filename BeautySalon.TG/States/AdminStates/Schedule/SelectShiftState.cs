@@ -1,23 +1,21 @@
-using BeautySalon.TG;
-using BeautySalon.TG.Handlers.MessageHandlers;
-using BeautySalon.TG.States;
+﻿using BeautySalon.TG.Handlers.MessageHandlers;
+using BeautySalon.TG.States.Employees;
 using BeautySalon.TG.States.Employees.AddWorkers;
-using BeautySalon.TG.States.Services;
 using Telegram.Bot.Types;
 
-namespace BeautySalon.TG.States.Employees;
+namespace BeautySalon.TG.States.Schedule;
 
-public class EditWorkerStartState : AbstractState
+public class SelectShiftState: AbstractState
 {
-    public EditWorkerStartState(string password)
+    public SelectShiftState(string password)
     {
         Password = password;
     }
 
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
-        UserHandler userHandler = new UserHandler();
-        userHandler.GetAllWorkersByRoleId(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        ShiftsHandler shiftsHandler = new ShiftsHandler();
+        shiftsHandler.ChoseShift(SingletoneStorage.GetStorage().Client, update, cancellationToken);
     }
 
     public override AbstractState ReceiveMessage(Update update)

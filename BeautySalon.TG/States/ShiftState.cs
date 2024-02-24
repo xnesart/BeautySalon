@@ -4,7 +4,7 @@ using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
 
-public class ShiftState:AbstractState
+public class ShiftState: AbstractState
 {
     public int ShiftId { get; set; }
     
