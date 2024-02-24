@@ -55,6 +55,7 @@ public class ShiftsRepository : IShiftsRepository
                 }, splitOn: "Id,StartTime").ToList();
         }
     }
+    
     public List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService (int serviceId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -95,6 +96,33 @@ public class ShiftsRepository : IShiftsRepository
             };
             return connection.Query<AddMasterToShiftWithCreatedNewIntervalsDTO>(
                 Procedures.AddMasterToShiftWithCreatedNewIntervals, parameters).ToList();
+        }
+    }
+
+    public List<GetMastersFromShiftByShiftTitleDTO> GetMastersFromShiftByShiftTitle(string title)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                ShiftTitle = title,
+            };
+            var res = connection
+                .Query<GetMastersFromShiftByShiftTitleDTO>(Procedures.GetMastersFromShiftByShiftTitle, parameters).ToList();
+            return res;
+        }
+    }
+
+    public void RemoveMasterFromShiftByShiftTitle(int masterId, string title)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                MasterId = masterId,
+                ShiftTitle = title
+            };
+            connection.Query<RemoveMasterFromShiftByShiftTitleDTO>(Procedures.RemoveMasterFromShiftByShiftTitle, parameters);
         }
     }
 }

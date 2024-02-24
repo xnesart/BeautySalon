@@ -22,7 +22,7 @@ public class RemoveMasterFromShiftState: AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            return new RemoveMasterFromShiftCompleteState(Password, WorkerId);
+            // return new RemoveMasterFromShiftCompleteState(Password, WorkerId);
         }
         return new AdminControlPanelState(Password);
     }

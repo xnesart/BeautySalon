@@ -137,9 +137,8 @@ go
 create proc GetMastersFromShiftByShiftTitle
     @ShiftTitle nvarchar(30) as
 begin
-    select Users.Id, Users.RoleId, Users.Name as Worker from Users
+    select Users.Id, Users.RoleId, Users.Name from Users
     join Shifts on Shifts.MasterId = Users.Id
-    join Roles on Users.RoleId = Roles.Id
     where Shifts.Title = @ShiftTitle and RoleId = 2
 end
 go
@@ -149,7 +148,7 @@ create proc RemoveMasterFromShiftByShiftTitle
 begin
     update Shifts
     set Shifts.MasterId = null
-    where Shifts.Title = @ShiftTitle
+    where Shifts.MasterId=@MasterId and Shifts.Title = @ShiftTitle
 end
 go
 -- ✓ Назначить на выбранную смену другого мастера

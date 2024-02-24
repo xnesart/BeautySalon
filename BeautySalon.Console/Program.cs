@@ -232,13 +232,13 @@ class Program
         //    Console.WriteLine();
         //}
 
-        //Работает
-        IOrderRepository orderRepository = new OrderRepository();
-        var orders = orderRepository.GetAllOrdersOnTodayForMaster();
-        foreach (var user in orders)
-        {
-            Console.WriteLine();
-        }
+        // //Работает
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var orders = orderRepository.GetAllOrdersOnTodayForMaster();
+        // foreach (var user in orders)
+        // {
+        //     Console.WriteLine();
+        // }
 
         // //Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
@@ -312,6 +312,19 @@ class Program
         //     Console.WriteLine(item);
         // }
         // Console.WriteLine();
+        
+        //  //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // var shifts = shiftsRepository.GetMastersFromShiftByShiftTitle("УТРО (10:00 - 13:45)");
+        // foreach (var master in shifts)
+        // {
+        //     Console.WriteLine();
+        // }
+
+        // //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // shiftsRepository.RemoveMasterFromShiftByShiftTitle(2, "УТРО (10:00 - 13:45)");
+        // Console.ReadLine();
 
         #endregion
 
