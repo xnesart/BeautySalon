@@ -141,7 +141,7 @@ public class UserHandler
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-            "Выберите сотрудника, которого хотите удалить из базы, или другое действие:",
+            "Выберите сотрудника, которого хотите удалить из базы, либо другое действие:",
             replyMarkup: inlineKeyboard);
     }
 

@@ -2,6 +2,7 @@ using BeautySalon.BLL;
 using BeautySalon.BLL.Clients;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.InputModels;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -79,8 +80,8 @@ public class ShiftsHandler
     
     public void GetMastersFromShiftForSchedule(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        IUserClient userClient = new UserClient();
-        var workers = userClient.GetAllWorkersByRoleId();
+        IShiftsClient shiftsClient = new ShiftsClient();
+        var workers = shiftsClient.GetMastersFromShiftByShiftTitle();
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         int rowsCount = 2;
         for (int i = 0; i <= workers.Count; i += rowsCount)
@@ -97,8 +98,8 @@ public class ShiftsHandler
         }
         buttons.Add(new[]
         {
-            InlineKeyboardButton.WithCallbackData(text: "Добавить мастера",
-                callbackData: "добавить мастера")
+            InlineKeyboardButton.WithCallbackData(text: "Добавить мастера в выбранную смену",
+                callbackData: "добавить мастера в выбранную смену")
         });
         //добавляем вернуться в главное меню
         buttons.Add(new[]
@@ -108,7 +109,7 @@ public class ShiftsHandler
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-            "Выберите мастера, которого хотите удалить из cмены, или другое действие:",
+            "Выберите мастера, которого хотите удалить из cмены, либо другое действие:",
             replyMarkup: inlineKeyboard);
     }
     
@@ -132,14 +133,11 @@ public class ShiftsHandler
             replyMarkup: inlineKeyboard);
     }
     
-    public async void RemoveMasterFromShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,
-        int masterId, int shiftId)
+    public async void RemoveMasterFromShiftByShiftTitle(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,
+        int masterId, string title)
     {
-        IUserClient userClient = new UserClient();
-        UserIdInputModel model = new UserIdInputModel
-        {
-            Id = masterId
-        };
-        userClient.RemoveMasterFromShift(masterId, shiftId);
+        IShiftsClient shiftsClient = new ShiftsClient();
+        MasterIdAndShiftTitleInputModel model = new MasterIdAndShiftTitleInputModel();
+        shiftsClient.RemoveMasterFromShiftByShiftTitle(masterId, title);
     }
 }

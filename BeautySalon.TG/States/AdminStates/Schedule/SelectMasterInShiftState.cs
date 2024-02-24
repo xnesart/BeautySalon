@@ -22,14 +22,14 @@ public class SelectMasterInShiftState: AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            if (update.CallbackQuery.Data == "добавить мастера")
+            if (update.CallbackQuery.Data == "добавить мастера в выбранную смену")
             {
                 return new AddWorkersState(Password);
             }
             else
             {
                 WorkerId = int.Parse(update.CallbackQuery.Data);
-                return new RemoveMasterFromShiftState(Password, WorkerId);
+                return new RemoveMasterFromShiftState(Password, MasterId);
             }
         }
         return new AdminControlPanelState(Password);
