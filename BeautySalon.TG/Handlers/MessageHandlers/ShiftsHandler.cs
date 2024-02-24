@@ -78,10 +78,10 @@ public class ShiftsHandler
             replyMarkup: inlineKeyboard);
     }
     
-    public void GetMastersFromShiftForSchedule(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    public void GetMastersFromShiftForSchedule(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken, string title)
     {
         IShiftsClient shiftsClient = new ShiftsClient();
-        var workers = shiftsClient.GetMastersFromShiftByShiftTitle();
+        var workers = shiftsClient.GetMastersFromShiftByShiftTitle(title);
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         int rowsCount = 2;
         for (int i = 0; i <= workers.Count; i += rowsCount)

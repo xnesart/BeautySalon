@@ -22,17 +22,21 @@ public class SelectShiftState : AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
+            string title = "";
             if (update.CallbackQuery.Data == "УТРО (10:00 - 13:45)")
             {
-                return new SelectMasterInShiftState(Password);
+                title = update.CallbackQuery.Data;
+                return new SelectMasterInShiftState(Password, title);
             }
             if (update.CallbackQuery.Data == "ДЕНЬ (14:00 - 17:45)")
             {
-                return new SelectMasterInShiftState(Password);
+                title = update.CallbackQuery.Data;
+                return new SelectMasterInShiftState(Password, title);
             }
             if (update.CallbackQuery.Data == "ВЕЧЕР (18:00 - 21:45)")
             {
-                return new SelectMasterInShiftState(Password);
+                title = update.CallbackQuery.Data;
+                return new SelectMasterInShiftState(Password,title);
             }
         }
         return new AdminControlPanelState(Password);

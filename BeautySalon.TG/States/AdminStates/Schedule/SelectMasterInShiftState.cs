@@ -7,15 +7,16 @@ namespace BeautySalon.TG.States.Schedule;
 
 public class SelectMasterInShiftState: AbstractState
 {
-    public SelectMasterInShiftState(string password)
+    public SelectMasterInShiftState(string password, string title)
     {
         Password = password;
+        Title = title;
     }
 
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ShiftsHandler shiftsHandler = new ShiftsHandler();
-        shiftsHandler.GetMastersFromShiftForSchedule(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        shiftsHandler.GetMastersFromShiftForSchedule(SingletoneStorage.GetStorage().Client, update, cancellationToken, Title);
     }
 
     public override AbstractState ReceiveMessage(Update update)
@@ -29,7 +30,7 @@ public class SelectMasterInShiftState: AbstractState
             else
             {
                 WorkerId = int.Parse(update.CallbackQuery.Data);
-                return new RemoveMasterFromShiftState(Password, MasterId);
+                return new RemoveMasterFromShiftState(Password, WorkerId, Title);
             }
         }
         return new AdminControlPanelState(Password);
