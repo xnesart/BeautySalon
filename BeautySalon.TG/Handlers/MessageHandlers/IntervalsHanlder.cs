@@ -5,7 +5,7 @@ using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace BeuatySalon.TG.Handlers.MessageHandlers;
+namespace BeautySalon.TG.Handlers.MessageHandlers;
 
 public class IntervalsHanlder
 {

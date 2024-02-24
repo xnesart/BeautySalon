@@ -1,7 +1,7 @@
 using BeautySalon.BLL.Models;
 using BeautySalon.BLL.Models.InputModels;
-using BeuatySalon.TG.Handlers.MessageHandlers;
-using BeuatySalon.TG.States;
+using BeautySalon.TG.Handlers.MessageHandlers;
+using BeautySalon.TG.States;
 using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
@@ -9,12 +9,14 @@ namespace BeautySalon.TG.States;
 public class IntervalsState:AbstractState
 {
     private List<IntervalsIdTitleStartTimeOutputModel> _intervals { get; set; }
+    
     public IntervalsState(int shiftId, int typeId, int serviceId)
     {
         ShiftId = shiftId;
         TypeId = typeId;
         ServiceId = serviceId;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         IntervalsHanlder intervalsHanlder = new IntervalsHanlder();
@@ -35,13 +37,10 @@ public class IntervalsState:AbstractState
                     this.IntervalId = interval.Id;
                 }
             }
-
             UserHandler userHandler = new UserHandler();
             long chatId = update.CallbackQuery.From.Id;
             int? userId = userHandler.GetUserByChatId(chatId);
-
             bool isUserRegistered = userId != null;
-
             if  (isUserRegistered == true)
             {
                 int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId(IntervalId);
@@ -63,7 +62,6 @@ public class IntervalsState:AbstractState
                 return new RegistrationStateName(ShiftId, IntervalId, ServiceId, TypeId);
             }
         }
-
         return new StartState();
     }
 }

@@ -6,7 +6,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 using Telegram.Bot;
 
-namespace BeuatySalon.TG.Handlers.MessageHandlers
+namespace BeautySalon.TG.Handlers.MessageHandlers
 {
     public class OrderHandler
     {

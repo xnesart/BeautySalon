@@ -11,6 +11,7 @@ public class StylingState:AbstractState
     {
         TypeId = typeId;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();
@@ -25,7 +26,6 @@ public class StylingState:AbstractState
             Console.WriteLine(update.CallbackQuery.Data);
             return new ShiftState(TypeId, ServiceId);
         }
-
         return new StartState();
     }
 }

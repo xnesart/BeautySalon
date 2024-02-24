@@ -1,5 +1,5 @@
 using BeautySalon.TG.MessageHandlers;
-using BeuatySalon.TG.Handlers.MessageHandlers;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
@@ -7,11 +7,13 @@ namespace BeautySalon.TG.States;
 public class ShiftState:AbstractState
 {
     public int ShiftId { get; set; }
+    
     public ShiftState(int typeId, int serviceId)
     {
         TypeId = typeId;
         ServiceId = serviceId;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ShiftsHandler shiftsHandler = new ShiftsHandler();

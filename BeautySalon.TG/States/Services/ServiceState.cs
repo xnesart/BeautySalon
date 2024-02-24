@@ -7,6 +7,7 @@ namespace BeautySalon.TG.States;
 public class ServiceState : AbstractState
 {
     public int TypeId { get; set; }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();
@@ -22,7 +23,7 @@ public class ServiceState : AbstractState
                 this.TypeId = 1;
                 return new MakeUpState(TypeId);
             }
-            else if (update.CallbackQuery.Data.ToLower() == "стрижки")
+            else if (update.CallbackQuery.Data.ToLower() == "стрижка")
             {
                 this.TypeId = 2;
                 return new HaircutState(TypeId);

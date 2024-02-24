@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Telegram.Bot.Types;
 using BeautySalon.TG.States;
 using Telegram.Bot.Types.ReplyMarkups;
-using BeuatySalon.TG.Handlers.MessageHandlers;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
 using BeautySalon.BLL.Models.Output_Models;
 using System.Threading;

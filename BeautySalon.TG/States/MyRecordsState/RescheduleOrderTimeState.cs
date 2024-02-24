@@ -3,7 +3,7 @@ using BeautySalon.BLL.Models;
 using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.TG;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.Handlers.MessageHandlers;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
