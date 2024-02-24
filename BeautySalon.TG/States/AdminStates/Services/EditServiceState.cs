@@ -30,35 +30,61 @@ public class EditServiceState : AbstractState
             {
                 servicesHandler.ServiceRemove(SingletoneStorage.GetStorage().Client, update, ServiceId);
             }
+
             if (update.CallbackQuery.Data == "изменить цену")
             {
                 return new EditPriceState(TypeId, ServiceId, Password);
             }
+
             if (update.CallbackQuery.Data == "изменить название")
             {
                 return new EditTitleState(TypeId, ServiceId, Password);
             }
+
             if (update.CallbackQuery.Data == "изменить продолжительность")
             {
                 return new EditDurationState(TypeId, ServiceId, Password);
             }
-            // if (update.CallbackQuery.Data == "вернуться к выбору услуги")
-            // {
-            //     return new ServiceForModifyState(Password);
-            // }
+
+            if (update.CallbackQuery.Data == "вернуться к выбору услуги")
+            {
+                if (TypeId == 1)
+                {
+                    return new MakeUpForModifyState(TypeId, Password);
+                }
+
+                if (TypeId == 2)
+                {
+                    return new HaircutForModifyState(TypeId, Password);
+                }
+
+                if (TypeId == 3)
+                {
+                    return new ColoringForModifyState(TypeId, Password);
+                }
+
+                if (TypeId == 4)
+                {
+                    return new StylingForModifyState(TypeId, Password);
+                }
+            }
+
             if (update.CallbackQuery.Data == "вернуться к выбору типа услуг")
             {
                 return new ServiceForModifyState(Password);
             }
+
             if (update.CallbackQuery.Data == "вернуться в меню админа")
             {
                 return new AdminControlPanelState(Password);
             }
+
             if (update.CallbackQuery.Data == "перейти в меню клиента")
             {
                 return new StartState();
             }
         }
+
         return new ServiceForModifyState(Password);
     }
 }
