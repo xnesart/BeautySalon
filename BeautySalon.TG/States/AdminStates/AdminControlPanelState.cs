@@ -42,10 +42,10 @@ public class AdminControlPanelState: AbstractState
         // {
         //     return new EditWorkerStartState(Password);
         // }
-        // if (update.CallbackQuery.Data == "перейти в главное меню клиента")
-        // {
-        //     return new EditWorkerStartState(Password);
-        // }
+        if (update.CallbackQuery.Data == "перейти в меню клиента")
+        {
+            return new StartState();
+        }
         return this;
     }
 }
