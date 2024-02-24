@@ -133,6 +133,16 @@ begin
     where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
 end
 go
+-- ✓ Вывести мастеров ВЫБРАННОЙ смены по номеру смены
+create proc GetMastersFromShiftByShiftNumber
+@ShiftNumber int as
+begin
+    select Users.Id, Users.RoleId, Users.Name as Worker from Users
+    join Shifts on Shifts.MasterId = Users.Id
+    join Roles on Users.RoleId = Roles.Id
+    where Number = @ShiftNumber and RoleId = 2
+end
+go
 -- ✓ Назначить на выбранную смену другого мастера
 create proc ChangeMasterInShift
     @MasterId int, @ShiftId int as

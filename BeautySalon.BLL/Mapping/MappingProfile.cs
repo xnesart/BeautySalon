@@ -42,7 +42,7 @@ public class MappingProfile : Profile
         CreateMap<ShiftsDTO, ShiftAllShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
 
         CreateMap<RemoveOrderForClientIdInput, OrdersDTO>()
-            .ForMember(destination => destination.Id, sourse => sourse.MapFrom(opt => opt.OrderId));
+        .ForMember(destination => destination.Id, sourse => sourse.MapFrom(opt => opt.OrderId));
 
         CreateMap<GetAllShiftsAndEmployeesOnTodayDTO,MastersNameAndShiftsOutputModel>();
         CreateMap<MasterIdAndShiftIdInputModel,ShiftsDTO>();
@@ -65,8 +65,6 @@ public class MappingProfile : Profile
         CreateMap<PasswordChatIdUserNameInputModel, ChangeChatIdAndUserNameByPasswordDTO>();
         CreateMap<GetAllOrdersOnTodayForMasterDTO, GetAllOrdersOnTodayForMasterOutputModel>();
         CreateMap<GetOrdersByMasterId, GetOrdersByMasterIdOutputModel>();
-
-
     }
 }
 

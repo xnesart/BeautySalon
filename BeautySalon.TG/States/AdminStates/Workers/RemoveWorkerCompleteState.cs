@@ -7,9 +7,9 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace BeautySalon.TG.States.Employees;
 
-public class RemoveWorkersComplete : AbstractState
+public class RemoveWorkerCompleteState : AbstractState
 {
-    public RemoveWorkersComplete(string password, int workerId)
+    public RemoveWorkerCompleteState(string password, int workerId)
     {
         Password = password;
         WorkerId = workerId;
@@ -19,12 +19,12 @@ public class RemoveWorkersComplete : AbstractState
     {
         UserHandler userHandler = new UserHandler();
         userHandler.RemoveWorkerById(SingletoneStorage.GetStorage().Client, update, cancellationToken,WorkerId);
-        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Выбранный сотрудник удален.");
+        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Выбранный сотрудник удален из базы.");
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню администратора",
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
                     callbackData: "вернуться в главное меню"),
             },
         });
@@ -35,7 +35,6 @@ public class RemoveWorkersComplete : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-   
         return new AdminControlPanelState(Password);
     }
 }

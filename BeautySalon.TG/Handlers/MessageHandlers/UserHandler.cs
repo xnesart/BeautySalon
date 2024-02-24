@@ -148,7 +148,7 @@ public class UserHandler
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-            "Выберите сотрудника:",
+            "Выберите сотрудника, которого хотите удалить из базы, или другое действие:",
             replyMarkup: inlineKeyboard);
     }
 
@@ -204,7 +204,7 @@ public class UserHandler
                     callbackData: "вернуться в главное меню"),
             },
         });
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите действие:",
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите роль сотрудника:",
             replyMarkup: inlineKeyboard);
     }
     
@@ -220,5 +220,73 @@ public class UserHandler
             Phone = phone
         };
         userClient.AddWorkerByRoleId(model);
+    }
+    
+    
+    public void GetAllWorkersByRoleIdForSchedule(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        IUserClient userClient = new UserClient();
+        var workers = userClient.GetAllWorkersByRoleId();
+
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        int rowsCount = 2;
+        for (int i = 0; i <= workers.Count; i += rowsCount)
+        {
+            // Выбираем сотрудников для текущего ряда
+            var rowServices = workers.Skip(i).Take(rowsCount);
+            // Создаем массив кнопок сотрудников для текущего ряда
+            InlineKeyboardButton[] row = rowServices
+                .Select(worker => InlineKeyboardButton.WithCallbackData(text: $"{worker.Name} {worker.RoleId}",
+                    callbackData: worker.Id.ToString()))
+                .ToArray();
+            // Добавляем массив кнопок сотрудников в список
+            buttons.Add(row);
+        }
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Добавить сотрудника",
+                callbackData: "добавить сотрудника")
+        });
+        //добавляем вернуться в главное меню
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+        botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "Выберите сотрудника, которого хотите удалить из cмены, или другое действие:",
+            replyMarkup: inlineKeyboard);
+    }
+    
+    public async void RemoveWorkerGetButtonsForSchedule(ITelegramBotClient botClient, Update update,
+        CancellationToken cancellationToken)
+    {
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Удалить сотрудника из выбранной смены",
+                    callbackData: "удалить сотрудника из выбранной смены"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                    callbackData: "вернуться в главное меню"),
+            },
+        });
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите действие:",
+            replyMarkup: inlineKeyboard);
+    }
+    
+    public async void RemoveMasterFromShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,
+        int masterId, int shiftId)
+    {
+        IUserClient userClient = new UserClient();
+        UserIdInputModel model = new UserIdInputModel
+        {
+            Id = masterId
+        };
+        userClient.RemoveMasterFromShift(masterId, shiftId);
     }
 }

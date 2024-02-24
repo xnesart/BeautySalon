@@ -15,7 +15,7 @@ public class SelectWorkerInShiftState: AbstractState
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         UserHandler userHandler = new UserHandler();
-        userHandler.GetAllWorkersByRoleId(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        userHandler.GetAllWorkersByRoleIdForSchedule(SingletoneStorage.GetStorage().Client, update, cancellationToken);
     }
 
     public override AbstractState ReceiveMessage(Update update)
@@ -29,7 +29,7 @@ public class SelectWorkerInShiftState: AbstractState
             else
             {
                 WorkerId = int.Parse(update.CallbackQuery.Data);
-                return new RemoveWorkersState(Password, WorkerId);
+                return new RemoveWorkerFromShiftState(Password, WorkerId);
             }
         }
         return new AdminControlPanelState(Password);

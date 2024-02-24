@@ -31,7 +31,7 @@ public class EditWorkerStartState : AbstractState
             else
             {
                 WorkerId = int.Parse(update.CallbackQuery.Data);
-                return new RemoveWorkersState(Password, WorkerId);
+                return new RemoveWorkerState(Password, WorkerId);
             }
         }
         return new AdminControlPanelState(Password);
