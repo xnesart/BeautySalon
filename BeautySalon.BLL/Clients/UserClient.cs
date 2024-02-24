@@ -138,9 +138,9 @@ public class UserClient : IUserClient
         return -1;
     }
 
-    public string GetWorkerNameByPassword(string password)
+    public string? GetWorkerNameByPassword(string password)
     {
-        string result = "";
+        string? result = null;
         IUserRepository userRepository = new UserRepository();
         var res = userRepository.GetWorkerNameByPassword(password);
         foreach (var item in res)
@@ -154,4 +154,5 @@ public class UserClient : IUserClient
     {
         _userRepository.ChangeChatIdAndUserNameByPassword(password, chatId, userName);
     }
+  
 }

@@ -1,4 +1,4 @@
-﻿using BeautySalon.TG;
+using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
 using BeautySalon.TG.States.MyRecordsState;

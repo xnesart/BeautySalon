@@ -28,35 +28,55 @@ public class OrderRepository : IOrderRepository
         }
     }
 
-    public List<GetAllOrdersOnTodayForMastersDTO> GetAllOrdersOnTodayForMasters()
+    public List<GetAllOrdersOnTodayForMasterDTO> GetAllOrdersOnTodayForMaster()
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
-            return connection.Query<GetAllOrdersOnTodayForMastersDTO, UsersDTO, ServicesDTO, IntеrvalsDTO, UsersDTO, GetAllOrdersOnTodayForMastersDTO>(Procedures.GetAllOrdersOnTodayForMasters,
-                    (order, master, service, intervals, client) =>
+            return connection.Query<UsersDTO, ServicesDTO, IntеrvalsDTO, UsersDTO, OrdersDTO, GetAllOrdersOnTodayForMasterDTO>(Procedures.GetAllOrdersOnTodayForMasters,
+                    (master, service, intervals, client, orderDTO) =>
                     {
-                        if (order.Master == null)
-                        {
-                            order.Master = new List<UsersDTO>();
-                        }
-                        order.Master.Add(master);
-                        if (order.Services == null)
-                        {
-                            order.Services = new List<ServicesDTO>();
-                        }
-                        order.Services.Add(service);
-                        if (order.Intervals == null)
-                        {
-                            order.Intervals = new List<IntеrvalsDTO>();
-                        }
-                        order.Intervals.Add(intervals);
-                        if (order.Client == null)
-                        {
-                            order.Client = new List<UsersDTO>();
-                        }
-                        order.Client.Add(client);
+                        GetAllOrdersOnTodayForMasterDTO order = new GetAllOrdersOnTodayForMasterDTO();
+
+                        order.Master = new UsersDTO();
+                        order.Master.Id = master.Id;
+                        order.Master.Salary = master.Salary;
+                        order.Master.UserName = master.UserName;
+                        order.Master.Name = master.Name;
+                        order.Master.ChatId = master.ChatId;
+                        order.Master.RoleId = master.RoleId;
+
+                        order.Services = new ServicesDTO();
+                        order.Services.Title = service.Title;
+                        order.Services.Price = service.Price;
+                        order.Services.Duration = service.Duration;
+                        order.Services.TypeId = service.TypeId;
+
+                        order.Intervals = new IntеrvalsDTO();
+                        order.Intervals.Id = intervals.Id;
+                        order.Intervals.IsBusy = intervals.IsBusy;
+                        order.Intervals.Shifts = intervals.Shifts;
+                        order.Intervals.ShiftId = intervals.ShiftId;
+                        order.Intervals.StartTime = intervals.StartTime;
+                        order.Intervals.Title = intervals.Title;
+
+                        order.Client = new UsersDTO();
+                        order.Client.ChatId = client.ChatId;
+                        order.Client.Id= client.Id;
+                        order.Client.RoleId = client.RoleId;
+                        order.Client.Name = client.Name;
+                        order.Client.Phone = client.Phone;
+                        order.Client.UserName = client.UserName;
+
+                        order.Orders = new OrdersDTO();
+                        order.Orders.ClientId = orderDTO.ClientId;
+                        order.Orders.IntervalId=orderDTO.IntervalId;
+                        order.Orders.ServiceId = orderDTO.ServiceId;
+                        order.Orders.MasterId = orderDTO.MasterId;
+                        order.Orders.Id = orderDTO.Id;
+                        order.Orders.Date = orderDTO.Date;
+
                         return order;
-                    }, splitOn: "Id,Title,Title,Name")
+                    }, splitOn: "Id,Id,Title,Title,Name")
                 .ToList();
         }
     }

@@ -3,6 +3,7 @@ create table Users
     Id int primary key not null identity(1,1),
     Password nvarchar(30),
     ChatId int,
+    Password nvarchar(30) unique,
     UserName nvarchar(50),
     Name nvarchar(50) not null,
     Phone nvarchar(30) not null unique,

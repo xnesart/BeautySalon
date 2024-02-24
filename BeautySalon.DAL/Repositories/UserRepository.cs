@@ -30,7 +30,7 @@ public class UserRepository : IUserRepository
             return connection.Query<UsersDTO>(Procedures.AddUserByChatId, parameters).ToList();
         }
     }
-    
+
     public List<UsersDTO> CheckAndAddUser(int chatId)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -181,7 +181,7 @@ public class UserRepository : IUserRepository
             connection.Query<UsersDTO>(Procedures.AddWorkerByRoleId, parameters);
         }
     }
-    
+
     public UsersDTO RemoveUserById(int id)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
@@ -190,7 +190,7 @@ public class UserRepository : IUserRepository
             {
                 Id = id
             };
-            var result=connection.QuerySingle<UsersDTO>(Procedures.RemoveUserById, parameters);
+            var result = connection.QuerySingle<UsersDTO>(Procedures.RemoveUserById, parameters);
             return result;
         }
     }
@@ -238,13 +238,13 @@ public class UserRepository : IUserRepository
                 }, splitOn: "Id,Title").ToList();
         }
     }
-    
-    public List<GetFreeMasterIdByIntervalIdDTO> GetFreeMasterIdByIntervalId (int interval)
+
+    public List<GetFreeMasterIdByIntervalIdDTO> GetFreeMasterIdByIntervalId(int interval)
     {
         using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
         {
             var parameters = new
-            { 
+            {
                 IntervalId = interval,
             };
             var res = connection
@@ -280,3 +280,7 @@ public class UserRepository : IUserRepository
         }
     }
 }
+
+
+
+
