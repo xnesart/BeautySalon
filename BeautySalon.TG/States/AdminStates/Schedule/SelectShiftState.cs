@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States.Schedule;
 
-public class SelectShiftState: AbstractState
+public class SelectShiftState : AbstractState
 {
     public SelectShiftState(string password)
     {
@@ -22,15 +22,7 @@ public class SelectShiftState: AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            if (update.CallbackQuery.Data == "добавить сотрудника")
-            {
-                return new AddWorkersState(Password);
-            }
-            else
-            {
-                WorkerId = int.Parse(update.CallbackQuery.Data);
-                return new RemoveWorkersState(Password, WorkerId);
-            }
+            return new SelectWorkerInShiftState(Password);
         }
         return new AdminControlPanelState(Password);
     }
