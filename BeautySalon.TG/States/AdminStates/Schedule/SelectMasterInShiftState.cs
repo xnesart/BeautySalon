@@ -5,31 +5,31 @@ using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States.Schedule;
 
-public class SelectWorkerInShiftState: AbstractState
+public class SelectMasterInShiftState: AbstractState
 {
-    public SelectWorkerInShiftState(string password)
+    public SelectMasterInShiftState(string password)
     {
         Password = password;
     }
 
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
-        UserHandler userHandler = new UserHandler();
-        userHandler.GetAllWorkersByRoleIdForSchedule(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        ShiftsHandler shiftsHandler = new ShiftsHandler();
+        shiftsHandler.GetMastersFromShiftForSchedule(SingletoneStorage.GetStorage().Client, update, cancellationToken);
     }
 
     public override AbstractState ReceiveMessage(Update update)
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            if (update.CallbackQuery.Data == "добавить сотрудника")
+            if (update.CallbackQuery.Data == "добавить мастера")
             {
                 return new AddWorkersState(Password);
             }
             else
             {
                 WorkerId = int.Parse(update.CallbackQuery.Data);
-                return new RemoveWorkerFromShiftState(Password, WorkerId);
+                return new RemoveMasterFromShiftState(Password, WorkerId);
             }
         }
         return new AdminControlPanelState(Password);

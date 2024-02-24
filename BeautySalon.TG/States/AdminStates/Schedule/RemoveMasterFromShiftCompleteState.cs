@@ -5,9 +5,9 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace BeautySalon.TG.States.Schedule;
 
-public class RemoveWorkerFromShiftCompleteState: AbstractState
+public class RemoveMasterFromShiftCompleteState: AbstractState
 {
-    public RemoveWorkerFromShiftCompleteState(string password, int masterId)
+    public RemoveMasterFromShiftCompleteState(string password, int masterId)
     {
         Password = password;
         MasterId = masterId;
@@ -15,10 +15,10 @@ public class RemoveWorkerFromShiftCompleteState: AbstractState
 
     public int MasterId { get; set; }
 
-    public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
+    public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken, int masterId)
     {
-        UserHandler userHandler = new UserHandler();
-        userHandler.RemoveMasterFromShift(SingletoneStorage.GetStorage().Client, update, cancellationToken,WorkerId);
+        ShiftsHandler shiftsHandler = new ShiftsHandler();
+        shiftsHandler.RemoveMasterFromShift(SingletoneStorage.GetStorage().Client, update, cancellationToken, masterId);
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Выбранный сотрудник удален из выбранной смены.");
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {

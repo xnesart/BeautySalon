@@ -15,14 +15,25 @@ public class SelectShiftState : AbstractState
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ShiftsHandler shiftsHandler = new ShiftsHandler();
-        shiftsHandler.ChoseShift(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        shiftsHandler.ChoseShiftByTitle(SingletoneStorage.GetStorage().Client, update, cancellationToken);
     }
 
     public override AbstractState ReceiveMessage(Update update)
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            return new SelectWorkerInShiftState(Password);
+            if (update.CallbackQuery.Data == "УТРО (10:00 - 13:45)")
+            {
+                return new SelectMasterInShiftState(Password);
+            }
+            if (update.CallbackQuery.Data == "ДЕНЬ (14:00 - 17:45)")
+            {
+                return new SelectMasterInShiftState(Password);
+            }
+            if (update.CallbackQuery.Data == "ВЕЧЕР (18:00 - 21:45)")
+            {
+                return new SelectMasterInShiftState(Password);
+            }
         }
         return new AdminControlPanelState(Password);
     }
