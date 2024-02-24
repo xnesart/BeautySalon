@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace BeuatySalon.TG.Handlers.MessageHandlers
+namespace BeautySalon.TG.Handlers.MessageHandlers
 {
     public class OrderHandler
     {

@@ -2,17 +2,17 @@
 using BeautySalon.BLL.OrdersForClientById;
 using BeautySalon.TG;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.Handlers.MessageHandlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace BeuatySalon.TG.States.MyRecordsState
+namespace BeautySalon.TG.States.MyRecordsState
 {
     public class MyRecords : AbstractState
     {

@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot.Types;
 using Telegram.Bot;
-using BeuatySalon.TG.Handlers.MessageHandlers;
 using System.Reflection;
 using BeautySalon.BLL.Models;
+using BeautySalon.TG.Handlers.MessageHandlers;
 
-namespace BeuatySalon.TG.States.MyRecordsState
+namespace BeautySalon.TG.States.MyRecordsState
 {
     public class RegistrationStateMailMyRecords : AbstractState
     {

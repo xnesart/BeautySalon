@@ -1,9 +1,9 @@
 ﻿using BeautySalon.TG;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using BeautySalon.TG.States;
-using BeuatySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot.Types;
 
-namespace BeuatySalon.TG.States;
+namespace BeautySalon.TG.States;
 
 public class LeaveFeedbackState: AbstractState
 {

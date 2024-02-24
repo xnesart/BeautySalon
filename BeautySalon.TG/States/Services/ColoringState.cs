@@ -6,6 +6,7 @@ namespace BeautySalon.TG.States;
 public class ColoringState:AbstractState
 {
     public int TypeId { get; set; }
+    
     public ColoringState(int typeId)
     {
         TypeId = typeId;
@@ -25,7 +26,6 @@ public class ColoringState:AbstractState
             Console.WriteLine(update.CallbackQuery.Data);
             return new ShiftState(TypeId, ServiceId);
         }
-
         return new StartState();
     }
 }

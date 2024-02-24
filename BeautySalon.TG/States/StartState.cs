@@ -1,6 +1,6 @@
 using BeautySalon.TG.MessageHandlers;
-using BeuatySalon.TG.States;
-using BeuatySalon.TG.States.MyRecordsState;
+using BeautySalon.TG.States;
+using BeautySalon.TG.States.MyRecordsState;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -32,15 +32,15 @@ public class StartState : AbstractState
             {
                 return new ServiceState();
             }
-            else if (update.CallbackQuery.Data.ToLower() == "как добраться") //"как добраться"
+            else if (update.CallbackQuery.Data.ToLower() == "как добраться")
             {
                 return new HowToGetState();
             }
-            else if (update.CallbackQuery.Data.ToLower() == "мои записи") //"Мои записи"
+            else if (update.CallbackQuery.Data.ToLower() == "мои записи")
             {
                 return new MyRecords();
             }
-            else if (update.CallbackQuery.Data.ToLower() == "оставить отзыв") //"Оставить отзыв"
+            else if (update.CallbackQuery.Data.ToLower() == "оставить отзыв")
             {
                 return new LeaveFeedbackState();
             }

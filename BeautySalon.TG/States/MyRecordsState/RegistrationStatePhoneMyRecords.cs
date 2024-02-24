@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Telegram.Bot.Types;
 using Telegram.Bot;
 
-namespace BeuatySalon.TG.States.MyRecordsState
+namespace BeautySalon.TG.States.MyRecordsState
 {
     public class RegistrationStatePhoneMyRecords : AbstractState
     {

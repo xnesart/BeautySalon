@@ -68,5 +68,10 @@ namespace BeautySalon.BLL.Clients
             var result = _mapper.Map<ServiceIsDeletedOutputModel>(dto);
             return result;
         }
+        public void AddServiceById(ServiceByIdInputModel model)
+        {
+            AddServiceByIdDTO dto = _mapper.Map<AddServiceByIdDTO>(model);
+            _servicesRepository.AddServiceById(dto);
+        }
     }
 }

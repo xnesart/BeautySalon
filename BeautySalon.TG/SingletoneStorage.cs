@@ -8,13 +8,11 @@ namespace BeautySalon.TG;
 public class SingletoneStorage
 {
     private static SingletoneStorage _object = null;
+    
     public ITelegramBotClient Client { get; private set; }
-
+    
     public Dictionary<long, AbstractState> Clients { get; private set; }
-
-
-    //public static ITelegramBotClient Client => _client;
-
+    
     private SingletoneStorage()
     {
         Client = new TelegramBotClient(Options.TelegramToken);
@@ -28,7 +26,6 @@ public class SingletoneStorage
         {
             _object = new SingletoneStorage();
         }
-
         return _object;
     }
 }

@@ -6,11 +6,14 @@ namespace BeautySalon.TG.States;
 public class HaircutState:AbstractState
 {
     public int TypeId { get; set; }
+    
     public int ServiceId { get; set; }
+    
     public HaircutState(int typeId)
     {
         TypeId = typeId;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();

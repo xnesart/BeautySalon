@@ -1,9 +1,9 @@
-using BeuatySalon.TG.Handlers.MessageHandlers;
+using BeautySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
 
-public class HowToGetState:AbstractState
+public class HowToGetState: AbstractState
 {
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
