@@ -109,7 +109,7 @@ public class UserWelcomeHandler
             Message sendMessage = await botClient.SendTextMessageAsync(
                 chatId: update.Message.Chat.Id,
                 text:
-                $"Здраствуйте! Введите пароль администратора либо вернитесь в меню клиента",
+                $"Здраствуйте! Введите пароль администратора либо вернитесь в меню клиента.",
                 replyMarkup: inlineKeyboard,
                 cancellationToken: cancellationToken);
         }
