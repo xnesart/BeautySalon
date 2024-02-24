@@ -29,7 +29,6 @@ public class UserWelcomeHandler
                 name = item.Name;
             }
         }
-
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
             new[]
@@ -45,7 +44,6 @@ public class UserWelcomeHandler
 
             },
         });
-
         if (update.Message != null)
         {
             if (name != null && name != "")
@@ -96,7 +94,6 @@ public class UserWelcomeHandler
 
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
-            // first row
             new[]
             {
                 InlineKeyboardButton.WithCallbackData(text: "Ввести пароль", callbackData: "ввести пароль"),
@@ -160,6 +157,7 @@ public class UserWelcomeHandler
                 cancellationToken: cancellationToken);
         }
     }
+    
     public async void WelcomeMaster(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
 
@@ -183,6 +181,7 @@ public class UserWelcomeHandler
             );
         }
     }
+    
     public async void MasterMenu(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]
@@ -201,5 +200,4 @@ public class UserWelcomeHandler
             cancellationToken: cancellationToken
         );
     }
-    
 }

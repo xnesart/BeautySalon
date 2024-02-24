@@ -30,7 +30,7 @@ public class AdminState : AbstractState
             {
                 return new AdminPasswordState();
             }
-            else if (update.CallbackQuery.Data.ToLower() == "вернуться в главное меню клиента")
+            else if (update.CallbackQuery.Data.ToLower() == "вернуться в меню клиента")
             {
                 return new StartState();
             }

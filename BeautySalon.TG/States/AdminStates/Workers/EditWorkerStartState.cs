@@ -34,7 +34,6 @@ public class EditWorkerStartState : AbstractState
                 return new RemoveWorkersState(Password, WorkerId);
             }
         }
-
         return new AdminControlPanelState(Password);
     }
 }
