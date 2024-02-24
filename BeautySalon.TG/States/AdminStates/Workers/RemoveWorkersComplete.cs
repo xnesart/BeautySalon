@@ -19,7 +19,7 @@ public class RemoveWorkersComplete : AbstractState
     {
         UserHandler userHandler = new UserHandler();
         userHandler.RemoveWorkerById(SingletoneStorage.GetStorage().Client, update, cancellationToken,WorkerId);
-        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Сотрудник удален");
+        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Выбранный сотрудник удален.");
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
             new[]

@@ -22,7 +22,6 @@ public class ShiftsHandler
         {
             
         }
-        
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         int rowsCount = 2;
         for (int i = 0; i <= rowsCount; i += rowsCount)
@@ -36,16 +35,13 @@ public class ShiftsHandler
 
             buttons.Add(row);
         }
-
         buttons.Add(new[]
         {
             InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
                 callbackData: "вернуться в главное меню")
         });
-
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
-
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите удобную смену",
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите удобную смену: ",
             replyMarkup: inlineKeyboard);
     }
 }

@@ -27,12 +27,12 @@ public class AddWorkersCompleteState : AbstractState
         {
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню администратора",
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
                     callbackData: "вернуться в главное меню"),
             },
         });
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.Message.Chat.Id,
-            "Сотрудник успешно добавлен",
+            "Сотрудник успешно добавлен в базу.",
             replyMarkup: inlineKeyboard);
     }
 

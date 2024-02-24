@@ -25,7 +25,6 @@ public class RemoveWorkersState:AbstractState
         {
             return new RemoveWorkersComplete(Password, WorkerId);
         }
-
         return new AdminControlPanelState(Password);
     }
 }

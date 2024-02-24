@@ -13,13 +13,14 @@ public class AddWorkersStateName:AbstractState
         Password = password;
         RoleId = roleId;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню администратора",
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
                     callbackData: "вернуться в главное меню"),
             },
         });

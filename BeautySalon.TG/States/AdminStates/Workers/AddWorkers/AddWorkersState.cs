@@ -11,6 +11,7 @@ public class AddWorkersState:AbstractState
     {
         Password = password;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         UserHandler userHandler = new UserHandler();
@@ -30,7 +31,6 @@ public class AddWorkersState:AbstractState
                 return new AddWorkersStateName(Password, 2);
             }
         }
-
         return this;
     }
 }
