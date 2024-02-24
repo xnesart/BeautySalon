@@ -539,6 +539,19 @@ class Program
         // {
         //     Console.WriteLine(res);
         // }
+                
+        //  //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // var shifts = shiftsRepository.GetMastersFromShiftByShiftTitle("УТРО (10:00 - 13:45)");
+        // foreach (var master in shifts)
+        // {
+        //     Console.WriteLine();
+        // }
+
+        // //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // shiftsRepository.RemoveMasterFromShiftByShiftTitle(7, "УТРО (10:00 - 13:45)");
+        // Console.ReadLine();
 
         #endregion
     }

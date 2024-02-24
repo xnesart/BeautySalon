@@ -4,6 +4,7 @@ using BeautySalon.BLL.AllShiftsWithFreeIntervalsOnCurrentServiceModel;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.Repositories;
 
@@ -28,6 +29,7 @@ public class ShiftsClient : IShiftsClient
         var result = _mapper.Map<List<AllShiftsOnTodayOutputModel>>(shifts);
         return result;
     }
+    
     public List<ShiftsWithFreeIntervalsOnCurrentServiceOutputModel> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId)
     {
         List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> shifts = this._shiftsRepository.GetAllShiftsWithFreeIntervalsOnCurrentService(serviceId);
@@ -55,5 +57,17 @@ public class ShiftsClient : IShiftsClient
     public void AddMasterToShiftWithCreatedNewIntervals(int number, int masterId)
     {
         _shiftsRepository.AddMasterToShiftWithCreatedNewIntervals(number, masterId);
+    }
+
+    public List<MastersIdAndRoleIdAndNameOutputModel> GetMastersFromShiftByShiftTitle(string title)
+    {
+        var shifts = _shiftsRepository.GetMastersFromShiftByShiftTitle(title);
+        var result = _mapper.Map<List<MastersIdAndRoleIdAndNameOutputModel>>(shifts);
+        return result;
+    }
+
+    public void RemoveMasterFromShiftByShiftTitle(int masterId, string title)
+    {
+        _shiftsRepository.RemoveMasterFromShiftByShiftTitle(masterId, title);
     }
 }
