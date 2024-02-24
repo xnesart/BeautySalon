@@ -34,6 +34,18 @@ public class AdminControlPanelState: AbstractState
         {
             return new EditWorkerStartState(Password);
         }
+        // if (update.CallbackQuery.Data == "редактировать расписание")
+        // {
+        //     return new ServiceForModifyState(Password);
+        // }
+        // if (update.CallbackQuery.Data == "показать активные записи")
+        // {
+        //     return new EditWorkerStartState(Password);
+        // }
+        // if (update.CallbackQuery.Data == "перейти в главное меню клиента")
+        // {
+        //     return new EditWorkerStartState(Password);
+        // }
         return this;
     }
 }

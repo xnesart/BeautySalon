@@ -40,7 +40,6 @@ public class AddFinalState : AbstractState
                 string price = update.Message.Text;
                 return new StartState();
             }
-            
         }
         return new StartState();
     }

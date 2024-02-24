@@ -60,7 +60,7 @@ public class ServicesHandler
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-            "Выберите интересующий Вас тип услуги:",
+            "Выберите интересующий Вас тип услуг:",
             replyMarkup: inlineKeyboard);
     }
 
@@ -92,13 +92,13 @@ public class ServicesHandler
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         if (update.Message != null)
         {
-            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Выберите интересующий Вас тип услуги:",
+            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Выберите интересующий Вас тип услуг:",
                 replyMarkup: inlineKeyboard);
         }
         else
         {
             await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-                "Выберите интересующий Вас тип услуги:",
+                "Выберите интересующий Вас тип услуг:",
                 replyMarkup: inlineKeyboard);
         }
     }
@@ -410,9 +410,19 @@ public class ServicesHandler
                 InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору типа услуг",
                     callbackData: "вернуться к выбору типа услуг"),
             },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню админа",
+                    callbackData: "вернуться в меню админа"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
+                    callbackData: "перейти в меню клиента"),
+            },
         });
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-            "Меню редактирования выбранной услуги",
+            "Меню редактирования выбранной услуги:",
             replyMarkup: inlineKeyboard);
     }
 
@@ -424,7 +434,7 @@ public class ServicesHandler
             Id = serviceId
         };
         serviceClient.RemoveServiceById(model);
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выбранная услуга удалена из базы");
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выбранная услуга удалена из базы.");
     }
 
     public async void ServiceUpdatePrice(ITelegramBotClient botClient, Update update, int serviceId,
@@ -441,18 +451,33 @@ public class ServicesHandler
         {
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
-                    callbackData: "вернуться в главное меню"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
+                    callbackData: "вернуться к выбору услуги"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору типа услуг",
+                    callbackData: "вернуться к выбору типа услуг"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню админа",
+                    callbackData: "вернуться в меню админа"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
+                    callbackData: "перейти в меню клиента"),
             },
         });
         if (update.Message != null)
         {
-            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Цена на выбранную услугу изменена",
+            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Цена на выбранную услугу изменена.",
                 replyMarkup: inlineKeyboard);
         }
         else
         {
-            await botClient.SendTextMessageAsync(update.CallbackQuery.From.Id, "Цена на выбранную услугу изменена");
+            await botClient.SendTextMessageAsync(update.CallbackQuery.From.Id, "Цена на выбранную услугу изменена.");
         }
     }
 
@@ -469,19 +494,34 @@ public class ServicesHandler
         {
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
-                    callbackData: "вернуться в главное меню"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
+                    callbackData: "вернуться к выбору услуги"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору типа услуг",
+                    callbackData: "вернуться к выбору типа услуг"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню админа",
+                    callbackData: "вернуться в меню админа"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
+                    callbackData: "перейти в меню клиента"),
             },
         });
         if (update.Message != null)
         {
-            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Название выбранной услуги изменено",
+            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Название выбранной услуги изменено.",
                 replyMarkup: inlineKeyboard);
         }
         else
         {
             await botClient.SendTextMessageAsync(update.CallbackQuery.From.Id,
-                "Название выбранной услуги изменено");
+                "Название выбранной услуги изменено.");
         }
     }
 
@@ -499,18 +539,33 @@ public class ServicesHandler
         {
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
-                    callbackData: "вернуться в главное меню"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
+                    callbackData: "вернуться к выбору услуги"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору типа услуг",
+                    callbackData: "вернуться к выбору типа услуг"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню админа",
+                    callbackData: "вернуться в меню админа"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
+                    callbackData: "перейти в меню клиента"),
             },
         });
         if (update.Message != null)
         {
-            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Продолжительность выбранной услуги изменена",
+            await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Продолжительность выбранной услуги изменена.",
                 replyMarkup: inlineKeyboard);
         }
         else
         {
-            await botClient.SendTextMessageAsync(update.CallbackQuery.From.Id, "Продолжительность выбранной услуги изменена");
+            await botClient.SendTextMessageAsync(update.CallbackQuery.From.Id, "Продолжительность выбранной услуги изменена.");
         }
     }
 
@@ -521,8 +576,8 @@ public class ServicesHandler
         List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
         buttons.Add(new[]
         {
-            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
-                callbackData: "вернуться в главное меню")
+            InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
+                callbackData: "перейти в меню клиента")
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         botClient.SendTextMessageAsync(update.Message.Chat.Id,

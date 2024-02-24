@@ -6,6 +6,7 @@ namespace BeautySalon.TG.States;
 public class ColoringState:AbstractState
 {
     public int TypeId { get; set; }
+    
     public ColoringState(int typeId)
     {
         TypeId = typeId;

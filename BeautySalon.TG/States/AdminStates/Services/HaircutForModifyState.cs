@@ -13,6 +13,7 @@ public class HaircutForModifyState:AbstractState
         TypeId = typeId;
         Password = password;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();

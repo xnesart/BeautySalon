@@ -6,11 +6,14 @@ namespace BeautySalon.TG.States;
 public class MakeUpState: AbstractState
 {
     public int TypeId { get; set; }
+    
     public int ServiceId { get; set; }
+    
     public MakeUpState(int typeId)
     {
         TypeId = typeId;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();
@@ -25,7 +28,6 @@ public class MakeUpState: AbstractState
             Console.WriteLine(update.CallbackQuery.Data);
             return new ShiftState(TypeId, ServiceId);
         }
-
         return new StartState();
     }
 }

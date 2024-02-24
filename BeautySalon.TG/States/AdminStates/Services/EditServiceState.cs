@@ -42,6 +42,22 @@ public class EditServiceState : AbstractState
             {
                 return new EditDurationState(TypeId, ServiceId, Password);
             }
+            // if (update.CallbackQuery.Data == "вернуться к выбору услуги")
+            // {
+            //     return new ServiceForModifyState(Password);
+            // }
+            if (update.CallbackQuery.Data == "вернуться к выбору типа услуг")
+            {
+                return new ServiceForModifyState(Password);
+            }
+            if (update.CallbackQuery.Data == "вернуться в меню админа")
+            {
+                return new AdminControlPanelState(Password);
+            }
+            if (update.CallbackQuery.Data == "перейти в меню клиента")
+            {
+                return new StartState();
+            }
         }
         return new ServiceForModifyState(Password);
     }

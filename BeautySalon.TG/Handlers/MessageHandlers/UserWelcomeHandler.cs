@@ -32,13 +32,11 @@ public class UserWelcomeHandler
 
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
-            // first row
             new[]
             {
                 InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "как добраться"),
                 InlineKeyboardButton.WithCallbackData(text: "Записаться", callbackData: "записаться"),
             },
-            // second row
             new[]
             {
                 InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
@@ -100,7 +98,7 @@ public class UserWelcomeHandler
             new[]
             {
                 InlineKeyboardButton.WithCallbackData(text: "Ввести пароль", callbackData: "ввести пароль"),
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "вернуться в главное меню"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню клиента", callbackData: "вернуться в меню клиента"),
             },
         });
 
@@ -109,7 +107,7 @@ public class UserWelcomeHandler
             Message sendMessage = await botClient.SendTextMessageAsync(
                 chatId: update.Message.Chat.Id,
                 text:
-                $"Здраствуйте! Введите пароль администратора или вернитесь в главное меню",
+                $"Здраствуйте! Введите пароль администратора либо вернитесь в меню клиента",
                 replyMarkup: inlineKeyboard,
                 cancellationToken: cancellationToken);
         }
@@ -146,11 +144,10 @@ public class UserWelcomeHandler
             },
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
-                    callbackData: "вернуться в главное меню"),
+                InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
+                    callbackData: "перейти в меню клиента"),
             },
         });
-
         if (update.Message != null || update.CallbackQuery != null)
         {
             Message sendMessage = await botClient.SendTextMessageAsync(
