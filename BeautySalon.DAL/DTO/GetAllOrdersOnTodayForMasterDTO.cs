@@ -5,7 +5,6 @@ namespace BeautySalon.DAL.DTO;
 
 public class GetAllOrdersOnTodayForMasterDTO
 {
-    public int Id { get; set; }
     public DateTime Date { get; set; }
     public  ServicesDTO Services { get; set; }
     public UsersDTO Master { get; set; }

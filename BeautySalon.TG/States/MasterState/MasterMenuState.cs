@@ -29,7 +29,7 @@ namespace BeuatySalon.TG.States.MasterState
         {
             if (update.CallbackQuery.Data == "Текущие записи")
             {
-                return new MastersNotesState();
+                return new MastersOrdersState();
             }
             else if(update.CallbackQuery.Data == "В главное меню")
             {

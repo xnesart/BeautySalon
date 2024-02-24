@@ -50,5 +50,11 @@ namespace BeautySalon.BLL.Clients
             List<GetAllOrdersOnTodayForMasterOutputModel> result = this._mapper.Map<List<GetAllOrdersOnTodayForMasterOutputModel>>(getAllOrdersOnToday);
             return result;
         }
+        public List<GetOrdersByMasterIdOutputModel> GetOrdersByMasterId(int id)
+        {
+            List<GetOrdersByMasterId> ordersByMasterIds =_orderRepository.GetOrdersByMasterId(id);
+            List<GetOrdersByMasterIdOutputModel> result = this._mapper.Map<List<GetOrdersByMasterIdOutputModel>>(ordersByMasterIds);
+            return result;
+        }
     }
 }

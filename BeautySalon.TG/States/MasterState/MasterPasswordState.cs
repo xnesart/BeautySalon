@@ -24,7 +24,6 @@ namespace BeuatySalon.TG.States.MasterState
         }
         public override AbstractState ReceiveMessage(Update update)
         {
-
             Password = update.Message.Text;
 
             UserClient userClient = new UserClient();

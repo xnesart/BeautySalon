@@ -37,10 +37,15 @@ namespace BeuatySalon.TG.Handlers.MessageHandlers
         {
             OrderClient orderClient = new OrderClient();
             List<GetAllOrdersOnTodayForMasterOutputModel> result = orderClient.GetAllOrdersOnTodayForMasters();
+
             return result;
-
         }
-
+        public List<GetOrdersByMasterIdOutputModel> GetOrdersByMasterId(int id)
+        {
+            OrderClient orderClient = new OrderClient();
+            List<GetOrdersByMasterIdOutputModel> result = orderClient.GetOrdersByMasterId((int)id);
+            return result;
+        }
     }
 }
 

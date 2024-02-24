@@ -26,7 +26,7 @@ class Program
         #endregion
 
         #region Works DAL
-        
+
         // //Работает
         // IUserRepository userRepository = new UserRepository();
         // var res =userRepository.GetUserByChatId(1);
@@ -232,13 +232,13 @@ class Program
         //    Console.WriteLine();
         //}
 
-        // //Работает
-        // IOrderRepository orderRepository = new OrderRepository();
-        // var orders = orderRepository.GetAllOrdersOnTodayForMasters();
-        // foreach (var user in orders)
-        // {
-        //     Console.WriteLine();
-        // }
+        //Работает
+        IOrderRepository orderRepository = new OrderRepository();
+        var orders = orderRepository.GetAllOrdersOnTodayForMaster();
+        foreach (var user in orders)
+        {
+            Console.WriteLine();
+        }
 
         // //Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
@@ -294,7 +294,7 @@ class Program
         // IShiftsRepository shiftsRepository = new ShiftsRepository();
         // var result = shiftsRepository.AddMasterToShiftWithCreatedNewIntervals(2, 3);
         // Console.WriteLine(result.ToList());
-        
+
         // //Работает
         // IIntervalsRepository intervalsRepository = new IntervalsRepository();
         // GetFreeMasterIdByIntervalIdDTO model = new GetFreeMasterIdByIntervalIdDTO
@@ -303,7 +303,7 @@ class Program
         // };
         // var res = intervalsRepository.GetFreeMasterIdByIntervalId(model);
         // Console.WriteLine();
-        
+
         // //Работает
         // IUserRepository userRepository = new UserRepository();
         // var res =userRepository.GetWorkerNameByPassword("12345");
@@ -470,7 +470,7 @@ class Program
         // IServiceClient serviceClient = new ServiceClient();
         // serviceClient.UpdateServiceTitle(model);
         // Console.WriteLine();
-        
+
         // //Работает
         // IUserClient userClient = new UserClient();
         // var res = userClient.GetUserByChatId(1);
@@ -478,7 +478,7 @@ class Program
         // {
         //     Console.WriteLine(res);
         // }
-        
+
         // //Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // ServiceIdAndServicePriceInputModel model = new ServiceIdAndServicePriceInputModel
@@ -489,7 +489,7 @@ class Program
         // IServiceClient serviceClient = new ServiceClient();
         // serviceClient.UpdateServicePrice(model);
         // Console.WriteLine();
-        
+
         // //Работает
         // IServicesRepository servicesRepository = new ServicesRepository();
         // ServiceIdAndServiceDurationInputModel model = new ServiceIdAndServiceDurationInputModel
@@ -500,7 +500,7 @@ class Program
         // IServiceClient serviceClient = new ServiceClient();
         // serviceClient.UpdateServiceDuration(model);
         // Console.WriteLine();
-        
+
         // //Работает
         // ServiceIdInputModel model = new ServiceIdInputModel
         // {
@@ -509,7 +509,7 @@ class Program
         // ServiceClient serviceClient = new ServiceClient();
         // var q = serviceClient.RemoveServiceById(model);
         // Console.ReadLine();
-        
+
         // //Работает
         // IntervalsClient intervals = new IntervalsClient();
         // IntervalIdInputModel model = new IntervalIdInputModel
@@ -518,7 +518,7 @@ class Program
         // };
         // var res = intervals.GetFreeMasterIdByIntervalId(model);
         // Console.WriteLine();
-        
+
         // //Работает
         // IUserClient userClient = new UserClient();
         // var res = userClient.GetWorkerNameByPassword("12345");
@@ -526,7 +526,7 @@ class Program
         // {
         //     Console.WriteLine(res);
         // }
-        
+
         #endregion
     }
 }
