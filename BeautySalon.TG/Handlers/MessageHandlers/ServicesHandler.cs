@@ -573,13 +573,29 @@ public class ServicesHandler
     {
         IServiceClient serviceClient = new ServiceClient();
         serviceClient.AddServiceById(model);
-        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
-        buttons.Add(new[]
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
-            InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
-                callbackData: "перейти в меню клиента")
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
+                    callbackData: "вернуться к выбору услуги"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору типа услуг",
+                    callbackData: "вернуться к выбору типа услуг"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню админа",
+                    callbackData: "вернуться в меню админа"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
+                    callbackData: "перейти в меню клиента"),
+            },
         });
-        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         botClient.SendTextMessageAsync(update.Message.Chat.Id,
             "Вы успешно добавили новою услугу в базу данных.",
             replyMarkup: inlineKeyboard);

@@ -1,5 +1,6 @@
 ﻿using BeautySalon.TG;
 using BeautySalon.TG.States;
+using BeautySalon.TG.States.Services;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
@@ -21,10 +22,13 @@ public class AddPriceState : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        if (update.Message.Text != null)
+        if (update.Message != null)
         {
-            decimal price = decimal.Parse(update.Message.Text);
-            return new AddFinalState(Title, TypeId, Duration, price);
+            if (update.Message.Text != null)
+            {
+                decimal price = decimal.Parse(update.Message.Text);
+                return new AddFinalState(Title, TypeId, Duration, price);
+            }
         }
         return new StartState();
     }

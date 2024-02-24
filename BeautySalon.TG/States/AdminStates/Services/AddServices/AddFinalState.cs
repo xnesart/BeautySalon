@@ -37,8 +37,43 @@ public class AddFinalState : AbstractState
         {
             if (update.Message.Text != null)
             {
-                string price = update.Message.Text;
-                return new StartState();
+
+            }
+           
+        }
+        else
+        {
+            if (update.CallbackQuery.Data == "вернуться к выбору услуги")
+            {
+                if (TypeId == 1)
+                {
+                    return new MakeUpForModifyState(TypeId, Password);
+                }
+
+                if (TypeId == 2)
+                {
+                    return new HaircutForModifyState(TypeId, Password);
+                }
+
+                if (TypeId == 3)
+                {
+                    return new ColoringForModifyState(TypeId, Password);
+                }
+
+                if (TypeId == 4)
+                {
+                    return new StylingForModifyState(TypeId, Password);
+                }
+            }
+
+            if (update.CallbackQuery.Data == "вернуться к выбору типа услуг")
+            {
+                return new ServiceForModifyState(Password);
+            }
+
+            if (update.CallbackQuery.Data == "вернуться в меню админа")
+            {
+                return new AdminControlPanelState(Password);
             }
         }
         return new StartState();
