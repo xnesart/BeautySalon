@@ -37,12 +37,13 @@ public class MappingProfile : Profile
         CreateMap<IntеrvalsDTO, IntеrvalsOrdersForClientByIdOutputModel>();
         CreateMap<ServicesDTO, ServicesOrdersForClientByIdOutputModel>();
         CreateMap<OrdersDTO, OrdersOrdersForClientByIdOutputModel>();
-        CreateMap<UpdateOrderClientByIdInput, OrdersDTO>();
+        CreateMap<UpdateOrderClientByIdInput, OrdersDTO>().ForMember(c => c.IntervalId, s => s.MapFrom(w => w.IntervalId))
+            .ForMember(c => c.Id, d => d.MapFrom(w => w.Id));
         CreateMap<AllShiftsWithFreeIntervalsOnCurrentServiceDTO, ShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
         CreateMap<ShiftsDTO, ShiftAllShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
 
         CreateMap<RemoveOrderForClientIdInput, OrdersDTO>()
-            .ForMember(destination => destination.Id, sourse => sourse.MapFrom(opt => opt.OrderId));
+        .ForMember(destination => destination.Id, sourse => sourse.MapFrom(opt => opt.OrderId));
 
         CreateMap<GetAllShiftsAndEmployeesOnTodayDTO,MastersNameAndShiftsOutputModel>();
         CreateMap<MasterIdAndShiftIdInputModel,ShiftsDTO>();

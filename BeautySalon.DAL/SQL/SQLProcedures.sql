@@ -393,8 +393,9 @@ from
 	join Services on Orders.ServiceId = Services.Id
 where Client.Id = @Id and Orders.IsDeleted = 0
 end
+go
 -- Получить MasterId по IntervalId если этот интервал ещё не занят в Order
-create procedure GetFreeMasterIdByIntervalId
+create procedure  GetFreeMasterIdByIntervalId
     @IntervalId int as
 BEGIN
     select Users.Id as MasterId from Users
@@ -402,6 +403,7 @@ BEGIN
     join Intervals on Shifts.Id = Intervals.ShiftId
     where Intervals.Id = @IntervalId and Users.IsDeleted = 0 and Shifts.IsDeleted = 0 and Intervals.IsDeleted = 0 and Intervals.IsBusy = 0
 END
+go
 -- ✓ Вывести свободных мастеров и свободные интервалы для записи
 create proc GetFreeMastersAndIntervalsOnToday
     as
