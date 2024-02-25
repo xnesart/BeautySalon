@@ -5,9 +5,9 @@ using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States.Employees;
 
-public class RemoveWorkersState:AbstractState
+public class RemoveWorkerState:AbstractState
 {
-    public RemoveWorkersState(string password, int workerId)
+    public RemoveWorkerState(string password, int workerId)
     {
         Password = password;
         WorkerId = workerId;
@@ -23,7 +23,7 @@ public class RemoveWorkersState:AbstractState
     {
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
-            return new RemoveWorkersComplete(Password, WorkerId);
+            return new RemoveWorkerCompleteState(Password, WorkerId);
         }
         return new AdminControlPanelState(Password);
     }

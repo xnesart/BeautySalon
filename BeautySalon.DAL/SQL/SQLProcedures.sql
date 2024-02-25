@@ -78,10 +78,6 @@ begin
     Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
     join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
-    select Users.Id as WorkerId, Users.RoleId as WorkerRoleId, Roles.Title as Worker, 
-           Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
-    join Roles on Users.RoleId = Roles.Id
-    where RoleId = 1 or RoleId = 2
 end
 go
 -- ✓ Вывести всех сотрудников по Id и их контакты
@@ -131,6 +127,33 @@ begin
     select Users.Name, Shifts.Id, Shifts.Title, Shifts.StartTime, Shifts.EndTime, Shifts.MasterId from Shifts
     join Users on Shifts.MasterId = Users.id
     where convert(DATE, StartTime) = convert(DATE, @Today) and Shifts.IsDeleted = 0
+end
+go
+-- ✓ Вывести мастеров ВЫБРАННОЙ смены по названию смены
+create proc GetMastersFromShiftByShiftTitle
+    @ShiftTitle nvarchar(30) as
+begin
+    select Users.Id, Users.RoleId, Users.Name from Users
+    join Shifts on Shifts.MasterId = Users.Id
+    where Shifts.Title = @ShiftTitle and RoleId = 2
+end
+go
+-- ✓ Вывести мастеров, отсутствующих в выбранной смене
+create proc GetMastersAbsentedInSelectedShift
+    @ShiftTitle nvarchar(30) as
+begin
+    select distinct Users.Id, Users.RoleId, Users.Name from Users
+    left join Shifts on Users.Id = Shifts.MasterId and Shifts.Title = @ShiftTitle
+    where Users.RoleId = 2 and Shifts.MasterId is null or Users.RoleId = 2 and Shifts.MasterId != Shifts.MasterId;
+end;
+go
+-- ✓ Удалить мастера из ВЫБРАННОЙ смены по названию смены
+create proc RemoveMasterFromShiftByShiftTitle
+    @MasterId int, @ShiftTitle nvarchar(30) as
+begin
+    update Shifts
+    set Shifts.MasterId = null
+    where Shifts.MasterId=@MasterId and Shifts.Title = @ShiftTitle
 end
 go
 -- ✓ Назначить на выбранную смену другого мастера

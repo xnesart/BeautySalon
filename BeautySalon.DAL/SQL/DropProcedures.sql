@@ -13,7 +13,9 @@ drop proc GetAllWorkersWithContactsByUserId
 drop proc AddWorkerByRoleId
 drop proc RemoveUserById
 drop proc GetAllShiftsOnToday
-drop proc GetAllShiftsAndEmployees
+drop proc GetAllShiftsAndEmployeesOnToday
+drop proc GetMastersFromShiftByShiftTitle
+drop proc RemoveMasterFromShiftByShiftTitle
 drop proc ChangeMasterInShift
 drop proc RemoveMasterFromShift
 drop proc GetAllIntervals

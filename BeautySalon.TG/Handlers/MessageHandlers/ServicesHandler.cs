@@ -434,7 +434,32 @@ public class ServicesHandler
             Id = serviceId
         };
         serviceClient.RemoveServiceById(model);
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выбранная услуга удалена из базы.");
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
+                    callbackData: "вернуться к выбору услуги"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору типа услуг",
+                    callbackData: "вернуться к выбору типа услуг"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню админа",
+                    callbackData: "вернуться в меню админа"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
+                    callbackData: "перейти в меню клиента"),
+            },
+        });
+        botClient.SendTextMessageAsync(update.CallbackQuery.From.Id,
+            "Услуга удалена из базы данных.",
+            replyMarkup: inlineKeyboard);
     }
 
     public async void ServiceUpdatePrice(ITelegramBotClient botClient, Update update, int serviceId,
