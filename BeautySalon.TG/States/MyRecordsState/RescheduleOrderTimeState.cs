@@ -12,23 +12,24 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
+using BeautySalon.BLL;
 
 namespace BeuatySalon.TG.States.MyRecordsState
 {
     public class RescheduleOrderTimeState : AbstractState
     {
-       
         public RescheduleOrderTimeState()
         {
-           
-
-
+            OrderId = this.OrderId; 
+            ServiceId = this.ServiceId;
         }
         public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
-        
+            ShiftsHandler shiftsHandler = new ShiftsHandler();
+            shiftsHandler.ChoseShift(SingletoneStorage.GetStorage().Client, update, cancellationToken);
 
         }
+
         public override AbstractState ReceiveMessage(Update update)
         {   
              if(update.CallbackQuery.Data == "Вернуться в главное меню")
@@ -37,27 +38,11 @@ namespace BeuatySalon.TG.States.MyRecordsState
              }
              else
              {
-                UserHandler userHandler = new UserHandler();
-
-                long chatId = update.CallbackQuery.From.Id;
-                int? userId = userHandler.GetUserByChatId(chatId);
-
-                UpdateOrderClientByIdInput updateOrderClientByIdInput = new UpdateOrderClientByIdInput()
-                {
-                    Id = (int)userId,
-                    ClientId = (int)userId,
-                    IntervalId = this.IntervalId,
-                    MasterId = (int)userId,
-                };
-                OrderHandler orderHandler = new OrderHandler();
-                orderHandler.UpdateOrderTimeForClientById(updateOrderClientByIdInput);
-
+                ServiceId = int.Parse(update.CallbackQuery.Data);
+                //Передаем в стейт интервалов выбранный айди смены.
+                return new UpdateIntervalState(ShiftId,OrderId);
              }
-             return new StartState();
-            
-
         }
-
     }
-
 }
+  

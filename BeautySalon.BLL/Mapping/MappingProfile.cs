@@ -37,7 +37,8 @@ public class MappingProfile : Profile
         CreateMap<IntеrvalsDTO, IntеrvalsOrdersForClientByIdOutputModel>();
         CreateMap<ServicesDTO, ServicesOrdersForClientByIdOutputModel>();
         CreateMap<OrdersDTO, OrdersOrdersForClientByIdOutputModel>();
-        CreateMap<UpdateOrderClientByIdInput, OrdersDTO>();
+        CreateMap<UpdateOrderClientByIdInput, OrdersDTO>().ForMember(c => c.IntervalId, s => s.MapFrom(w => w.IntervalId))
+            .ForMember(c => c.Id, d => d.MapFrom(w => w.Id));
         CreateMap<AllShiftsWithFreeIntervalsOnCurrentServiceDTO, ShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
         CreateMap<ShiftsDTO, ShiftAllShiftsWithFreeIntervalsOnCurrentServiceOutputModel>();
 

@@ -40,7 +40,7 @@ public class Procedures
     public const string GetAllOrdersOnToday = "GetAllOrdersOnToday"; 
     public const string GetAllChatId = "GetAllUsersChatId";
     public const string GetOrdersByClientId2 = "GetOrdersByClientId2";
-    public const string UpdateOrderTimeForClientById = "UpdateOrderTimeForClientById";
+    public const string UpdateOrderTimeByOrderId = "UpdateOrderTimeByOrderId";
     public const string CreateNewOrder = "CreateNewOrder";
     public const string GetOrderInfo = "GetOrderInfo";
     public const string GetAllFreeIntervalsOnCurrentService = "GetAllFreeIntervalsOnCurrentService";

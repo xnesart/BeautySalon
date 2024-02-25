@@ -10,7 +10,7 @@ namespace BeautySalon.TG.Handlers.MessageHandlers;
 public class IntervalsHanlder
 {
     public List<IntervalsIdTitleStartTimeOutputModel> ListOfFreeIntervals { get; set; }
-    public async void GetFreeIntervalsOnCurrentShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,int shiftId)
+    public async void GetFreeIntervalsOnCurrentShiftAndSendMessage(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,int shiftId)
     {
         IntervalsClient intervalsClient = new IntervalsClient();
         
@@ -49,4 +49,12 @@ public class IntervalsHanlder
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите подходящий интервал",
             replyMarkup: inlineKeyboard);
     }
+
+    
+     public List<IntervalsIdTitleStartTimeOutputModel> GetFreeIntervalsOnCurrentShiftId(ShiftIdInputModel model)
+     {
+        IntervalsClient intervalsClient = new IntervalsClient();
+        List<IntervalsIdTitleStartTimeOutputModel> result = intervalsClient.GetAllFreeIntervalsByShiftId(model);
+        return result;
+     }
 }

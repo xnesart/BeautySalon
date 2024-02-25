@@ -11,6 +11,7 @@ using BeautySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
+using BeuatySalon.TG.States.MyRecordsState;
 
 namespace BeautySalon.TG.States.MyRecordsState
 {
@@ -85,9 +86,6 @@ namespace BeautySalon.TG.States.MyRecordsState
                     cancellationToken: cancellationToken
                 );
             }
-
-            
-
         }
 
         public override AbstractState ReceiveMessage(Update update)
