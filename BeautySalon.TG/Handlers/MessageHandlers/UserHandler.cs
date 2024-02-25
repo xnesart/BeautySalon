@@ -144,6 +144,41 @@ public class UserHandler
             "Выберите сотрудника, которого хотите удалить из базы, либо другое действие:",
             replyMarkup: inlineKeyboard);
     }
+    
+    public void GetAllWorkersByRoleIdExcludeDeleted(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    {
+        IUserClient userClient = new UserClient();
+        var workers = userClient.GetAllWorkersByRoleIdExcludeDeleted();
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        int rowsCount = 2;
+        for (int i = 0; i <= workers.Count; i += rowsCount)
+        {
+            // Выбираем порцию услуг для текущего ряда
+            var rowServices = workers.Skip(i).Take(rowsCount);
+            // Создаем массив кнопок для текущего ряда
+            InlineKeyboardButton[] row = rowServices
+                .Select(worker => InlineKeyboardButton.WithCallbackData(text: $"{worker.Name} {worker.RoleId}",
+                    callbackData: worker.Id.ToString()))
+                .ToArray();
+            // Добавляем массив кнопок в список
+            buttons.Add(row);
+        }
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Добавить сотрудника",
+                callbackData: "добавить сотрудника")
+        });
+        //добавляем вернуться в главное меню
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+        botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "Выберите сотрудника, которого хотите удалить из базы, либо другое действие:",
+            replyMarkup: inlineKeyboard);
+    }
 
     public async void RemoveWorkerGetButtons(ITelegramBotClient botClient, Update update,
         CancellationToken cancellationToken)
