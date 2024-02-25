@@ -325,6 +325,11 @@ class Program
         // IShiftsRepository shiftsRepository = new ShiftsRepository();
         // shiftsRepository.RemoveMasterFromShiftByShiftTitle(2, "УТРО (10:00 - 13:45)");
         // Console.ReadLine();
+        //
+        // //Работает
+        // IUserRepository userRepository = new UserRepository();
+        // var res = userRepository.GetWorkerNameAndChatIdAndIdByPassword("12345");
+        // Console.ReadLine();
 
         #endregion
 
@@ -551,6 +556,11 @@ class Program
         // //Работает
         // IShiftsRepository shiftsRepository = new ShiftsRepository();
         // shiftsRepository.RemoveMasterFromShiftByShiftTitle(7, "УТРО (10:00 - 13:45)");
+        // Console.ReadLine();
+        //
+        // //Работает
+        // IUserClient userClient = new UserClient();
+        // var user = userClient.GetWorkerNameAndChatIdAndIdByPassword("12345");
         // Console.ReadLine();
 
         #endregion

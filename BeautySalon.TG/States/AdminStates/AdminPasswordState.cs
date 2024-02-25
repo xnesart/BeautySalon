@@ -18,13 +18,25 @@ public class AdminPasswordState : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
+        string password = update.Message.Text;
         UserClient userClient = new UserClient();
-        string adminName = userClient.GetWorkerNameByPassword(update.Message.Text);
+        string adminName = userClient.GetWorkerNameByPassword(password);
+        // var models = userClient.GetWorkerNameAndChatIdAndIdByPassword(password);
+        // int? chatId;
+        // int? id;
+        // foreach (var model in models)
+        // {
+        //     chatId = model.ChatId;
+        //     id = model.Id;
+        // }
         if (adminName != "")
         {
             Password = update.Message.Text;
             userClient.ChangeChatIdAndUserNameByPassword(Password, (int)update.Message.Chat.Id, update.Message.Chat.Username);
             return new AdminControlPanelState(Password);
+        }else if()
+        {
+            
         }
         else
         {
@@ -35,6 +47,6 @@ public class AdminPasswordState : AbstractState
                 return new AdminState(); 
             }
         }
-        return new StartState();
+        return this;
     }
 }
