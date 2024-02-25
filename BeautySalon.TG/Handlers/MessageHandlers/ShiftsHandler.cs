@@ -135,8 +135,39 @@ public class ShiftsHandler
         MasterIdAndShiftTitleInputModel model = new MasterIdAndShiftTitleInputModel();
         shiftsClient.RemoveMasterFromShiftByShiftTitle(masterId, title);
     }
+        
+    public void GetMastersAbsentedInSelectedShift(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken, string title)
+    {
+        IShiftsClient shiftsClient = new ShiftsClient();
+        var workers = shiftsClient.GetMastersAbsentedInSelectedShift(title);
+        List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
+        int rowsCount = 2;
+        for (int i = 0; i <= workers.Count; i += rowsCount)
+        {
+            var rowServices = workers.Skip(i).Take(rowsCount);
+            InlineKeyboardButton[] row = rowServices
+                .Select(worker => InlineKeyboardButton.WithCallbackData(text: $"{worker.Name} {worker.RoleId}",
+                    callbackData: worker.Id.ToString()))
+                .ToArray();
+            buttons.Add(row);
+        }
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору смены",
+                callbackData: "вернуться к выбору смены")
+        });
+        buttons.Add(new[]
+        {
+            InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                callbackData: "вернуться в главное меню")
+        });
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
+        botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "Выберите мастера, которого хотите добавить в выбранную cмену, либо другое действие:",
+            replyMarkup: inlineKeyboard);
+    }
     
-    public async void GetMastersAbsentedInSelectedShift(ITelegramBotClient botClient, Update update,
+    public async void AddMasterToShift(ITelegramBotClient botClient, Update update,
         CancellationToken cancellationToken)
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]

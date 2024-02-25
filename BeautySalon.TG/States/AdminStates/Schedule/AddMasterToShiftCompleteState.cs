@@ -17,8 +17,8 @@ public class AddMasterToShiftCompleteState: AbstractState
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ShiftsHandler shiftsHandler = new ShiftsHandler();
-        shiftsHandler.AddMasterToShiftWithCreatedNewIntervals(SingletoneStorage.GetStorage().Client,
-            update, cancellationToken, Number, WorkerId);
+        shiftsHandler.AddMasterToShiftWithCreatedNewIntervals(SingletoneStorage.GetStorage().Client, update, cancellationToken, Number, WorkerId);
+        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Выбранный сотрудник назначен на выбранную смену.");
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
             new[]
