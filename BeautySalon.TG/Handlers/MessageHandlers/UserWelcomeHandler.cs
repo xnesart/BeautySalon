@@ -39,7 +39,7 @@ public class UserWelcomeHandler
             new[]
             {
                 InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
-                InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "22"),
+                InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "оставить отзыв"),
             },
         });
         if (update.Message != null)
