@@ -4,6 +4,7 @@ using BeautySalon.TG.States.Services;
 using BeautySalon.TG.States.Services.EditDuration;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.ReplyMarkups;
 
 namespace BeautySalon.TG.States.AdminStates.Services.AddServices;
 
@@ -16,16 +17,53 @@ public class AddTitleState: AbstractState
     
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
-        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Введите название услуги:");
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
+                    callbackData: "вернуться к выбору услуги"),
+            },
+        });
+        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.CallbackQuery.From.Id,
+            "Введите название услуги:",
+            replyMarkup: inlineKeyboard);
     }
     
     public override AbstractState ReceiveMessage(Update update)
     {
-        if (update.Message.Text != null)
+        if (update.Message != null)
         {
             string title = update.Message.Text;
             return new AddDurationState(title, TypeId);
         }
-        return new StartState();
+        else
+        {
+            if (update.CallbackQuery.Data == "вернуться к выбору услуги")
+            {
+                if (TypeId == 1)
+                {
+                    return new MakeUpForModifyState(TypeId, Password);
+                }
+
+                if (TypeId == 2)
+                {
+                    return new HaircutForModifyState(TypeId, Password);
+                }
+
+                if (TypeId == 3)
+                {
+                    return new ColoringForModifyState(TypeId, Password);
+                }
+
+                if (TypeId == 4)
+                {
+                    return new StylingForModifyState(TypeId, Password);
+                }
+            }
+
+            return new StartState();
+        }
+        
     }
 }
