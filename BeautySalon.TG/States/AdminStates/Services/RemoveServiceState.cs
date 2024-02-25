@@ -1,52 +1,37 @@
 ﻿using BeautySalon.TG;
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
-using BeautySalon.TG.States.Services.EditDuration;
-using BeuatySalon.TG.States.AdminStates.Services;
+using BeautySalon.TG.States.Services;
 using Telegram.Bot.Types;
 
-namespace BeautySalon.TG.States.Services;
+namespace BeuatySalon.TG.States.AdminStates.Services;
 
-public class EditServiceState : AbstractState
+public class RemoveServiceState:AbstractState
 {
-    public EditServiceState(int typeId, int serviceId, string password)
+    public RemoveServiceState(int serviceId, string password, int typeId)
     {
-        TypeId = typeId;
         ServiceId = serviceId;
         Password = password;
+        TypeId = typeId;
     }
 
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ServicesHandler servicesHandler = new ServicesHandler();
-        servicesHandler.ServiceEdit(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        servicesHandler.ServiceRemove(SingletoneStorage.GetStorage().Client, update, ServiceId);
     }
 
     public override AbstractState ReceiveMessage(Update update)
     {
-        ServicesHandler servicesHandler = new ServicesHandler();
-        if (update.CallbackQuery.Data != "вернуться к выбору типа услуг")
+        if (update.Message != null)
         {
-            if (update.CallbackQuery.Data == "удалить")
+            if (update.Message.Text != null)
             {
-                return new RemoveServiceState(ServiceId, Password, TypeId);
+                return new ServiceForModifyState(Password);
             }
-
-            if (update.CallbackQuery.Data == "изменить цену")
-            {
-                return new EditPriceState(TypeId, ServiceId, Password);
-            }
-
-            if (update.CallbackQuery.Data == "изменить название")
-            {
-                return new EditTitleState(TypeId, ServiceId, Password);
-            }
-
-            if (update.CallbackQuery.Data == "изменить продолжительность")
-            {
-                return new EditDurationState(TypeId, ServiceId, Password);
-            }
-
+        }
+        else
+        {
             if (update.CallbackQuery.Data == "вернуться к выбору услуги")
             {
                 if (TypeId == 1)
@@ -69,23 +54,20 @@ public class EditServiceState : AbstractState
                     return new StylingForModifyState(TypeId, Password);
                 }
             }
-
             if (update.CallbackQuery.Data == "вернуться к выбору типа услуг")
             {
                 return new ServiceForModifyState(Password);
             }
-
             if (update.CallbackQuery.Data == "вернуться в меню админа")
             {
                 return new AdminControlPanelState(Password);
             }
-
             if (update.CallbackQuery.Data == "перейти в меню клиента")
             {
                 return new StartState();
             }
         }
-
+        
         return new ServiceForModifyState(Password);
     }
 }
