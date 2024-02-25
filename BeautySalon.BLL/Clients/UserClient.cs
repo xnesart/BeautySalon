@@ -28,6 +28,13 @@ public class UserClient : IUserClient
             _userRepository.GetAllWorkersByRoleId();
         var result = _mapper.Map<List<AllWorkersByRoleIdOutputModel>>(users);
         return result;
+    } 
+    public List<AllWorkersByRoleIdOutputModel> GetAllWorkersByRoleIdExcludeDeleted()
+    {
+        List<UsersDTO> users =
+            _userRepository.GetAllWorkersByRoleIdExcludeDeleted();
+        var result = _mapper.Map<List<AllWorkersByRoleIdOutputModel>>(users);
+        return result;
     }
 
     public List<ClientByNameAndIdOutputModel> GetClientByNameAndId(string name, int id)

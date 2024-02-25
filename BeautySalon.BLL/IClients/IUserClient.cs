@@ -12,6 +12,7 @@ namespace BeautySalon.BLL.IClient
     public interface IUserClient
     {
         public List<AllWorkersByRoleIdOutputModel> GetAllWorkersByRoleId();
+        public List<AllWorkersByRoleIdOutputModel> GetAllWorkersByRoleIdExcludeDeleted();
         public List<ClientByNameAndIdOutputModel> GetClientByNameAndId(string name, int id);
         public void AddUserByChatId(AddUserByChatIdInputModel model);
         public List<ClientByNameAndPhoneOutputModel> GetClientByNameAndPhone(string name, string phone);

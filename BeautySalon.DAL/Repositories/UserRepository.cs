@@ -138,6 +138,13 @@ public class UserRepository : IUserRepository
         {
             return connection.Query<UsersDTO>(Procedures.GetAllWorkersByRoleId).ToList();
         }
+    }   
+    public List<UsersDTO> GetAllWorkersByRoleIdExcludeDeleted()
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            return connection.Query<UsersDTO>(Procedures.GetAllWorkersByRoleIdExcludeDeleted).ToList();
+        }
     }
 
     public List<GetAllChatIdDTO> GetAllChatId()
