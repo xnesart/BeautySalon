@@ -33,7 +33,7 @@ public class AdminPasswordState : AbstractState
         });
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
             update.Message != null ? update.Message.Chat.Id : update.CallbackQuery.From.Id,
-            "Введите пароль администратора либо вернитесь в меню клиента.",
+            "Введите пароль администратора либо вернитесь в меню клиента:",
             replyMarkup: inlineKeyboard);
     }
 
@@ -47,7 +47,7 @@ public class AdminPasswordState : AbstractState
             if (adminName == null || adminName == "")
             {
                 SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.Message.Chat.Id,
-                    "Введённый пароль отсутствует в базе. Попробуйте другой пароль или вернитесь в меню клиента.");
+                    "Введённый пароль отсутствует в базе.");
                 return this;
             }
             else

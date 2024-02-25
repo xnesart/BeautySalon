@@ -18,7 +18,6 @@ namespace BeuatySalon.TG.States.MasterState
     {
         List<GetOrdersByMasterIdOutputModel> onTodayForMasterOutputModels { get; set; }
 
-
         public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
             OrderHandler orderHandler = new OrderHandler();
@@ -35,7 +34,6 @@ namespace BeuatySalon.TG.States.MasterState
             {
                 text += $"{order.Client.UserName},{order.Client.Name} ,{order.IntervalTitle},{order.Services.Title},{order.Services.Price},{order.Services.Duration}.\n";
             }
-
             
             SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                 chatId: update.CallbackQuery.From.Id,
@@ -48,14 +46,13 @@ namespace BeuatySalon.TG.States.MasterState
                 text:$"Вернуться в главное меню",
                 replyMarkup: new InlineKeyboardMarkup(
                         [
-                           
-                            [InlineKeyboardButton.WithCallbackData(text: "Верунться в главное меню", callbackData: "Верунться в главное меню")],
-
+                            [InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "Вернуться в главное меню")],
                         ]
                     ),
                     cancellationToken: cancellationToken
             );
         }
+        
         public override AbstractState ReceiveMessage(Update update)
         {
             if(update.CallbackQuery.Data == "Вернуться в главное меню")
@@ -65,7 +62,6 @@ namespace BeuatySalon.TG.States.MasterState
             return new MasterState();
         }
     }
-    
 }
        
 

@@ -21,8 +21,8 @@ public class AddWorkersCompleteState : AbstractState
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         UserHandler userHandler = new UserHandler();
-        userHandler.AddWorkerByRoleId(SingletoneStorage.GetStorage().Client, update, cancellationToken, RoleId, Name,
-            Phone, Mail);
+        userHandler.AddWorkerByRoleId(SingletoneStorage.GetStorage().Client,
+            update, cancellationToken, RoleId, Name, Phone, Mail);
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
             new[]

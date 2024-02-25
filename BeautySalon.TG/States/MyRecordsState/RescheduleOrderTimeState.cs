@@ -17,16 +17,12 @@ namespace BeuatySalon.TG.States.MyRecordsState
 {
     public class RescheduleOrderTimeState : AbstractState
     {
-       
         public RescheduleOrderTimeState()
         {
-           
-
 
         }
         public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
-        
 
         }
         public override AbstractState ReceiveMessage(Update update)
@@ -51,13 +47,8 @@ namespace BeuatySalon.TG.States.MyRecordsState
                 };
                 OrderHandler orderHandler = new OrderHandler();
                 orderHandler.UpdateOrderTimeForClientById(updateOrderClientByIdInput);
-
              }
              return new StartState();
-            
-
         }
-
     }
-
 }

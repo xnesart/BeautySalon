@@ -14,6 +14,7 @@ public class AddWorkersStatePhone:AbstractState
         RoleId = roleId;
         Name = name;
     }
+    
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]
@@ -25,8 +26,7 @@ public class AddWorkersStatePhone:AbstractState
             },
         });
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.Message.Chat.Id,
-            "Введите телефон сотрудника:",
-            replyMarkup: inlineKeyboard);
+            "Введите телефон сотрудника:", replyMarkup: inlineKeyboard);
     }
 
     public override AbstractState ReceiveMessage(Update update)

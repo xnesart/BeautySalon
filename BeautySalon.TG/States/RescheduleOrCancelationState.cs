@@ -24,17 +24,17 @@ namespace BeautySalon.TG.States
         {
              SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                        chatId: update.CallbackQuery.From.Id,
-                       text: $"Здесь вы можете отменить или перенсти запись",
+                       text: $"Здесь вы можете отменить или перенести выбранную запись.",
                        replyMarkup: new InlineKeyboardMarkup(
                         [
                             [InlineKeyboardButton.WithCallbackData(text: "Отменить запись", callbackData: "Отменить запись")],
                             [InlineKeyboardButton.WithCallbackData(text: "Перенести запись", callbackData: "Перенести запись")],
                             [InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "Вернуться в главное меню")]
-
                         ]
                     ),
                        cancellationToken: cancellationToken);
         }
+        
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.CallbackQuery.Data == "Вернуться в главное меню")
@@ -68,13 +68,9 @@ namespace BeautySalon.TG.States
                     };
                     OrderHandler orderHandler = new OrderHandler();
                     orderHandler.UpdateOrderTimeForClientById(updateOrderClientByIdInput);
-
                 }
-            
                 return new StartState();
             }
         }
-        
-        
     }
 }

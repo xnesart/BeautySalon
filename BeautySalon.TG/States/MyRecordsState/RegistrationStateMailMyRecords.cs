@@ -18,16 +18,14 @@ namespace BeautySalon.TG.States.MyRecordsState
         public async override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
             await SingletoneStorage.GetStorage().Client
-                .SendTextMessageAsync(chatId, "Пожалуйста укажите Ваш e-mail для рассылки спецпредложений (по желанию):");
+                .SendTextMessageAsync(chatId, "Пожалуйста, укажите Ваш e-mail для подписки на рассылку спецпредложений (по желанию):");
         }
 
         public override AbstractState ReceiveMessage(Update update)
         {
             this.Mail = update?.Message.Text;
-    
             SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(update.Message.Chat.Id, "Спасибо за регистрацию.Будем рады видеть Вас в нашем салоне!. Хорошего дня!");
-
+            .SendTextMessageAsync(update.Message.Chat.Id, "Благодарим за регистрацию! Будем рады видеть Вас в нашем салоне. Хорошего дня!");
             long id = update.Message.Chat.Id;
             UserHandler userHandler = new UserHandler();
             AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
@@ -37,7 +35,6 @@ namespace BeautySalon.TG.States.MyRecordsState
                 Phone = Phone,
                 Mail = Mail,
                 RoleId = 1,
-                
             };
             userHandler.AddUserToDB(model);
             return new StartState();

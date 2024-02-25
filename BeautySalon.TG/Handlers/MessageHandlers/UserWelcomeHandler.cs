@@ -164,7 +164,7 @@ public class UserWelcomeHandler
             new[]
             {
                 InlineKeyboardButton.WithCallbackData(text: "Ввести пароль", callbackData: "ввести пароль"),
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "вернуться в главное меню"),
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню клиента", callbackData: "вернуться в меню клиента"),
             },
         });
 
@@ -173,7 +173,7 @@ public class UserWelcomeHandler
             await botClient.SendTextMessageAsync(
                 chatId: update.Message.Chat.Id,
                 text:
-                $"Здраствуйте! Введите пароль мастера или вернитесь в главное меню",
+                $"Здраствуйте! Введите пароль мастера либо вернитесь в меню клиента.",
                 replyMarkup: inlineKeyboard,
                 cancellationToken: cancellationToken
             );
@@ -186,19 +186,19 @@ public class UserWelcomeHandler
         {
             new[]
             {
-                InlineKeyboardButton.WithCallbackData(text: "Текущие записи ", callbackData: "Текущие записи"),
+                InlineKeyboardButton.WithCallbackData(text: "Текущие записи", callbackData: "Текущие записи"),
             },
         });
         await botClient.SendTextMessageAsync(
             chatId: update.Message.Chat.Id,
             text:
-            $"Текущие записи",
+            $"Текущие записи:",
             replyMarkup: inlineKeyboard,
             cancellationToken: cancellationToken
         );
     }   
     
-    public void FalsePassword( Update update, CancellationToken cancellationToken)
+    public void FalsePassword(Update update, CancellationToken cancellationToken)
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
@@ -210,7 +210,7 @@ public class UserWelcomeHandler
         });
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
             chatId: update.Message != null ? update.Message.Chat.Id : update.CallbackQuery.From.Id,
-            text: "Введите пароль администратора либо вернитесь в меню клиента.",
+            text: "Введите пароль администратора либо вернитесь в меню клиента:",
             replyMarkup: inlineKeyboard,
             cancellationToken: cancellationToken);
     }

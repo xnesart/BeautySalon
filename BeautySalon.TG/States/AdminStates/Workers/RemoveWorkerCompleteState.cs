@@ -35,7 +35,7 @@ public class RemoveWorkerCompleteState : AbstractState
             new[]
             {
                 InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню выбора сотрудников",
-                    callbackData: "Вернуться в меню выбора сотрудников"),
+                    callbackData: "вернуться в меню выбора сотрудников"),
             },
             new[]
             {
@@ -43,7 +43,7 @@ public class RemoveWorkerCompleteState : AbstractState
                     callbackData: "вернуться в главное меню"),
             },
         });
-        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.CallbackQuery.From.Id, "Сотрудник удален из базы",
+        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.CallbackQuery.From.Id, "Выбранный сотрудник удален из базы.",
             replyMarkup: inlineKeyboard);
     }
 
@@ -51,8 +51,7 @@ public class RemoveWorkerCompleteState : AbstractState
     {
         if (update.CallbackQuery != null)
         {
-        
-            if (update.CallbackQuery.Data == "вернуться в меню редактирования сотрудников")
+            if (update.CallbackQuery.Data == "вернуться в главное меню")
             {
                 return new AdminControlPanelState(Password);
             }

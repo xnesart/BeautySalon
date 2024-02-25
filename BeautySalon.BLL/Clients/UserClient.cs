@@ -171,5 +171,4 @@ public class UserClient : IUserClient
     {
         _userRepository.ChangeChatIdAndUserNameByPassword(password, chatId, userName);
     }
-  
 }

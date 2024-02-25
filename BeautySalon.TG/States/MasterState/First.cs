@@ -20,7 +20,6 @@ namespace BeuatySalon.TG.States.MasterState
                 replyMarkup: replyMarkup,
                 cancellationToken: cancellationToken
              );
-
             return new Rest();
         }
     }

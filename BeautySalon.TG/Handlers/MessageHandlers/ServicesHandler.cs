@@ -422,7 +422,7 @@ public class ServicesHandler
             },
         });
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-            "Меню редактирования выбранной услуги:",
+            "Меню редактирования выбранной услуги.",
             replyMarkup: inlineKeyboard);
     }
 
@@ -458,7 +458,7 @@ public class ServicesHandler
             },
         });
         botClient.SendTextMessageAsync(update.CallbackQuery.From.Id,
-            "Услуга удалена из базы данных.",
+            "Выбранная услуга удалена из базы данных.",
             replyMarkup: inlineKeyboard);
     }
 
