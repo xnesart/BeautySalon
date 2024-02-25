@@ -189,8 +189,8 @@ public class UserHandler
             replyMarkup: inlineKeyboard);
     }
 
-    public async void RemoveWorkerById(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,
-        int workerId)
+    public async void RemoveWorkerById(ITelegramBotClient botClient, Update update,
+        CancellationToken cancellationToken, int workerId)
     {
         IUserClient userClient = new UserClient();
         UserIdInputModel model = new UserIdInputModel

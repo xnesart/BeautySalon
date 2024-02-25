@@ -11,7 +11,6 @@ public class Procedures
     public const string GetMasterByNameAndId = "GetMasterByNameAndId";
     public const string GetMasterByNameAndPhone = "GetMasterByNameAndPhone";
     public const string GetAllWorkersByRoleId = "GetAllWorkersByRoleId";
-    public const string GetAllWorkersByRoleIdExcludeDeleted = "GetAllWorkersByRoleIdExcludeDeleted";
     public const string GetAllWorkersWithContactsByUserId = "GetAllWorkersWithContactsByUserId";
     public const string AddWorkerByRoleId = "AddWorkerByRoleId";
     public const string RemoveUserById = "RemoveUserById";
@@ -54,5 +53,6 @@ public class Procedures
     public const string GetMastersFromShiftByShiftTitle = "GetMastersFromShiftByShiftTitle";
     public const string RemoveMasterFromShiftByShiftTitle = "RemoveMasterFromShiftByShiftTitle";
     public const string GetMastersAbsentedInSelectedShift = "GetMastersAbsentedInSelectedShift";
+    public const string GetAllWorkersByRoleIdExcludeDeleted = "GetAllWorkersByRoleIdExcludeDeleted";
     public const string GetWorkerNameAndChatIdAndIdByPassword = "GetWorkerNameAndChatIdAndIdByPassword";
 }

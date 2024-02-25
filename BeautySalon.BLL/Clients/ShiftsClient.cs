@@ -70,4 +70,11 @@ public class ShiftsClient : IShiftsClient
     {
         _shiftsRepository.RemoveMasterFromShiftByShiftTitle(masterId, title);
     }
+
+    public List<MastersIdAndRoleIdAndNameOutputModel> GetMastersAbsentedInSelectedShift(string title)
+    {
+        var shifts = _shiftsRepository.GetMastersAbsentedInSelectedShift(title);
+        var result = _mapper.Map<List<MastersIdAndRoleIdAndNameOutputModel>>(shifts);
+        return result;
+    }
 }

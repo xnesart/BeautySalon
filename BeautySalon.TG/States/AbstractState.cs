@@ -21,6 +21,7 @@ public abstract class AbstractState
     public string Duration { get; set; }
     public decimal Price { get; set; }
     public string Title { get; set; }
+    public int Number { get; set; }
     public abstract void SendMessage(long chatId, Update update, CancellationToken cancellationToken);
     public abstract AbstractState ReceiveMessage(Update update);
 }

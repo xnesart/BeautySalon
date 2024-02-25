@@ -15,8 +15,7 @@ public class ShiftsHandler
     {
         ShiftsClient shiftsClient = new ShiftsClient(); 
         var shifts = shiftsClient.GetAllShiftsWithFreeIntervalsOnToday();
-        //оставляем в списке смен только 3
-        if (shifts.Count > 3)
+        if (shifts.Count > 3) //оставляем в списке смен только 3
         {
             shifts.RemoveRange(3,shifts.Count-3);
         }
@@ -86,14 +85,11 @@ public class ShiftsHandler
         int rowsCount = 2;
         for (int i = 0; i <= workers.Count; i += rowsCount)
         {
-            // Выбираем мастеров для текущего ряда
             var rowServices = workers.Skip(i).Take(rowsCount);
-            // Создаем массив кнопок мастеров для текущего ряда
             InlineKeyboardButton[] row = rowServices
                 .Select(worker => InlineKeyboardButton.WithCallbackData(text: $"{worker.Name} {worker.RoleId}",
                     callbackData: worker.Id.ToString()))
                 .ToArray();
-            // Добавляем массив кнопок мастеров в список
             buttons.Add(row);
         }
         buttons.Add(new[]
@@ -101,7 +97,6 @@ public class ShiftsHandler
             InlineKeyboardButton.WithCallbackData(text: "Добавить мастера в выбранную смену",
                 callbackData: "добавить мастера в выбранную смену")
         });
-        //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
             InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
@@ -109,7 +104,7 @@ public class ShiftsHandler
         });
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttons);
         botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-            "Выберите мастера, которого хотите удалить из cмены, либо другое действие:",
+            "Выберите мастера, которого хотите удалить из выбранной cмены, либо другое действие:",
             replyMarkup: inlineKeyboard);
     }
     
@@ -139,5 +134,36 @@ public class ShiftsHandler
         IShiftsClient shiftsClient = new ShiftsClient();
         MasterIdAndShiftTitleInputModel model = new MasterIdAndShiftTitleInputModel();
         shiftsClient.RemoveMasterFromShiftByShiftTitle(masterId, title);
+    }
+    
+    public async void GetMastersAbsentedInSelectedShift(ITelegramBotClient botClient, Update update,
+        CancellationToken cancellationToken)
+    {
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Добавить мастера в выбранную смену",
+                    callbackData: "добавить мастера в выбранную смену"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
+                    callbackData: "вернуться в главное меню"),
+            },
+        });
+        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выберите действие:",
+            replyMarkup: inlineKeyboard);
+    }
+    
+    public async void AddMasterToShiftWithCreatedNewIntervals(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken,int number, int masterId)
+    {
+        ShiftsClient shiftsClient = new ShiftsClient();
+        MasterIdAndShiftNumberInputModel model = new MasterIdAndShiftNumberInputModel
+        {
+            Number = number,
+            MasterId = masterId,
+        };
+        shiftsClient.AddMasterToShiftWithCreatedNewIntervals(number, masterId);
     }
 }

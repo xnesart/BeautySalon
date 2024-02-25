@@ -17,7 +17,7 @@ public class RegistrationStatePhone : AbstractState
     public async override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         await SingletoneStorage.GetStorage().Client
-            .SendTextMessageAsync(chatId, "Пожалуйста, введите Ваш актуальный номер телефона для связи");
+            .SendTextMessageAsync(chatId, "Пожалуйста, введите Ваш актуальный номер телефона для связи:");
     }
 
     public override AbstractState ReceiveMessage(Update update)

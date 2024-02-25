@@ -25,7 +25,7 @@ public class SelectMasterInShiftState: AbstractState
         {
             if (update.CallbackQuery.Data == "добавить мастера в выбранную смену")
             {
-                return new AddWorkersState(Password);
+                return new AddMasterToShiftState(Password);
             }
             else
             {

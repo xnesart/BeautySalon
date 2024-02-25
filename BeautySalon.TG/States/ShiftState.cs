@@ -26,7 +26,6 @@ public class ShiftState: AbstractState
         {
             ShiftId = int.Parse(update.CallbackQuery.Data);
             Console.WriteLine(ShiftId);
-            //Передаем в стейт интервалов выбранный айди смены.
             return new IntervalsState(ShiftId, TypeId, ServiceId);
         }
         return new StartState();

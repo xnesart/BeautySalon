@@ -20,6 +20,7 @@ namespace BeuatySalon.TG.States.MyRecordsState
     {
         public RescheduleOrderTimeState()
         {
+<<<<<<< HEAD
             OrderId = this.OrderId; 
             ServiceId = this.ServiceId;
         }
@@ -27,6 +28,12 @@ namespace BeuatySalon.TG.States.MyRecordsState
         {
             ShiftsHandler shiftsHandler = new ShiftsHandler();
             shiftsHandler.ChoseShift(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+=======
+
+        }
+        public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
+        {
+>>>>>>> Add_task_ButtonEditSchedule_for_admin
 
         }
 
@@ -38,10 +45,29 @@ namespace BeuatySalon.TG.States.MyRecordsState
              }
              else
              {
+<<<<<<< HEAD
                 ServiceId = int.Parse(update.CallbackQuery.Data);
                 //Передаем в стейт интервалов выбранный айди смены.
                 return new UpdateIntervalState(ShiftId,OrderId);
              }
+=======
+                UserHandler userHandler = new UserHandler();
+
+                long chatId = update.CallbackQuery.From.Id;
+                int? userId = userHandler.GetUserByChatId(chatId);
+
+                UpdateOrderClientByIdInput updateOrderClientByIdInput = new UpdateOrderClientByIdInput()
+                {
+                    Id = (int)userId,
+                    ClientId = (int)userId,
+                    IntervalId = this.IntervalId,
+                    MasterId = (int)userId,
+                };
+                OrderHandler orderHandler = new OrderHandler();
+                orderHandler.UpdateOrderTimeForClientById(updateOrderClientByIdInput);
+             }
+             return new StartState();
+>>>>>>> Add_task_ButtonEditSchedule_for_admin
         }
     }
 }

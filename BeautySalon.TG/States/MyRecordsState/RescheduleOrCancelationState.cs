@@ -24,13 +24,12 @@ namespace BeuatySalon.TG.States.MyRecordsState
         {
             SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                       chatId: update.CallbackQuery.From.Id,
-                      text: $"Здесь вы можете отменить или перенсти запись",
+                      text: $"Здесь вы можете отменить или перенести запись",
                       replyMarkup: new InlineKeyboardMarkup(
                        [
                            [InlineKeyboardButton.WithCallbackData(text: "Отменить запись", callbackData: "Отменить запись")],
                            [InlineKeyboardButton.WithCallbackData(text: "Перенести запись", callbackData: "Перенести запись")],
                            [InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "Вернуться в главное меню")]
-
                        ]
                    ),
                       cancellationToken: cancellationToken);
@@ -51,18 +50,13 @@ namespace BeuatySalon.TG.States.MyRecordsState
                     };
                     OrderHandler orderHandler = new OrderHandler();
                     orderHandler.RemoveOrderForClientByOrderId(removeOrderForClientIdInput);
-
                 }
                 if(update.CallbackQuery.Data == "Перенести запись")
                 {
-                    
                     return new RescheduleOrderTimeState();
                 }
-
                 return new StartState();
             }
         }
-
-
     }
 }

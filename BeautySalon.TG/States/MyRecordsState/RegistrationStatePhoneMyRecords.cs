@@ -16,13 +16,12 @@ namespace BeautySalon.TG.States.MyRecordsState
         public async override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
             await SingletoneStorage.GetStorage().Client
-                .SendTextMessageAsync(chatId, "Введите Ваш актуальный номер телефона для связи");
+                .SendTextMessageAsync(chatId, "Пожалуйста введите Ваш актуальный номер телефона для связи:");
         }
 
         public override AbstractState ReceiveMessage(Update update)
         {
             this.Phone = update?.Message.Text;
-
             return new RegistrationStateMailMyRecords() { Phone = this.Phone, Name = this.Name };
         }
     }
