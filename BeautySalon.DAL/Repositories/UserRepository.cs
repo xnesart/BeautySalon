@@ -271,6 +271,18 @@ public class UserRepository : IUserRepository
             var users = connection.Query<GetWorkerNameByPasswordDTO>(Procedures.GetWorkerNameByPassword, parameter).ToList();
             return users;
         }
+    }  
+    public List<GetWorkerNameAndChatIdAndIdByPasswordDTO> GetWorkerNameAndChatIdAndIdByPassword(string password)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameter = new
+            {
+                Password = password,
+            };
+            var users = connection.Query<GetWorkerNameAndChatIdAndIdByPasswordDTO>(Procedures.GetWorkerNameAndChatIdAndIdByPassword, parameter).ToList();
+            return users;
+        }
     }
 
     public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName)

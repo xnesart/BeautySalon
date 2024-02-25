@@ -18,6 +18,7 @@ public class AdminPasswordState : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
+        string password = update.Message.Text;
         UserClient userClient = new UserClient();
         string adminName = userClient.GetWorkerNameByPassword(update.Message.Text);
         if (adminName == null || adminName == "")

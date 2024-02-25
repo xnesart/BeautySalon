@@ -67,6 +67,7 @@ public class MappingProfile : Profile
         CreateMap<GetOrdersByMasterId, GetOrdersByMasterIdOutputModel>();
         CreateMap<GetMastersFromShiftByShiftTitleDTO, MastersIdAndRoleIdAndNameOutputModel>();
         CreateMap<MasterIdAndShiftTitleInputModel, RemoveMasterFromShiftByShiftTitleDTO>();
+        CreateMap<GetWorkerNameAndChatIdAndIdByPasswordDTO, WorkerNameAndChatIdAndIdByPasswordOutputModel>();
     }
 }
 
