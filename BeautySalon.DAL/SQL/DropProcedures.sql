@@ -2,6 +2,7 @@
     --процедуры для админа
 drop proc AddUserByChatId
 drop proc GetWorkerNameByPassword
+drop proc GetWorkerNameAndChatIdAndIdByPassword
 drop proc ChangeChatIdAndUserNameByPassword
 drop proc GetAllUsersChatId
 drop proc GetClientByNameAndId
@@ -9,12 +10,14 @@ drop proc GetClientByNameAndPhone
 drop proc GetMasterByNameAndId
 drop proc GetMasterByNameAndPhone
 drop proc GetAllWorkersByRoleId
+drop proc GetAllWorkersByRoleIdExcludeDeleted
 drop proc GetAllWorkersWithContactsByUserId
 drop proc AddWorkerByRoleId
 drop proc RemoveUserById
 drop proc GetAllShiftsOnToday
 drop proc GetAllShiftsAndEmployeesOnToday
 drop proc GetMastersFromShiftByShiftTitle
+drop proc GetMastersAbsentedInSelectedShift
 drop proc RemoveMasterFromShiftByShiftTitle
 drop proc ChangeMasterInShift
 drop proc RemoveMasterFromShift
