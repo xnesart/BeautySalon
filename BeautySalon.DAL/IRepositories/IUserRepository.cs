@@ -14,7 +14,6 @@ public interface IUserRepository
     public List<UsersDTO> GetMasterByNameAndPhone(string name, string phone);
     public List<UsersDTO> GetAllWorkersByRoleId();
     public List<UsersDTO> GetAllWorkersByRoleIdExcludeDeleted();
-    public List<GetWorkerNameAndChatIdAndIdByPasswordDTO> GetWorkerNameAndChatIdAndIdByPassword(string password);
     public List<GetAllWorkersWithContactsByUserIdDTO> GetAllWorkersWithContactsByUserId();
     // public void AddWorkerByRoleId(int role, string name, string phone, string mail);
     public void AddWorkerByRoleId(AddWorkerByRoleIdDTO addWorkerByRoleIdDTO);
@@ -27,4 +26,5 @@ public interface IUserRepository
     public List<UsersDTO> GetUserByChatId(int chatId);
     public List<GetWorkerNameByPasswordDTO> GetWorkerNameByPassword(string password);
     public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName);
+    public List<GetWorkerNameAndChatIdAndIdByPasswordDTO> GetWorkerNameAndChatIdAndIdByPassword(string password);
 }

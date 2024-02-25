@@ -125,4 +125,18 @@ public class ShiftsRepository : IShiftsRepository
             connection.Query<RemoveMasterFromShiftByShiftTitleDTO>(Procedures.RemoveMasterFromShiftByShiftTitle, parameters);
         }
     }
+
+    public List<GetMastersFromShiftByShiftTitleDTO> GetMastersAbsentedInSelectedShift(string title)
+    {
+        using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+        {
+            var parameters = new
+            {
+                ShiftTitle = title,
+            };
+            var res = connection
+                .Query<GetMastersFromShiftByShiftTitleDTO>(Procedures.GetMastersAbsentedInSelectedShift, parameters).ToList();
+            return res;
+        }
+    }
 }

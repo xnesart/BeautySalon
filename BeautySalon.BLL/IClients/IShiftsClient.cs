@@ -18,5 +18,6 @@ namespace BeautySalon.BLL.IClient
         public void AddMasterToShiftWithCreatedNewIntervals(int number, int masterId);
         public List<MastersIdAndRoleIdAndNameOutputModel> GetMastersFromShiftByShiftTitle(string title);
         public void RemoveMasterFromShiftByShiftTitle(int masterId, string title);
+        public List<MastersIdAndRoleIdAndNameOutputModel> GetMastersAbsentedInSelectedShift(string title);
     }
 }
