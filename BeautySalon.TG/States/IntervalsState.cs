@@ -22,7 +22,7 @@ public class IntervalsState:AbstractState
         IntervalsHanlder intervalsHanlder = new IntervalsHanlder();
         
         Console.WriteLine(ShiftId);
-        intervalsHanlder.GetFreeIntervalsOnCurrentShift(SingletoneStorage.GetStorage().Client, update, cancellationToken, this.ShiftId);
+        intervalsHanlder.GetFreeIntervalsOnCurrentShiftAndSendMessage(SingletoneStorage.GetStorage().Client, update, cancellationToken, this.ShiftId);
         _intervals = intervalsHanlder.ListOfFreeIntervals;
     }
 

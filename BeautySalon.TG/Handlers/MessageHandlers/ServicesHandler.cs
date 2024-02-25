@@ -15,24 +15,24 @@ public class ServicesHandler
 {
     public static List<AllServicesByIdFromCurrentTypeOutputModel> Services { get; set; }
 
-    public async void GetBackToMenu(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
-    {
-        InlineKeyboardMarkup inlineKeyboard = new(new[]
-        {
-            new[]
-            {
-                InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "как добраться"),
-                InlineKeyboardButton.WithCallbackData(text: "Записаться", callbackData: "записаться"),
-            },
-            new[]
-            {
-                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
-                InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "оставить отзыв"),
-            },
-        });
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Главное меню",
-            replyMarkup: inlineKeyboard);
-    }
+    // public async void GetBackToMenu(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    // {
+    //     InlineKeyboardMarkup inlineKeyboard = new(new[]
+    //     {
+    //         new[]
+    //         {
+    //             InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "как добраться"),
+    //             InlineKeyboardButton.WithCallbackData(text: "Записаться", callbackData: "записаться"),
+    //         },
+    //         new[]
+    //         {
+    //             InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
+    //             InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "оставить отзыв"),
+    //         },
+    //     });
+    //     await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Главное меню",
+    //         replyMarkup: inlineKeyboard);
+    // }
 
     public async void ShowServices(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {

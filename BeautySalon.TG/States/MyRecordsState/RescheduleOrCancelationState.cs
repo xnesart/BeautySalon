@@ -24,7 +24,7 @@ namespace BeuatySalon.TG.States.MyRecordsState
         {
             SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                       chatId: update.CallbackQuery.From.Id,
-                      text: $"Здесь вы можете отменить или перенести запись",
+                      text: $"Здесь вы можете отменить либо перенести выбранную запись",
                       replyMarkup: new InlineKeyboardMarkup(
                        [
                            [InlineKeyboardButton.WithCallbackData(text: "Отменить запись", callbackData: "Отменить запись")],
