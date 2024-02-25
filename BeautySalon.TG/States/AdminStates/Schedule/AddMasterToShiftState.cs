@@ -13,7 +13,7 @@ public class AddMasterToShiftState: AbstractState
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         ShiftsHandler shiftsHandler = new ShiftsHandler();
-        shiftsHandler.GetMastersAbsentedInSelectedShift(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        shiftsHandler.AddMasterToShift(SingletoneStorage.GetStorage().Client, update, cancellationToken);
     }
 
     public override AbstractState ReceiveMessage(Update update)
