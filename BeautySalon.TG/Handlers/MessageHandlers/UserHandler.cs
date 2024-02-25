@@ -88,18 +88,15 @@ public class UserHandler
     {
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
-            // // first row
             // new[]
             // {
             //     InlineKeyboardButton.WithCallbackData(text: "Написать администратору",
             //         callbackData: "написать администратору"),
             // },
-            // second row
             new[]
             {
                 InlineKeyboardButton.WithUrl(text: "Перейти на сайт", url: "https://irecommend.ru/"),
             },
-            // third row
             new[]
             {
                 InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
@@ -118,14 +115,11 @@ public class UserHandler
         int rowsCount = 2;
         for (int i = 0; i <= workers.Count; i += rowsCount)
         {
-            // Выбираем порцию услуг для текущего ряда
             var rowServices = workers.Skip(i).Take(rowsCount);
-            // Создаем массив кнопок для текущего ряда
             InlineKeyboardButton[] row = rowServices
                 .Select(worker => InlineKeyboardButton.WithCallbackData(text: $"{worker.Name} {worker.RoleId}",
                     callbackData: worker.Id.ToString()))
                 .ToArray();
-            // Добавляем массив кнопок в список
             buttons.Add(row);
         }
         buttons.Add(new[]
@@ -133,7 +127,6 @@ public class UserHandler
             InlineKeyboardButton.WithCallbackData(text: "Добавить сотрудника",
                 callbackData: "добавить сотрудника")
         });
-        //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
             InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
@@ -153,14 +146,11 @@ public class UserHandler
         int rowsCount = 2;
         for (int i = 0; i <= workers.Count; i += rowsCount)
         {
-            // Выбираем порцию услуг для текущего ряда
             var rowServices = workers.Skip(i).Take(rowsCount);
-            // Создаем массив кнопок для текущего ряда
             InlineKeyboardButton[] row = rowServices
                 .Select(worker => InlineKeyboardButton.WithCallbackData(text: $"{worker.Name} {worker.RoleId}",
                     callbackData: worker.Id.ToString()))
                 .ToArray();
-            // Добавляем массив кнопок в список
             buttons.Add(row);
         }
         buttons.Add(new[]
@@ -168,7 +158,6 @@ public class UserHandler
             InlineKeyboardButton.WithCallbackData(text: "Добавить сотрудника",
                 callbackData: "добавить сотрудника")
         });
-        //добавляем вернуться в главное меню
         buttons.Add(new[]
         {
             InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню",
