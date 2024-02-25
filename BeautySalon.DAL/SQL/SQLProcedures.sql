@@ -10,9 +10,18 @@ go
 create procedure GetWorkerNameByPassword
     @Password nvarchar(30) as
 begin
-select Name
-from Users
-where Password = @Password;
+    select Name
+    from Users
+    where Password = @Password;
+end;
+go
+-- ✓ По Password получить Name и ChatId
+create procedure GetWorkerNameAndChatIdAndIdByPassword
+    @Password nvarchar(30) as
+begin
+    select Name, ChatId, Id
+    from Users
+    where Password = @Password;
 end;
 go
 -- ✓ По Password обновить ChatId и UserName в таблице Users
@@ -78,6 +87,16 @@ begin
     Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
     join Roles on Users.RoleId = Roles.Id
     where RoleId = 1 or RoleId = 2
+end
+go
+-- ✓ Вывести всех сотрудников по RoleId, за исключением удаленных
+create proc GetAllWorkersByRoleIdExcludeDeleted
+as
+begin
+select Users.Id, Users.RoleId, Roles.Title as Worker,
+       Users.ChatId, Users.UserName, Users.Name, Users.Phone, Users.Mail, Users.Salary, Users.IsBlocked, Users.IsDeleted from Users
+                                                                                                                                  join Roles on Users.RoleId = Roles.Id
+where (RoleId = 1 and Users.IsDeleted = 0)or (RoleId = 2  and Users.IsDeleted = 0)
 end
 go
 -- ✓ Вывести всех сотрудников по Id и их контакты
