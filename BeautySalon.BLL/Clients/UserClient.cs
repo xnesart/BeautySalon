@@ -3,6 +3,7 @@ using AutoMapper;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
@@ -154,6 +155,15 @@ public class UserClient : IUserClient
         {
             return result = item.Name;
         }
+        return result;
+    }
+    
+    public List<WorkerNameAndChatIdAndIdByPasswordOutputModel> GetWorkerNameAndChatIdAndIdByPassword(string password)
+    {
+       
+        IUserRepository userRepository = new UserRepository();
+        var res = userRepository.GetWorkerNameAndChatIdAndIdByPassword(password);
+        var result = this._mapper.Map<List<WorkerNameAndChatIdAndIdByPasswordOutputModel>>(res).ToList();
         return result;
     }
 
