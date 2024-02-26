@@ -5,10 +5,12 @@ namespace BeautySalon.TG.States.Schedule;
 
 public class SelectMasterInShiftForAddState : AbstractState
 {
-    public SelectMasterInShiftForAddState(string password, string title)
+    public SelectMasterInShiftForAddState(string password, string title, int workerid, int number)
     {
         Password = password;
         Title = title;
+        WorkerId = workerid;
+        Number = number;
     }
 
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
@@ -28,7 +30,8 @@ public class SelectMasterInShiftForAddState : AbstractState
             }
             else
             {
-                return new AddMasterToShiftState(Password);
+                int workerId = Convert.ToInt32(update.CallbackQuery.Data);
+                return new AddMasterToShiftState(Password, workerId, Number);
             }
         }
         return new AdminControlPanelState(Password);

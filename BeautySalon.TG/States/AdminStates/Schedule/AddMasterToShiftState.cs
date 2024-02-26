@@ -5,9 +5,11 @@ namespace BeautySalon.TG.States.Schedule;
 
 public class AddMasterToShiftState: AbstractState
 {
-    public AddMasterToShiftState(string password)
+    public AddMasterToShiftState(string password, int workerid, int number)
     {
         Password = password;
+        WorkerId = workerid;
+        Number = number;
     }
     
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
