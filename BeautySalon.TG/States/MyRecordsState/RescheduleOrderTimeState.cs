@@ -18,10 +18,10 @@ namespace BeuatySalon.TG.States.MyRecordsState
 {
     public class RescheduleOrderTimeState : AbstractState
     {
-        public RescheduleOrderTimeState()
+        public RescheduleOrderTimeState(int orderId)
         {
-            OrderId = this.OrderId; 
-            ServiceId = this.ServiceId;
+            OrderId = orderId ; 
+          
         }
         public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
@@ -36,9 +36,9 @@ namespace BeuatySalon.TG.States.MyRecordsState
              }
              else
              {
-                ServiceId = int.Parse(update.CallbackQuery.Data);
-                //Передаем в стейт интервалов выбранный айди смены.
-                return new UpdateIntervalState(ShiftId,OrderId);
+                int newShiftId = int.Parse(update.CallbackQuery.Data);
+
+                return new UpdateIntervalState(newShiftId,this.OrderId);
              }
              //    UserHandler userHandler = new UserHandler();
              //

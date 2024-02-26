@@ -112,6 +112,7 @@ public class OrderRepository : IOrderRepository
                          orderByClient.Interval = new IntеrvalsDTO();
                          orderByClient.Interval.Id = interval.Id;
                          orderByClient.Interval.Title = interval.Title;
+                         orderByClient.Interval.ShiftId = interval.ShiftId;
 
                          orderByClient.Service = new ServicesDTO();
                          orderByClient.Service.Id = service.Id;
@@ -133,8 +134,8 @@ public class OrderRepository : IOrderRepository
         {
             var parameters = new
             {
-            OrderId = orders.Id,
-            IntervalId = orders.IntervalId
+                IntervalId = orders.IntervalId,
+                OrderId = orders.Id,
             };
             connection.Query(Procedures.UpdateOrderTimeByOrderId, parameters);
         }

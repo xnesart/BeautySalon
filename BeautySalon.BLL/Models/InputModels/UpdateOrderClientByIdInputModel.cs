@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeautySalon.BLL.Models.InputModels
 {
-    public class UpdateOrderClientByIdInput
+    public class UpdateOrderClientByIdInputModel
     {
         public int Id { get; set; }
         public int MasterId { get; set; }

@@ -1,4 +1,4 @@
-﻿using BeautySalon.BLL.Models.InputModels;
+using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.TG;
 using BeautySalon.TG.States;
 using BeautySalon.TG.Handlers.MessageHandlers;
@@ -17,7 +17,7 @@ namespace BeuatySalon.TG.States.MyRecordsState
     {
         public RescheduleOrCancelationState(int orderIdToRescheduleOrCancel)
         {
-            OrderId = orderIdToRescheduleOrCancel;
+            this.OrderId = orderIdToRescheduleOrCancel;
         }
 
         public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
@@ -34,6 +34,7 @@ namespace BeuatySalon.TG.States.MyRecordsState
                    ),
                       cancellationToken: cancellationToken);
         }
+
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.CallbackQuery.Data == "Вернуться в главное меню")
@@ -53,7 +54,8 @@ namespace BeuatySalon.TG.States.MyRecordsState
                 }
                 if(update.CallbackQuery.Data == "Перенести запись")
                 {
-                    return new RescheduleOrderTimeState();
+                    
+                    return new RescheduleOrderTimeState(this.OrderId);
                 }
                 return new StartState();
             }

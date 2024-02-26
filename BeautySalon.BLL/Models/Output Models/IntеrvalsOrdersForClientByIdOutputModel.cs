@@ -10,7 +10,7 @@ using System.Threading.Tasks;
     {
         public string Title { get; set; }
 
-        public List<ShiftsDTO> Shifts { get; set; }
+        public int ShiftId { get; set; }
 
         public DateTime StartTime { get; set; }
 

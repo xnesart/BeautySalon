@@ -12,7 +12,7 @@ namespace BeautySalon.BLL.IClient
     {
         public void CreateNewOrder(NewOrderInputModel order);
         public List<OrdersForClientByIdOutputModel> GetOrdersForClientById(int Id);
-        public void UpdateOrderTimeForClientById(UpdateOrderClientByIdInput orders);
+        public void UpdateOrderTimeForClientById(UpdateOrderClientByIdInputModel orders);
         public void RemoveOrderForClientByOrderId(RemoveOrderForClientIdInput removeOrderForClient);
     }
 }

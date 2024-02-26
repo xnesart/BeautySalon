@@ -16,6 +16,5 @@ namespace BeautySalon.DAL.DTO
         public IntеrvalsDTO Interval { get; set; }
         public ServicesDTO Service { get; set; }
         public OrdersDTO Order { get; set; }
-
     }
 }

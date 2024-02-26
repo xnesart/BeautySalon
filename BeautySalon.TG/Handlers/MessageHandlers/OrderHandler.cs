@@ -28,7 +28,7 @@ namespace BeautySalon.TG.Handlers.MessageHandlers
             OrderClient orderClient = new OrderClient();
             orderClient.RemoveOrderForClientByOrderId(removeOrderForClient);
         }
-        public void UpdateOrderTimeForClientById(UpdateOrderClientByIdInput orders)
+        public void UpdateOrderTimeForClientById(UpdateOrderClientByIdInputModel orders)
         {
             OrderClient orderClient = new OrderClient();
             orderClient.UpdateOrderTimeForClientById(orders);

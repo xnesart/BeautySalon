@@ -18,15 +18,12 @@ namespace BeuatySalon.TG.States.MyRecordsState
 {
     public class UpdateIntervalState : AbstractState
     {
-   
-        private List<IntervalsIdTitleStartTimeOutputModel> _intervals { get; set; }
-
         public UpdateIntervalState(int shiftId,int orderId) 
         {
             ShiftId = shiftId;
             OrderId = orderId;
         }
-        public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
+        public override async void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
             IntervalsHanlder intervalsHanlder = new IntervalsHanlder();
             ShiftIdInputModel model = new ShiftIdInputModel()
@@ -34,53 +31,47 @@ namespace BeuatySalon.TG.States.MyRecordsState
                 Id = ShiftId,
             };
 
-            List<IntervalsIdTitleStartTimeOutputModel> _intervals=intervalsHanlder.GetFreeIntervalsOnCurrentShiftId(model);
+
+            List<IntervalsIdTitleStartTimeOutputModel> _intervals = intervalsHanlder.GetFreeIntervalsOnCurrentShiftId(model);
 
             List<InlineKeyboardButton[]> buttons = new List<InlineKeyboardButton[]>();
-            foreach (IntervalsIdTitleStartTimeOutputModel interval in _intervals)
-            {
-                List<InlineKeyboardButton[]> buttonsRows = this._intervals.Select(
-                       intervals => {
-                           InlineKeyboardButton button = InlineKeyboardButton.WithCallbackData(text: $"{interval.Title}, {interval.StartTime}", callbackData: interval.Title.ToString());
-                           InlineKeyboardButton[] row = [button];
 
-                           return row;
-                       }
-                   ).ToList();
+            List<InlineKeyboardButton[]> buttonsRows = _intervals.Select(
+                (IntervalsIdTitleStartTimeOutputModel interval) =>
+                {
+                    InlineKeyboardButton button = InlineKeyboardButton.WithCallbackData(text: $"{interval.Title}, {interval.StartTime}", callbackData: interval.Id.ToString());
+                    InlineKeyboardButton[] row = [button];
 
-                _intervals.Add( interval );
-            }
-            
-
-
+                    return row;
+                }
+            ).ToList();
+            InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(buttonsRows);
+            await  SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
+                      chatId: update.CallbackQuery.From.Id,
+                      text: $"Время",
+                      replyMarkup: inlineKeyboard,
+                      cancellationToken: cancellationToken
+                   );
         }
+
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.CallbackQuery.Data != "вернуться в главное меню")
             {
-               
-                UserHandler userHandler = new UserHandler();
-                long chatId = update.CallbackQuery.From.Id;
-                int? userId = userHandler.GetUserByChatId(chatId);
-                bool isUserRegistered = userId != null;
-                if (isUserRegistered == true)
+                int intervalId = int.Parse(update.CallbackQuery.Data);
+                
+                UpdateOrderClientByIdInputModel updateOrderClientByIdInputModel = new UpdateOrderClientByIdInputModel
                 {
-                    int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId(IntervalId);
+                    Id = this.OrderId,
+                    IntervalId = intervalId,
+                };
+                
+                new OrderHandler().UpdateOrderTimeForClientById(updateOrderClientByIdInputModel);
 
-                    OrderHandler orderHandler = new OrderHandler();
-                    UpdateOrderClientByIdInput updateOrderClientByIdInput = new UpdateOrderClientByIdInput
-                    {
-                        ClientId = (int)userId,
-                        MasterId = masterIdFromBase,
-                        Id = this.OrderId,
-                        IntervalId = this.IntervalId,
-                    };
-                    orderHandler.UpdateOrderTimeForClientById(updateOrderClientByIdInput);
-                    return new RegistrationOverState();
-                }
+                return new StartState();
             }
+
             return new StartState();
         }
-
     }
 }

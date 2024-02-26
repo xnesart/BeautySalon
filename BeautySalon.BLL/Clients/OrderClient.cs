@@ -34,7 +34,7 @@ namespace BeautySalon.BLL.Clients
 
             return result;
         }
-        public void UpdateOrderTimeForClientById(UpdateOrderClientByIdInput orders)
+        public void UpdateOrderTimeForClientById(UpdateOrderClientByIdInputModel orders)
         {
             OrdersDTO ordersDTO = this._mapper.Map<OrdersDTO>(orders);
             this._orderRepository.UpdateOrderTimeByOrderId(ordersDTO);
