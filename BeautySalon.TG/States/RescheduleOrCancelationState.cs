@@ -73,4 +73,8 @@ namespace BeautySalon.TG.States
             }
         }
     }
+
+    public class UpdateOrderClientByIdInput : UpdateOrderClientByIdInputModel
+    {
+    }
 }
