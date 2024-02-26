@@ -104,7 +104,7 @@ namespace BeautySalon.TG.States.MyRecordsState
             }
             foreach (var currentOrder in orders)
             {
-                if(currentOrder.Order.Id.ToString() == update.CallbackQuery.Data.ToString())
+                if (currentOrder.Order.Id.ToString() == update.CallbackQuery.Data.ToString())
                 {
                     int orderIdToRescheduleOrCancel = int.Parse(update.CallbackQuery.Data.ToString());
                     return new RescheduleOrCancelationState(orderIdToRescheduleOrCancel);

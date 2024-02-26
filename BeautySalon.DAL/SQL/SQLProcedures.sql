@@ -513,3 +513,12 @@ begin
     where Orders.Id = @OrderId
 end
 go
+
+GO
+create proc UpdateOrderTimeByOrderId
+@OrderId int, @IntervalId int as
+begin
+update Orders
+set  Orders.StartIntervalId = @IntervalId
+where Orders.Id = @OrderId 
+end
