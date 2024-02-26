@@ -20,23 +20,30 @@ public class SelectShiftState : AbstractState
 
     public override AbstractState ReceiveMessage(Update update)
     {
+        int number = -1;
         if (update.CallbackQuery.Data != "вернуться в главное меню")
         {
             string title = "";
             if (update.CallbackQuery.Data == "УТРО (10:00 - 13:45)")
             {
                 title = update.CallbackQuery.Data;
-                return new SelectMasterInShiftState(Password, title);
+                Title = title;
+                number = 1;
+                return new SelectMasterInShiftState(Password, title, number);
             }
             if (update.CallbackQuery.Data == "ДЕНЬ (14:00 - 17:45)")
             {
                 title = update.CallbackQuery.Data;
-                return new SelectMasterInShiftState(Password, title);
+                Title = title;
+                number = 2;
+                return new SelectMasterInShiftState(Password, title, number);
             }
             if (update.CallbackQuery.Data == "ВЕЧЕР (18:00 - 21:45)")
             {
                 title = update.CallbackQuery.Data;
-                return new SelectMasterInShiftState(Password,title);
+                Title = title;
+                number = 3;
+                return new SelectMasterInShiftState(Password,title, number);
             }
         }
         return new AdminControlPanelState(Password);

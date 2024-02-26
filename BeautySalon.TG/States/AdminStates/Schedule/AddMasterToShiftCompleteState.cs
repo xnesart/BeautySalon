@@ -27,8 +27,8 @@ public class AddMasterToShiftCompleteState: AbstractState
                     callbackData: "вернуться в главное меню"),
             },
         });
-        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.Message.Chat.Id,
-            "Выбранный сотрудник назначен на выбранную смену.",
+        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
+            "Выберите действие: ",
             replyMarkup: inlineKeyboard);
     }
 

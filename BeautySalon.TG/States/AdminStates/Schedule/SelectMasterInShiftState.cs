@@ -7,10 +7,11 @@ namespace BeautySalon.TG.States.Schedule;
 
 public class SelectMasterInShiftState: AbstractState
 {
-    public SelectMasterInShiftState(string password, string title)
+    public SelectMasterInShiftState(string password, string title, int number)
     {
         Password = password;
         Title = title;
+        Number = number;
     }
 
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
@@ -25,7 +26,7 @@ public class SelectMasterInShiftState: AbstractState
         {
             if (update.CallbackQuery.Data == "добавить мастера в выбранную смену")
             {
-                return new SelectMasterInShiftForAddState(Password, Title);
+                return new SelectMasterInShiftForAddState(Password, Title, WorkerId, Number);
             }
             else
             {
