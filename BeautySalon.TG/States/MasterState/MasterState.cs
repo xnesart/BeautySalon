@@ -17,9 +17,8 @@ namespace BeuatySalon.TG.States.MasterState
         {
             UserWelcomeHandler userWelcomeHandler = new UserWelcomeHandler();
             userWelcomeHandler.WelcomeMaster(SingletoneStorage.GetStorage().Client, update, cancellationToken);
-
-
         }
+        
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.Type == UpdateType.CallbackQuery && UpdateType.CallbackQuery != null)
@@ -28,15 +27,12 @@ namespace BeuatySalon.TG.States.MasterState
                 {
                     return new MasterPasswordState();
                 }
-                if (update.CallbackQuery.Data.ToLower() == "вернуться в главное меню")
+                if (update.CallbackQuery.Data.ToLower() == "вернуться в меню клиента")
                 {
                     return new StartState();
                 }
-
             }
-
             return this;
         }
-
     }
 }

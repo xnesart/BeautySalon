@@ -24,7 +24,7 @@ public class RegistrationStateMail : AbstractState
     {
         await SingletoneStorage.GetStorage().Client
             .SendTextMessageAsync(chatId,
-                "Желаете оставить Ваш e-mail для подписки на нашу рассылку с акциями и персональными предложениями?");
+            "Желаете ли оставить Ваш e-mail для подписки на нашу рассылку с акциями и персональными предложениями?\n(в строке отправки сообщения введите ваш актуальный адрес либо \"нет\", если желаете отказаться от нашей рассылки)");
     }
 
     public override AbstractState ReceiveMessage(Update update)
@@ -33,7 +33,7 @@ public class RegistrationStateMail : AbstractState
         UserName = update?.Message.Chat.Username;
         SingletoneStorage.GetStorage().Client
             .SendTextMessageAsync(update.Message.Chat.Id,
-                "Поздравляем! Вы успешно зарегистрировались в виртуальной системе салона \"Beautiful Girl\".");
+            "Поздравляем! Вы успешно зарегистрировались в виртуальной системе салона \"Beautiful Girl\".");
         long id = update.Message.Chat.Id;
         UserHandler userHandler = new UserHandler();
         AddUserByChatIdInputModel model = new AddUserByChatIdInputModel
@@ -54,10 +54,7 @@ public class RegistrationStateMail : AbstractState
         {
             Id = IntervalId
         };
-        //TODO
         int masterIdFromBase = userHandler.GetFreeMasterIdByIntervalId(IntervalId);
-        //Здесь надо зарегать пользователя в системе, затем создать заказ.
-        // TODO
         OrderHandler orderHandler = new OrderHandler();
         NewOrderInputModel orderInputModel = new NewOrderInputModel
         {

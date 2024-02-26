@@ -17,7 +17,7 @@ public class EditWorkerStartState : AbstractState
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
         UserHandler userHandler = new UserHandler();
-        userHandler.GetAllWorkersByRoleId(SingletoneStorage.GetStorage().Client, update, cancellationToken);
+        userHandler.GetAllWorkersByRoleIdExcludeDeleted(SingletoneStorage.GetStorage().Client, update, cancellationToken);
     }
 
     public override AbstractState ReceiveMessage(Update update)
@@ -31,7 +31,7 @@ public class EditWorkerStartState : AbstractState
             else
             {
                 WorkerId = int.Parse(update.CallbackQuery.Data);
-                return new RemoveWorkersState(Password, WorkerId);
+                return new RemoveWorkerState(Password, WorkerId);
             }
         }
         return new AdminControlPanelState(Password);

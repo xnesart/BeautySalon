@@ -1,28 +1,24 @@
-using BeautySalon.TG;
-using BeautySalon.TG.Handlers.MessageHandlers;
-using BeautySalon.TG.States;
+﻿using BeautySalon.TG.Handlers.MessageHandlers;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace BeautySalon.TG.States.Employees.AddWorkers;
+namespace BeautySalon.TG.States.Schedule;
 
-public class AddWorkersCompleteState : AbstractState
+public class AddMasterToShiftCompleteState: AbstractState
 {
-    public AddWorkersCompleteState(string password, int roleId, string name, string phone, string mail)
+    public AddMasterToShiftCompleteState(string password, int number, int workerId)
     {
         Password = password;
-        RoleId = roleId;
-        Name = name;
-        Phone = phone;
-        Mail = mail;
+        Number = number;
+        WorkerId = workerId;
     }
 
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
-        UserHandler userHandler = new UserHandler();
-        userHandler.AddWorkerByRoleId(SingletoneStorage.GetStorage().Client,
-            update, cancellationToken, RoleId, Name, Phone, Mail);
+        ShiftsHandler shiftsHandler = new ShiftsHandler();
+        shiftsHandler.AddMasterToShiftWithCreatedNewIntervals(SingletoneStorage.GetStorage().Client, update, cancellationToken, Number, WorkerId);
+        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Выбранный сотрудник назначен на выбранную смену.");
         InlineKeyboardMarkup inlineKeyboard = new(new[]
         {
             new[]
@@ -32,7 +28,7 @@ public class AddWorkersCompleteState : AbstractState
             },
         });
         SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.Message.Chat.Id,
-            "Сотрудник успешно добавлен в базу.",
+            "Выбранный сотрудник назначен на выбранную смену.",
             replyMarkup: inlineKeyboard);
     }
 

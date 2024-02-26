@@ -27,9 +27,7 @@ namespace BeuatySalon.TG.States.MyRecordsState
         {
             ShiftsHandler shiftsHandler = new ShiftsHandler();
             shiftsHandler.ChoseShift(SingletoneStorage.GetStorage().Client, update, cancellationToken);
-
         }
-
         public override AbstractState ReceiveMessage(Update update)
         {   
              if(update.CallbackQuery.Data == "Вернуться в главное меню")
@@ -42,6 +40,22 @@ namespace BeuatySalon.TG.States.MyRecordsState
 
                 return new UpdateIntervalState(newShiftId,this.OrderId);
              }
+             //    UserHandler userHandler = new UserHandler();
+             //
+             //    long chatId = update.CallbackQuery.From.Id;
+             //    int? userId = userHandler.GetUserByChatId(chatId);
+             //
+             //    UpdateOrderClientByIdInput updateOrderClientByIdInput = new UpdateOrderClientByIdInput()
+             //    {
+             //        Id = (int)userId,
+             //        ClientId = (int)userId,
+             //        IntervalId = this.IntervalId,
+             //        MasterId = (int)userId,
+             //    };
+             //    OrderHandler orderHandler = new OrderHandler();
+             //    orderHandler.UpdateOrderTimeForClientById(updateOrderClientByIdInput);
+             // }
+             return new StartState();
         }
     }
 }

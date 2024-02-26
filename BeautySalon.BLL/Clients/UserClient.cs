@@ -3,6 +3,7 @@ using AutoMapper;
 using BeautySalon.BLL.IClient;
 using BeautySalon.BLL.Mapping;
 using BeautySalon.BLL.Models;
+using BeautySalon.BLL.Models.InputModels;
 using BeautySalon.BLL.Models.Output_Models;
 using BeautySalon.DAL.DTO;
 using BeautySalon.DAL.IRepositories;
@@ -26,6 +27,13 @@ public class UserClient : IUserClient
     {
         List<UsersDTO> users =
             _userRepository.GetAllWorkersByRoleId();
+        var result = _mapper.Map<List<AllWorkersByRoleIdOutputModel>>(users);
+        return result;
+    } 
+    public List<AllWorkersByRoleIdOutputModel> GetAllWorkersByRoleIdExcludeDeleted()
+    {
+        List<UsersDTO> users =
+            _userRepository.GetAllWorkersByRoleIdExcludeDeleted();
         var result = _mapper.Map<List<AllWorkersByRoleIdOutputModel>>(users);
         return result;
     }
@@ -149,10 +157,18 @@ public class UserClient : IUserClient
         }
         return result;
     }
+    
+    public List<WorkerNameAndChatIdAndIdByPasswordOutputModel> GetWorkerNameAndChatIdAndIdByPassword(string password)
+    {
+       
+        IUserRepository userRepository = new UserRepository();
+        var res = userRepository.GetWorkerNameAndChatIdAndIdByPassword(password);
+        var result = this._mapper.Map<List<WorkerNameAndChatIdAndIdByPasswordOutputModel>>(res).ToList();
+        return result;
+    }
 
     public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName)
     {
         _userRepository.ChangeChatIdAndUserNameByPassword(password, chatId, userName);
     }
-  
 }

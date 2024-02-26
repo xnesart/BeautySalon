@@ -15,7 +15,7 @@ namespace BeautySalon.TG.States.MyRecordsState
         public async override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
         {
             await SingletoneStorage.GetStorage().Client
-                .SendTextMessageAsync(chatId, "Пожалуйста укажите, как к Вам обращаться");
+                .SendTextMessageAsync(chatId, "Пожалуйста укажите, как к Вам обращаться:");
         }
 
         public override AbstractState ReceiveMessage(Update update)

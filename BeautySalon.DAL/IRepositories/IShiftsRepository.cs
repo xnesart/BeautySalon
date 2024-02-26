@@ -10,4 +10,7 @@ public interface IShiftsRepository
     public List<GetAllShiftsWithFreeIntervalsOnTodayDTO> GetAllShiftsWithFreeIntervalsOnToday();
     public List<AllShiftsWithFreeIntervalsOnCurrentServiceDTO> GetAllShiftsWithFreeIntervalsOnCurrentService(int serviceId);
     public List<AddMasterToShiftWithCreatedNewIntervalsDTO> AddMasterToShiftWithCreatedNewIntervals(int number, int masterId);
+    public List<GetMastersFromShiftByShiftTitleDTO> GetMastersFromShiftByShiftTitle(string title);
+    public void RemoveMasterFromShiftByShiftTitle(int masterId, string title);
+    public List<GetMastersFromShiftByShiftTitleDTO> GetMastersAbsentedInSelectedShift(string title);
 }

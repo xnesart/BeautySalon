@@ -4,6 +4,7 @@ using BeautySalon.TG.States;
 using BeautySalon.TG.States.Employees;
 using BeautySalon.TG.States.Schedule;
 using BeautySalon.TG.States.Services;
+using BeuatySalon.TG.States.MasterState;
 using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States;
@@ -39,10 +40,10 @@ public class AdminControlPanelState: AbstractState
         {
             return new SelectShiftState(Password);
         }
-        // if (update.CallbackQuery.Data == "показать активные записи")
-        // {
-        //     return new EditWorkerStartState(Password);
-        // }
+        if (update.CallbackQuery.Data == "показать активные записи")
+        {
+            return new MastersOrdersState();
+        }
         if (update.CallbackQuery.Data == "перейти в меню клиента")
         {
             return new StartState();

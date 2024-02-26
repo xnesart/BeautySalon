@@ -1,35 +1,24 @@
 ﻿using BeautySalon.TG;
+using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
 using BeautySalon.TG.States.Services;
-using Telegram.Bot;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.ReplyMarkups;
 
-namespace BeautySalon.TG.States.AdminStates.Services.AddServices;
+namespace BeuatySalon.TG.States.AdminStates.Services;
 
-public class AddPriceState : AbstractState
+public class RemoveServiceState:AbstractState
 {
-    public AddPriceState(string title, int typeId, string duration)
+    public RemoveServiceState(int serviceId, string password, int typeId)
     {
-        Title = title;
+        ServiceId = serviceId;
+        Password = password;
         TypeId = typeId;
-        Duration = duration;
     }
 
     public override void SendMessage(long chatId, Update update, CancellationToken cancellationToken)
     {
-
-        InlineKeyboardMarkup inlineKeyboard = new(new[]
-        {
-            new[]
-            {
-                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
-                    callbackData: "вернуться к выбору услуги"),
-            },
-        });
-        SingletoneStorage.GetStorage().Client.SendTextMessageAsync(update.Message.Chat.Id,
-            "Назначьте цену услуги:",
-            replyMarkup: inlineKeyboard);
+        ServicesHandler servicesHandler = new ServicesHandler();
+        servicesHandler.ServiceRemove(SingletoneStorage.GetStorage().Client, update, ServiceId);
     }
 
     public override AbstractState ReceiveMessage(Update update)
@@ -38,8 +27,7 @@ public class AddPriceState : AbstractState
         {
             if (update.Message.Text != null)
             {
-                decimal price = decimal.Parse(update.Message.Text);
-                return new AddFinalState(Title, TypeId, Duration, price);
+                return new ServiceForModifyState(Password);
             }
         }
         else
@@ -66,8 +54,20 @@ public class AddPriceState : AbstractState
                     return new StylingForModifyState(TypeId, Password);
                 }
             }
+            if (update.CallbackQuery.Data == "вернуться к выбору типа услуг")
+            {
+                return new ServiceForModifyState(Password);
+            }
+            if (update.CallbackQuery.Data == "вернуться в меню админа")
+            {
+                return new AdminControlPanelState(Password);
+            }
+            if (update.CallbackQuery.Data == "перейти в меню клиента")
+            {
+                return new StartState();
+            }
         }
-
-        return new StartState();
+        
+        return new ServiceForModifyState(Password);
     }
 }

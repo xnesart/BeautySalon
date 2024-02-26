@@ -50,4 +50,9 @@ public class Procedures
     public const string GetFreeMasterIdByIntervalId = "GetFreeMasterIdByIntervalId";
     public const string GetWorkerNameByPassword = "GetWorkerNameByPassword";
     public const string ChangeChatIdAndUserNameByPassword = "ChangeChatIdAndUserNameByPassword";
+    public const string GetMastersFromShiftByShiftTitle = "GetMastersFromShiftByShiftTitle";
+    public const string RemoveMasterFromShiftByShiftTitle = "RemoveMasterFromShiftByShiftTitle";
+    public const string GetMastersAbsentedInSelectedShift = "GetMastersAbsentedInSelectedShift";
+    public const string GetAllWorkersByRoleIdExcludeDeleted = "GetAllWorkersByRoleIdExcludeDeleted";
+    public const string GetWorkerNameAndChatIdAndIdByPassword = "GetWorkerNameAndChatIdAndIdByPassword";
 }

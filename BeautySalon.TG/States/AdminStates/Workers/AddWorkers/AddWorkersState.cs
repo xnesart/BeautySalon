@@ -31,6 +31,6 @@ public class AddWorkersState:AbstractState
                 return new AddWorkersStateName(Password, 2);
             }
         }
-        return this;
+        return new AdminControlPanelState(Password);
     }
 }

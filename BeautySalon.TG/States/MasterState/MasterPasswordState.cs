@@ -22,6 +22,7 @@ namespace BeuatySalon.TG.States.MasterState
         {
             this.state = new First();
         }
+        
         public override AbstractState ReceiveMessage(Update update)
         {
             Password = update.Message.Text;
@@ -46,7 +47,7 @@ namespace BeuatySalon.TG.States.MasterState
         {
             this.state = this.state.SendMessage(chatId, update, cancellationToken, new InlineKeyboardMarkup(
                         [
-                            [InlineKeyboardButton.WithCallbackData(text: "Верунться в главное меню", callbackData: "Верунться в главное меню")],
+                            [InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "Вернуться в главное меню")],
                         ]
                     ));
         }

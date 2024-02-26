@@ -54,7 +54,6 @@ public class IntervalsState:AbstractState
                     Date = DateTime.Now,
                 };
                 orderHandler.CreateNewOrder(orderInputModel);
-
                 return new RegistrationOverState();
             }
             else

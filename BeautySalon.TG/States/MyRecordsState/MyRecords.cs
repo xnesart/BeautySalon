@@ -64,7 +64,7 @@ namespace BeautySalon.TG.States.MyRecordsState
                        replyMarkup: new InlineKeyboardMarkup(
                         [
                             [InlineKeyboardButton.WithCallbackData(text: "Записаться на услугу", callbackData: "Записаться на услугу")],
-                            [InlineKeyboardButton.WithCallbackData(text: "Верунться в главное меню", callbackData: "Верунться в главное меню")],
+                            [InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "Вернуться в главное меню")],
 
                         ]
                     ),
@@ -79,7 +79,7 @@ namespace BeautySalon.TG.States.MyRecordsState
                     replyMarkup: new InlineKeyboardMarkup(
                         [
                            [InlineKeyboardButton.WithCallbackData(text: "Зарегистрироваться", callbackData: "Зарегистрироваться")],
-                            [InlineKeyboardButton.WithCallbackData(text: "Верунться в главное меню", callbackData: "Верунться в главное меню")],
+                            [InlineKeyboardButton.WithCallbackData(text: "Вернуться в главное меню", callbackData: "Вернуться в главное меню")],
                             
                         ]
                     ),
@@ -94,7 +94,7 @@ namespace BeautySalon.TG.States.MyRecordsState
             {
                 return new RegistrationStateNameMyRecords();
             }
-            if(update.CallbackQuery.Data == "Верунться в главное меню")
+            if(update.CallbackQuery.Data == "Вернуться в главное меню")
             {
                 return new StartState();
             }
@@ -110,8 +110,6 @@ namespace BeautySalon.TG.States.MyRecordsState
                     return new RescheduleOrCancelationState(orderIdToRescheduleOrCancel);
                 }
             }
-          
-
             return new StartState();
         }
     }

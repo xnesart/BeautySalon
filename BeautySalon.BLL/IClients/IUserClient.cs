@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BeautySalon.BLL.Models.InputModels;
 
 namespace BeautySalon.BLL.IClient
 {
     public interface IUserClient
     {
         public List<AllWorkersByRoleIdOutputModel> GetAllWorkersByRoleId();
+        public List<AllWorkersByRoleIdOutputModel> GetAllWorkersByRoleIdExcludeDeleted();
         public List<ClientByNameAndIdOutputModel> GetClientByNameAndId(string name, int id);
         public void AddUserByChatId(AddUserByChatIdInputModel model);
         public List<ClientByNameAndPhoneOutputModel> GetClientByNameAndPhone(string name, string phone);
@@ -23,7 +25,11 @@ namespace BeautySalon.BLL.IClient
         public List<UserByChatIdOutputModel> GetUserByChatId(int chatId);
         public int GetFreeMasterByIntervalIdNew(int intervalId);
         public string? GetWorkerNameByPassword(string password);
+
+        public List<WorkerNameAndChatIdAndIdByPasswordOutputModel> GetWorkerNameAndChatIdAndIdByPassword(
+            string password);
+
         public void ChangeChatIdAndUserNameByPassword(string password, int chatId, string userName);
-       
+        public void RemoveMasterFromShift(int masterId, int shiftId);
     }
 }

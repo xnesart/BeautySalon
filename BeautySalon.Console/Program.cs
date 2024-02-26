@@ -232,13 +232,13 @@ class Program
         //    Console.WriteLine();
         //}
 
-        //Работает
-        IOrderRepository orderRepository = new OrderRepository();
-        var orders = orderRepository.GetAllOrdersOnTodayForMaster();
-        foreach (var user in orders)
-        {
-            Console.WriteLine();
-        }
+        // //Работает
+        // IOrderRepository orderRepository = new OrderRepository();
+        // var orders = orderRepository.GetAllOrdersOnTodayForMaster();
+        // foreach (var user in orders)
+        // {
+        //     Console.WriteLine();
+        // }
 
         // //Работает
         //IIntervalsRepository intervalsRepository = new IntervalsRepository();
@@ -312,6 +312,32 @@ class Program
         //     Console.WriteLine(item);
         // }
         // Console.WriteLine();
+        
+        // //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // var shifts = shiftsRepository.GetMastersFromShiftByShiftTitle("УТРО (10:00 - 13:45)");
+        // foreach (var master in shifts)
+        // {
+        //     Console.WriteLine();
+        // }
+
+        // //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // shiftsRepository.RemoveMasterFromShiftByShiftTitle(2, "УТРО (10:00 - 13:45)");
+        // Console.ReadLine();
+        
+        // //Работает
+        // IUserRepository userRepository = new UserRepository();
+        // var res = userRepository.GetWorkerNameAndChatIdAndIdByPassword("12345");
+        // Console.ReadLine();
+        
+        // //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // var shifts = shiftsRepository.GetMastersAbsentedInSelectedShift("УТРО (10:00 - 13:45)");
+        // foreach (var master in shifts)
+        // {
+        //     Console.WriteLine();
+        // }
 
         #endregion
 
@@ -525,6 +551,32 @@ class Program
         // foreach (var item in res)
         // {
         //     Console.WriteLine(res);
+        // }
+                
+        // //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // var shifts = shiftsRepository.GetMastersFromShiftByShiftTitle("УТРО (10:00 - 13:45)");
+        // foreach (var master in shifts)
+        // {
+        //     Console.WriteLine();
+        // }                
+
+        // //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // shiftsRepository.RemoveMasterFromShiftByShiftTitle(7, "УТРО (10:00 - 13:45)");
+        // Console.ReadLine();
+        
+        // //Работает
+        // IUserClient userClient = new UserClient();
+        // var user = userClient.GetWorkerNameAndChatIdAndIdByPassword("12345");
+        // Console.ReadLine();
+        
+        // //Работает
+        // IShiftsRepository shiftsRepository = new ShiftsRepository();
+        // var shifts = shiftsRepository.GetMastersAbsentedInSelectedShift("УТРО (10:00 - 13:45)");
+        // foreach (var master in shifts)
+        // {
+        //     Console.WriteLine();
         // }
 
         #endregion

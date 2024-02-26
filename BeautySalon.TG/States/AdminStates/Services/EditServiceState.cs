@@ -2,6 +2,7 @@
 using BeautySalon.TG.MessageHandlers;
 using BeautySalon.TG.States;
 using BeautySalon.TG.States.Services.EditDuration;
+using BeuatySalon.TG.States.AdminStates.Services;
 using Telegram.Bot.Types;
 
 namespace BeautySalon.TG.States.Services;
@@ -28,7 +29,7 @@ public class EditServiceState : AbstractState
         {
             if (update.CallbackQuery.Data == "удалить")
             {
-                servicesHandler.ServiceRemove(SingletoneStorage.GetStorage().Client, update, ServiceId);
+                return new RemoveServiceState(ServiceId, Password, TypeId);
             }
 
             if (update.CallbackQuery.Data == "изменить цену")

@@ -16,11 +16,10 @@ namespace BeuatySalon.TG.States.MasterState
         {
             SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                 chatId: update.Message.Chat.Id,
-                text: "Неверный пароль.Введите еще раз:",
+                text: "Неверный пароль. Попробуйте ввести другой пароль:",
                 replyMarkup: replyMarkup,
                 cancellationToken: cancellationToken
              );
-
             return this;
         }
     }

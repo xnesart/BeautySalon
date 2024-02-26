@@ -15,24 +15,24 @@ public class ServicesHandler
 {
     public static List<AllServicesByIdFromCurrentTypeOutputModel> Services { get; set; }
 
-    public async void GetBackToMenu(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
-    {
-        InlineKeyboardMarkup inlineKeyboard = new(new[]
-        {
-            new[]
-            {
-                InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "как добраться"),
-                InlineKeyboardButton.WithCallbackData(text: "Записаться", callbackData: "записаться"),
-            },
-            new[]
-            {
-                InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
-                InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "оставить отзыв"),
-            },
-        });
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Главное меню",
-            replyMarkup: inlineKeyboard);
-    }
+    // public async void GetBackToMenu(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+    // {
+    //     InlineKeyboardMarkup inlineKeyboard = new(new[]
+    //     {
+    //         new[]
+    //         {
+    //             InlineKeyboardButton.WithCallbackData(text: "Как добраться", callbackData: "как добраться"),
+    //             InlineKeyboardButton.WithCallbackData(text: "Записаться", callbackData: "записаться"),
+    //         },
+    //         new[]
+    //         {
+    //             InlineKeyboardButton.WithCallbackData(text: "Мои записи", callbackData: "мои записи"),
+    //             InlineKeyboardButton.WithCallbackData(text: "Оставить отзыв", callbackData: "оставить отзыв"),
+    //         },
+    //     });
+    //     await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Главное меню",
+    //         replyMarkup: inlineKeyboard);
+    // }
 
     public async void ShowServices(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
@@ -422,7 +422,7 @@ public class ServicesHandler
             },
         });
         await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id,
-            "Меню редактирования выбранной услуги:",
+            "Меню редактирования выбранной услуги.",
             replyMarkup: inlineKeyboard);
     }
 
@@ -434,7 +434,32 @@ public class ServicesHandler
             Id = serviceId
         };
         serviceClient.RemoveServiceById(model);
-        await botClient.SendTextMessageAsync(update.CallbackQuery.Message.Chat.Id, "Выбранная услуга удалена из базы.");
+        InlineKeyboardMarkup inlineKeyboard = new(new[]
+        {
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору услуги",
+                    callbackData: "вернуться к выбору услуги"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться к выбору типа услуг",
+                    callbackData: "вернуться к выбору типа услуг"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Вернуться в меню админа",
+                    callbackData: "вернуться в меню админа"),
+            },
+            new[]
+            {
+                InlineKeyboardButton.WithCallbackData(text: "Перейти в меню клиента",
+                    callbackData: "перейти в меню клиента"),
+            },
+        });
+        botClient.SendTextMessageAsync(update.CallbackQuery.From.Id,
+            "Выбранная услуга удалена из базы данных.",
+            replyMarkup: inlineKeyboard);
     }
 
     public async void ServiceUpdatePrice(ITelegramBotClient botClient, Update update, int serviceId,
